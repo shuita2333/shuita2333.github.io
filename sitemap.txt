@@ -1,8 +1,8 @@
-http://62.234.219.169/404/index.html
-http://62.234.219.169/friends/index.html
-http://62.234.219.169/contact/index.html
-http://62.234.219.169/about/index.html
-http://62.234.219.169/tags/index.html
-http://62.234.219.169/categories/index.html
-http://62.234.219.169/2023/07/20/hello-world/
-http://62.234.219.169/
+https://62.234.219.169/404/index.html
+https://62.234.219.169/friends/index.html
+https://62.234.219.169/contact/index.html
+https://62.234.219.169/about/index.html
+https://62.234.219.169/tags/index.html
+https://62.234.219.169/categories/index.html
+https://62.234.219.169/2023/07/20/hello-world/
+https://62.234.219.169/
