@@ -1,3 +1,5 @@
+https://62.234.219.169/music/index.html
+https://62.234.219.169/movies/index.html
 https://62.234.219.169/404/index.html
 https://62.234.219.169/friends/index.html
 https://62.234.219.169/contact/index.html
