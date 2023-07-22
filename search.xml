@@ -18,4 +18,24 @@
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>Hello World test</title>
+    <url>/2023/07/22/hello-world-test/</url>
+    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>正文</p>
+<p><code>代码段</code></p>
+<ol>
+<li>有序列表</li>
+<li>+1</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">代码块</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>网站测试</category>
+      </categories>
+      <tags>
+        <tag>标签1</tag>
+        <tag>标签2</tag>
+      </tags>
+  </entry>
 </search>

@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://62.234.219.169/2023/07/22/hello-world-test/</loc>
+    
+    <lastmod>2023-07-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://62.234.219.169/music/index.html</loc>
     
     <lastmod>2023-07-21</lastmod>
@@ -85,12 +94,33 @@
 
   <url>
     <loc>https://62.234.219.169/</loc>
-    <lastmod>2023-07-21</lastmod>
+    <lastmod>2023-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
+  <url>
+    <loc>https://62.234.219.169/tags/%E6%A0%87%E7%AD%BE1/</loc>
+    <lastmod>2023-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://62.234.219.169/tags/%E6%A0%87%E7%AD%BE2/</loc>
+    <lastmod>2023-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
+  
+  <url>
+    <loc>https://62.234.219.169/categories/%E7%BD%91%E7%AB%99%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2023-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
 </urlset>

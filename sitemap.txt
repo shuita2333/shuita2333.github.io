@@ -1,3 +1,4 @@
+https://62.234.219.169/2023/07/22/hello-world-test/
 https://62.234.219.169/music/index.html
 https://62.234.219.169/movies/index.html
 https://62.234.219.169/404/index.html
@@ -8,3 +9,6 @@ https://62.234.219.169/tags/index.html
 https://62.234.219.169/categories/index.html
 https://62.234.219.169/2023/07/20/hello-world/
 https://62.234.219.169/
+https://62.234.219.169/tags/%E6%A0%87%E7%AD%BE1/
+https://62.234.219.169/tags/%E6%A0%87%E7%AD%BE2/
+https://62.234.219.169/categories/%E7%BD%91%E7%AB%99%E6%B5%8B%E8%AF%95/
