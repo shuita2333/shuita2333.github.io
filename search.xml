@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World test</title>
+    <url>/2023/07/22/hello/hello-world-test/</url>
+    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>正文</p>
+<p><code>代码段</code></p>
+<ol>
+<li>有序列表</li>
+<li>+1</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">代码块</span><br></pre></td></tr></table></figure>
+
+<p>链接测试：<a href="https://62.234.219.169/2023/07/20/hello-world/">Hello World | ZYH’s blog</a></p>
+<p>emojy:  :laughing:</p>
+<p>picture:</p>
+<p>在线文件</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon2.png" alt="我是水獭"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Hello World</title>
-    <url>/2023/07/20/hello-world/</url>
+    <url>/2023/07/20/hello/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
@@ -19,23 +37,461 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Hello World test</title>
-    <url>/2023/07/22/hello-world-test/</url>
-    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>正文</p>
-<p><code>代码段</code></p>
+    <title>Hexo博客搭建（1）——部署服务器和配置服务器端</title>
+    <url>/2023/07/22/hexo/Hexo_build01/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>搭建自己的服务器是喜忧参半的</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">好处:</span><br><span class="line">1.不用担心别的第三方静态部署平台有什么变化；</span><br><span class="line">2.自己的其他东西也可以放到自己的服务器，拓展博客趣味性；</span><br><span class="line">3.没事自己捣鼓捣鼓，对个人的技术成长和作品展示都是有好处的，也是非常有意思的事情</span><br><span class="line">坏处:</span><br><span class="line">1.国内需要ICP备案和公安备案【香港澳门等除外】；</span><br><span class="line">2.可能需要一些技术能力，比如反向代理，linux知识；</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="选取配置"><a href="#选取配置" class="headerlink" title="选取配置"></a>选取配置</h1><ul>
+<li><strong>腾讯云</strong></li>
+</ul>
+<p>腾讯云没有阿里云那么多云服务器业务型号，它主要强在轻量应用服务器的多配置机型，和标准云服务器的高带宽、大硬盘、带数据盘！</p>
+<p>入门最高性价比推荐：腾讯云轻量应用服务器2核4G 5M带宽 一年168元，在促销的时候还有更多优惠。</p>
+<ul>
+<li><strong>阿里云</strong></li>
+</ul>
+<p>没什么好说的，入门机型没优势，价格偏高了，目前只有s6、c5、g5机型，c6、机型比较占优势。</p>
+<ul>
+<li><strong>华为云</strong></li>
+</ul>
+<p>目前阿里云和腾讯云经过一波价格调整，已经不是以前那种低价来占据市场了，完全内卷不动了，目前国内头部云厂商，云服务器折扣力度最大的，是华为云服务器，而且官网页面可领取优惠券。</p>
+<ul>
+<li><strong>硅云</strong></li>
+</ul>
+<p>硅云是中小型企业，专门针对香港和国外服务器，性价比挺高的术业有专攻，如果是想要建网站免备案，可选他们家。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">此外选取国内租用云服务器需要备案，大概流程要一个月左右。租用香港及国外云服务器目前不需要备案。</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="购买设备"><a href="#购买设备" class="headerlink" title="购买设备"></a>购买设备</h1><h2 id="购买云服务器"><a href="#购买云服务器" class="headerlink" title="购买云服务器"></a>购买云服务器</h2><p>我选取的是腾讯云服务器——轻量应用服务器2核2G</p>
+<p>6·18时候促销直接买的三年租用。</p>
+<p>购买之后需要安装配置服务器系统：</p>
+<p>地区：<code>北京五区</code>(离哪里近选择哪里) 系统：<code>CentOS 7.6 64位</code> 实例规格：<code>标准型S5</code></p>
+<p>配置完之后就可以在<code>控制台-&gt;云服务器-&gt;实例</code>中看到自己购买的服务器啦~</p>
+<h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p> 域名的出现是因为IP地址不方便记忆，因此通过DNS服务器可以通过好记的域名找到IP地址。如果不买域名完全可以用上方图片的IPv4地址访问服务器。</p>
+<p>在腾讯云主页的域名特惠中可以选取不同的后缀，不同后缀的域名价格不同。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">top后缀域名一般最便宜</span><br><span class="line">cn、com、net较为常用</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="云服务器配置"><a href="#云服务器配置" class="headerlink" title="云服务器配置"></a>云服务器配置</h1><p>！！！建议不要直接安装自带配置软件的与服务器！！！</p>
+<p>！！！不要一上来就安装宝塔！！！</p>
+<p><em>宝塔在可视化安装软件时会将软件安装在 www 目录下，而不是常用命令行的安装目录，而且会缺失一些文件，不利于后续操作。</em></p>
+<p><strong>开始配置：</strong></p>
 <ol>
-<li>有序列表</li>
-<li>+1</li>
+<li><p>安装依赖库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装编译工具</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查是否已安装Git</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git version</span><br></pre></td></tr></table></figure>
+
+<p>返回的结果<code>git version 1.8.3.1</code>即可</p>
+</li>
+<li><p>配置Git环境</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo &#x27;export PATH=$PATH:/usr/local/git/bin&#x27; &gt;&gt; /etc/bashrc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>刷新环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source /etc/bashrc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建Git用户并修改权限</p>
+<p>创建后期上传hexo的git指定用户，这里以hyh为例(这个用户名可以自定义，但是要保证后面的需要用户名的地方需要改成自己自定义的用户名即可)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adduser zyh</span><br><span class="line">passwd zyh</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的便是在设置密码时，设置密码时是没有回显的</p>
+<p>赋予zyh用户相关权限</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod 740 /etc/sudoers   # 设置权限</span><br><span class="line">vim /etc/sudoers # 编辑/etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<p>使用 set: nu 显示行号，找到100行左右，添加如下信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">root ALL=(ALL)  ALL</span><br><span class="line">- zyh  ALL=(ALL)   ALL  #主要添加这句话（这里zyh是你刚才创建的用户名）</span><br></pre></td></tr></table></figure>
+
+<p>直接:<code>wq!</code>，进行保存，保存后再次修改权限。因为 <code>sudoers</code>是只读文件，所有要使用 <code>!</code>进行保存，否则会失败。</p>
+<p>将&#x2F;etc&#x2F;sudoers 修改成只读类型</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod 600 /etc/sudoers   //改回权限</span><br></pre></td></tr></table></figure>
+
+
+
+<p>创建hexo文件夹及赋予文件夹权限</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /home/hexo  #这个也是自定义的</span><br><span class="line">chown hyh:hyh -R /home/hexo #授予权限</span><br></pre></td></tr></table></figure>
+
+
+
+<p>安装Nginx<br>这里基本没啥好说的，直接运行就可以，然后看到最后一行显示Complete就说明完事了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y nginx  </span><br></pre></td></tr></table></figure>
+
+
+
+<p>这个时候我们可以通过以下命令，启动一下，看看效果，如果没有报错的话就ok</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl start nginx.service</span><br></pre></td></tr></table></figure>
+
+
+
+<p>配置Nginx文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p>在38行进行修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123; </span><br><span class="line">	listen 80 default_server; </span><br><span class="line">	listen [::]:80 default_server; </span><br><span class="line">	server_name liuruibin.com; #域名 </span><br><span class="line">	root /home/hexo; #网站目录</span><br></pre></td></tr></table></figure>
+
+<p>保存退出后，重启服务器，<br>修改完配置以后，需要重启一下Nginx服务。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl reload nginx.service  </span><br></pre></td></tr></table></figure></li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">代码块</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（2）——配置客户端并建立连接</title>
+    <url>/2023/07/22/hexo/Hexo_build02/</url>
+    <content><![CDATA[<h1 id="相关链接和参考内容"><a href="#相关链接和参考内容" class="headerlink" title="相关链接和参考内容"></a>相关链接和参考内容</h1><p>Node：<a href="https://nodejs.org/zh-cn">Node.js (nodejs.org)</a></p>
+<p>Git： <a href="https://git-scm.com/downloads">Git - Downloads (git-scm.com)</a></p>
+<p>Typora： <a href="https://www.typora.io/">https://www.typora.io/</a></p>
+<p>hexo说明文档： <a href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a></p>
+<h1 id="本地安装和配置Hexo"><a href="#本地安装和配置Hexo" class="headerlink" title="本地安装和配置Hexo"></a>本地安装和配置Hexo</h1><p>请先自行安装git和node，这个教程就比较多了，在这里就不进行赘述了</p>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="初始化hexo"><a href="#初始化hexo" class="headerlink" title="初始化hexo"></a>初始化hexo</h2><p>这里myblog可以去掉，加myblog只不过是为了使所生成的文件全都放到myblog文件夹中</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init myblog  </span><br><span class="line">cd ./myblog</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+
+<p>目前基本的hexo已经ok了，本地运行一下看看</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中输入：<code>http://localhost:4000/</code>即可查看</p>
+<h2 id="上传到服务器"><a href="#上传到服务器" class="headerlink" title="上传到服务器"></a>上传到服务器</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">su zyh  //登录你用来上传博客的用户</span><br><span class="line">mkdir ~/.ssh   //创建存放密钥的文件夹</span><br><span class="line">vim ~/.ssh/authorized_keys  //写入密钥</span><br></pre></td></tr></table></figure>
+
+<p>这里需要一个秘钥，在你的物理机上C:\Users\Administrator\ .ssh的文件中找到id_rsa文件（如未找到ssh文件请参考文末）</p>
+<p>复制全部信息到你的服务器中</p>
+<p>测试物理机与服务器能否跑通</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -v zyh@62.234.219.169 //服务器ip</span><br></pre></td></tr></table></figure>
+
+<p>我们需要在config.yml中的最后一行编辑以下信息，然后咱们就可以把自己的博客推送上去了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  - type: git</span><br><span class="line">    repository: zyh@62.234.219.169:/home/zyh/blog.git</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以通过以下命令进行推送了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo -d</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="附录）本地Windows10使用Git-Bash创建密钥"><a href="#附录）本地Windows10使用Git-Bash创建密钥" class="headerlink" title="(附录）本地Windows10使用Git Bash创建密钥"></a>(附录）本地Windows10使用Git Bash创建密钥</h2><p>打开到本地的博客文件目录下，右键Git Bush进入命令框，输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+
+<p>输入完后一顿空格即可，之后会返回SHA256密钥和密钥图。并且在你用户界面下发现出现了.ssh文件夹。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（3）——Hexo的目录结构</title>
+    <url>/2023/07/22/hexo/Hexo_build03/</url>
+    <content><![CDATA[<p>本地部署后在系统盘的用户目录下生成Hexo文件，对其目录结构需要有一定的了解，在之后的Hexo配置和优化离不开里面的各种文件，因此需要对它的目录结构有一定了解：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- _config.yml</span><br><span class="line">|-- node_modules</span><br><span class="line">|-- scaffolds</span><br><span class="line">|-- source</span><br><span class="line">   |-- _posts</span><br><span class="line">|-- public</span><br><span class="line">|-- themes</span><br><span class="line">|-- .gitignore</span><br><span class="line">|-- db.json</span><br><span class="line">|-- package.json</span><br><span class="line">|-- package-lock.json</span><br></pre></td></tr></table></figure>
+
+<p><code>_config.yml</code>：网站的全局配置文件，设置包括网站标题、副标题、作者、关键字和描述信息等。</p>
+<p><code>node_modules</code>：是<code>nodejs</code>库文件目录，也就是我们通过”npm install”命令安装的文件位置</p>
+<p><code>scaffolds</code>：本意是 “脚手架” 的意思，这里引申为模板文件夹。当你 <code>hexo new &lt;layout(布局)&gt; &lt;title&gt; 的时候</code>，Hexo 会根据该文件夹下的对应文件进行初始化构建。</p>
+<p><code>source</code>：正如其名，<code>source</code> 文件夹存储一些直接来自用户的文件，它很重要，如果不出意外你的文章就是保存在这个文件夹下（<em>posts）。</em><code>posts</code> 目录下的md文件，会被编译成 html 文件，放到 public 文件夹下。</p>
+<p><code>public</code>：参考 <code>source</code> 文件夹，在初始化后是没有 <code>public</code> 文件夹的，除非 <code>hexo g</code> 编译生成静态文件后，<code>public</code> 文件夹会自动生成。使用 <code>hexo clean</code> 清除 <code>db.json</code> 和 <code>public</code> 文件夹下的所有文件。</p>
+<p><code>themes</code>：主题文件夹，存储主题。相关的主题可以在 Github 上免费采购。</p>
+<p><code>.gitignore</code>：<code>.gitignore</code> 文件作用是声明不被 git 记录的文件，<code>hexo init &lt;folder&gt;</code> 也会产生一个 <code>.gitignore</code> 文件，可以先删除或者直接编辑，对hexo不会有影响。</p>
+<p><code>db.json</code>：里面存放了一些由<code>source</code>目录下<code>.md</code> 的所有文件解析得到的数据</p>
+<p><code>package.json</code>：框架的基本参数信息和它所依赖的插件，在 npm 安装时使用 <code>--save</code> 保存进去。</p>
+<p><code>package-lock.json</code>：锁定安装时的包的版本号，并且需要上传到git，以保证其他人在npm install时大家的依赖能保证一致。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（4）——更换主题</title>
+    <url>/2023/07/22/hexo/Hexo_build04/</url>
+    <content><![CDATA[<p>Hexo的主题有很多，可以在其官网上选择自己喜欢的。</p>
+<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p>Hexo官方主题页：<a href="https://hexo.io/themes/">Themes | Hexo</a></p>
+<p>我使用的主题：<a href="https://github.com/zhangzeli/hexo-theme-butterfly">Butterfly</a></p>
+<h1 id="更改方法"><a href="#更改方法" class="headerlink" title="更改方法"></a>更改方法</h1><p>在Github上下载了主题ZIP文件后，放到hexo文件夹根目录themes文件下解压。之后打开hexo文件夹中_config.yml，找到Extensions.theme将其改为hexo-theme-matery。重启本地服务器就可以看到主题改过来啦。</p>
+<p>建议下载稳定版，在建立的Hexo博客文件根目录打开终端，输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/Butterfly</span><br></pre></td></tr></table></figure>
+
+<p>打开根目录文件<code>_config.yml</code>更改</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">theme: Butterfly</span><br></pre></td></tr></table></figure>
+
+<p>随后重新部署一下就可以看见更改后的主题了</p>
+<p>以下步骤以后不再赘述：</p>
+<p>输入以下代码可在本地查看</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>输入以下代码可部署到网站</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo -d</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
-        <category>网站测试</category>
+        <category>博客搭建</category>
       </categories>
       <tags>
-        <tag>标签1</tag>
-        <tag>标签2</tag>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+        <tag>Butterfly主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（5）——自定义Hexo文件</title>
+    <url>/2023/07/22/hexo/Hexo_build05/</url>
+    <content><![CDATA[<h1 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h1><p>修改站点配置文件 <code>_config.yml</code></p>
+<p>默认语言是 <code>en</code></p>
+<p>主题支持三种语言</p>
+<ul>
+<li>default(en)</li>
+<li>zh-CN (简体中文)</li>
+<li>zh-TW (繁体中文)</li>
+</ul>
+<h1 id="网站资料"><a href="#网站资料" class="headerlink" title="网站资料"></a>网站资料</h1><p>修改网站各种资料，例如标题、副标题和邮箱等个人资料，请修改博客根目录的<code>_config.yml</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: ZYH&#x27;s blog #网站标题</span><br><span class="line">subtitle: &#x27;&#x27; #网站副标题subtitle</span><br><span class="line"># 下面description,keywords，如果想让搜索引擎收录需要填上，这个做SEO优化必不可忽视的两个属性</span><br><span class="line">description: #网站描述</span><br><span class="line">keywords: #网站的关键词</span><br><span class="line">author: Charmes #作者，文章版权所显示的</span><br><span class="line">language: zh-CN #网站语言，不填写，默认为英文</span><br><span class="line">timezone: &#x27;&#x27; #时区，可以不填写</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="配置分类页"><a href="#配置分类页" class="headerlink" title="配置分类页"></a>配置分类页</h1><ol>
+<li><p>新建分类categories 页</p>
+<p><code>categories</code> 页是用来展示所有分类的页面，如果在你的博客 <code>source</code> 目录下还没有 <code>categories/index.md</code> 文件，那么你就需要新建一个，命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+
+<p>编辑刚刚新建的页面文件 <code>/source/categories/index.md</code>，至少需要以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2023-07-21 00:57:33</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">layout: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建标签tags页</p>
+<p><code>tags</code> 页是用来展示所有标签的页面，如果在你的博客 <code>source</code> 目录下还没有 tags&#x2F;index.md 文件，那么你就需要新建一个，命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
+
+<p>编辑你刚刚新建的页面文件 <code>/source/tags/index.md</code>，至少需要以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2023-07-21 00:57:33</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">layout: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建关于我about页</p>
+<p>同上，秩序把相关信息改成<code>about</code></p>
+</li>
+<li><p>新建留言板contact页（可选）</p>
+<p>同上，秩序把相关信息改成<code>about</code></p>
+</li>
+<li><p>新建友情链接friends页（可选）</p>
+<p>同上，秩序把相关信息改成<code>about</code></p>
+<p>同时，在你的博客 <code>source</code> 目录下新建 _data 目录，在 <code>_data</code> 目录中新建 <code>friends.json</code> 文件，文件内容如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&#123;</span><br><span class="line">    &quot;avatar&quot;: &quot;&quot;,</span><br><span class="line">    &quot;name&quot;: &quot;&quot;,</span><br><span class="line">    &quot;introduction&quot;: &quot;&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;&quot;,</span><br><span class="line">    &quot;title&quot;: &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建404页</p>
+<p>同上，秩序把相关信息改成<code>about</code></p>
+<p>编辑你刚刚新建的页面文件 <code>/source/404/index.md</code>，至少需要以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">date: 2018-09-30 17:25:30</span><br><span class="line">type: &quot;404&quot;</span><br><span class="line">layout: &quot;404&quot;</span><br><span class="line">description: &quot;Oops～，我崩溃了！找不到你想要的页面 :(&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（6）——魔改主题文件（基础）</title>
+    <url>/2023/07/22/hexo/Hexo_build06/</url>
+    <content><![CDATA[<h1 id="导航栏设置-Navigation-bar-settings"><a href="#导航栏设置-Navigation-bar-settings" class="headerlink" title="导航栏设置 (Navigation bar settings)"></a>导航栏设置 (Navigation bar settings)</h1><h2 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h2><p>主题配置文件中（注意不是根目录配置文件）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nav:</span><br><span class="line">  logo: #image</span><br><span class="line">  display_title: true</span><br><span class="line">  fixed: false # fixed navigation bar</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>logo</td>
+<td>网站的 logo，支持图片，直接填入图片链接</td>
+</tr>
+<tr>
+<td>display_title</td>
+<td>是否显示网站标题，填写 true 或者 false</td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>是否固定状态栏，填写 true 或者 false</td>
+</tr>
+</tbody></table>
+<h2 id="菜单-目录"><a href="#菜单-目录" class="headerlink" title="菜单&#x2F;目录"></a>菜单&#x2F;目录</h2><p>​	修改 <code>主题配置文件</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Home: / || fas fa-home</span><br><span class="line">Archives: /archives/ || fas fa-archive</span><br><span class="line">Tags: /tags/ || fas fa-tags</span><br><span class="line">Categories: /categories/ || fas fa-folder-open</span><br><span class="line">List||fas fa-list:</span><br><span class="line">  Music: /music/ || fas fa-music</span><br><span class="line">  Movie: /movies/ || fas fa-video</span><br><span class="line">Link: /link/ || fas fa-link</span><br><span class="line">About: /about/ || fas fa-heart</span><br></pre></td></tr></table></figure>
+
+<p>必须是 <code>/xxx/</code>，后面<code>||</code>分开，然后写图标名。</p>
+<p>如果不希望显示图标，图标名可不写。</p>
+<p>默认子目录是展开的，如果你想要隐藏，在子目录里添加 <code>hide</code> 。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List||fas fa-list||hide:</span><br><span class="line">  Music: /music/ || fas fa-music</span><br><span class="line">  Movie: /movies/ || fas fa-video</span><br></pre></td></tr></table></figure>
+
+<p>注意： 导航的文字可自行更改</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  首页: / || fas fa-home</span><br><span class="line">  时间轴: /archives/ || fas fa-archive</span><br><span class="line">  标签: /tags/ || fas fa-tags</span><br><span class="line">  分类: /categories/ || fas fa-folder-open</span><br><span class="line">  清单||fa fa-heartbeat:</span><br><span class="line">    音乐: /music/ || fas fa-music</span><br><span class="line">    照片: /Gallery/ || fas fa-images</span><br><span class="line">    电影: /movies/ || fas fa-video</span><br><span class="line">  友链: /link/ || fas fa-link</span><br><span class="line">  关于: /about/ || fas fa-heart</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="代码-Code-Blocks"><a href="#代码-Code-Blocks" class="headerlink" title="代码 (Code Blocks)"></a>代码 (Code Blocks)</h1><h2 id="代码高亮主题"><a href="#代码高亮主题" class="headerlink" title="代码高亮主题"></a>代码高亮主题</h2><p>Butterfly 支持6种代码高亮样式：</p>
+<ul>
+<li>darker</li>
+<li>pale night</li>
+<li>light</li>
+<li>ocean</li>
+<li>mac</li>
+<li>mac light</li>
+</ul>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">highlight_theme: light</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="代码复制"><a href="#代码复制" class="headerlink" title="代码复制"></a>代码复制</h2><p>主题支持代码复制功能</p>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">highlight_copy: true</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="代码框展开-关闭"><a href="#代码框展开-关闭" class="headerlink" title="代码框展开&#x2F;关闭"></a>代码框展开&#x2F;关闭</h2><p>在默认情况下，代码框自动展开，可设置是否所有代码框都关闭状态，点击&gt;可展开代码</p>
+<ul>
+<li>true 全部代码框不展开，需点击&gt;打开</li>
+<li>false 代码框展开，有&gt;点击按钮</li>
+<li>none 不显示&gt;按钮</li>
+</ul>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">highlight_shrink: true #代码框不展开，需点击 &#x27;&gt;&#x27; 打开</span><br></pre></td></tr></table></figure>
+
+<p>你也可以在<code>post/page</code>页对应的markdown文件<code>front-matter</code>添加highlight_shrink来独立配置。</p>
+<p>当主题配置文件中的 <code>highlight_shrink</code> 设为<code>true</code>时，可在<code>front-matter</code>添加<code>highlight_shrink: false</code>来单独配置文章展开代码框。</p>
+<p>当主题配置文件中的 <code>highlight_shrink</code> 设为<code>false</code>时，可在<code>front-matter</code>添加<code>highlight_shrink: true</code>来单独配置文章收缩代码框。</p>
+<h2 id="代码换行"><a href="#代码换行" class="headerlink" title="代码换行"></a>代码换行</h2><p>在默认情况下，Hexo 在编译的时候不会实现代码自动换行。如果你不希望在代码块的区域里有横向滚动条的话，那么你可以考虑开启这个功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">code_word_wrap: true</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="社交图标-Social-Settings"><a href="#社交图标-Social-Settings" class="headerlink" title="社交图标 (Social Settings)"></a>社交图标 (Social Settings)</h1><p><code>Butterfly</code>支持 <code>font-awesome v6</code> 图标.</p>
+<p>书写格式 图标名：<code>url || 描述性文字 || color</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">social:</span><br><span class="line">  fab fa-github: https://github.com/xxxxx || Github || &quot;#hdhfbb&quot;</span><br><span class="line">  fas fa-envelope: mailto:xxxxxx@gmail.com || Email || &quot;#000000&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="头像"><a href="#头像" class="headerlink" title="头像"></a>头像</h1><p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  img: /img/avatar.png</span><br><span class="line">  effect: true # 头像会一直转圈</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="顶部图"><a href="#顶部图" class="headerlink" title="顶部图"></a>顶部图</h1><p>如果不要显示顶部图，可直接配置 <code>disable_top_img: true</code></p>
+<p>顶部图的获取顺序，如果都没有配置，则不显示顶部图。</p>
+<ol>
+<li><p>页面顶部图的获取顺序：</p>
+<p>各自配置的 <code>top_img &gt;</code> 配置文件的 <code>default_top_img</code></p>
+</li>
+<li><p>文章页顶部图的获取顺序：</p>
+<p>各自配置的 <code>top_img &gt; cover &gt;</code> 配置文件的 <code>default_top_img</code></p>
+</li>
+</ol>
+<p>配置中的值：</p>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>index_img</td>
+<td>主页的 top_img</td>
+</tr>
+<tr>
+<td>default_top_img</td>
+<td>默认的 top_img，当页面的 top_img 没有配置时，会显示 default_top_img</td>
+</tr>
+<tr>
+<td>archive_img</td>
+<td>归档页面的 top_img</td>
+</tr>
+<tr>
+<td>tag_img</td>
+<td>tag 子页面 的 默认 top_img</td>
+</tr>
+<tr>
+<td>tag_per_img</td>
+<td>tag 子页面的 top_img，可配置每个 tag 的 top_img</td>
+</tr>
+<tr>
+<td>category_img</td>
+<td>category 子页面 的 默认 top_img</td>
+</tr>
+<tr>
+<td>category_per_img</td>
+<td>category 子页面的 top_img，可配置每个 category 的 top_img</td>
+</tr>
+</tbody></table>
+<p>并不推荐为每个 tag 和每个 category 都配置不同的顶部图，因为配置太多会拖慢生成速度</p>
+<h1 id="文章封面"><a href="#文章封面" class="headerlink" title="文章封面"></a>文章封面</h1><p>文章的 <code>markdown</code> 文档上,在 <code>Front-matter</code> 添加 <code>cover</code> ,并填上要显示的图片地址。</p>
+<p>如果不配置 <code>cover</code>,可以设置显示默认的 <code>cover</code>。</p>
+<p>如果不想在首页显示 <code>cover</code>, 可以设置为 <code>false</code>。</p>
+<p>文章封面的获取顺序 <code>Front-matter</code> 的 cover &gt; 配置文件的 default_cover &gt; false</p>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cover:</span><br><span class="line">  # 是否显示文章封面</span><br><span class="line">  index_enable: true #主页是否显示文章封面图</span><br><span class="line">  aside_enable: true #侧栏是否显示文章封面图</span><br><span class="line">  archives_enable: true #	归档页面是否显示文章封面图</span><br><span class="line">  # 封面显示的位置</span><br><span class="line">  # 三个值可配置 left , right , both</span><br><span class="line">  position: both</span><br><span class="line">  # 当没有设置cover时，默认的封面显示</span><br><span class="line">  default_cover: </span><br></pre></td></tr></table></figure>
+
+<p>当配置多张图片时,会随机选择一张作为cover.此时写法应为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">default_cover:</span><br><span class="line">  - https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png</span><br><span class="line">  - https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg2.png</span><br><span class="line">  - https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="页面-meta-显示"><a href="#页面-meta-显示" class="headerlink" title="页面 meta 显示"></a>页面 meta 显示</h1><p>这个选项是用来显示文章的相关信息的。</p>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">post_meta:</span><br><span class="line">  page:</span><br><span class="line">    date_type: both # created or updated or both 主页文章日期是创建日或者更新日或都显示</span><br><span class="line">    date_format: relative # date/relative 显示日期还是相对日期</span><br><span class="line">    categories: true # true or false 主页是否显示分类</span><br><span class="line">    tags: true # true or false 主页是否显示标签</span><br><span class="line">    label: true # true or false 显示描述性文字</span><br><span class="line">  post:</span><br><span class="line">    date_type: both # created or updated or both 文章页日期是创建日或者更新日或都显示</span><br><span class="line">    date_format: relative # date/relative 显示日期还是相对日期</span><br><span class="line">    categories: true # true or false 文章页是否显示分类</span><br><span class="line">    tags: true # true or false 文章页是否显示标签</span><br><span class="line">    label: true # true or false 显示描述性文字</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="主页文章节选-自动节选和文章页description"><a href="#主页文章节选-自动节选和文章页description" class="headerlink" title="主页文章节选(自动节选和文章页description)"></a>主页文章节选(自动节选和文章页description)</h1><p>因为主题UI的关係，主页文章节选只支持自动节选和文章页<code>description</code>。</p>
+<p>在<code>butterfly</code>里，有四种可供选择</p>
+<ol>
+<li>description： 只显示<code>description</code></li>
+<li>both： 优先选择&#96;&#96;，如果没有配置description，则显示自动节选的内容</li>
+<li>auto_excerpt：只显示自动节选</li>
+<li>false： 不显示文章内容</li>
+</ol>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">index_post_content:</span><br><span class="line">  method: 3</span><br><span class="line">  length: 500 # if you set method to 2 or 3, the length need to config</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="页面锚点"><a href="#页面锚点" class="headerlink" title="页面锚点"></a>页面锚点</h2><p>开启页面锚点后，当你在进行滚动时，页面链接会根据标题ID进行替换<br>(注意: 每替换一次，会留下一个历史记录。所以如果一篇文章有很多锚点的话，网页的历史记录会很多。)</p>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># anchor</span><br><span class="line"># when you scroll in post , the url will update according to header id.</span><br><span class="line">anchor:</span><br><span class="line">  button:</span><br><span class="line">    enable: false</span><br><span class="line">    always_show: false</span><br><span class="line">    icon: # the unicode value of Font Awesome icon, such as &#x27;\3423&#x27;</span><br><span class="line">  auto_update: false # when you scroll in post, the URL will update according to header id.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="复制相关配置"><a href="#复制相关配置" class="headerlink" title="复制相关配置"></a>复制相关配置</h2><p>可配置网站是否可以复制、复制的内容是否添加版权信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># copy settings</span><br><span class="line"># copyright: Add the copyright information after copied content (复制的内容后面加上版权信息)</span><br><span class="line">copy:</span><br><span class="line">  enable: true #	是否开启网站复制权限</span><br><span class="line">  copyright: #复制的内容后面加上版权信息</span><br><span class="line">    enable: true #	是否开启复制版权信息添加</span><br><span class="line">    limit_count: 50 #字数限制，当复制文字大于这个字数限制时，将在复制的内容后面加上版权信息</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+        <tag>Butterfly主题</tag>
       </tags>
   </entry>
 </search>
