@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/07/20/hello/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Hexo博客搭建（1）——部署服务器和配置服务器端</title>
     <url>/2023/07/22/hexo/Hexo_build01/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>搭建自己的服务器是喜忧参半的</p>
@@ -131,24 +113,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World test</title>
-    <url>/2023/07/20/hello/hello-world-test/</url>
-    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>正文</p>
-<p><code>代码段</code></p>
-<ol>
-<li>有序列表</li>
-<li>+1</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">代码块</span><br></pre></td></tr></table></figure>
-
-<p>链接测试：<a href="https://62.234.219.169/2023/07/20/hello-world/">Hello World | ZYH’s blog</a></p>
-<p>emojy:  :laughing:</p>
-<p>picture:</p>
-<p>在线文件</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon2.png" alt="我是水獭"></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Hexo博客搭建（2）——配置客户端并建立连接</title>
     <url>/2023/07/22/hexo/Hexo_build02/</url>
     <content><![CDATA[<h1 id="相关链接和参考内容"><a href="#相关链接和参考内容" class="headerlink" title="相关链接和参考内容"></a>相关链接和参考内容</h1><p>Node：<a href="https://nodejs.org/zh-cn">Node.js (nodejs.org)</a></p>
@@ -198,6 +162,62 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo博客搭建（3）——Hexo的目录结构</title>
+    <url>/2023/07/22/hexo/Hexo_build03/</url>
+    <content><![CDATA[<p>本地部署后在系统盘的用户目录下生成Hexo文件，对其目录结构需要有一定的了解，在之后的Hexo配置和优化离不开里面的各种文件，因此需要对它的目录结构有一定了解：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- _config.yml</span><br><span class="line">|-- node_modules</span><br><span class="line">|-- scaffolds</span><br><span class="line">|-- source</span><br><span class="line">   |-- _posts</span><br><span class="line">|-- public</span><br><span class="line">|-- themes</span><br><span class="line">|-- .gitignore</span><br><span class="line">|-- db.json</span><br><span class="line">|-- package.json</span><br><span class="line">|-- package-lock.json</span><br></pre></td></tr></table></figure>
+
+<p><code>_config.yml</code>：网站的全局配置文件，设置包括网站标题、副标题、作者、关键字和描述信息等。</p>
+<p><code>node_modules</code>：是<code>nodejs</code>库文件目录，也就是我们通过”npm install”命令安装的文件位置</p>
+<p><code>scaffolds</code>：本意是 “脚手架” 的意思，这里引申为模板文件夹。当你 <code>hexo new &lt;layout(布局)&gt; &lt;title&gt; 的时候</code>，Hexo 会根据该文件夹下的对应文件进行初始化构建。</p>
+<p><code>source</code>：正如其名，<code>source</code> 文件夹存储一些直接来自用户的文件，它很重要，如果不出意外你的文章就是保存在这个文件夹下（<em>posts）。</em><code>posts</code> 目录下的md文件，会被编译成 html 文件，放到 public 文件夹下。</p>
+<p><code>public</code>：参考 <code>source</code> 文件夹，在初始化后是没有 <code>public</code> 文件夹的，除非 <code>hexo g</code> 编译生成静态文件后，<code>public</code> 文件夹会自动生成。使用 <code>hexo clean</code> 清除 <code>db.json</code> 和 <code>public</code> 文件夹下的所有文件。</p>
+<p><code>themes</code>：主题文件夹，存储主题。相关的主题可以在 Github 上免费采购。</p>
+<p><code>.gitignore</code>：<code>.gitignore</code> 文件作用是声明不被 git 记录的文件，<code>hexo init &lt;folder&gt;</code> 也会产生一个 <code>.gitignore</code> 文件，可以先删除或者直接编辑，对hexo不会有影响。</p>
+<p><code>db.json</code>：里面存放了一些由<code>source</code>目录下<code>.md</code> 的所有文件解析得到的数据</p>
+<p><code>package.json</code>：框架的基本参数信息和它所依赖的插件，在 npm 安装时使用 <code>--save</code> 保存进去。</p>
+<p><code>package-lock.json</code>：锁定安装时的包的版本号，并且需要上传到git，以保证其他人在npm install时大家的依赖能保证一致。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（4）——更换主题</title>
+    <url>/2023/07/22/hexo/Hexo_build04/</url>
+    <content><![CDATA[<p>Hexo的主题有很多，可以在其官网上选择自己喜欢的。</p>
+<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p>Hexo官方主题页：<a href="https://hexo.io/themes/">Themes | Hexo</a></p>
+<p>我使用的主题：<a href="https://github.com/zhangzeli/hexo-theme-butterfly">Butterfly</a></p>
+<h1 id="更改方法"><a href="#更改方法" class="headerlink" title="更改方法"></a>更改方法</h1><p>在Github上下载了主题ZIP文件后，放到hexo文件夹根目录themes文件下解压。之后打开hexo文件夹中_config.yml，找到Extensions.theme将其改为hexo-theme-matery。重启本地服务器就可以看到主题改过来啦。</p>
+<p>建议下载稳定版，在建立的Hexo博客文件根目录打开终端，输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/Butterfly</span><br></pre></td></tr></table></figure>
+
+<p>打开根目录文件<code>_config.yml</code>更改</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">theme: Butterfly</span><br></pre></td></tr></table></figure>
+
+<p>随后重新部署一下就可以看见更改后的主题了</p>
+<p>以下步骤以后不再赘述：</p>
+<p>输入以下代码可在本地查看</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>输入以下代码可部署到网站</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo -d</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+        <tag>Butterfly主题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo博客搭建（5）——自定义Hexo文件</title>
     <url>/2023/07/22/hexo/Hexo_build05/</url>
     <content><![CDATA[<h1 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h1><p>修改站点配置文件 <code>_config.yml</code></p>
@@ -244,31 +264,6 @@
 <p>编辑你刚刚新建的页面文件 <code>/source/404/index.md</code>，至少需要以下内容：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">date: 2018-09-30 17:25:30</span><br><span class="line">type: &quot;404&quot;</span><br><span class="line">layout: &quot;404&quot;</span><br><span class="line">description: &quot;Oops～，我崩溃了！找不到你想要的页面 :(&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></li>
 </ol>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo博客搭建（3）——Hexo的目录结构</title>
-    <url>/2023/07/22/hexo/Hexo_build03/</url>
-    <content><![CDATA[<p>本地部署后在系统盘的用户目录下生成Hexo文件，对其目录结构需要有一定的了解，在之后的Hexo配置和优化离不开里面的各种文件，因此需要对它的目录结构有一定了解：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- _config.yml</span><br><span class="line">|-- node_modules</span><br><span class="line">|-- scaffolds</span><br><span class="line">|-- source</span><br><span class="line">   |-- _posts</span><br><span class="line">|-- public</span><br><span class="line">|-- themes</span><br><span class="line">|-- .gitignore</span><br><span class="line">|-- db.json</span><br><span class="line">|-- package.json</span><br><span class="line">|-- package-lock.json</span><br></pre></td></tr></table></figure>
-
-<p><code>_config.yml</code>：网站的全局配置文件，设置包括网站标题、副标题、作者、关键字和描述信息等。</p>
-<p><code>node_modules</code>：是<code>nodejs</code>库文件目录，也就是我们通过”npm install”命令安装的文件位置</p>
-<p><code>scaffolds</code>：本意是 “脚手架” 的意思，这里引申为模板文件夹。当你 <code>hexo new &lt;layout(布局)&gt; &lt;title&gt; 的时候</code>，Hexo 会根据该文件夹下的对应文件进行初始化构建。</p>
-<p><code>source</code>：正如其名，<code>source</code> 文件夹存储一些直接来自用户的文件，它很重要，如果不出意外你的文章就是保存在这个文件夹下（<em>posts）。</em><code>posts</code> 目录下的md文件，会被编译成 html 文件，放到 public 文件夹下。</p>
-<p><code>public</code>：参考 <code>source</code> 文件夹，在初始化后是没有 <code>public</code> 文件夹的，除非 <code>hexo g</code> 编译生成静态文件后，<code>public</code> 文件夹会自动生成。使用 <code>hexo clean</code> 清除 <code>db.json</code> 和 <code>public</code> 文件夹下的所有文件。</p>
-<p><code>themes</code>：主题文件夹，存储主题。相关的主题可以在 Github 上免费采购。</p>
-<p><code>.gitignore</code>：<code>.gitignore</code> 文件作用是声明不被 git 记录的文件，<code>hexo init &lt;folder&gt;</code> 也会产生一个 <code>.gitignore</code> 文件，可以先删除或者直接编辑，对hexo不会有影响。</p>
-<p><code>db.json</code>：里面存放了一些由<code>source</code>目录下<code>.md</code> 的所有文件解析得到的数据</p>
-<p><code>package.json</code>：框架的基本参数信息和它所依赖的插件，在 npm 安装时使用 <code>--save</code> 保存进去。</p>
-<p><code>package-lock.json</code>：锁定安装时的包的版本号，并且需要上传到git，以保证其他人在npm install时大家的依赖能保证一致。</p>
 ]]></content>
       <categories>
         <category>博客搭建</category>
@@ -512,13 +507,13 @@
 
 
 
-<h1 id="运行时间"><a href="#运行时间" class="headerlink" title="运行时间"></a>运行时间</h1><p>网页已运行时间</p>
+<h2 id="运行时间"><a href="#运行时间" class="headerlink" title="运行时间"></a>运行时间</h2><p>网页已运行时间</p>
 <p>修改 主题配置文件</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">runtimeshow:</span><br><span class="line">  enable: true</span><br><span class="line">  publish_date: 6/7/2018 00:00:00  </span><br><span class="line">  ##网页开通时间</span><br><span class="line">  #格式: 月/日/年 时间</span><br><span class="line">  #也可以写成 年/月/日 时间</span><br></pre></td></tr></table></figure>
 
 
 
-<h1 id="最新评论"><a href="#最新评论" class="headerlink" title="最新评论"></a>最新评论</h1><p>3.1.0 起支持</p>
+<h2 id="最新评论"><a href="#最新评论" class="headerlink" title="最新评论"></a>最新评论</h2><p>3.1.0 起支持</p>
 <p>最新评论只会在刷新时才会去读取，并不会实时变化</p>
 <blockquote>
 <p>由于 API 有 访问次数限制，为了避免调用太多，主题默认存取期限为 10 分钟。也就是説，调用后资料会存在 localStorage 里，10分钟内刷新网站只会去 localStorage 读取资料。 10 分钟期限一过，刷新页面时才会去调取 API 读取新的数据。（ 3.6.0 新增了 storage 配置，可自行配置缓存时间）</p>
@@ -526,6 +521,25 @@
 <p>在侧边栏显示最新评论板块</p>
 <p>修改 主题配置文件</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Aside widget - Newest Comments</span><br><span class="line">newest_comments:</span><br><span class="line">  enable: true</span><br><span class="line">  sort_order: # Don&#x27;t modify the setting unless you know how it works</span><br><span class="line">  limit: 6 #显示的数量</span><br><span class="line">  storage: 10 # unit: mins, save data to localStorage 设置缓存时间，单位 分钟</span><br><span class="line">  avatar: true #	是否显示头像</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="閲读模式"><a href="#閲读模式" class="headerlink" title="閲读模式"></a>閲读模式</h2><p>閲读模式下会去掉除文章外的内容，避免干扰閲读。</p>
+<p>只会出现在文章页面，右下角会有閲读模式按钮。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">readmode: true</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="夜间模式"><a href="#夜间模式" class="headerlink" title="夜间模式"></a>夜间模式</h2><p>右下角会有夜间模式按钮</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># dark mode</span><br><span class="line">darkmode:</span><br><span class="line">  enable: true</span><br><span class="line">  # dark mode和 light mode切换按钮</span><br><span class="line">  button: true #	是否在右下角显示日夜模式切换按钮</span><br><span class="line">  autoChangeMode: false</span><br><span class="line">  # Set the light mode time. The value is between 0 and 24. If not set, the default value is 6 and 18</span><br><span class="line">  start: # 8</span><br><span class="line">  end: # 22</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="滚动状态百分比"><a href="#滚动状态百分比" class="headerlink" title="滚动状态百分比"></a>滚动状态百分比</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># show scroll percent in scroll-to-top button</span><br><span class="line">rightside_scroll_percent: true</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="按钮排序"><a href="#按钮排序" class="headerlink" title="按钮排序"></a>按钮排序</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Don&#x27;t modify the following settings unless you know how they work (非必要请不要修改 )</span><br><span class="line"># Choose: readmode,translate,darkmode,hideAside,toc,chat,comment</span><br><span class="line"># Don&#x27;t repeat 不要重复</span><br><span class="line">rightside_item_order:</span><br><span class="line">  enable: false</span><br><span class="line">  hide: # readmode,translate,darkmode,hideAside</span><br><span class="line">  show: # toc,chat,comment</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -538,34 +552,39 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客搭建（4）——更换主题</title>
-    <url>/2023/07/22/hexo/Hexo_build04/</url>
-    <content><![CDATA[<p>Hexo的主题有很多，可以在其官网上选择自己喜欢的。</p>
-<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p>Hexo官方主题页：<a href="https://hexo.io/themes/">Themes | Hexo</a></p>
-<p>我使用的主题：<a href="https://github.com/zhangzeli/hexo-theme-butterfly">Butterfly</a></p>
-<h1 id="更改方法"><a href="#更改方法" class="headerlink" title="更改方法"></a>更改方法</h1><p>在Github上下载了主题ZIP文件后，放到hexo文件夹根目录themes文件下解压。之后打开hexo文件夹中_config.yml，找到Extensions.theme将其改为hexo-theme-matery。重启本地服务器就可以看到主题改过来啦。</p>
-<p>建议下载稳定版，在建立的Hexo博客文件根目录打开终端，输入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/Butterfly</span><br></pre></td></tr></table></figure>
+    <title>Hello World test</title>
+    <url>/2023/07/20/hello/hello-world-test/</url>
+    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>正文</p>
+<p><code>代码段</code></p>
+<ol>
+<li>有序列表</li>
+<li>+1</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">代码块</span><br></pre></td></tr></table></figure>
 
-<p>打开根目录文件<code>_config.yml</code>更改</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">theme: Butterfly</span><br></pre></td></tr></table></figure>
-
-<p>随后重新部署一下就可以看见更改后的主题了</p>
-<p>以下步骤以后不再赘述：</p>
-<p>输入以下代码可在本地查看</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>输入以下代码可部署到网站</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo -d</span><br></pre></td></tr></table></figure>
-
+<p>链接测试：<a href="https://62.234.219.169/2023/07/20/hello-world/">Hello World | ZYH’s blog</a></p>
+<p>emojy:  :laughing:</p>
+<p>picture:</p>
+<p>在线文件</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon2.png" alt="我是水獭"></p>
 ]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
-        <tag>Butterfly主题</tag>
-      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2023/07/20/hello/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
 </search>
