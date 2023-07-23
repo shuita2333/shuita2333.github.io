@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://62.234.219.169/2023/07/23/hexo/Hexo_build08/</loc>
+    
+    <lastmod>2023-07-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://62.234.219.169/2023/07/23/hexo/Hexo_build07/</loc>
+    
+    <lastmod>2023-07-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://62.234.219.169/2023/07/23/hexo/Hexo_build06/</loc>
     
     <lastmod>2023-07-23</lastmod>
