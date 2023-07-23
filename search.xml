@@ -19,6 +19,24 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2023/07/20/hello/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Hexo博客搭建（2）——配置客户端并建立连接</title>
     <url>/2023/07/22/hexo/Hexo_build02/</url>
     <content><![CDATA[<h1 id="相关链接和参考内容"><a href="#相关链接和参考内容" class="headerlink" title="相关链接和参考内容"></a>相关链接和参考内容</h1><p>Node：<a href="https://nodejs.org/zh-cn">Node.js (nodejs.org)</a></p>
@@ -66,24 +84,6 @@
         <tag>hexo</tag>
         <tag>服务器</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2023/07/20/hello/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>Hexo博客搭建（3）——Hexo的目录结构</title>
@@ -307,93 +307,6 @@
       <tags>
         <tag>hexo</tag>
         <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo博客搭建（7）——魔改主题文件（提高）</title>
-    <url>/2023/07/23/hexo/Hexo_build07/</url>
-    <content><![CDATA[<h1 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h1><h2 id="Algolia"><a href="#Algolia" class="headerlink" title="Algolia"></a>Algolia</h2><blockquote>
-<p>记得运行 <code>hexo clean</code></p>
-<p>如果你使用 <code>hexo-algoliasearch</code>，请记得配置 <code>fields</code> 参数的 <code>title, permalink 和 content</code></p>
-<p>你需要安装 <code>hexo-algolia</code>或 <code>hexo-algoliasearch</code>. 根据它们的説明文档去做相应的配置。</p>
-</blockquote>
-<p>修改 主题配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">algolia_search:</span><br><span class="line">  enable: true</span><br><span class="line">  hits:</span><br><span class="line">    per_page: 6</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="本地搜索"><a href="#本地搜索" class="headerlink" title="本地搜索"></a>本地搜索</h2><p>你需要安装 <code>hexo-generator-searchdb</code> 或者 <code>hexo-generator-search</code>，根据它的文档去做相应配置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Local search</span><br><span class="line">local_search:</span><br><span class="line">  enable: false</span><br><span class="line">  # Preload the search data when the page loads. 预加载，开启后，进入网页后会自动加载搜索文件。关闭时，只有点击搜索按钮后，才会加载搜索文件</span><br><span class="line">  preload: false</span><br><span class="line">  # Show top n results per article, show all results by setting to -1 匹配的文章结果，默认显示最开始的 1段结果</span><br><span class="line">  top_n_per_article: 1</span><br><span class="line">  # Unescape html strings to the readable one.将 html 字符串解码为可读字符串</span><br><span class="line">  unescape: false</span><br><span class="line">  CDN: #搜索文件的 CDN 地址（默认使用的本地链接）</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h1><p>从3.0.0开始，开启评论需要在comments-use中填写你需要的评论。</p>
-<p>支持双评论显示，只需要配置两个评论（第一个为默认显示）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">comments:</span><br><span class="line">  # Up to two comments system, the first will be shown as default</span><br><span class="line">  # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo</span><br><span class="line">  use: Valine,Disqus #	使用的评论（请注意，最多支持两个，如果不需要请留空）</span><br><span class="line">  text: true # Display the comment name next to the button 	是否显示评论服务商的名字</span><br><span class="line">  # lazyload: The comment system will be load when comment element enters the browser&#x27;s viewport.是否为评论开启lazyload，开启后，只有滚动到评论位置时才会加载评论所需要的资源（开启 lazyload 后，评论数将不显示）</span><br><span class="line">  # If you set it to true, the comment count will be invalid</span><br><span class="line">  lazyload: true</span><br><span class="line">  count: true # Display comment count in top_img 	是否在文章顶部显示评论数</span><br><span class="line">  card_post_count: false # Display comment count in Home Page 是否在首页文章卡片显示评论数</span><br></pre></td></tr></table></figure>
-
-<p>我这里刚开始配置的是Valine，后来因为加评论功能备案不好过就给删了。</p>
-<p>遵循 Valine的指示去配置你的 LeanCloud 应用。以及查看相应的配置説明。</p>
-<blockquote>
-<p>开启 visitor 后，文章页的访问人数将改为 Valine 提供，而不是 不蒜子</p>
-</blockquote>
-<p>Valine于 v1.4.5 开始支持自定义表情，如果你需要自行配置，请在<code>emojiCDN</code>配置表情 CDN。</p>
-<p>同时在<code>Hexo</code> 工作目录下的<code>source/_data/</code>创建一个<code>json</code>文件<code>valine.json</code>,等同于 <code>Valine</code> 需要配置的<code>emojiMaps</code></p>
-<h1 id="美化-特效"><a href="#美化-特效" class="headerlink" title="美化&#x2F;特效"></a>美化&#x2F;特效</h1><h2 id="自定义主题色"><a href="#自定义主题色" class="headerlink" title="自定义主题色"></a>自定义主题色</h2><p>可以修改大部分UI颜色</p>
-<blockquote>
-<p>颜色值必须被双引号包裹，就像”#000”而不是#000。否则将会在构建的时候报错！</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">theme_color:</span><br><span class="line">  enable: true</span><br><span class="line">  main: &quot;#49B1F5&quot;</span><br><span class="line">  paginator: &quot;#00c4b6&quot;</span><br><span class="line">  button_hover: &quot;#FF7242&quot;</span><br><span class="line">  text_selection: &quot;#00c4b6&quot;</span><br><span class="line">  link_color: &quot;#99a9bf&quot;</span><br><span class="line">  meta_color: &quot;#858585&quot;</span><br><span class="line">  hr_color: &quot;#A4D8FA&quot;</span><br><span class="line">  code_foreground: &quot;#F47466&quot;</span><br><span class="line">  code_background: &quot;rgba(27, 31, 35, .05)&quot;</span><br><span class="line">  toc_color: &quot;#00c4b6&quot;</span><br><span class="line">  blockquote_padding_color: &quot;#49b1f5&quot;</span><br><span class="line">  blockquote_background_color: &quot;#49b1f5&quot;</span><br><span class="line">  scrollbar_color: &quot;#49b1f5&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="主页top-img显示大小"><a href="#主页top-img显示大小" class="headerlink" title="主页top_img显示大小"></a>主页top_img显示大小</h2><p>默认的显示为全屏。site-info的区域会居中显示</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 主页设置</span><br><span class="line"># 默认top_img全屏，site_info在中间</span><br><span class="line"># 使用默认, 都无需填写（建议默认）</span><br><span class="line">index_site_info_top: # 主页标题距离顶部距离  例如 300px/300em/300rem/10%</span><br><span class="line">index_top_img_height:  #主页top_img高度 例如 300px/300em/300rem  不能使用百分比</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="网站背景"><a href="#网站背景" class="headerlink" title="网站背景"></a>网站背景</h2><p>默认显示白色，可设置图片或者颜色</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 图片格式 url(http://xxxxxx.com/xxx.jpg)</span><br><span class="line"># 颜色（HEX值/RGB值/顔色单词/渐变色)</span><br><span class="line"># 留空 不显示背景</span><br><span class="line">background:</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>留意: 如果你的网站根目录不是’&#x2F;‘,使用本地图片时，需加上你的根目录。<br>例如：网站是 <a href="https://yoursite.com/blog,%E5%BC%95%E7%94%A8%E4%B8%80%E5%BC%A0img/xx.png%E5%9B%BE%E7%89%87%EF%BC%8C%E5%88%99%E8%AE%BE%E7%BD%AEbackground%E4%B8%BA">https://yoursite.com/blog,引用一张img/xx.png图片，则设置background为</a> &#96;url(&#x2F;blog&#x2F;img&#x2F;xx.png)</p>
-</blockquote>
-<h2 id="打字效果"><a href="#打字效果" class="headerlink" title="打字效果"></a>打字效果</h2><p>打字效果activate-power-mode</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Typewriter Effect (打字效果)</span><br><span class="line"># https://github.com/disjukr/activate-power-mode</span><br><span class="line">activate_power_mode:</span><br><span class="line">  enable: true</span><br><span class="line">  colorful: true # open particle animation (冒光特效)</span><br><span class="line">  shake: true #  open shake (抖动特效)</span><br><span class="line">  mobile: false</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="背景特效"><a href="#背景特效" class="headerlink" title="背景特效"></a>背景特效</h2><h3 id="静止彩带"><a href="#静止彩带" class="headerlink" title="静止彩带"></a>静止彩带</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">canvas_ribbon:</span><br><span class="line">  enable: false</span><br><span class="line">  size: 150</span><br><span class="line">  alpha: 0.6</span><br><span class="line">  zIndex: -1</span><br><span class="line">  click_to_change: false  #设置是否每次点击都更换綵带</span><br><span class="line">  mobile: false # false 手机端不显示 true 手机端显示</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="动态彩带"><a href="#动态彩带" class="headerlink" title="动态彩带"></a>动态彩带</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">canvas_fluttering_ribbon:</span><br><span class="line">  enable: true</span><br><span class="line">  mobile: false # false 手机端不显示 true 手机端显示</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="光点"><a href="#光点" class="headerlink" title="光点"></a>光点</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">canvas_nest:</span><br><span class="line">  enable: true</span><br><span class="line">  color: &#x27;0,0,255&#x27; #color of lines, default: &#x27;0,0,0&#x27;; RGB values: (R,G,B).(note: use &#x27;,&#x27; to separate.)</span><br><span class="line">  opacity: 0.7 # the opacity of line (0~1), default: 0.5.</span><br><span class="line">  zIndex: -1 # z-index property of the background, default: -1.</span><br><span class="line">  count: 99 # the number of lines, default: 99.</span><br><span class="line">  mobile: false # false 手机端不显示 true 手机端显示</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="鼠标点击效果"><a href="#鼠标点击效果" class="headerlink" title="鼠标点击效果"></a>鼠标点击效果</h2><h3 id="烟花"><a href="#烟花" class="headerlink" title="烟花"></a>烟花</h3><p><code>zIndex</code>建议只在-1和9999上选<br><code>-1</code> 代表烟火效果在底部<br><code>9999</code> 代表烟火效果在前面</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fireworks:</span><br><span class="line">  enable: true</span><br><span class="line">  zIndex: 9999 # -1 or 9999</span><br><span class="line">  mobile: false</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="字数统计"><a href="#字数统计" class="headerlink" title="字数统计"></a>字数统计</h2><p>要为Butterfly配上字数统计特性, 你需要如下几个步骤:</p>
-<p>打开 hexo 工作目录</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-wordcount --save or yarn add hexo-wordcount</span><br></pre></td></tr></table></figure>
-
-<p>修改 主题配置文件:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wordcount:</span><br><span class="line">  enable: true</span><br><span class="line">  post_wordcount: true</span><br><span class="line">  min2read: true</span><br><span class="line">  total_wordcount: true</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
-        <tag>Butterfly主题</tag>
       </tags>
   </entry>
   <entry>
@@ -663,6 +576,93 @@
 
 
 <h2 id="按钮排序"><a href="#按钮排序" class="headerlink" title="按钮排序"></a>按钮排序</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Don&#x27;t modify the following settings unless you know how they work (非必要请不要修改 )</span><br><span class="line"># Choose: readmode,translate,darkmode,hideAside,toc,chat,comment</span><br><span class="line"># Don&#x27;t repeat 不要重复</span><br><span class="line">rightside_item_order:</span><br><span class="line">  enable: false</span><br><span class="line">  hide: # readmode,translate,darkmode,hideAside</span><br><span class="line">  show: # toc,chat,comment</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+        <tag>Butterfly主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（7）——魔改主题文件（提高）</title>
+    <url>/2023/07/23/hexo/Hexo_build07/</url>
+    <content><![CDATA[<h1 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h1><h2 id="Algolia"><a href="#Algolia" class="headerlink" title="Algolia"></a>Algolia</h2><blockquote>
+<p>记得运行 <code>hexo clean</code></p>
+<p>如果你使用 <code>hexo-algoliasearch</code>，请记得配置 <code>fields</code> 参数的 <code>title, permalink 和 content</code></p>
+<p>你需要安装 <code>hexo-algolia</code>或 <code>hexo-algoliasearch</code>. 根据它们的説明文档去做相应的配置。</p>
+</blockquote>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">algolia_search:</span><br><span class="line">  enable: true</span><br><span class="line">  hits:</span><br><span class="line">    per_page: 6</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="本地搜索"><a href="#本地搜索" class="headerlink" title="本地搜索"></a>本地搜索</h2><p>你需要安装 <code>hexo-generator-searchdb</code> 或者 <code>hexo-generator-search</code>，根据它的文档去做相应配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Local search</span><br><span class="line">local_search:</span><br><span class="line">  enable: false</span><br><span class="line">  # Preload the search data when the page loads. 预加载，开启后，进入网页后会自动加载搜索文件。关闭时，只有点击搜索按钮后，才会加载搜索文件</span><br><span class="line">  preload: false</span><br><span class="line">  # Show top n results per article, show all results by setting to -1 匹配的文章结果，默认显示最开始的 1段结果</span><br><span class="line">  top_n_per_article: 1</span><br><span class="line">  # Unescape html strings to the readable one.将 html 字符串解码为可读字符串</span><br><span class="line">  unescape: false</span><br><span class="line">  CDN: #搜索文件的 CDN 地址（默认使用的本地链接）</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h1><p>从3.0.0开始，开启评论需要在comments-use中填写你需要的评论。</p>
+<p>支持双评论显示，只需要配置两个评论（第一个为默认显示）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">comments:</span><br><span class="line">  # Up to two comments system, the first will be shown as default</span><br><span class="line">  # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo</span><br><span class="line">  use: Valine,Disqus #	使用的评论（请注意，最多支持两个，如果不需要请留空）</span><br><span class="line">  text: true # Display the comment name next to the button 	是否显示评论服务商的名字</span><br><span class="line">  # lazyload: The comment system will be load when comment element enters the browser&#x27;s viewport.是否为评论开启lazyload，开启后，只有滚动到评论位置时才会加载评论所需要的资源（开启 lazyload 后，评论数将不显示）</span><br><span class="line">  # If you set it to true, the comment count will be invalid</span><br><span class="line">  lazyload: true</span><br><span class="line">  count: true # Display comment count in top_img 	是否在文章顶部显示评论数</span><br><span class="line">  card_post_count: false # Display comment count in Home Page 是否在首页文章卡片显示评论数</span><br></pre></td></tr></table></figure>
+
+<p>我这里刚开始配置的是Valine，后来因为加评论功能备案不好过就给删了。</p>
+<p>遵循 Valine的指示去配置你的 LeanCloud 应用。以及查看相应的配置説明。</p>
+<blockquote>
+<p>开启 visitor 后，文章页的访问人数将改为 Valine 提供，而不是 不蒜子</p>
+</blockquote>
+<p>Valine于 v1.4.5 开始支持自定义表情，如果你需要自行配置，请在<code>emojiCDN</code>配置表情 CDN。</p>
+<p>同时在<code>Hexo</code> 工作目录下的<code>source/_data/</code>创建一个<code>json</code>文件<code>valine.json</code>,等同于 <code>Valine</code> 需要配置的<code>emojiMaps</code></p>
+<h1 id="美化-特效"><a href="#美化-特效" class="headerlink" title="美化&#x2F;特效"></a>美化&#x2F;特效</h1><h2 id="自定义主题色"><a href="#自定义主题色" class="headerlink" title="自定义主题色"></a>自定义主题色</h2><p>可以修改大部分UI颜色</p>
+<blockquote>
+<p>颜色值必须被双引号包裹，就像”#000”而不是#000。否则将会在构建的时候报错！</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">theme_color:</span><br><span class="line">  enable: true</span><br><span class="line">  main: &quot;#49B1F5&quot;</span><br><span class="line">  paginator: &quot;#00c4b6&quot;</span><br><span class="line">  button_hover: &quot;#FF7242&quot;</span><br><span class="line">  text_selection: &quot;#00c4b6&quot;</span><br><span class="line">  link_color: &quot;#99a9bf&quot;</span><br><span class="line">  meta_color: &quot;#858585&quot;</span><br><span class="line">  hr_color: &quot;#A4D8FA&quot;</span><br><span class="line">  code_foreground: &quot;#F47466&quot;</span><br><span class="line">  code_background: &quot;rgba(27, 31, 35, .05)&quot;</span><br><span class="line">  toc_color: &quot;#00c4b6&quot;</span><br><span class="line">  blockquote_padding_color: &quot;#49b1f5&quot;</span><br><span class="line">  blockquote_background_color: &quot;#49b1f5&quot;</span><br><span class="line">  scrollbar_color: &quot;#49b1f5&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="主页top-img显示大小"><a href="#主页top-img显示大小" class="headerlink" title="主页top_img显示大小"></a>主页top_img显示大小</h2><p>默认的显示为全屏。site-info的区域会居中显示</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 主页设置</span><br><span class="line"># 默认top_img全屏，site_info在中间</span><br><span class="line"># 使用默认, 都无需填写（建议默认）</span><br><span class="line">index_site_info_top: # 主页标题距离顶部距离  例如 300px/300em/300rem/10%</span><br><span class="line">index_top_img_height:  #主页top_img高度 例如 300px/300em/300rem  不能使用百分比</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="网站背景"><a href="#网站背景" class="headerlink" title="网站背景"></a>网站背景</h2><p>默认显示白色，可设置图片或者颜色</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 图片格式 url(http://xxxxxx.com/xxx.jpg)</span><br><span class="line"># 颜色（HEX值/RGB值/顔色单词/渐变色)</span><br><span class="line"># 留空 不显示背景</span><br><span class="line">background:</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>留意: 如果你的网站根目录不是’&#x2F;‘,使用本地图片时，需加上你的根目录。<br>例如：网站是 <a href="https://yoursite.com/blog,%E5%BC%95%E7%94%A8%E4%B8%80%E5%BC%A0img/xx.png%E5%9B%BE%E7%89%87%EF%BC%8C%E5%88%99%E8%AE%BE%E7%BD%AEbackground%E4%B8%BA">https://yoursite.com/blog,引用一张img/xx.png图片，则设置background为</a> &#96;url(&#x2F;blog&#x2F;img&#x2F;xx.png)</p>
+</blockquote>
+<h2 id="打字效果"><a href="#打字效果" class="headerlink" title="打字效果"></a>打字效果</h2><p>打字效果activate-power-mode</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Typewriter Effect (打字效果)</span><br><span class="line"># https://github.com/disjukr/activate-power-mode</span><br><span class="line">activate_power_mode:</span><br><span class="line">  enable: true</span><br><span class="line">  colorful: true # open particle animation (冒光特效)</span><br><span class="line">  shake: true #  open shake (抖动特效)</span><br><span class="line">  mobile: false</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="背景特效"><a href="#背景特效" class="headerlink" title="背景特效"></a>背景特效</h2><h3 id="静止彩带"><a href="#静止彩带" class="headerlink" title="静止彩带"></a>静止彩带</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">canvas_ribbon:</span><br><span class="line">  enable: false</span><br><span class="line">  size: 150</span><br><span class="line">  alpha: 0.6</span><br><span class="line">  zIndex: -1</span><br><span class="line">  click_to_change: false  #设置是否每次点击都更换綵带</span><br><span class="line">  mobile: false # false 手机端不显示 true 手机端显示</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="动态彩带"><a href="#动态彩带" class="headerlink" title="动态彩带"></a>动态彩带</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">canvas_fluttering_ribbon:</span><br><span class="line">  enable: true</span><br><span class="line">  mobile: false # false 手机端不显示 true 手机端显示</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="光点"><a href="#光点" class="headerlink" title="光点"></a>光点</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">canvas_nest:</span><br><span class="line">  enable: true</span><br><span class="line">  color: &#x27;0,0,255&#x27; #color of lines, default: &#x27;0,0,0&#x27;; RGB values: (R,G,B).(note: use &#x27;,&#x27; to separate.)</span><br><span class="line">  opacity: 0.7 # the opacity of line (0~1), default: 0.5.</span><br><span class="line">  zIndex: -1 # z-index property of the background, default: -1.</span><br><span class="line">  count: 99 # the number of lines, default: 99.</span><br><span class="line">  mobile: false # false 手机端不显示 true 手机端显示</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="鼠标点击效果"><a href="#鼠标点击效果" class="headerlink" title="鼠标点击效果"></a>鼠标点击效果</h2><h3 id="烟花"><a href="#烟花" class="headerlink" title="烟花"></a>烟花</h3><p><code>zIndex</code>建议只在-1和9999上选<br><code>-1</code> 代表烟火效果在底部<br><code>9999</code> 代表烟火效果在前面</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fireworks:</span><br><span class="line">  enable: true</span><br><span class="line">  zIndex: 9999 # -1 or 9999</span><br><span class="line">  mobile: false</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="字数统计"><a href="#字数统计" class="headerlink" title="字数统计"></a>字数统计</h2><p>要为Butterfly配上字数统计特性, 你需要如下几个步骤:</p>
+<p>打开 hexo 工作目录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-wordcount --save or yarn add hexo-wordcount</span><br></pre></td></tr></table></figure>
+
+<p>修改 主题配置文件:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wordcount:</span><br><span class="line">  enable: true</span><br><span class="line">  post_wordcount: true</span><br><span class="line">  min2read: true</span><br><span class="line">  total_wordcount: true</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
