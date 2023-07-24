@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World test</title>
-    <url>/2023/07/20/hello/hello-world-test/</url>
-    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>正文</p>
-<p><code>代码段</code></p>
-<ol>
-<li>有序列表</li>
-<li>+1</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">代码块</span><br></pre></td></tr></table></figure>
-
-<p>链接测试：<a href="https://62.234.219.169/2023/07/20/hello-world/">Hello World | ZYH’s blog</a></p>
-<p>emojy:  :laughing:</p>
-<p>picture:</p>
-<p>在线文件</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon2.png" alt="我是水獭"></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/2023/07/20/hello/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -34,6 +16,24 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello World test</title>
+    <url>/2023/07/20/hello/hello-world-test/</url>
+    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>正文</p>
+<p><code>代码段</code></p>
+<ol>
+<li>有序列表</li>
+<li>+1</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">代码块</span><br></pre></td></tr></table></figure>
+
+<p>链接测试：<a href="https://62.234.219.169/2023/07/20/hello-world/">Hello World | ZYH’s blog</a></p>
+<p>emojy:  :laughing:</p>
+<p>picture:</p>
+<p>在线文件</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon2.png" alt="我是水獭"></p>
 ]]></content>
   </entry>
   <entry>
@@ -251,6 +251,62 @@
         <tag>hexo</tag>
         <tag>服务器</tag>
         <tag>Butterfly主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（5）——自定义Hexo文件</title>
+    <url>/2023/07/22/hexo/Hexo_build05/</url>
+    <content><![CDATA[<h1 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h1><p>修改站点配置文件 <code>_config.yml</code></p>
+<p>默认语言是 <code>en</code></p>
+<p>主题支持三种语言</p>
+<ul>
+<li>default(en)</li>
+<li>zh-CN (简体中文)</li>
+<li>zh-TW (繁体中文)</li>
+</ul>
+<h1 id="网站资料"><a href="#网站资料" class="headerlink" title="网站资料"></a>网站资料</h1><p>修改网站各种资料，例如标题、副标题和邮箱等个人资料，请修改博客根目录的<code>_config.yml</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: ZYH&#x27;s blog #网站标题</span><br><span class="line">subtitle: &#x27;&#x27; #网站副标题subtitle</span><br><span class="line"># 下面description,keywords，如果想让搜索引擎收录需要填上，这个做SEO优化必不可忽视的两个属性</span><br><span class="line">description: #网站描述</span><br><span class="line">keywords: #网站的关键词</span><br><span class="line">author: Charmes #作者，文章版权所显示的</span><br><span class="line">language: zh-CN #网站语言，不填写，默认为英文</span><br><span class="line">timezone: &#x27;&#x27; #时区，可以不填写</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="配置分类页"><a href="#配置分类页" class="headerlink" title="配置分类页"></a>配置分类页</h1><ol>
+<li><p>新建分类categories 页</p>
+<p><code>categories</code> 页是用来展示所有分类的页面，如果在你的博客 <code>source</code> 目录下还没有 <code>categories/index.md</code> 文件，那么你就需要新建一个，命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+
+<p>编辑刚刚新建的页面文件 <code>/source/categories/index.md</code>，至少需要以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2023-07-21 00:57:33</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">layout: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建标签tags页</p>
+<p><code>tags</code> 页是用来展示所有标签的页面，如果在你的博客 <code>source</code> 目录下还没有 tags&#x2F;index.md 文件，那么你就需要新建一个，命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
+
+<p>编辑你刚刚新建的页面文件 <code>/source/tags/index.md</code>，至少需要以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2023-07-21 00:57:33</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">layout: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建关于我about页</p>
+<p>同上，秩序把相关信息改成<code>about</code></p>
+</li>
+<li><p>新建留言板contact页（可选）</p>
+<p>同上，秩序把相关信息改成<code>about</code></p>
+</li>
+<li><p>新建友情链接friends页（可选）</p>
+<p>同上，秩序把相关信息改成<code>about</code></p>
+<p>同时，在你的博客 <code>source</code> 目录下新建 _data 目录，在 <code>_data</code> 目录中新建 <code>friends.json</code> 文件，文件内容如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&#123;</span><br><span class="line">    &quot;avatar&quot;: &quot;&quot;,</span><br><span class="line">    &quot;name&quot;: &quot;&quot;,</span><br><span class="line">    &quot;introduction&quot;: &quot;&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;&quot;,</span><br><span class="line">    &quot;title&quot;: &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建404页</p>
+<p>同上，秩序把相关信息改成<code>about</code></p>
+<p>编辑你刚刚新建的页面文件 <code>/source/404/index.md</code>，至少需要以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">date: 2018-09-30 17:25:30</span><br><span class="line">type: &quot;404&quot;</span><br><span class="line">layout: &quot;404&quot;</span><br><span class="line">description: &quot;Oops～，我崩溃了！找不到你想要的页面 :(&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
       </tags>
   </entry>
   <entry>
@@ -529,62 +585,6 @@
         <tag>hexo</tag>
         <tag>服务器</tag>
         <tag>Butterfly主题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo博客搭建（5）——自定义Hexo文件</title>
-    <url>/2023/07/22/hexo/Hexo_build05/</url>
-    <content><![CDATA[<h1 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h1><p>修改站点配置文件 <code>_config.yml</code></p>
-<p>默认语言是 <code>en</code></p>
-<p>主题支持三种语言</p>
-<ul>
-<li>default(en)</li>
-<li>zh-CN (简体中文)</li>
-<li>zh-TW (繁体中文)</li>
-</ul>
-<h1 id="网站资料"><a href="#网站资料" class="headerlink" title="网站资料"></a>网站资料</h1><p>修改网站各种资料，例如标题、副标题和邮箱等个人资料，请修改博客根目录的<code>_config.yml</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: ZYH&#x27;s blog #网站标题</span><br><span class="line">subtitle: &#x27;&#x27; #网站副标题subtitle</span><br><span class="line"># 下面description,keywords，如果想让搜索引擎收录需要填上，这个做SEO优化必不可忽视的两个属性</span><br><span class="line">description: #网站描述</span><br><span class="line">keywords: #网站的关键词</span><br><span class="line">author: Charmes #作者，文章版权所显示的</span><br><span class="line">language: zh-CN #网站语言，不填写，默认为英文</span><br><span class="line">timezone: &#x27;&#x27; #时区，可以不填写</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="配置分类页"><a href="#配置分类页" class="headerlink" title="配置分类页"></a>配置分类页</h1><ol>
-<li><p>新建分类categories 页</p>
-<p><code>categories</code> 页是用来展示所有分类的页面，如果在你的博客 <code>source</code> 目录下还没有 <code>categories/index.md</code> 文件，那么你就需要新建一个，命令如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
-
-<p>编辑刚刚新建的页面文件 <code>/source/categories/index.md</code>，至少需要以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2023-07-21 00:57:33</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">layout: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新建标签tags页</p>
-<p><code>tags</code> 页是用来展示所有标签的页面，如果在你的博客 <code>source</code> 目录下还没有 tags&#x2F;index.md 文件，那么你就需要新建一个，命令如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
-
-<p>编辑你刚刚新建的页面文件 <code>/source/tags/index.md</code>，至少需要以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2023-07-21 00:57:33</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">layout: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新建关于我about页</p>
-<p>同上，秩序把相关信息改成<code>about</code></p>
-</li>
-<li><p>新建留言板contact页（可选）</p>
-<p>同上，秩序把相关信息改成<code>about</code></p>
-</li>
-<li><p>新建友情链接friends页（可选）</p>
-<p>同上，秩序把相关信息改成<code>about</code></p>
-<p>同时，在你的博客 <code>source</code> 目录下新建 _data 目录，在 <code>_data</code> 目录中新建 <code>friends.json</code> 文件，文件内容如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&#123;</span><br><span class="line">    &quot;avatar&quot;: &quot;&quot;,</span><br><span class="line">    &quot;name&quot;: &quot;&quot;,</span><br><span class="line">    &quot;introduction&quot;: &quot;&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;&quot;,</span><br><span class="line">    &quot;title&quot;: &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新建404页</p>
-<p>同上，秩序把相关信息改成<code>about</code></p>
-<p>编辑你刚刚新建的页面文件 <code>/source/404/index.md</code>，至少需要以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">date: 2018-09-30 17:25:30</span><br><span class="line">type: &quot;404&quot;</span><br><span class="line">layout: &quot;404&quot;</span><br><span class="line">description: &quot;Oops～，我崩溃了！找不到你想要的页面 :(&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
       </tags>
   </entry>
   <entry>
