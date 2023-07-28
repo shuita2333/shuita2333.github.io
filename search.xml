@@ -1000,11 +1000,46 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo cl; hexo s</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h1 id="右边滚动栏样式"><a href="#右边滚动栏样式" class="headerlink" title="右边滚动栏样式"></a>右边滚动栏样式</h1><p>在<code>custom.css</code>中加入以下代码，其中<code>var(--theme-color)</code>换成你自己的主题色：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 滚动条样式 */</span></span><br><span class="line">::-webkit-scrollbar &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">8px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">8px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">::-webkit-scrollbar-track &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">73</span>, <span class="number">177</span>, <span class="number">245</span>, <span class="number">0.2</span>);</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">2em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">::-webkit-scrollbar-thumb &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--theme-color);</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">-webkit-linear-gradient</span>(</span><br><span class="line">    <span class="number">45deg</span>,</span><br><span class="line">    <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.4</span>) <span class="number">25%</span>,</span><br><span class="line">    transparent <span class="number">25%</span>,</span><br><span class="line">    transparent <span class="number">50%</span>,</span><br><span class="line">    <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.4</span>) <span class="number">50%</span>,</span><br><span class="line">    <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.4</span>) <span class="number">75%</span>,</span><br><span class="line">    transparent <span class="number">75%</span>,</span><br><span class="line">    transparent</span><br><span class="line">  );</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">2em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">::-webkit-scrollbar-corner &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: transparent;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">::-moz-selection &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--theme-color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 滚动条样式 */</span></span><br><span class="line">::-webkit-scrollbar &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">8px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">8px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">::-webkit-scrollbar-track &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">73</span>, <span class="number">177</span>, <span class="number">245</span>, <span class="number">0.2</span>);</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">2em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">::-webkit-scrollbar-thumb &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--theme-color);</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">-webkit-linear-gradient</span>(</span><br><span class="line">    <span class="number">45deg</span>,</span><br><span class="line">    <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.4</span>) <span class="number">25%</span>,</span><br><span class="line">    transparent <span class="number">25%</span>,</span><br><span class="line">    transparent <span class="number">50%</span>,</span><br><span class="line">    <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.4</span>) <span class="number">50%</span>,</span><br><span class="line">    <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.4</span>) <span class="number">75%</span>,</span><br><span class="line">    transparent <span class="number">75%</span>,</span><br><span class="line">    transparent</span><br><span class="line">  );</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">2em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">::-webkit-scrollbar-corner &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: transparent;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">::-moz-selection &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--theme-color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+        <tag>Butterfly主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（10）——部署SSl证书</title>
+    <url>/2023/07/24/hexo/Hexo_build10/</url>
+    <content><![CDATA[<h1 id="“前面的区域以后再来探索吧”"><a href="#“前面的区域以后再来探索吧”" class="headerlink" title="“前面的区域以后再来探索吧”"></a>“前面的区域以后再来探索吧”</h1>]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+        <tag>Butterfly主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（9）——魔改主题文件（高级）</title>
+    <url>/2023/07/24/hexo/Hexo_build09/</url>
+    <content><![CDATA[<h1 id="“前面的区域以后再来探索吧”"><a href="#“前面的区域以后再来探索吧”" class="headerlink" title="“前面的区域以后再来探索吧”"></a>“前面的区域以后再来探索吧”</h1>]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+        <tag>Butterfly主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（10）——使用COS图床</title>
+    <url>/2023/07/24/hexo/Hexo_build11/</url>
+    <content><![CDATA[<h1 id="“前面的区域以后再来探索吧”"><a href="#“前面的区域以后再来探索吧”" class="headerlink" title="“前面的区域以后再来探索吧”"></a>“前面的区域以后再来探索吧”</h1>]]></content>
       <categories>
         <category>博客搭建</category>
       </categories>
