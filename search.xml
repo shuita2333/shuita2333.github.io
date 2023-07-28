@@ -254,62 +254,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客搭建（5）——自定义Hexo文件</title>
-    <url>/2023/07/19/hexo/Hexo_build05/</url>
-    <content><![CDATA[<h1 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h1><p>修改站点配置文件 <code>_config.yml</code></p>
-<p>默认语言是 <code>en</code></p>
-<p>主题支持三种语言</p>
-<ul>
-<li>default(en)</li>
-<li>zh-CN (简体中文)</li>
-<li>zh-TW (繁体中文)</li>
-</ul>
-<h1 id="网站资料"><a href="#网站资料" class="headerlink" title="网站资料"></a>网站资料</h1><p>修改网站各种资料，例如标题、副标题和邮箱等个人资料，请修改博客根目录的<code>_config.yml</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: ZYH&#x27;s blog #网站标题</span><br><span class="line">subtitle: &#x27;&#x27; #网站副标题subtitle</span><br><span class="line"># 下面description,keywords，如果想让搜索引擎收录需要填上，这个做SEO优化必不可忽视的两个属性</span><br><span class="line">description: #网站描述</span><br><span class="line">keywords: #网站的关键词</span><br><span class="line">author: Charmes #作者，文章版权所显示的</span><br><span class="line">language: zh-CN #网站语言，不填写，默认为英文</span><br><span class="line">timezone: &#x27;&#x27; #时区，可以不填写</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="配置分类页"><a href="#配置分类页" class="headerlink" title="配置分类页"></a>配置分类页</h1><ol>
-<li><p>新建分类categories 页</p>
-<p><code>categories</code> 页是用来展示所有分类的页面，如果在你的博客 <code>source</code> 目录下还没有 <code>categories/index.md</code> 文件，那么你就需要新建一个，命令如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
-
-<p>编辑刚刚新建的页面文件 <code>/source/categories/index.md</code>，至少需要以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2023-07-21 00:57:33</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">layout: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新建标签tags页</p>
-<p><code>tags</code> 页是用来展示所有标签的页面，如果在你的博客 <code>source</code> 目录下还没有 tags&#x2F;index.md 文件，那么你就需要新建一个，命令如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
-
-<p>编辑你刚刚新建的页面文件 <code>/source/tags/index.md</code>，至少需要以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2023-07-21 00:57:33</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">layout: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新建关于我about页</p>
-<p>同上，秩序把相关信息改成<code>about</code></p>
-</li>
-<li><p>新建留言板contact页（可选）</p>
-<p>同上，秩序把相关信息改成<code>about</code></p>
-</li>
-<li><p>新建友情链接friends页（可选）</p>
-<p>同上，秩序把相关信息改成<code>about</code></p>
-<p>同时，在你的博客 <code>source</code> 目录下新建 _data 目录，在 <code>_data</code> 目录中新建 <code>friends.json</code> 文件，文件内容如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&#123;</span><br><span class="line">    &quot;avatar&quot;: &quot;&quot;,</span><br><span class="line">    &quot;name&quot;: &quot;&quot;,</span><br><span class="line">    &quot;introduction&quot;: &quot;&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;&quot;,</span><br><span class="line">    &quot;title&quot;: &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新建404页</p>
-<p>同上，秩序把相关信息改成<code>about</code></p>
-<p>编辑你刚刚新建的页面文件 <code>/source/404/index.md</code>，至少需要以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">date: 2018-09-30 17:25:30</span><br><span class="line">type: &quot;404&quot;</span><br><span class="line">layout: &quot;404&quot;</span><br><span class="line">description: &quot;Oops～，我崩溃了！找不到你想要的页面 :(&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo博客搭建（6）——魔改主题文件（基础）</title>
     <url>/2023/07/20/hexo/Hexo_build06/</url>
     <content><![CDATA[<h1 id="导航栏设置-Navigation-bar-settings"><a href="#导航栏设置-Navigation-bar-settings" class="headerlink" title="导航栏设置 (Navigation bar settings)"></a>导航栏设置 (Navigation bar settings)</h1><h2 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h2><p>主题配置文件中（注意不是根目录配置文件）</p>
@@ -861,34 +805,77 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客搭建（10）——部署SSl证书</title>
-    <url>/2023/07/24/hexo/Hexo_build10/</url>
-    <content><![CDATA[<h1 id="“前面的区域以后再来探索吧”"><a href="#“前面的区域以后再来探索吧”" class="headerlink" title="“前面的区域以后再来探索吧”"></a>“前面的区域以后再来探索吧”</h1>]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
-        <tag>Butterfly主题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo博客搭建（10）——使用COS图床</title>
-    <url>/2023/07/24/hexo/Hexo_build11/</url>
-    <content><![CDATA[<h1 id="“前面的区域以后再来探索吧”"><a href="#“前面的区域以后再来探索吧”" class="headerlink" title="“前面的区域以后再来探索吧”"></a>“前面的区域以后再来探索吧”</h1>]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
-        <tag>Butterfly主题</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo博客搭建（9）——魔改主题文件（高级）</title>
     <url>/2023/07/23/hexo/Hexo_build09/</url>
+    <content><![CDATA[<h1 id="“前面的区域以后再来探索吧”"><a href="#“前面的区域以后再来探索吧”" class="headerlink" title="“前面的区域以后再来探索吧”"></a>“前面的区域以后再来探索吧”</h1>]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+        <tag>Butterfly主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（5）——自定义Hexo文件</title>
+    <url>/2023/07/19/hexo/Hexo_build05/</url>
+    <content><![CDATA[<h1 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h1><p>修改站点配置文件 <code>_config.yml</code></p>
+<p>默认语言是 <code>en</code></p>
+<p>主题支持三种语言</p>
+<ul>
+<li>default(en)</li>
+<li>zh-CN (简体中文)</li>
+<li>zh-TW (繁体中文)</li>
+</ul>
+<h1 id="网站资料"><a href="#网站资料" class="headerlink" title="网站资料"></a>网站资料</h1><p>修改网站各种资料，例如标题、副标题和邮箱等个人资料，请修改博客根目录的<code>_config.yml</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: ZYH&#x27;s blog #网站标题</span><br><span class="line">subtitle: &#x27;&#x27; #网站副标题subtitle</span><br><span class="line"># 下面description,keywords，如果想让搜索引擎收录需要填上，这个做SEO优化必不可忽视的两个属性</span><br><span class="line">description: #网站描述</span><br><span class="line">keywords: #网站的关键词</span><br><span class="line">author: Charmes #作者，文章版权所显示的</span><br><span class="line">language: zh-CN #网站语言，不填写，默认为英文</span><br><span class="line">timezone: &#x27;&#x27; #时区，可以不填写</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="配置分类页"><a href="#配置分类页" class="headerlink" title="配置分类页"></a>配置分类页</h1><ol>
+<li><p>新建分类categories 页</p>
+<p><code>categories</code> 页是用来展示所有分类的页面，如果在你的博客 <code>source</code> 目录下还没有 <code>categories/index.md</code> 文件，那么你就需要新建一个，命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+
+<p>编辑刚刚新建的页面文件 <code>/source/categories/index.md</code>，至少需要以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2023-07-21 00:57:33</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">layout: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建标签tags页</p>
+<p><code>tags</code> 页是用来展示所有标签的页面，如果在你的博客 <code>source</code> 目录下还没有 tags&#x2F;index.md 文件，那么你就需要新建一个，命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
+
+<p>编辑你刚刚新建的页面文件 <code>/source/tags/index.md</code>，至少需要以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2023-07-21 00:57:33</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">layout: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建关于我about页</p>
+<p>同上，秩序把相关信息改成<code>about</code></p>
+</li>
+<li><p>新建留言板contact页（可选）</p>
+<p>同上，秩序把相关信息改成<code>about</code></p>
+</li>
+<li><p>新建友情链接friends页（可选）</p>
+<p>同上，秩序把相关信息改成<code>about</code></p>
+<p>同时，在你的博客 <code>source</code> 目录下新建 _data 目录，在 <code>_data</code> 目录中新建 <code>friends.json</code> 文件，文件内容如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&#123;</span><br><span class="line">    &quot;avatar&quot;: &quot;&quot;,</span><br><span class="line">    &quot;name&quot;: &quot;&quot;,</span><br><span class="line">    &quot;introduction&quot;: &quot;&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;&quot;,</span><br><span class="line">    &quot;title&quot;: &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建404页</p>
+<p>同上，秩序把相关信息改成<code>about</code></p>
+<p>编辑你刚刚新建的页面文件 <code>/source/404/index.md</code>，至少需要以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">date: 2018-09-30 17:25:30</span><br><span class="line">type: &quot;404&quot;</span><br><span class="line">layout: &quot;404&quot;</span><br><span class="line">description: &quot;Oops～，我崩溃了！找不到你想要的页面 :(&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（10）——部署SSl证书</title>
+    <url>/2023/07/24/hexo/Hexo_build10/</url>
     <content><![CDATA[<h1 id="“前面的区域以后再来探索吧”"><a href="#“前面的区域以后再来探索吧”" class="headerlink" title="“前面的区域以后再来探索吧”"></a>“前面的区域以后再来探索吧”</h1>]]></content>
       <categories>
         <category>博客搭建</category>
@@ -1040,6 +1027,19 @@
 </ol>
 <h1 id="右边滚动栏样式"><a href="#右边滚动栏样式" class="headerlink" title="右边滚动栏样式"></a>右边滚动栏样式</h1><p>在<code>custom.css</code>中加入以下代码，其中<code>var(--theme-color)</code>换成你自己的主题色：</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 滚动条样式 */</span></span><br><span class="line">::-webkit-scrollbar &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">8px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">8px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">::-webkit-scrollbar-track &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">73</span>, <span class="number">177</span>, <span class="number">245</span>, <span class="number">0.2</span>);</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">2em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">::-webkit-scrollbar-thumb &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--theme-color);</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">-webkit-linear-gradient</span>(</span><br><span class="line">    <span class="number">45deg</span>,</span><br><span class="line">    <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.4</span>) <span class="number">25%</span>,</span><br><span class="line">    transparent <span class="number">25%</span>,</span><br><span class="line">    transparent <span class="number">50%</span>,</span><br><span class="line">    <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.4</span>) <span class="number">50%</span>,</span><br><span class="line">    <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.4</span>) <span class="number">75%</span>,</span><br><span class="line">    transparent <span class="number">75%</span>,</span><br><span class="line">    transparent</span><br><span class="line">  );</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">2em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">::-webkit-scrollbar-corner &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: transparent;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">::-moz-selection &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--theme-color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+        <tag>Butterfly主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（10）——使用COS图床</title>
+    <url>/2023/07/24/hexo/Hexo_build11/</url>
+    <content><![CDATA[<h1 id="“前面的区域以后再来探索吧”"><a href="#“前面的区域以后再来探索吧”" class="headerlink" title="“前面的区域以后再来探索吧”"></a>“前面的区域以后再来探索吧”</h1>]]></content>
       <categories>
         <category>博客搭建</category>
       </categories>

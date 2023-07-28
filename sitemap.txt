@@ -1,3 +1,4 @@
+https://zhangyuanhe.top/2023/07/20/hello/hello-world-test/
 https://zhangyuanhe.top/2023/07/23/hexo/Hexo_build09/
 https://zhangyuanhe.top/2023/07/22/hexo/Hexo_build08/
 https://zhangyuanhe.top/2023/07/21/hexo/Hexo_build07/
@@ -10,7 +11,6 @@ https://zhangyuanhe.top/2023/07/15/hexo/Hexo_build01/
 https://zhangyuanhe.top/2023/07/24/hexo/Hexo_build11/
 https://zhangyuanhe.top/2023/07/24/hexo/Hexo_build10/
 https://zhangyuanhe.top/2023/07/20/hello/hello-world/
-https://zhangyuanhe.top/2023/07/20/hello/hello-world-test/
 https://zhangyuanhe.top/music/index.html
 https://zhangyuanhe.top/movies/index.html
 https://zhangyuanhe.top/404/index.html
