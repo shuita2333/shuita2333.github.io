@@ -6,7 +6,7 @@
   <link href="https://zhangyuanhe.top/atom.xml" rel="self"/>
   
   <link href="https://zhangyuanhe.top/"/>
-  <updated>2023-07-29T07:56:05.251Z</updated>
+  <updated>2023-07-29T08:16:43.929Z</updated>
   <id>https://zhangyuanhe.top/</id>
   
   <author>
@@ -17,16 +17,16 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hexo博客搭建（11）——使用COS图床</title>
-    <link href="https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build11/"/>
-    <id>https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build11/</id>
+    <title>Hexo博客搭建（12）——网站SEO优化</title>
+    <link href="https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build12/"/>
+    <id>https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build12/</id>
     <published>2023-07-25T16:00:00.000Z</published>
-    <updated>2023-07-29T07:56:05.251Z</updated>
+    <updated>2023-07-29T08:16:43.929Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>​        腾讯云COS服务名为对象存储，是腾讯云提供的一种存储海量文件的分布式存储服务，用户可通过网络随时存储和查看数据。腾讯云 COS 使所有用户都能使用具备高扩展性、低成本、可靠和安全的数据存储服务。</p><p>​    图床也就是专门提供存储图片的地方，我们只要通过图床提供的 API 接口，把图片上传上去，就可以通过外链访问了，根本不用操心图片是怎么存的，硬盘空间不够了，硬盘坏了，访问速度比较慢等等问题，这些图床都会帮我们搞定，他们会用各种技术帮我们做图片相关的优化和服务，比如多机互备、CDN 加速、图片处理、图片鉴黄、文本识别等等。</p><h1 id="腾讯云COS服务"><a href="#腾讯云COS服务" class="headerlink" title="腾讯云COS服务"></a>腾讯云COS服务</h1><p>​        根据简介已经可以了解到，腾讯云COS可以将本地的照片分布式存储到各节点服务器上，这样让访问者距离这些存储资源更加的近，从而减少访问等待时间，提高访问者体验。并且对象存储可以减轻博客上传时间慢，图片存储占本地空间等等问题。另外，腾讯云首次开通COS可以提供个人6个月共50GB的标准存储容量，就算是6个月过去一个月需要的也就是几块钱，也算是白嫖喽~</p><ol><li><p>创建储存桶</p><p><code>搜索对象存储-&gt;存储桶列表-&gt;创建存储桶</code></p><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729132334725.png" alt="image-20230729132334725"></p><p>之后弹出设置框，填写名称、所属地域以及访问权限：<code>公有读私有写</code>，之后点击确定即可。</p></li><li><p>设置防盗链</p><p> 在你创建了图床后，会出现一种情况：你存放的图片被一些访问者看上，他通过引用你图片的链接来用于他处展示，这样花的是你的访问量，但是是他用到了别处，因此需要设置防盗链添加允许哪些域名或者服务器可以通过链接展示照片。</p><p>​    在你创建的桶中右侧<code>列表-&gt;安全管理-&gt;防盗链设置-&gt;防盗链当前状态开启-&gt;白名单-&gt;允许referer-&gt;添加可以访问的域名或ip</code>。</p><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729133002011.png" alt="image-20230729133002011"></p></li><li><p>COS客户端下载</p><p>​    腾讯云推出了COS客户端，方便用户进行上传下载以及图片操作等功能，更加方便不用在控制台一堆服务中搜索COS了。感觉一种网盘的感觉。</p></li></ol><h1 id="Typora-PicGo编辑图片上传一步到位"><a href="#Typora-PicGo编辑图片上传一步到位" class="headerlink" title="Typora+PicGo编辑图片上传一步到位"></a>Typora+PicGo编辑图片上传一步到位</h1><p>​        虽然有COS客户端，但是对于写文章后还需要手动上传，并且还要将文章中本地位置换成图片链接，所以引入了PicGo软件啦。</p><ol><li><p>下载安装PicGo</p><p>​    根据自己的系统下载相应文件下载地址。</p><p> Windows系统下我下载的是PicGo-Setup-2.3.0-beta.3.exe，之后按照步骤安装即可。</p><p>（下载后该软件不会自动打开，可以在右下角找到运行图标）</p><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729133227705.png" alt="image-20230729133227705"></p><p>PicGo设置</p><p>​    可以看到在图床设置中PicGo支持许多图床，这里只用腾讯云COS作为演示，如果不需要其他图床可以在PicGo设置中取消掉无用图床。</p><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729133405436.png" alt="image-20230729133405436"></p><ul><li><code>SecretID/Key</code>:在腾讯云访问管理-&gt;访问密钥-&gt;API密钥管理中可以找到。</li><li><code>APPID</code>:在右上角头像的用户信息中复制粘贴。</li><li><code>存储空间名</code>:存储桶的名字。</li><li><code>存储路径</code>:指上传到存储桶中的位置，不填则是主目录，若填img&#x2F;则是存到img文件夹下，后面的&#x2F;不能省。</li><li><code>自定义域名</code>:其实这个就是上传完图片，图片的域名前缀。可以在桶的概览-&gt;域名信息-&gt;访问域名复制粘贴过来。</li></ul></li><li><p>配置Typora</p><p>左上角文件-&gt;偏好设置-&gt;图像进行以下设置即可。</p><p>​    设置完之后可以点击验证图片上传选项，显示上传成功并且存储桶中添加了两张照片即可说明配置完成。</p></li><li><p>PicGo插件</p><p>​        PicGo支持许多插件，可以在插件设置中查询并安装，前提是安装了npm。</p><p>只需要搜索插件最后一段名称即可查到，以我安装的自定义图像文件名和前缀的插件为例:</p><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729133642625.png" alt="image-20230729133642625"></p></li><li><p>使用方法</p><p>都配置好了就可以体验下啦。</p><p>使用的时候可以直接复制粘贴图片到<code>Typora</code>文章中，根据上方的设置它会被存到<code>C:\Users\CLAY\img</code>，之后再Typora上方<code>格式-&gt;图像-&gt;上传本地所有图片</code>，之后就会发现图片的地址变成了图片的URL地址。也可以<code>右键-&gt;上传图片</code>单独上传。<br>如果不是文章中的图片，可以直接将图片拖到<code>PicGo上传区</code>上传，并且可以选择连接格式（上传后直接可以直接粘贴）</p></li></ol>]]></content>
+    <content type="html"><![CDATA[<p><img src="D:\my_data\blog\zyhblog-img\image-20230729161224909.png" alt="image-20230729161224909"></p><p><img src="D:\my_data\blog\zyhblog-img\image-20230729161642882.png" alt="image-20230729161642882"></p>]]></content>
     
     
-    <summary type="html">使用腾讯云cos图床，节省本地存储空间</summary>
+    <summary type="html">优化网页搜索，让博客可以被搜索到</summary>
     
     
     
@@ -40,16 +40,16 @@
   </entry>
   
   <entry>
-    <title>Hexo博客搭建（12）——网站SEO优化</title>
-    <link href="https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build12/"/>
-    <id>https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build12/</id>
+    <title>Hexo博客搭建（11）——使用COS图床</title>
+    <link href="https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build11/"/>
+    <id>https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build11/</id>
     <published>2023-07-25T16:00:00.000Z</published>
-    <updated>2023-07-29T08:16:43.929Z</updated>
+    <updated>2023-07-29T07:56:05.251Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="D:\my_data\blog\zyhblog-img\image-20230729161224909.png" alt="image-20230729161224909"></p><p><img src="D:\my_data\blog\zyhblog-img\image-20230729161642882.png" alt="image-20230729161642882"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>​        腾讯云COS服务名为对象存储，是腾讯云提供的一种存储海量文件的分布式存储服务，用户可通过网络随时存储和查看数据。腾讯云 COS 使所有用户都能使用具备高扩展性、低成本、可靠和安全的数据存储服务。</p><p>​    图床也就是专门提供存储图片的地方，我们只要通过图床提供的 API 接口，把图片上传上去，就可以通过外链访问了，根本不用操心图片是怎么存的，硬盘空间不够了，硬盘坏了，访问速度比较慢等等问题，这些图床都会帮我们搞定，他们会用各种技术帮我们做图片相关的优化和服务，比如多机互备、CDN 加速、图片处理、图片鉴黄、文本识别等等。</p><h1 id="腾讯云COS服务"><a href="#腾讯云COS服务" class="headerlink" title="腾讯云COS服务"></a>腾讯云COS服务</h1><p>​        根据简介已经可以了解到，腾讯云COS可以将本地的照片分布式存储到各节点服务器上，这样让访问者距离这些存储资源更加的近，从而减少访问等待时间，提高访问者体验。并且对象存储可以减轻博客上传时间慢，图片存储占本地空间等等问题。另外，腾讯云首次开通COS可以提供个人6个月共50GB的标准存储容量，就算是6个月过去一个月需要的也就是几块钱，也算是白嫖喽~</p><ol><li><p>创建储存桶</p><p><code>搜索对象存储-&gt;存储桶列表-&gt;创建存储桶</code></p><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729132334725.png" alt="image-20230729132334725"></p><p>之后弹出设置框，填写名称、所属地域以及访问权限：<code>公有读私有写</code>，之后点击确定即可。</p></li><li><p>设置防盗链</p><p> 在你创建了图床后，会出现一种情况：你存放的图片被一些访问者看上，他通过引用你图片的链接来用于他处展示，这样花的是你的访问量，但是是他用到了别处，因此需要设置防盗链添加允许哪些域名或者服务器可以通过链接展示照片。</p><p>​    在你创建的桶中右侧<code>列表-&gt;安全管理-&gt;防盗链设置-&gt;防盗链当前状态开启-&gt;白名单-&gt;允许referer-&gt;添加可以访问的域名或ip</code>。</p><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729133002011.png" alt="image-20230729133002011"></p></li><li><p>COS客户端下载</p><p>​    腾讯云推出了COS客户端，方便用户进行上传下载以及图片操作等功能，更加方便不用在控制台一堆服务中搜索COS了。感觉一种网盘的感觉。</p></li></ol><h1 id="Typora-PicGo编辑图片上传一步到位"><a href="#Typora-PicGo编辑图片上传一步到位" class="headerlink" title="Typora+PicGo编辑图片上传一步到位"></a>Typora+PicGo编辑图片上传一步到位</h1><p>​        虽然有COS客户端，但是对于写文章后还需要手动上传，并且还要将文章中本地位置换成图片链接，所以引入了PicGo软件啦。</p><ol><li><p>下载安装PicGo</p><p>​    根据自己的系统下载相应文件下载地址。</p><p> Windows系统下我下载的是PicGo-Setup-2.3.0-beta.3.exe，之后按照步骤安装即可。</p><p>（下载后该软件不会自动打开，可以在右下角找到运行图标）</p><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729133227705.png" alt="image-20230729133227705"></p><p>PicGo设置</p><p>​    可以看到在图床设置中PicGo支持许多图床，这里只用腾讯云COS作为演示，如果不需要其他图床可以在PicGo设置中取消掉无用图床。</p><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729133405436.png" alt="image-20230729133405436"></p><ul><li><code>SecretID/Key</code>:在腾讯云访问管理-&gt;访问密钥-&gt;API密钥管理中可以找到。</li><li><code>APPID</code>:在右上角头像的用户信息中复制粘贴。</li><li><code>存储空间名</code>:存储桶的名字。</li><li><code>存储路径</code>:指上传到存储桶中的位置，不填则是主目录，若填img&#x2F;则是存到img文件夹下，后面的&#x2F;不能省。</li><li><code>自定义域名</code>:其实这个就是上传完图片，图片的域名前缀。可以在桶的概览-&gt;域名信息-&gt;访问域名复制粘贴过来。</li></ul></li><li><p>配置Typora</p><p>左上角文件-&gt;偏好设置-&gt;图像进行以下设置即可。</p><p>​    设置完之后可以点击验证图片上传选项，显示上传成功并且存储桶中添加了两张照片即可说明配置完成。</p></li><li><p>PicGo插件</p><p>​        PicGo支持许多插件，可以在插件设置中查询并安装，前提是安装了npm。</p><p>只需要搜索插件最后一段名称即可查到，以我安装的自定义图像文件名和前缀的插件为例:</p><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729133642625.png" alt="image-20230729133642625"></p></li><li><p>使用方法</p><p>都配置好了就可以体验下啦。</p><p>使用的时候可以直接复制粘贴图片到<code>Typora</code>文章中，根据上方的设置它会被存到<code>C:\Users\CLAY\img</code>，之后再Typora上方<code>格式-&gt;图像-&gt;上传本地所有图片</code>，之后就会发现图片的地址变成了图片的URL地址。也可以<code>右键-&gt;上传图片</code>单独上传。<br>如果不是文章中的图片，可以直接将图片拖到<code>PicGo上传区</code>上传，并且可以选择连接格式（上传后直接可以直接粘贴）</p></li></ol>]]></content>
     
     
-    <summary type="html">优化网页搜索，让博客可以被搜索到</summary>
+    <summary type="html">使用腾讯云cos图床，节省本地存储空间</summary>
     
     
     

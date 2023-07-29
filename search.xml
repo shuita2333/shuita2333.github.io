@@ -198,31 +198,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客搭建（3）——Hexo的目录结构</title>
-    <url>/2023/07/17/hexo/Hexo_build03/</url>
-    <content><![CDATA[<p>本地部署后在系统盘的用户目录下生成Hexo文件，对其目录结构需要有一定的了解，在之后的Hexo配置和优化离不开里面的各种文件，因此需要对它的目录结构有一定了解：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- _config.yml</span><br><span class="line">|-- node_modules</span><br><span class="line">|-- scaffolds</span><br><span class="line">|-- source</span><br><span class="line">   |-- _posts</span><br><span class="line">|-- public</span><br><span class="line">|-- themes</span><br><span class="line">|-- .gitignore</span><br><span class="line">|-- db.json</span><br><span class="line">|-- package.json</span><br><span class="line">|-- package-lock.json</span><br></pre></td></tr></table></figure>
-
-<p><code>_config.yml</code>：网站的全局配置文件，设置包括网站标题、副标题、作者、关键字和描述信息等。</p>
-<p><code>node_modules</code>：是<code>nodejs</code>库文件目录，也就是我们通过”npm install”命令安装的文件位置</p>
-<p><code>scaffolds</code>：本意是 “脚手架” 的意思，这里引申为模板文件夹。当你 <code>hexo new &lt;layout(布局)&gt; &lt;title&gt; 的时候</code>，Hexo 会根据该文件夹下的对应文件进行初始化构建。</p>
-<p><code>source</code>：正如其名，<code>source</code> 文件夹存储一些直接来自用户的文件，它很重要，如果不出意外你的文章就是保存在这个文件夹下（<em>posts）。</em><code>posts</code> 目录下的md文件，会被编译成 html 文件，放到 public 文件夹下。</p>
-<p><code>public</code>：参考 <code>source</code> 文件夹，在初始化后是没有 <code>public</code> 文件夹的，除非 <code>hexo g</code> 编译生成静态文件后，<code>public</code> 文件夹会自动生成。使用 <code>hexo clean</code> 清除 <code>db.json</code> 和 <code>public</code> 文件夹下的所有文件。</p>
-<p><code>themes</code>：主题文件夹，存储主题。相关的主题可以在 Github 上免费采购。</p>
-<p><code>.gitignore</code>：<code>.gitignore</code> 文件作用是声明不被 git 记录的文件，<code>hexo init &lt;folder&gt;</code> 也会产生一个 <code>.gitignore</code> 文件，可以先删除或者直接编辑，对hexo不会有影响。</p>
-<p><code>db.json</code>：里面存放了一些由<code>source</code>目录下<code>.md</code> 的所有文件解析得到的数据</p>
-<p><code>package.json</code>：框架的基本参数信息和它所依赖的插件，在 npm 安装时使用 <code>--save</code> 保存进去。</p>
-<p><code>package-lock.json</code>：锁定安装时的包的版本号，并且需要上传到git，以保证其他人在npm install时大家的依赖能保证一致。</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo博客搭建（4）——更换主题</title>
     <url>/2023/07/18/hexo/Hexo_build04/</url>
     <content><![CDATA[<p>Hexo的主题有很多，可以在其官网上选择自己喜欢的。</p>
@@ -251,6 +226,62 @@
         <tag>hexo</tag>
         <tag>服务器</tag>
         <tag>Butterfly主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（5）——自定义Hexo文件</title>
+    <url>/2023/07/19/hexo/Hexo_build05/</url>
+    <content><![CDATA[<h1 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h1><p>修改站点配置文件 <code>_config.yml</code></p>
+<p>默认语言是 <code>en</code></p>
+<p>主题支持三种语言</p>
+<ul>
+<li>default(en)</li>
+<li>zh-CN (简体中文)</li>
+<li>zh-TW (繁体中文)</li>
+</ul>
+<h1 id="网站资料"><a href="#网站资料" class="headerlink" title="网站资料"></a>网站资料</h1><p>修改网站各种资料，例如标题、副标题和邮箱等个人资料，请修改博客根目录的<code>_config.yml</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: ZYH&#x27;s blog #网站标题</span><br><span class="line">subtitle: &#x27;&#x27; #网站副标题subtitle</span><br><span class="line"># 下面description,keywords，如果想让搜索引擎收录需要填上，这个做SEO优化必不可忽视的两个属性</span><br><span class="line">description: #网站描述</span><br><span class="line">keywords: #网站的关键词</span><br><span class="line">author: Charmes #作者，文章版权所显示的</span><br><span class="line">language: zh-CN #网站语言，不填写，默认为英文</span><br><span class="line">timezone: &#x27;&#x27; #时区，可以不填写</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="配置分类页"><a href="#配置分类页" class="headerlink" title="配置分类页"></a>配置分类页</h1><ol>
+<li><p>新建分类categories 页</p>
+<p><code>categories</code> 页是用来展示所有分类的页面，如果在你的博客 <code>source</code> 目录下还没有 <code>categories/index.md</code> 文件，那么你就需要新建一个，命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+
+<p>编辑刚刚新建的页面文件 <code>/source/categories/index.md</code>，至少需要以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2023-07-21 00:57:33</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">layout: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建标签tags页</p>
+<p><code>tags</code> 页是用来展示所有标签的页面，如果在你的博客 <code>source</code> 目录下还没有 tags&#x2F;index.md 文件，那么你就需要新建一个，命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
+
+<p>编辑你刚刚新建的页面文件 <code>/source/tags/index.md</code>，至少需要以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2023-07-21 00:57:33</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">layout: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建关于我about页</p>
+<p>同上，秩序把相关信息改成<code>about</code></p>
+</li>
+<li><p>新建留言板contact页（可选）</p>
+<p>同上，秩序把相关信息改成<code>about</code></p>
+</li>
+<li><p>新建友情链接friends页（可选）</p>
+<p>同上，秩序把相关信息改成<code>about</code></p>
+<p>同时，在你的博客 <code>source</code> 目录下新建 _data 目录，在 <code>_data</code> 目录中新建 <code>friends.json</code> 文件，文件内容如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&#123;</span><br><span class="line">    &quot;avatar&quot;: &quot;&quot;,</span><br><span class="line">    &quot;name&quot;: &quot;&quot;,</span><br><span class="line">    &quot;introduction&quot;: &quot;&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;&quot;,</span><br><span class="line">    &quot;title&quot;: &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建404页</p>
+<p>同上，秩序把相关信息改成<code>about</code></p>
+<p>编辑你刚刚新建的页面文件 <code>/source/404/index.md</code>，至少需要以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">date: 2018-09-30 17:25:30</span><br><span class="line">type: &quot;404&quot;</span><br><span class="line">layout: &quot;404&quot;</span><br><span class="line">description: &quot;Oops～，我崩溃了！找不到你想要的页面 :(&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
       </tags>
   </entry>
   <entry>
@@ -532,52 +563,21 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客搭建（5）——自定义Hexo文件</title>
-    <url>/2023/07/19/hexo/Hexo_build05/</url>
-    <content><![CDATA[<h1 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h1><p>修改站点配置文件 <code>_config.yml</code></p>
-<p>默认语言是 <code>en</code></p>
-<p>主题支持三种语言</p>
-<ul>
-<li>default(en)</li>
-<li>zh-CN (简体中文)</li>
-<li>zh-TW (繁体中文)</li>
-</ul>
-<h1 id="网站资料"><a href="#网站资料" class="headerlink" title="网站资料"></a>网站资料</h1><p>修改网站各种资料，例如标题、副标题和邮箱等个人资料，请修改博客根目录的<code>_config.yml</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: ZYH&#x27;s blog #网站标题</span><br><span class="line">subtitle: &#x27;&#x27; #网站副标题subtitle</span><br><span class="line"># 下面description,keywords，如果想让搜索引擎收录需要填上，这个做SEO优化必不可忽视的两个属性</span><br><span class="line">description: #网站描述</span><br><span class="line">keywords: #网站的关键词</span><br><span class="line">author: Charmes #作者，文章版权所显示的</span><br><span class="line">language: zh-CN #网站语言，不填写，默认为英文</span><br><span class="line">timezone: &#x27;&#x27; #时区，可以不填写</span><br></pre></td></tr></table></figure>
+    <title>Hexo博客搭建（3）——Hexo的目录结构</title>
+    <url>/2023/07/17/hexo/Hexo_build03/</url>
+    <content><![CDATA[<p>本地部署后在系统盘的用户目录下生成Hexo文件，对其目录结构需要有一定的了解，在之后的Hexo配置和优化离不开里面的各种文件，因此需要对它的目录结构有一定了解：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- _config.yml</span><br><span class="line">|-- node_modules</span><br><span class="line">|-- scaffolds</span><br><span class="line">|-- source</span><br><span class="line">   |-- _posts</span><br><span class="line">|-- public</span><br><span class="line">|-- themes</span><br><span class="line">|-- .gitignore</span><br><span class="line">|-- db.json</span><br><span class="line">|-- package.json</span><br><span class="line">|-- package-lock.json</span><br></pre></td></tr></table></figure>
 
-
-
-<h1 id="配置分类页"><a href="#配置分类页" class="headerlink" title="配置分类页"></a>配置分类页</h1><ol>
-<li><p>新建分类categories 页</p>
-<p><code>categories</code> 页是用来展示所有分类的页面，如果在你的博客 <code>source</code> 目录下还没有 <code>categories/index.md</code> 文件，那么你就需要新建一个，命令如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
-
-<p>编辑刚刚新建的页面文件 <code>/source/categories/index.md</code>，至少需要以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2023-07-21 00:57:33</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">layout: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新建标签tags页</p>
-<p><code>tags</code> 页是用来展示所有标签的页面，如果在你的博客 <code>source</code> 目录下还没有 tags&#x2F;index.md 文件，那么你就需要新建一个，命令如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
-
-<p>编辑你刚刚新建的页面文件 <code>/source/tags/index.md</code>，至少需要以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2023-07-21 00:57:33</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">layout: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新建关于我about页</p>
-<p>同上，秩序把相关信息改成<code>about</code></p>
-</li>
-<li><p>新建留言板contact页（可选）</p>
-<p>同上，秩序把相关信息改成<code>about</code></p>
-</li>
-<li><p>新建友情链接friends页（可选）</p>
-<p>同上，秩序把相关信息改成<code>about</code></p>
-<p>同时，在你的博客 <code>source</code> 目录下新建 _data 目录，在 <code>_data</code> 目录中新建 <code>friends.json</code> 文件，文件内容如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&#123;</span><br><span class="line">    &quot;avatar&quot;: &quot;&quot;,</span><br><span class="line">    &quot;name&quot;: &quot;&quot;,</span><br><span class="line">    &quot;introduction&quot;: &quot;&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;&quot;,</span><br><span class="line">    &quot;title&quot;: &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新建404页</p>
-<p>同上，秩序把相关信息改成<code>about</code></p>
-<p>编辑你刚刚新建的页面文件 <code>/source/404/index.md</code>，至少需要以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">date: 2018-09-30 17:25:30</span><br><span class="line">type: &quot;404&quot;</span><br><span class="line">layout: &quot;404&quot;</span><br><span class="line">description: &quot;Oops～，我崩溃了！找不到你想要的页面 :(&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></li>
-</ol>
+<p><code>_config.yml</code>：网站的全局配置文件，设置包括网站标题、副标题、作者、关键字和描述信息等。</p>
+<p><code>node_modules</code>：是<code>nodejs</code>库文件目录，也就是我们通过”npm install”命令安装的文件位置</p>
+<p><code>scaffolds</code>：本意是 “脚手架” 的意思，这里引申为模板文件夹。当你 <code>hexo new &lt;layout(布局)&gt; &lt;title&gt; 的时候</code>，Hexo 会根据该文件夹下的对应文件进行初始化构建。</p>
+<p><code>source</code>：正如其名，<code>source</code> 文件夹存储一些直接来自用户的文件，它很重要，如果不出意外你的文章就是保存在这个文件夹下（<em>posts）。</em><code>posts</code> 目录下的md文件，会被编译成 html 文件，放到 public 文件夹下。</p>
+<p><code>public</code>：参考 <code>source</code> 文件夹，在初始化后是没有 <code>public</code> 文件夹的，除非 <code>hexo g</code> 编译生成静态文件后，<code>public</code> 文件夹会自动生成。使用 <code>hexo clean</code> 清除 <code>db.json</code> 和 <code>public</code> 文件夹下的所有文件。</p>
+<p><code>themes</code>：主题文件夹，存储主题。相关的主题可以在 Github 上免费采购。</p>
+<p><code>.gitignore</code>：<code>.gitignore</code> 文件作用是声明不被 git 记录的文件，<code>hexo init &lt;folder&gt;</code> 也会产生一个 <code>.gitignore</code> 文件，可以先删除或者直接编辑，对hexo不会有影响。</p>
+<p><code>db.json</code>：里面存放了一些由<code>source</code>目录下<code>.md</code> 的所有文件解析得到的数据</p>
+<p><code>package.json</code>：框架的基本参数信息和它所依赖的插件，在 npm 安装时使用 <code>--save</code> 保存进去。</p>
+<p><code>package-lock.json</code>：锁定安装时的包的版本号，并且需要上传到git，以保证其他人在npm install时大家的依赖能保证一致。</p>
 ]]></content>
       <categories>
         <category>博客搭建</category>
@@ -874,59 +874,10 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客搭建（10）——部署SSl证书</title>
-    <url>/2023/07/25/hexo/Hexo_build10/</url>
-    <content><![CDATA[<p> 部署SSL证书的意义在于，如果不部署SSL输入域名进入网站，浏览器会提示不安全的字样。别人看到这样的字样会犹豫是否进入，是否存在危险等。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110435052.png" alt="image-20230729110435052"></p>
-<h1 id="准备SSL证书"><a href="#准备SSL证书" class="headerlink" title="准备SSL证书"></a>准备SSL证书</h1><p>​        腾讯云是可以申请免费的SSL证书。在腾讯云中搜索找到SSL证书-&gt;我的证书-&gt;申请免费证书按照申请的提示输入信息即可（选取的是RSA加密）。之后就是等待腾讯云的审核和签发，这个等待时间一般在几个小时左右。申请完成后状态：</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110631777.png" alt="image-20230729110631777"></p>
-<h1 id="安装Filezilla-软件"><a href="#安装Filezilla-软件" class="headerlink" title="安装Filezilla 软件"></a>安装Filezilla 软件</h1><p>​        打开Filezilla软件官网下载并安装，它是一个本机FTP软件，可以提供与云服务器接发文件的功能。</p>
-<h1 id="云服务器安装FTP服务"><a href="#云服务器安装FTP服务" class="headerlink" title="云服务器安装FTP服务"></a>云服务器安装FTP服务</h1><ol>
-<li><p>安装vsftpd</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y vsftpd</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/vsftpd/vsftpd.conf</span><br></pre></td></tr></table></figure>
-
-<p>修改第12行，禁止匿名用户登录：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">anonymous_enable=No </span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="上传SSL证书文件"><a href="#上传SSL证书文件" class="headerlink" title="上传SSL证书文件"></a>上传SSL证书文件</h1><p>​        打开Filezilla 软件输入云服务器IP等信息后连接，端口选用22端口。</p>
-<p>​		 去腾讯云服务器下载SSL证书。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110848329.png" alt="image-20230729110848329"></p>
-<p>  在Filezilla 软件本地站点（左边一栏）找到你下载的SSL证书，双击即可提示上传到云服务器用户目录下。</p>
-<h1 id="部署SSL证书"><a href="#部署SSL证书" class="headerlink" title="部署SSL证书"></a>部署SSL证书</h1><ol>
-<li><p>文件默认上传至我们的用户文件夹下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/zyh</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
-
-<p>返回结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com.zip  zhangyuanhe.git</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>解压缩文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com.zip</span><br></pre></td></tr></table></figure>
-
-<p>再ls查看目录返回的结果是：</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729112613573.png" alt="image-20230729112613573"></p>
-<p>可以看见有四个文件，这里只需要crt文件和key文件。</p>
-</li>
-<li><p>将Nginx文件夹下的文件复制到新建的文件夹下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /etc/nginx/ssl/</span><br><span class="line">cd /home/zhangyuanhe/Nginx</span><br></pre></td></tr></table></figure>
-
-<p>用ls查看目录返回结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com_bundle.crt  zhangyuanhe.com.key</span><br></pre></td></tr></table></figure>
-
-<p>复制到ssl文件夹下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp zhangyuanhe.com_bundle.crt /etc/nginx/ssl/</span><br><span class="line">cp zhangyuanhe.com.key /etc/nginx/ssl/</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打开nginx.conf 文件夹 修改配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
-
-<p>删除掉下方最前面注释并进行更改：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> server &#123;</span><br><span class="line">        listen       443 ssl;</span><br><span class="line">        listen       [::]:443 ssl http2 default_server;</span><br><span class="line">        server_name  liuruibin.com; #域名</span><br><span class="line">        root         /home/hexo;    #网站主目录</span><br><span class="line"></span><br><span class="line">        ssl_certificate &quot;/etc/nginx/ssl/zhangyuanhe.com_bundle.crt&quot;; #crt文件路径</span><br><span class="line">        ssl_certificate_key &quot;/etc/nginx/ssl/zhangyuanhe.com.key&quot;;    #key文件路径</span><br><span class="line">        ssl_session_cache shared:SSL:1m;</span><br><span class="line">        ssl_session_timeout  10m;</span><br><span class="line">        ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line">		</span><br><span class="line">        # Load configuration files for the default server block.</span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line">        </span><br><span class="line">	   #默认请求</span><br><span class="line">        location / &#123;</span><br><span class="line">                root /home/hexo;</span><br><span class="line">			  #定义首页索引文件名称</span><br><span class="line">                index index.html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看是否有报错，无报错重启服务器</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nginx -t</span><br><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure></li>
-</ol>
+    <title>Hexo博客搭建（12）——网站SEO优化</title>
+    <url>/2023/07/26/hexo/Hexo_build12/</url>
+    <content><![CDATA[<p><img src="D:\my_data\blog\zyhblog-img\image-20230729161224909.png" alt="image-20230729161224909"></p>
+<p><img src="D:\my_data\blog\zyhblog-img\image-20230729161642882.png" alt="image-20230729161642882"></p>
 ]]></content>
       <categories>
         <category>博客搭建</category>
@@ -1149,10 +1100,59 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客搭建（12）——网站SEO优化</title>
-    <url>/2023/07/26/hexo/Hexo_build12/</url>
-    <content><![CDATA[<p><img src="D:\my_data\blog\zyhblog-img\image-20230729161224909.png" alt="image-20230729161224909"></p>
-<p><img src="D:\my_data\blog\zyhblog-img\image-20230729161642882.png" alt="image-20230729161642882"></p>
+    <title>Hexo博客搭建（10）——部署SSl证书</title>
+    <url>/2023/07/25/hexo/Hexo_build10/</url>
+    <content><![CDATA[<p> 部署SSL证书的意义在于，如果不部署SSL输入域名进入网站，浏览器会提示不安全的字样。别人看到这样的字样会犹豫是否进入，是否存在危险等。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110435052.png" alt="image-20230729110435052"></p>
+<h1 id="准备SSL证书"><a href="#准备SSL证书" class="headerlink" title="准备SSL证书"></a>准备SSL证书</h1><p>​        腾讯云是可以申请免费的SSL证书。在腾讯云中搜索找到SSL证书-&gt;我的证书-&gt;申请免费证书按照申请的提示输入信息即可（选取的是RSA加密）。之后就是等待腾讯云的审核和签发，这个等待时间一般在几个小时左右。申请完成后状态：</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110631777.png" alt="image-20230729110631777"></p>
+<h1 id="安装Filezilla-软件"><a href="#安装Filezilla-软件" class="headerlink" title="安装Filezilla 软件"></a>安装Filezilla 软件</h1><p>​        打开Filezilla软件官网下载并安装，它是一个本机FTP软件，可以提供与云服务器接发文件的功能。</p>
+<h1 id="云服务器安装FTP服务"><a href="#云服务器安装FTP服务" class="headerlink" title="云服务器安装FTP服务"></a>云服务器安装FTP服务</h1><ol>
+<li><p>安装vsftpd</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y vsftpd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/vsftpd/vsftpd.conf</span><br></pre></td></tr></table></figure>
+
+<p>修改第12行，禁止匿名用户登录：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">anonymous_enable=No </span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="上传SSL证书文件"><a href="#上传SSL证书文件" class="headerlink" title="上传SSL证书文件"></a>上传SSL证书文件</h1><p>​        打开Filezilla 软件输入云服务器IP等信息后连接，端口选用22端口。</p>
+<p>​		 去腾讯云服务器下载SSL证书。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110848329.png" alt="image-20230729110848329"></p>
+<p>  在Filezilla 软件本地站点（左边一栏）找到你下载的SSL证书，双击即可提示上传到云服务器用户目录下。</p>
+<h1 id="部署SSL证书"><a href="#部署SSL证书" class="headerlink" title="部署SSL证书"></a>部署SSL证书</h1><ol>
+<li><p>文件默认上传至我们的用户文件夹下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/zyh</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+
+<p>返回结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com.zip  zhangyuanhe.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压缩文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com.zip</span><br></pre></td></tr></table></figure>
+
+<p>再ls查看目录返回的结果是：</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729112613573.png" alt="image-20230729112613573"></p>
+<p>可以看见有四个文件，这里只需要crt文件和key文件。</p>
+</li>
+<li><p>将Nginx文件夹下的文件复制到新建的文件夹下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /etc/nginx/ssl/</span><br><span class="line">cd /home/zhangyuanhe/Nginx</span><br></pre></td></tr></table></figure>
+
+<p>用ls查看目录返回结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com_bundle.crt  zhangyuanhe.com.key</span><br></pre></td></tr></table></figure>
+
+<p>复制到ssl文件夹下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp zhangyuanhe.com_bundle.crt /etc/nginx/ssl/</span><br><span class="line">cp zhangyuanhe.com.key /etc/nginx/ssl/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开nginx.conf 文件夹 修改配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p>删除掉下方最前面注释并进行更改：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> server &#123;</span><br><span class="line">        listen       443 ssl;</span><br><span class="line">        listen       [::]:443 ssl http2 default_server;</span><br><span class="line">        server_name  liuruibin.com; #域名</span><br><span class="line">        root         /home/hexo;    #网站主目录</span><br><span class="line"></span><br><span class="line">        ssl_certificate &quot;/etc/nginx/ssl/zhangyuanhe.com_bundle.crt&quot;; #crt文件路径</span><br><span class="line">        ssl_certificate_key &quot;/etc/nginx/ssl/zhangyuanhe.com.key&quot;;    #key文件路径</span><br><span class="line">        ssl_session_cache shared:SSL:1m;</span><br><span class="line">        ssl_session_timeout  10m;</span><br><span class="line">        ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line">		</span><br><span class="line">        # Load configuration files for the default server block.</span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line">        </span><br><span class="line">	   #默认请求</span><br><span class="line">        location / &#123;</span><br><span class="line">                root /home/hexo;</span><br><span class="line">			  #定义首页索引文件名称</span><br><span class="line">                index index.html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看是否有报错，无报错重启服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nginx -t</span><br><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure></li>
+</ol>
 ]]></content>
       <categories>
         <category>博客搭建</category>
