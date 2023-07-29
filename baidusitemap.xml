@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build11/</loc>
+    <lastmod>2023-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://zhangyuanhe.top/2023/07/25/hexo/Hexo_build10/</loc>
+    <lastmod>2023-07-29</lastmod>
+  </url>
+  <url>
     <loc>https://zhangyuanhe.top/2023/07/22/hexo/Hexo_build08/</loc>
     <lastmod>2023-07-28</lastmod>
   </url>
@@ -43,13 +51,5 @@
   <url>
     <loc>https://zhangyuanhe.top/2023/07/15/hexo/Hexo_build01/</loc>
     <lastmod>2023-07-28</lastmod>
-  </url>
-  <url>
-    <loc>https://zhangyuanhe.top/2023/07/24/hexo/Hexo_build11/</loc>
-    <lastmod>2023-07-24</lastmod>
-  </url>
-  <url>
-    <loc>https://zhangyuanhe.top/2023/07/24/hexo/Hexo_build10/</loc>
-    <lastmod>2023-07-24</lastmod>
   </url>
 </urlset> 
