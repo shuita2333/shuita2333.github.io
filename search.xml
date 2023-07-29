@@ -37,55 +37,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Hexo博客搭建（2）——配置客户端并建立连接</title>
-    <url>/2023/07/16/hexo/Hexo_build02/</url>
-    <content><![CDATA[<h1 id="相关链接和参考内容"><a href="#相关链接和参考内容" class="headerlink" title="相关链接和参考内容"></a>相关链接和参考内容</h1><p>Node：<a href="https://nodejs.org/zh-cn">Node.js (nodejs.org)</a></p>
-<p>Git： <a href="https://git-scm.com/downloads">Git - Downloads (git-scm.com)</a></p>
-<p>Typora： <a href="https://www.typora.io/">https://www.typora.io/</a></p>
-<p>hexo说明文档： <a href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a></p>
-<h1 id="本地安装和配置Hexo"><a href="#本地安装和配置Hexo" class="headerlink" title="本地安装和配置Hexo"></a>本地安装和配置Hexo</h1><p>请先自行安装git和node，这个教程就比较多了，在这里就不进行赘述了</p>
-<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="初始化hexo"><a href="#初始化hexo" class="headerlink" title="初始化hexo"></a>初始化hexo</h2><p>这里myblog可以去掉，加myblog只不过是为了使所生成的文件全都放到myblog文件夹中</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init myblog  </span><br><span class="line">cd ./myblog</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
-
-<p>目前基本的hexo已经ok了，本地运行一下看看</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>在浏览器中输入：<code>http://localhost:4000/</code>即可查看</p>
-<h2 id="上传到服务器"><a href="#上传到服务器" class="headerlink" title="上传到服务器"></a>上传到服务器</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">su zyh  //登录你用来上传博客的用户</span><br><span class="line">mkdir ~/.ssh   //创建存放密钥的文件夹</span><br><span class="line">vim ~/.ssh/authorized_keys  //写入密钥</span><br></pre></td></tr></table></figure>
-
-<p>这里需要一个秘钥，在你的物理机上C:\Users\Administrator\ .ssh的文件中找到id_rsa文件（如未找到ssh文件请参考文末）</p>
-<p>复制全部信息到你的服务器中</p>
-<p>测试物理机与服务器能否跑通</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -v zyh@62.234.219.169 //服务器ip</span><br></pre></td></tr></table></figure>
-
-<p>我们需要在config.yml中的最后一行编辑以下信息，然后咱们就可以把自己的博客推送上去了</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  - type: git</span><br><span class="line">    repository: zyh@62.234.219.169:/home/zyh/blog.git</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
-
-<p>然后就可以通过以下命令进行推送了</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo -d</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="附录）本地Windows10使用Git-Bash创建密钥"><a href="#附录）本地Windows10使用Git-Bash创建密钥" class="headerlink" title="(附录）本地Windows10使用Git Bash创建密钥"></a>(附录）本地Windows10使用Git Bash创建密钥</h2><p>打开到本地的博客文件目录下，右键Git Bush进入命令框，输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-
-<p>输入完后一顿空格即可，之后会返回SHA256密钥和密钥图。并且在你用户界面下发现出现了.ssh文件夹。</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo博客搭建（1）——部署服务器和配置服务器端</title>
     <url>/2023/07/15/hexo/Hexo_build01/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>搭建自己的服务器是喜忧参半的</p>
@@ -198,6 +149,80 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo博客搭建（2）——配置客户端并建立连接</title>
+    <url>/2023/07/16/hexo/Hexo_build02/</url>
+    <content><![CDATA[<h1 id="相关链接和参考内容"><a href="#相关链接和参考内容" class="headerlink" title="相关链接和参考内容"></a>相关链接和参考内容</h1><p>Node：<a href="https://nodejs.org/zh-cn">Node.js (nodejs.org)</a></p>
+<p>Git： <a href="https://git-scm.com/downloads">Git - Downloads (git-scm.com)</a></p>
+<p>Typora： <a href="https://www.typora.io/">https://www.typora.io/</a></p>
+<p>hexo说明文档： <a href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a></p>
+<h1 id="本地安装和配置Hexo"><a href="#本地安装和配置Hexo" class="headerlink" title="本地安装和配置Hexo"></a>本地安装和配置Hexo</h1><p>请先自行安装git和node，这个教程就比较多了，在这里就不进行赘述了</p>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="初始化hexo"><a href="#初始化hexo" class="headerlink" title="初始化hexo"></a>初始化hexo</h2><p>这里myblog可以去掉，加myblog只不过是为了使所生成的文件全都放到myblog文件夹中</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init myblog  </span><br><span class="line">cd ./myblog</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+
+<p>目前基本的hexo已经ok了，本地运行一下看看</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中输入：<code>http://localhost:4000/</code>即可查看</p>
+<h2 id="上传到服务器"><a href="#上传到服务器" class="headerlink" title="上传到服务器"></a>上传到服务器</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">su zyh  //登录你用来上传博客的用户</span><br><span class="line">mkdir ~/.ssh   //创建存放密钥的文件夹</span><br><span class="line">vim ~/.ssh/authorized_keys  //写入密钥</span><br></pre></td></tr></table></figure>
+
+<p>这里需要一个秘钥，在你的物理机上C:\Users\Administrator\ .ssh的文件中找到id_rsa文件（如未找到ssh文件请参考文末）</p>
+<p>复制全部信息到你的服务器中</p>
+<p>测试物理机与服务器能否跑通</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -v zyh@62.234.219.169 //服务器ip</span><br></pre></td></tr></table></figure>
+
+<p>我们需要在config.yml中的最后一行编辑以下信息，然后咱们就可以把自己的博客推送上去了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  - type: git</span><br><span class="line">    repository: zyh@62.234.219.169:/home/zyh/blog.git</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以通过以下命令进行推送了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo -d</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="附录）本地Windows10使用Git-Bash创建密钥"><a href="#附录）本地Windows10使用Git-Bash创建密钥" class="headerlink" title="(附录）本地Windows10使用Git Bash创建密钥"></a>(附录）本地Windows10使用Git Bash创建密钥</h2><p>打开到本地的博客文件目录下，右键Git Bush进入命令框，输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+
+<p>输入完后一顿空格即可，之后会返回SHA256密钥和密钥图。并且在你用户界面下发现出现了.ssh文件夹。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（3）——Hexo的目录结构</title>
+    <url>/2023/07/17/hexo/Hexo_build03/</url>
+    <content><![CDATA[<p>本地部署后在系统盘的用户目录下生成Hexo文件，对其目录结构需要有一定的了解，在之后的Hexo配置和优化离不开里面的各种文件，因此需要对它的目录结构有一定了解：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- _config.yml</span><br><span class="line">|-- node_modules</span><br><span class="line">|-- scaffolds</span><br><span class="line">|-- source</span><br><span class="line">   |-- _posts</span><br><span class="line">|-- public</span><br><span class="line">|-- themes</span><br><span class="line">|-- .gitignore</span><br><span class="line">|-- db.json</span><br><span class="line">|-- package.json</span><br><span class="line">|-- package-lock.json</span><br></pre></td></tr></table></figure>
+
+<p><code>_config.yml</code>：网站的全局配置文件，设置包括网站标题、副标题、作者、关键字和描述信息等。</p>
+<p><code>node_modules</code>：是<code>nodejs</code>库文件目录，也就是我们通过”npm install”命令安装的文件位置</p>
+<p><code>scaffolds</code>：本意是 “脚手架” 的意思，这里引申为模板文件夹。当你 <code>hexo new &lt;layout(布局)&gt; &lt;title&gt; 的时候</code>，Hexo 会根据该文件夹下的对应文件进行初始化构建。</p>
+<p><code>source</code>：正如其名，<code>source</code> 文件夹存储一些直接来自用户的文件，它很重要，如果不出意外你的文章就是保存在这个文件夹下（<em>posts）。</em><code>posts</code> 目录下的md文件，会被编译成 html 文件，放到 public 文件夹下。</p>
+<p><code>public</code>：参考 <code>source</code> 文件夹，在初始化后是没有 <code>public</code> 文件夹的，除非 <code>hexo g</code> 编译生成静态文件后，<code>public</code> 文件夹会自动生成。使用 <code>hexo clean</code> 清除 <code>db.json</code> 和 <code>public</code> 文件夹下的所有文件。</p>
+<p><code>themes</code>：主题文件夹，存储主题。相关的主题可以在 Github 上免费采购。</p>
+<p><code>.gitignore</code>：<code>.gitignore</code> 文件作用是声明不被 git 记录的文件，<code>hexo init &lt;folder&gt;</code> 也会产生一个 <code>.gitignore</code> 文件，可以先删除或者直接编辑，对hexo不会有影响。</p>
+<p><code>db.json</code>：里面存放了一些由<code>source</code>目录下<code>.md</code> 的所有文件解析得到的数据</p>
+<p><code>package.json</code>：框架的基本参数信息和它所依赖的插件，在 npm 安装时使用 <code>--save</code> 保存进去。</p>
+<p><code>package-lock.json</code>：锁定安装时的包的版本号，并且需要上传到git，以保证其他人在npm install时大家的依赖能保证一致。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo博客搭建（4）——更换主题</title>
     <url>/2023/07/18/hexo/Hexo_build04/</url>
     <content><![CDATA[<p>Hexo的主题有很多，可以在其官网上选择自己喜欢的。</p>
@@ -285,21 +310,268 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客搭建（3）——Hexo的目录结构</title>
-    <url>/2023/07/17/hexo/Hexo_build03/</url>
-    <content><![CDATA[<p>本地部署后在系统盘的用户目录下生成Hexo文件，对其目录结构需要有一定的了解，在之后的Hexo配置和优化离不开里面的各种文件，因此需要对它的目录结构有一定了解：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- _config.yml</span><br><span class="line">|-- node_modules</span><br><span class="line">|-- scaffolds</span><br><span class="line">|-- source</span><br><span class="line">   |-- _posts</span><br><span class="line">|-- public</span><br><span class="line">|-- themes</span><br><span class="line">|-- .gitignore</span><br><span class="line">|-- db.json</span><br><span class="line">|-- package.json</span><br><span class="line">|-- package-lock.json</span><br></pre></td></tr></table></figure>
+    <title>Hexo博客搭建（7）——魔改主题文件（提高）</title>
+    <url>/2023/07/21/hexo/Hexo_build07/</url>
+    <content><![CDATA[<h1 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h1><h2 id="Algolia"><a href="#Algolia" class="headerlink" title="Algolia"></a>Algolia</h2><blockquote>
+<p>记得运行 <code>hexo clean</code></p>
+<p>如果你使用 <code>hexo-algoliasearch</code>，请记得配置 <code>fields</code> 参数的 <code>title, permalink 和 content</code></p>
+<p>你需要安装 <code>hexo-algolia</code>或 <code>hexo-algoliasearch</code>. 根据它们的説明文档去做相应的配置。</p>
+</blockquote>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">algolia_search:</span><br><span class="line">  enable: true</span><br><span class="line">  hits:</span><br><span class="line">    per_page: 6</span><br></pre></td></tr></table></figure>
 
-<p><code>_config.yml</code>：网站的全局配置文件，设置包括网站标题、副标题、作者、关键字和描述信息等。</p>
-<p><code>node_modules</code>：是<code>nodejs</code>库文件目录，也就是我们通过”npm install”命令安装的文件位置</p>
-<p><code>scaffolds</code>：本意是 “脚手架” 的意思，这里引申为模板文件夹。当你 <code>hexo new &lt;layout(布局)&gt; &lt;title&gt; 的时候</code>，Hexo 会根据该文件夹下的对应文件进行初始化构建。</p>
-<p><code>source</code>：正如其名，<code>source</code> 文件夹存储一些直接来自用户的文件，它很重要，如果不出意外你的文章就是保存在这个文件夹下（<em>posts）。</em><code>posts</code> 目录下的md文件，会被编译成 html 文件，放到 public 文件夹下。</p>
-<p><code>public</code>：参考 <code>source</code> 文件夹，在初始化后是没有 <code>public</code> 文件夹的，除非 <code>hexo g</code> 编译生成静态文件后，<code>public</code> 文件夹会自动生成。使用 <code>hexo clean</code> 清除 <code>db.json</code> 和 <code>public</code> 文件夹下的所有文件。</p>
-<p><code>themes</code>：主题文件夹，存储主题。相关的主题可以在 Github 上免费采购。</p>
-<p><code>.gitignore</code>：<code>.gitignore</code> 文件作用是声明不被 git 记录的文件，<code>hexo init &lt;folder&gt;</code> 也会产生一个 <code>.gitignore</code> 文件，可以先删除或者直接编辑，对hexo不会有影响。</p>
-<p><code>db.json</code>：里面存放了一些由<code>source</code>目录下<code>.md</code> 的所有文件解析得到的数据</p>
-<p><code>package.json</code>：框架的基本参数信息和它所依赖的插件，在 npm 安装时使用 <code>--save</code> 保存进去。</p>
-<p><code>package-lock.json</code>：锁定安装时的包的版本号，并且需要上传到git，以保证其他人在npm install时大家的依赖能保证一致。</p>
+
+
+<h2 id="本地搜索"><a href="#本地搜索" class="headerlink" title="本地搜索"></a>本地搜索</h2><p>你需要安装 <code>hexo-generator-searchdb</code> 或者 <code>hexo-generator-search</code>，根据它的文档去做相应配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Local search</span><br><span class="line">local_search:</span><br><span class="line">  enable: false</span><br><span class="line">  # Preload the search data when the page loads. 预加载，开启后，进入网页后会自动加载搜索文件。关闭时，只有点击搜索按钮后，才会加载搜索文件</span><br><span class="line">  preload: false</span><br><span class="line">  # Show top n results per article, show all results by setting to -1 匹配的文章结果，默认显示最开始的 1段结果</span><br><span class="line">  top_n_per_article: 1</span><br><span class="line">  # Unescape html strings to the readable one.将 html 字符串解码为可读字符串</span><br><span class="line">  unescape: false</span><br><span class="line">  CDN: #搜索文件的 CDN 地址（默认使用的本地链接）</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h1><p>从3.0.0开始，开启评论需要在comments-use中填写你需要的评论。</p>
+<p>支持双评论显示，只需要配置两个评论（第一个为默认显示）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">comments:</span><br><span class="line">  # Up to two comments system, the first will be shown as default</span><br><span class="line">  # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo</span><br><span class="line">  use: Valine,Disqus #	使用的评论（请注意，最多支持两个，如果不需要请留空）</span><br><span class="line">  text: true # Display the comment name next to the button 	是否显示评论服务商的名字</span><br><span class="line">  # lazyload: The comment system will be load when comment element enters the browser&#x27;s viewport.是否为评论开启lazyload，开启后，只有滚动到评论位置时才会加载评论所需要的资源（开启 lazyload 后，评论数将不显示）</span><br><span class="line">  # If you set it to true, the comment count will be invalid</span><br><span class="line">  lazyload: true</span><br><span class="line">  count: true # Display comment count in top_img 	是否在文章顶部显示评论数</span><br><span class="line">  card_post_count: false # Display comment count in Home Page 是否在首页文章卡片显示评论数</span><br></pre></td></tr></table></figure>
+
+<p>我这里刚开始配置的是Valine，后来因为加评论功能备案不好过就给删了。</p>
+<p>遵循 Valine的指示去配置你的 LeanCloud 应用。以及查看相应的配置説明。</p>
+<blockquote>
+<p>开启 visitor 后，文章页的访问人数将改为 Valine 提供，而不是 不蒜子</p>
+</blockquote>
+<p>Valine于 v1.4.5 开始支持自定义表情，如果你需要自行配置，请在<code>emojiCDN</code>配置表情 CDN。</p>
+<p>同时在<code>Hexo</code> 工作目录下的<code>source/_data/</code>创建一个<code>json</code>文件<code>valine.json</code>,等同于 <code>Valine</code> 需要配置的<code>emojiMaps</code></p>
+<h1 id="美化-特效"><a href="#美化-特效" class="headerlink" title="美化&#x2F;特效"></a>美化&#x2F;特效</h1><h2 id="自定义主题色"><a href="#自定义主题色" class="headerlink" title="自定义主题色"></a>自定义主题色</h2><p>可以修改大部分UI颜色</p>
+<blockquote>
+<p>颜色值必须被双引号包裹，就像”#000”而不是#000。否则将会在构建的时候报错！</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">theme_color:</span><br><span class="line">  enable: true</span><br><span class="line">  main: &quot;#49B1F5&quot;</span><br><span class="line">  paginator: &quot;#00c4b6&quot;</span><br><span class="line">  button_hover: &quot;#FF7242&quot;</span><br><span class="line">  text_selection: &quot;#00c4b6&quot;</span><br><span class="line">  link_color: &quot;#99a9bf&quot;</span><br><span class="line">  meta_color: &quot;#858585&quot;</span><br><span class="line">  hr_color: &quot;#A4D8FA&quot;</span><br><span class="line">  code_foreground: &quot;#F47466&quot;</span><br><span class="line">  code_background: &quot;rgba(27, 31, 35, .05)&quot;</span><br><span class="line">  toc_color: &quot;#00c4b6&quot;</span><br><span class="line">  blockquote_padding_color: &quot;#49b1f5&quot;</span><br><span class="line">  blockquote_background_color: &quot;#49b1f5&quot;</span><br><span class="line">  scrollbar_color: &quot;#49b1f5&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="主页top-img显示大小"><a href="#主页top-img显示大小" class="headerlink" title="主页top_img显示大小"></a>主页top_img显示大小</h2><p>默认的显示为全屏。site-info的区域会居中显示</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 主页设置</span><br><span class="line"># 默认top_img全屏，site_info在中间</span><br><span class="line"># 使用默认, 都无需填写（建议默认）</span><br><span class="line">index_site_info_top: # 主页标题距离顶部距离  例如 300px/300em/300rem/10%</span><br><span class="line">index_top_img_height:  #主页top_img高度 例如 300px/300em/300rem  不能使用百分比</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="网站背景"><a href="#网站背景" class="headerlink" title="网站背景"></a>网站背景</h2><p>默认显示白色，可设置图片或者颜色</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 图片格式 url(http://xxxxxx.com/xxx.jpg)</span><br><span class="line"># 颜色（HEX值/RGB值/顔色单词/渐变色)</span><br><span class="line"># 留空 不显示背景</span><br><span class="line">background:</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>留意: 如果你的网站根目录不是’&#x2F;‘,使用本地图片时，需加上你的根目录。<br>例如：网站是 <a href="https://yoursite.com/blog,%E5%BC%95%E7%94%A8%E4%B8%80%E5%BC%A0img/xx.png%E5%9B%BE%E7%89%87%EF%BC%8C%E5%88%99%E8%AE%BE%E7%BD%AEbackground%E4%B8%BA">https://yoursite.com/blog,引用一张img/xx.png图片，则设置background为</a> &#96;url(&#x2F;blog&#x2F;img&#x2F;xx.png)</p>
+</blockquote>
+<h2 id="打字效果"><a href="#打字效果" class="headerlink" title="打字效果"></a>打字效果</h2><p>打字效果activate-power-mode</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Typewriter Effect (打字效果)</span><br><span class="line"># https://github.com/disjukr/activate-power-mode</span><br><span class="line">activate_power_mode:</span><br><span class="line">  enable: true</span><br><span class="line">  colorful: true # open particle animation (冒光特效)</span><br><span class="line">  shake: true #  open shake (抖动特效)</span><br><span class="line">  mobile: false</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="背景特效"><a href="#背景特效" class="headerlink" title="背景特效"></a>背景特效</h2><h3 id="静止彩带"><a href="#静止彩带" class="headerlink" title="静止彩带"></a>静止彩带</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">canvas_ribbon:</span><br><span class="line">  enable: false</span><br><span class="line">  size: 150</span><br><span class="line">  alpha: 0.6</span><br><span class="line">  zIndex: -1</span><br><span class="line">  click_to_change: false  #设置是否每次点击都更换綵带</span><br><span class="line">  mobile: false # false 手机端不显示 true 手机端显示</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="动态彩带"><a href="#动态彩带" class="headerlink" title="动态彩带"></a>动态彩带</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">canvas_fluttering_ribbon:</span><br><span class="line">  enable: true</span><br><span class="line">  mobile: false # false 手机端不显示 true 手机端显示</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="光点"><a href="#光点" class="headerlink" title="光点"></a>光点</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">canvas_nest:</span><br><span class="line">  enable: true</span><br><span class="line">  color: &#x27;0,0,255&#x27; #color of lines, default: &#x27;0,0,0&#x27;; RGB values: (R,G,B).(note: use &#x27;,&#x27; to separate.)</span><br><span class="line">  opacity: 0.7 # the opacity of line (0~1), default: 0.5.</span><br><span class="line">  zIndex: -1 # z-index property of the background, default: -1.</span><br><span class="line">  count: 99 # the number of lines, default: 99.</span><br><span class="line">  mobile: false # false 手机端不显示 true 手机端显示</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="鼠标点击效果"><a href="#鼠标点击效果" class="headerlink" title="鼠标点击效果"></a>鼠标点击效果</h2><h3 id="烟花"><a href="#烟花" class="headerlink" title="烟花"></a>烟花</h3><p><code>zIndex</code>建议只在-1和9999上选<br><code>-1</code> 代表烟火效果在底部<br><code>9999</code> 代表烟火效果在前面</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fireworks:</span><br><span class="line">  enable: true</span><br><span class="line">  zIndex: 9999 # -1 or 9999</span><br><span class="line">  mobile: false</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="字数统计"><a href="#字数统计" class="headerlink" title="字数统计"></a>字数统计</h2><p>要为Butterfly配上字数统计特性, 你需要如下几个步骤:</p>
+<p>打开 hexo 工作目录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-wordcount --save or yarn add hexo-wordcount</span><br></pre></td></tr></table></figure>
+
+<p>修改 主题配置文件:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wordcount:</span><br><span class="line">  enable: true</span><br><span class="line">  post_wordcount: true</span><br><span class="line">  min2read: true</span><br><span class="line">  total_wordcount: true</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Live2D教程-看板娘"><a href="#Live2D教程-看板娘" class="headerlink" title="Live2D教程-看板娘"></a>Live2D教程-看板娘</h1><p>参考：<a href="https://www.fomal.cc/posts/eec9786.html#%E4%BE%A7%E8%BE%B9%E6%A0%8F%E7%94%B5%E5%AD%90%E6%97%B6%E9%92%9F-%E5%AE%89%E7%9F%A5%E9%B1%BC">博客魔改教程总结(一) | Fomalhaut🥝</a></p>
+<p>目前只推荐这个(因为消耗资源较少)，这是博客自带的看板娘，这孩子不会说话也不能换装，只会跟着你的鼠标晃动脑袋，不过有几款超可爱。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>在Hexo根目录<code>[BlogRoot]</code>下打开终端，输入以下指令安装必要插件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开站点配置文件<code>[BlogRoot]\config.yml</code><br>搜索live2d,按照如下注释内容指示进行操作。<br>如果没有搜到live2d的配置项，就直接把以下内容复制到最底部。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Live2D</span><br><span class="line">## https://github.com/EYHN/hexo-helper-live2d</span><br><span class="line">live2d:</span><br><span class="line">  enable: true #开关插件版看板娘</span><br><span class="line">  scriptFrom: local # 默认</span><br><span class="line">  pluginRootPath: live2dw/ # 插件在站点上的根目录(相对路径)</span><br><span class="line">  pluginJsPath: lib/ # 脚本文件相对与插件根目录路径</span><br><span class="line">  pluginModelPath: assets/ # 模型文件相对与插件根目录路径</span><br><span class="line">  # scriptFrom: jsdelivr # jsdelivr CDN</span><br><span class="line">  # scriptFrom: unpkg # unpkg CDN</span><br><span class="line">  # scriptFrom: https://npm.elemecdn.com/live2d-widget@3.x/lib/L2Dwidget.min.js # 你的自定义 url</span><br><span class="line">  tagMode: false # 标签模式, 是否仅替换 live2d tag标签而非插入到所有页面中</span><br><span class="line">  debug: false # 调试, 是否在控制台输出日志</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-wanko # npm-module package name</span><br><span class="line">    # use: wanko # 博客根目录/live2d_models/ 下的目录名</span><br><span class="line">    # use: ./wives/wanko # 相对于博客根目录的路径</span><br><span class="line">    # use: https://npm.elemecdn.com/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json # 你的自定义 url</span><br><span class="line">  display:</span><br><span class="line">    position: right #控制看板娘位置</span><br><span class="line">    width: 150 #控制看板娘大小</span><br><span class="line">    height: 300 #控制看板娘大小</span><br><span class="line">  mobile:</span><br><span class="line">    show: true # 手机中是否展示</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>完成后保存修改，在Hexo根目录下运行指令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>之所以必须要使用<code>hexo clean</code>是因为我们需要清空缓存重新生成静态页面，不然看板娘没被加入生成的静态页面里，是不会出现的。</p>
+</li>
+</ol>
+<h2 id="更换"><a href="#更换" class="headerlink" title="更换"></a>更换</h2><ol>
+<li><p>同样是在Hexo根目录<code>[BlogRoot]</code>下，打开终端，选择想要的看板娘进行安装，例如我这里用到的是 <code>live2d-widget-model-koharu</code>，一个Q版小正太。其他的模型也可以在<a href="https://huaji8.top/post/live2d-plugin-2.0/">模型预览</a>里查看以供选择。</p>
+</li>
+<li><p>输入指令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install --save live2d-widget-model-koharu</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后在站点配置文件<code>[BlogRoot]\_config.yml</code>里找到<code>model</code>项修改为期望的模型</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">model:</span><br><span class="line">  use: live2d-widget-model-koharu</span><br><span class="line">  # 默认为live2d-widget-model-wanko</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>之后按部就班的运行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>就能在<code>localhost:4000</code>上查看效果了。</p>
+</li>
+</ol>
+<h2 id="卸载看板娘"><a href="#卸载看板娘" class="headerlink" title="卸载看板娘"></a>卸载看板娘</h2><p>卸载插件和卸载模型的指令都是通过npm进行操作的。在博客根目录<code>[BlogRoot]</code>打开终端，输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-helper-live2d <span class="comment">#卸载看板娘插件</span></span><br><span class="line">npm uninstall live2d-widget-model-modelname <span class="comment">#卸载看板娘模型。记得替换modelname为看板娘名称</span></span><br></pre></td></tr></table></figure>
+
+<p>卸载后为了保证配置项不出错，记得把<code>[BlogRoot]\_config.yml</code>里的配置项给注释或者删除掉。</p>
+<h1 id="一图流教程"><a href="#一图流教程" class="headerlink" title="一图流教程"></a>一图流教程</h1><ol>
+<li><p>在<code>[BlogRoot]\source</code>文件夹下新建一个文件夹<code>css</code>，该文件夹用于存放自定义的<code>css样式</code>，再新建一个名为<code>custom.css</code>，在里面写入以下代码：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 页脚与头图透明 */</span></span><br><span class="line"><span class="selector-id">#footer</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: transparent <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#page-header</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: transparent <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 白天模式遮罩透明 */</span></span><br><span class="line"><span class="selector-id">#footer</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: transparent <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#page-header</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: transparent <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 夜间模式遮罩透明 */</span></span><br><span class="line"><span class="selector-attr">[data-theme=<span class="string">&quot;dark&quot;</span>]</span> <span class="selector-id">#footer</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: transparent <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-attr">[data-theme=<span class="string">&quot;dark&quot;</span>]</span> <span class="selector-id">#page-header</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: transparent <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在主题配置文件<code>[BlogRoot]\_config.butterfly.yml</code>文件中的<code>inject</code>配置项的<code>head</code>子项加入以下代码，代表引入刚刚创建的<code>custom.css</code>文件（这是相对路径的写法）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">inject:</span><br><span class="line">  head:</span><br><span class="line">    - &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/custom.css&quot; media=&quot;defer&quot; onload=&quot;this.media=&#x27;all&#x27;&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在主题配置文件<code>[BlogRoot]\_config.butterfly.yml</code>文件中的<code>index_img</code>和<code>footer_bg</code>配置项取消头图与页脚图的加载项避免冗余加载</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># The banner image of home page</span></span><br><span class="line"><span class="attr">index_img:</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># Footer Background</span></span><br><span class="line"><span class="attr">footer_bg:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部分人反映一图流改完了背景图也没了，那大概率是你之前没设置背景图。在主题配置文件<code>[BlogRoot]\_config.butterfly.yml</code>文件中的<code>background</code>配置项设置背景图</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">background:</span> <span class="string">url(https://source.fomal.cc/img/home_bg.webp)</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="黑夜霓虹灯1-0（js计时器实现）"><a href="#黑夜霓虹灯1-0（js计时器实现）" class="headerlink" title="黑夜霓虹灯1.0（js计时器实现）"></a>黑夜霓虹灯1.0（js计时器实现）</h1><p>此教程会有两处地方有霓虹灯效果：一个是大标题和个人信息的动态霓虹灯，默认周期为1200ms；另外的是菜单栏的小字有夜光效果，为你的博客增添几分赛博朋克风~</p>
+<ol>
+<li><p>首先在自定义的样式文件<code>[BlogRoot]\source\css\custom.css</code>中引入以下代码，变量部分<code>var(--theme-color)</code>可以换为自己喜欢的颜色，例如紫色<code>rgb(179, 71, 241)</code>，后面的颜色连续渐变效果根据个人喜好选择，有的人喜欢连续的，有的人喜欢断续的</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 夜间模式菜单栏发光字 */</span></span><br><span class="line"><span class="selector-attr">[data-theme=<span class="string">&quot;dark&quot;</span>]</span> <span class="selector-id">#nav</span> <span class="selector-class">.site-page</span>,</span><br><span class="line"><span class="selector-attr">[data-theme=<span class="string">&quot;dark&quot;</span>]</span> <span class="selector-id">#nav</span> <span class="selector-class">.menus_items</span> <span class="selector-class">.menus_item</span> <span class="selector-class">.menus_item_child</span> <span class="selector-tag">li</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">2px</span> <span class="built_in">var</span>(--theme-color) <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 手机端适配 */</span></span><br><span class="line"><span class="selector-attr">[data-theme=<span class="string">&quot;dark&quot;</span>]</span> <span class="selector-id">#sidebar</span> <span class="selector-id">#sidebar-menus</span> <span class="selector-class">.menus_items</span> <span class="selector-class">.site-page</span> &#123;</span><br><span class="line">  <span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">2px</span> <span class="built_in">var</span>(--theme-color) <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 闪烁变动颜色连续渐变 */</span></span><br><span class="line"><span class="selector-id">#site-name</span>,</span><br><span class="line"><span class="selector-id">#site-title</span>,</span><br><span class="line"><span class="selector-id">#site-subtitle</span>,</span><br><span class="line"><span class="selector-id">#post-info</span>,</span><br><span class="line"><span class="selector-class">.author-info__name</span>,</span><br><span class="line"><span class="selector-class">.author-info__description</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: text-shadow <span class="number">1s</span> linear <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建文件<code>[BlogRoot]\source\js\light.js</code>并写入以下代码，本质就是计时器，大家可以根据自己的喜好调节闪烁周期，默认为<code>1200ms</code>：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 霓虹灯效果</span></span><br><span class="line"><span class="comment">// 颜色数组</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">&quot;#39c5bb&quot;</span>, <span class="string">&quot;#f14747&quot;</span>, <span class="string">&quot;#f1a247&quot;</span>, <span class="string">&quot;#f1ee47&quot;</span>, <span class="string">&quot;#b347f1&quot;</span>, <span class="string">&quot;#1edbff&quot;</span>, <span class="string">&quot;#ed709b&quot;</span>, <span class="string">&quot;#5636ed&quot;</span>];</span><br><span class="line"><span class="comment">// 颜色索引</span></span><br><span class="line"><span class="keyword">var</span> idx = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 切换颜色</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">changeColor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 仅夜间模式才启用</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;html&#x27;</span>)[<span class="number">0</span>].<span class="title function_">getAttribute</span>(<span class="string">&#x27;data-theme&#x27;</span>) == <span class="string">&#x27;dark&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-name&quot;</span>))</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-name&quot;</span>).<span class="property">style</span>.<span class="property">textShadow</span> = arr[idx] + <span class="string">&quot; 0 0 15px&quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-title&quot;</span>))</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-title&quot;</span>).<span class="property">style</span>.<span class="property">textShadow</span> = arr[idx] + <span class="string">&quot; 0 0 15px&quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-subtitle&quot;</span>))</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-subtitle&quot;</span>).<span class="property">style</span>.<span class="property">textShadow</span> = arr[idx] + <span class="string">&quot; 0 0 10px&quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;post-info&quot;</span>))</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;post-info&quot;</span>).<span class="property">style</span>.<span class="property">textShadow</span> = arr[idx] + <span class="string">&quot; 0 0 5px&quot;</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;author-info__name&quot;</span>)[<span class="number">0</span>].<span class="property">style</span>.<span class="property">textShadow</span> = arr[idx] + <span class="string">&quot; 0 0 12px&quot;</span>;</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;author-info__description&quot;</span>)[<span class="number">0</span>].<span class="property">style</span>.<span class="property">textShadow</span> = arr[idx] + <span class="string">&quot; 0 0 12px&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        idx++;</span><br><span class="line">        <span class="keyword">if</span> (idx == <span class="number">8</span>) &#123;</span><br><span class="line">            idx = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 白天模式恢复默认</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-name&quot;</span>))</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-name&quot;</span>).<span class="property">style</span>.<span class="property">textShadow</span> = <span class="string">&quot;#1e1e1ee0 1px 1px 1px&quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-title&quot;</span>))</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-title&quot;</span>).<span class="property">style</span>.<span class="property">textShadow</span> = <span class="string">&quot;#1e1e1ee0 1px 1px 1px&quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-subtitle&quot;</span>))</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-subtitle&quot;</span>).<span class="property">style</span>.<span class="property">textShadow</span> = <span class="string">&quot;#1e1e1ee0 1px 1px 1px&quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;post-info&quot;</span>))</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;post-info&quot;</span>).<span class="property">style</span>.<span class="property">textShadow</span> = <span class="string">&quot;#1e1e1ee0 1px 1px 1px&quot;</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;author-info__name&quot;</span>)[<span class="number">0</span>].<span class="property">style</span>.<span class="property">textShadow</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;author-info__description&quot;</span>)[<span class="number">0</span>].<span class="property">style</span>.<span class="property">textShadow</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 开启计时器</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="built_in">setInterval</span>(changeColor, <span class="number">1200</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在主题配置文件<code>_config.butterfly.yml</code>引入以上两个文件，要注意的是，js文件这里必须为<code>defer</code>，不能为<code>ansyc</code>，保证脚本会延迟到整个页面都解析完后再执行，此时才有对应的元素进行操作：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">head:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&lt;link</span> <span class="string">rel=&quot;stylesheet&quot;</span> <span class="string">href=&quot;/css/custom.css&quot;</span> <span class="string">media=&quot;defer&quot;</span> <span class="string">onload=&quot;this.media=&#x27;all&#x27;&quot;&gt;</span></span><br><span class="line">  <span class="attr">bottom:</span> </span><br><span class="line">    <span class="bullet">-</span> <span class="string">&lt;script</span> <span class="string">defer</span> <span class="string">src=&quot;/js/light.js&quot;&gt;&lt;/script&gt;</span> <span class="comment"># 霓虹灯(必须defer否则有时候会不生效)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启项目即可看到效果</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo cl; hexo s</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="星空背景和流星特效"><a href="#星空背景和流星特效" class="headerlink" title="星空背景和流星特效"></a>星空背景和流星特效</h1><ol>
+<li><p>在<code>[BlogRoot]/source/js</code>目录下新建<code>universe.js</code>，输入以下代码：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">dark</span>(<span class="params"></span>) &#123;<span class="variable language_">window</span>.<span class="property">requestAnimationFrame</span>=<span class="variable language_">window</span>.<span class="property">requestAnimationFrame</span>||<span class="variable language_">window</span>.<span class="property">mozRequestAnimationFrame</span>||<span class="variable language_">window</span>.<span class="property">webkitRequestAnimationFrame</span>||<span class="variable language_">window</span>.<span class="property">msRequestAnimationFrame</span>;<span class="keyword">var</span> n,e,i,h,t=<span class="number">.05</span>,s=<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;universe&quot;</span>),o=!<span class="number">0</span>,a=<span class="string">&quot;180,184,240&quot;</span>,r=<span class="string">&quot;226,225,142&quot;</span>,d=<span class="string">&quot;226,225,224&quot;</span>,c=[];<span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>)&#123;n=<span class="variable language_">window</span>.<span class="property">innerWidth</span>,e=<span class="variable language_">window</span>.<span class="property">innerHeight</span>,i=<span class="number">.216</span>*n,s.<span class="title function_">setAttribute</span>(<span class="string">&quot;width&quot;</span>,n),s.<span class="title function_">setAttribute</span>(<span class="string">&quot;height&quot;</span>,e)&#125;<span class="keyword">function</span> <span class="title function_">u</span>(<span class="params"></span>)&#123;h.<span class="title function_">clearRect</span>(<span class="number">0</span>,<span class="number">0</span>,n,e);<span class="keyword">for</span>(<span class="keyword">var</span> t=c.<span class="property">length</span>,i=<span class="number">0</span>;i&lt;t;i++)&#123;<span class="keyword">var</span> s=c[i];s.<span class="title function_">move</span>(),s.<span class="title function_">fadeIn</span>(),s.<span class="title function_">fadeOut</span>(),s.<span class="title function_">draw</span>()&#125;&#125;<span class="keyword">function</span> <span class="title function_">y</span>(<span class="params"></span>)&#123;<span class="variable language_">this</span>.<span class="property">reset</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;<span class="variable language_">this</span>.<span class="property">giant</span>=<span class="title function_">m</span>(<span class="number">3</span>),<span class="variable language_">this</span>.<span class="property">comet</span>=!<span class="variable language_">this</span>.<span class="property">giant</span>&amp;&amp;!o&amp;&amp;<span class="title function_">m</span>(<span class="number">10</span>),<span class="variable language_">this</span>.<span class="property">x</span>=<span class="title function_">l</span>(<span class="number">0</span>,n-<span class="number">10</span>),<span class="variable language_">this</span>.<span class="property">y</span>=<span class="title function_">l</span>(<span class="number">0</span>,e),<span class="variable language_">this</span>.<span class="property">r</span>=<span class="title function_">l</span>(<span class="number">1.1</span>,<span class="number">2.6</span>),<span class="variable language_">this</span>.<span class="property">dx</span>=<span class="title function_">l</span>(t,<span class="number">6</span>*t)+(<span class="variable language_">this</span>.<span class="property">comet</span>+<span class="number">1</span>-<span class="number">1</span>)*t*<span class="title function_">l</span>(<span class="number">50</span>,<span class="number">120</span>)+<span class="number">2</span>*t,<span class="variable language_">this</span>.<span class="property">dy</span>=-<span class="title function_">l</span>(t,<span class="number">6</span>*t)-(<span class="variable language_">this</span>.<span class="property">comet</span>+<span class="number">1</span>-<span class="number">1</span>)*t*<span class="title function_">l</span>(<span class="number">50</span>,<span class="number">120</span>),<span class="variable language_">this</span>.<span class="property">fadingOut</span>=<span class="literal">null</span>,<span class="variable language_">this</span>.<span class="property">fadingIn</span>=!<span class="number">0</span>,<span class="variable language_">this</span>.<span class="property">opacity</span>=<span class="number">0</span>,<span class="variable language_">this</span>.<span class="property">opacityTresh</span>=<span class="title function_">l</span>(<span class="number">.2</span>,<span class="number">1</span>-<span class="number">.4</span>*(<span class="variable language_">this</span>.<span class="property">comet</span>+<span class="number">1</span>-<span class="number">1</span>)),<span class="variable language_">this</span>.<span class="property">do</span>=<span class="title function_">l</span>(<span class="number">5e-4</span>,<span class="number">.002</span>)+<span class="number">.001</span>*(<span class="variable language_">this</span>.<span class="property">comet</span>+<span class="number">1</span>-<span class="number">1</span>)&#125;,<span class="variable language_">this</span>.<span class="property">fadeIn</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;<span class="variable language_">this</span>.<span class="property">fadingIn</span>&amp;&amp;(<span class="variable language_">this</span>.<span class="property">fadingIn</span>=!(<span class="variable language_">this</span>.<span class="property">opacity</span>&gt;<span class="variable language_">this</span>.<span class="property">opacityTresh</span>),<span class="variable language_">this</span>.<span class="property">opacity</span>+=<span class="variable language_">this</span>.<span class="property">do</span>)&#125;,<span class="variable language_">this</span>.<span class="property">fadeOut</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;<span class="variable language_">this</span>.<span class="property">fadingOut</span>&amp;&amp;(<span class="variable language_">this</span>.<span class="property">fadingOut</span>=!(<span class="variable language_">this</span>.<span class="property">opacity</span>&lt;<span class="number">0</span>),<span class="variable language_">this</span>.<span class="property">opacity</span>-=<span class="variable language_">this</span>.<span class="property">do</span>/<span class="number">2</span>,(<span class="variable language_">this</span>.<span class="property">x</span>&gt;n||<span class="variable language_">this</span>.<span class="property">y</span>&lt;<span class="number">0</span>)&amp;&amp;(<span class="variable language_">this</span>.<span class="property">fadingOut</span>=!<span class="number">1</span>,<span class="variable language_">this</span>.<span class="title function_">reset</span>()))&#125;,<span class="variable language_">this</span>.<span class="property">draw</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;<span class="keyword">if</span>(h.<span class="title function_">beginPath</span>(),<span class="variable language_">this</span>.<span class="property">giant</span>)h.<span class="property">fillStyle</span>=<span class="string">&quot;rgba(&quot;</span>+a+<span class="string">&quot;,&quot;</span>+<span class="variable language_">this</span>.<span class="property">opacity</span>+<span class="string">&quot;)&quot;</span>,h.<span class="title function_">arc</span>(<span class="variable language_">this</span>.<span class="property">x</span>,<span class="variable language_">this</span>.<span class="property">y</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>*<span class="title class_">Math</span>.<span class="property">PI</span>,!<span class="number">1</span>);<span class="keyword">else</span> <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">comet</span>)&#123;h.<span class="property">fillStyle</span>=<span class="string">&quot;rgba(&quot;</span>+d+<span class="string">&quot;,&quot;</span>+<span class="variable language_">this</span>.<span class="property">opacity</span>+<span class="string">&quot;)&quot;</span>,h.<span class="title function_">arc</span>(<span class="variable language_">this</span>.<span class="property">x</span>,<span class="variable language_">this</span>.<span class="property">y</span>,<span class="number">1.5</span>,<span class="number">0</span>,<span class="number">2</span>*<span class="title class_">Math</span>.<span class="property">PI</span>,!<span class="number">1</span>);<span class="keyword">for</span>(<span class="keyword">var</span> t=<span class="number">0</span>;t&lt;<span class="number">30</span>;t++)h.<span class="property">fillStyle</span>=<span class="string">&quot;rgba(&quot;</span>+d+<span class="string">&quot;,&quot;</span>+(<span class="variable language_">this</span>.<span class="property">opacity</span>-<span class="variable language_">this</span>.<span class="property">opacity</span>/<span class="number">20</span>*t)+<span class="string">&quot;)&quot;</span>,h.<span class="title function_">rect</span>(<span class="variable language_">this</span>.<span class="property">x</span>-<span class="variable language_">this</span>.<span class="property">dx</span>/<span class="number">4</span>*t,<span class="variable language_">this</span>.<span class="property">y</span>-<span class="variable language_">this</span>.<span class="property">dy</span>/<span class="number">4</span>*t-<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>),h.<span class="title function_">fill</span>()&#125;<span class="keyword">else</span> h.<span class="property">fillStyle</span>=<span class="string">&quot;rgba(&quot;</span>+r+<span class="string">&quot;,&quot;</span>+<span class="variable language_">this</span>.<span class="property">opacity</span>+<span class="string">&quot;)&quot;</span>,h.<span class="title function_">rect</span>(<span class="variable language_">this</span>.<span class="property">x</span>,<span class="variable language_">this</span>.<span class="property">y</span>,<span class="variable language_">this</span>.<span class="property">r</span>,<span class="variable language_">this</span>.<span class="property">r</span>);h.<span class="title function_">closePath</span>(),h.<span class="title function_">fill</span>()&#125;,<span class="variable language_">this</span>.<span class="property">move</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;<span class="variable language_">this</span>.<span class="property">x</span>+=<span class="variable language_">this</span>.<span class="property">dx</span>,<span class="variable language_">this</span>.<span class="property">y</span>+=<span class="variable language_">this</span>.<span class="property">dy</span>,!<span class="number">1</span>===<span class="variable language_">this</span>.<span class="property">fadingOut</span>&amp;&amp;<span class="variable language_">this</span>.<span class="title function_">reset</span>(),(<span class="variable language_">this</span>.<span class="property">x</span>&gt;n-n/<span class="number">4</span>||<span class="variable language_">this</span>.<span class="property">y</span>&lt;<span class="number">0</span>)&amp;&amp;(<span class="variable language_">this</span>.<span class="property">fadingOut</span>=!<span class="number">0</span>)&#125;,<span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;o=!<span class="number">1</span>&#125;,<span class="number">50</span>)&#125;<span class="keyword">function</span> <span class="title function_">m</span>(<span class="params">t</span>)&#123;<span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="number">1e3</span>*<span class="title class_">Math</span>.<span class="title function_">random</span>())+<span class="number">1</span>&lt;<span class="number">10</span>*t&#125;<span class="keyword">function</span> <span class="title function_">l</span>(<span class="params">t,i</span>)&#123;<span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">random</span>()*(i-t)+t&#125;<span class="title function_">f</span>(),<span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;resize&quot;</span>,f,!<span class="number">1</span>),<span class="keyword">function</span>(<span class="params"></span>)&#123;h=s.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);<span class="keyword">for</span>(<span class="keyword">var</span> t=<span class="number">0</span>;t&lt;i;t++)c[t]=<span class="keyword">new</span> y,c[t].<span class="title function_">reset</span>();<span class="title function_">u</span>()&#125;(),<span class="keyword">function</span> <span class="title function_">t</span>(<span class="params"></span>)&#123;<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;html&#x27;</span>)[<span class="number">0</span>].<span class="title function_">getAttribute</span>(<span class="string">&#x27;data-theme&#x27;</span>)==<span class="string">&#x27;dark&#x27;</span>&amp;&amp;<span class="title function_">u</span>(),<span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(t)&#125;()&#125;;</span><br><span class="line"><span class="title function_">dark</span>()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>[BlogRoot]/source/css</code>目录下新建<code>universe.css</code>，输入以下代码：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 背景宇宙星光  */</span></span><br><span class="line"><span class="selector-id">#universe</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">position</span>: fixed;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">outline</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">pointer-events</span>: none;</span><br><span class="line">  <span class="comment">/* 这个是调置顶的优先级的，-1在文章页下面，背景上面，个人推荐这种 */</span></span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在主题配置文件<code>_config.butterfly.yml</code>的<code>inject</code>配置项中<code>bottom</code>下填入：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">bottom:</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">&lt;canvas</span> <span class="string">id=&quot;universe&quot;&gt;&lt;/canvas&gt;</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">&lt;script</span> <span class="string">defer</span> <span class="string">src=&quot;/js/universe.js&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在主题配置文件<code>_config.butterfly.yml</code>的<code>inject</code>配置项中<code>head</code>下填入：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">head:</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">&lt;link</span> <span class="string">rel=&quot;stylesheet&quot;</span> <span class="string">href=&quot;/css/universe.css&quot;&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新编译即可看到效果。</p>
+</li>
+</ol>
+<h1 id="侧边栏电子时钟-安知鱼"><a href="#侧边栏电子时钟-安知鱼" class="headerlink" title="侧边栏电子时钟(安知鱼)"></a>侧边栏电子时钟(安知鱼)</h1><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><ol>
+<li><p>如果有安装店长的插件版侧边栏电子钟（与店长的电子钟冲突），在博客根目录<code>[BlogRoot]</code>下打开终端，运行以下指令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 卸载原版电子钟</span></span><br><span class="line">npm uninstall hexo-butterfly-clock</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装插件,在博客根目录<code>[BlogRoot]</code>下打开终端，运行以下指令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-butterfly-clock-anzhiyu --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加配置信息，以下为写法示例<br>在主题配置文件<code>_config.butterfly.yml</code>（注意一定要主题配置文件）中添加：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># electric_clock (安知鱼电子钟)</span></span><br><span class="line"><span class="comment"># see https://anzhiy.cn/posts/fc18.html</span></span><br><span class="line"><span class="attr">electric_clock:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment"># 开关</span></span><br><span class="line">  <span class="attr">priority:</span> <span class="number">5</span> <span class="comment">#过滤器优先权</span></span><br><span class="line">  <span class="attr">enable_page:</span> <span class="string">/</span> <span class="comment"># 应用页面</span></span><br><span class="line">  <span class="attr">exclude:</span></span><br><span class="line">    <span class="comment"># - /posts/</span></span><br><span class="line">    <span class="comment"># - /about/</span></span><br><span class="line">  <span class="attr">layout:</span> <span class="comment"># 挂载容器类型</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">class</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">sticky_layout</span></span><br><span class="line">    <span class="attr">index:</span> <span class="number">0</span></span><br><span class="line">  <span class="attr">loading:</span> <span class="string">https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif</span> <span class="comment">#加载动画自定义</span></span><br><span class="line">  <span class="attr">clock_css:</span> <span class="string">https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css</span></span><br><span class="line">  <span class="attr">clock_js:</span> <span class="string">https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js</span></span><br><span class="line">  <span class="attr">ip_api:</span> <span class="string">https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0</span></span><br><span class="line">  <span class="attr">qweather_key:</span>  <span class="comment"># 和风天气key</span></span><br><span class="line">  <span class="attr">gaud_map_key:</span>  <span class="comment"># 高得地图web服务key</span></span><br><span class="line">  <span class="attr">default_rectangle:</span> <span class="literal">false</span> <span class="comment"># 开启后将一直显示rectangle位置的天气，否则将获取访问者的地理位置与天气</span></span><br><span class="line">  <span class="attr">rectangle:</span> <span class="number">113.34532</span><span class="string">,23.15624</span> <span class="comment"># 获取访问者位置失败时会显示该位置的天气，同时该位置为开启default_rectangle后的位置</span></span><br></pre></td></tr></table></figure>
+
+<p>其中qweather_key 和gaud_map_key 最好自己去申请对应的 api key，默认使用<code>鱼</code>的，可能会被限制，不保证可靠性。</p>
+</li>
+<li><p>参数释义</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>备选值&#x2F;类型</th>
+<th>释义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>priority</td>
+<td>number</td>
+<td>【可选】过滤器优先级，数值越小，执行越早，默认为 10，选填</td>
+</tr>
+<tr>
+<td>enable</td>
+<td>true&#x2F;false</td>
+<td>【必选】控制开关</td>
+</tr>
+<tr>
+<td>enable_page</td>
+<td>path&#x2F;all</td>
+<td>【可选】填写想要应用的页面的相对路径（即路由地址）,如根目录就填’&#x2F;‘,分类页面就填’&#x2F;categories&#x2F;‘。若要应用于所有页面，就填’all’，默认为 all</td>
+</tr>
+<tr>
+<td>exclude</td>
+<td>path</td>
+<td>【可选】填写想要屏蔽的页面，可以多个。写法见示例。原理是将屏蔽项的内容逐个放到当前路径去匹配，若当前路径包含任一屏蔽项，则不会挂载。</td>
+</tr>
+<tr>
+<td>layout.type</td>
+<td>id&#x2F;class</td>
+<td>【可选】挂载容器类型，填写 id 或 class，不填则默认为 id</td>
+</tr>
+<tr>
+<td><a href="http://layout.name/">layout.name</a></td>
+<td>text</td>
+<td>【必选】挂载容器名称</td>
+</tr>
+<tr>
+<td>layout.index</td>
+<td>0和正整数</td>
+<td>【可选】前提是 layout.type 为 class，因为同一页面可能有多个 class，此项用来确认究竟排在第几个顺位</td>
+</tr>
+<tr>
+<td>loading</td>
+<td>URL</td>
+<td>【可选】电子钟加载动画的图片</td>
+</tr>
+<tr>
+<td>clock_css</td>
+<td>URL</td>
+<td>【可选】电子钟样式 CDN 资源</td>
+</tr>
+<tr>
+<td>clock_js</td>
+<td>URL</td>
+<td>【可选】电子钟执行脚本 CDN 资源</td>
+</tr>
+<tr>
+<td>ip_api</td>
+<td>URL</td>
+<td>【可选】获取时钟 IP 的 API</td>
+</tr>
+<tr>
+<td>qweather_key</td>
+<td>text</td>
+<td>【可选】和风天气 key</td>
+</tr>
+<tr>
+<td>gaud_map_key</td>
+<td>text</td>
+<td>【可选】高得地图 web 服务 key</td>
+</tr>
+<tr>
+<td>default_rectangle</td>
+<td>text</td>
+<td>【可选】开启后将一直显示 rectangle 位置的天气，否则将获取访问者的地理位置与天气</td>
+</tr>
+<tr>
+<td>rectangle</td>
+<td>text</td>
+<td>【可选】获取访问者位置失败时会显示该位置的天气，同时该位置为开启 default_rectangle 后的位置</td>
+</tr>
+</tbody></table>
+<h1 id="个人卡片渐变色"><a href="#个人卡片渐变色" class="headerlink" title="个人卡片渐变色"></a>个人卡片渐变色</h1><p>在<code>[BlogRoot]\source\css\custom.css</code>自定义样式的文件中引入如下代码（最后记得在<code>inject</code>配置项引入!!!）：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 侧边栏个人信息卡片动态渐变色 */</span></span><br><span class="line"><span class="selector-id">#aside-content</span> &gt; <span class="selector-class">.card-widget</span><span class="selector-class">.card-info</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(</span><br><span class="line">    -<span class="number">45deg</span>,</span><br><span class="line">    <span class="number">#e8d8b9</span>,</span><br><span class="line">    <span class="number">#eccec5</span>,</span><br><span class="line">    <span class="number">#a3e9eb</span>,</span><br><span class="line">    <span class="number">#bdbdf0</span>,</span><br><span class="line">    <span class="number">#eec1ea</span></span><br><span class="line">  );</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgb</span>(<span class="number">66</span>, <span class="number">68</span>, <span class="number">68</span>);</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">background-size</span>: <span class="number">400%</span> <span class="number">400%</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation</span>: Gradient <span class="number">10s</span> ease infinite;</span><br><span class="line">  -moz-<span class="attribute">animation</span>: Gradient <span class="number">10s</span> ease infinite;</span><br><span class="line">  <span class="attribute">animation</span>: Gradient <span class="number">10s</span> ease infinite <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@-webkit-keyframes</span> Gradient &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">0%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">50%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">100%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">0%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@-moz-keyframes</span> Gradient &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">0%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">50%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">100%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">0%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@keyframes</span> Gradient &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">0%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">50%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">100%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">0%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 黑夜模式适配 */</span></span><br><span class="line"><span class="selector-attr">[data-theme=<span class="string">&quot;dark&quot;</span>]</span> <span class="selector-id">#aside-content</span> &gt; <span class="selector-class">.card-widget</span><span class="selector-class">.card-info</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#191919ee</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 个人信息Follow me按钮 */</span></span><br><span class="line"><span class="selector-id">#aside-content</span> &gt; <span class="selector-class">.card-widget</span><span class="selector-class">.card-info</span> &gt; <span class="selector-id">#card-info-btn</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#3eb8be</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">8px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="直达底部按钮"><a href="#直达底部按钮" class="headerlink" title="直达底部按钮"></a>直达底部按钮</h1><p>在<code>[BlogRoot]\themes\butterfly\layout\includes\rightside.pug</code>做以下修改:</p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line">button#go-up(type=&quot;button&quot; title=_p(&quot;rightside.back_to_top&quot;))</span><br><span class="line">  i.fas.fa-arrow-up</span><br><span class="line"></span><br><span class="line"><span class="addition">+button#go-down(type=&quot;button&quot; title=&quot;直达底部&quot; onclick=&quot;btf.scrollToDest(document.body.scrollHeight, 500)&quot;)</span></span><br><span class="line"><span class="addition">+  i.fas.fa-arrow-down</span></span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>博客搭建</category>
@@ -307,6 +579,7 @@
       <tags>
         <tag>hexo</tag>
         <tag>服务器</tag>
+        <tag>Butterfly主题</tag>
       </tags>
   </entry>
   <entry>
@@ -588,279 +861,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客搭建（7）——魔改主题文件（提高）</title>
-    <url>/2023/07/21/hexo/Hexo_build07/</url>
-    <content><![CDATA[<h1 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h1><h2 id="Algolia"><a href="#Algolia" class="headerlink" title="Algolia"></a>Algolia</h2><blockquote>
-<p>记得运行 <code>hexo clean</code></p>
-<p>如果你使用 <code>hexo-algoliasearch</code>，请记得配置 <code>fields</code> 参数的 <code>title, permalink 和 content</code></p>
-<p>你需要安装 <code>hexo-algolia</code>或 <code>hexo-algoliasearch</code>. 根据它们的説明文档去做相应的配置。</p>
-</blockquote>
-<p>修改 主题配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">algolia_search:</span><br><span class="line">  enable: true</span><br><span class="line">  hits:</span><br><span class="line">    per_page: 6</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="本地搜索"><a href="#本地搜索" class="headerlink" title="本地搜索"></a>本地搜索</h2><p>你需要安装 <code>hexo-generator-searchdb</code> 或者 <code>hexo-generator-search</code>，根据它的文档去做相应配置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Local search</span><br><span class="line">local_search:</span><br><span class="line">  enable: false</span><br><span class="line">  # Preload the search data when the page loads. 预加载，开启后，进入网页后会自动加载搜索文件。关闭时，只有点击搜索按钮后，才会加载搜索文件</span><br><span class="line">  preload: false</span><br><span class="line">  # Show top n results per article, show all results by setting to -1 匹配的文章结果，默认显示最开始的 1段结果</span><br><span class="line">  top_n_per_article: 1</span><br><span class="line">  # Unescape html strings to the readable one.将 html 字符串解码为可读字符串</span><br><span class="line">  unescape: false</span><br><span class="line">  CDN: #搜索文件的 CDN 地址（默认使用的本地链接）</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h1><p>从3.0.0开始，开启评论需要在comments-use中填写你需要的评论。</p>
-<p>支持双评论显示，只需要配置两个评论（第一个为默认显示）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">comments:</span><br><span class="line">  # Up to two comments system, the first will be shown as default</span><br><span class="line">  # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo</span><br><span class="line">  use: Valine,Disqus #	使用的评论（请注意，最多支持两个，如果不需要请留空）</span><br><span class="line">  text: true # Display the comment name next to the button 	是否显示评论服务商的名字</span><br><span class="line">  # lazyload: The comment system will be load when comment element enters the browser&#x27;s viewport.是否为评论开启lazyload，开启后，只有滚动到评论位置时才会加载评论所需要的资源（开启 lazyload 后，评论数将不显示）</span><br><span class="line">  # If you set it to true, the comment count will be invalid</span><br><span class="line">  lazyload: true</span><br><span class="line">  count: true # Display comment count in top_img 	是否在文章顶部显示评论数</span><br><span class="line">  card_post_count: false # Display comment count in Home Page 是否在首页文章卡片显示评论数</span><br></pre></td></tr></table></figure>
-
-<p>我这里刚开始配置的是Valine，后来因为加评论功能备案不好过就给删了。</p>
-<p>遵循 Valine的指示去配置你的 LeanCloud 应用。以及查看相应的配置説明。</p>
-<blockquote>
-<p>开启 visitor 后，文章页的访问人数将改为 Valine 提供，而不是 不蒜子</p>
-</blockquote>
-<p>Valine于 v1.4.5 开始支持自定义表情，如果你需要自行配置，请在<code>emojiCDN</code>配置表情 CDN。</p>
-<p>同时在<code>Hexo</code> 工作目录下的<code>source/_data/</code>创建一个<code>json</code>文件<code>valine.json</code>,等同于 <code>Valine</code> 需要配置的<code>emojiMaps</code></p>
-<h1 id="美化-特效"><a href="#美化-特效" class="headerlink" title="美化&#x2F;特效"></a>美化&#x2F;特效</h1><h2 id="自定义主题色"><a href="#自定义主题色" class="headerlink" title="自定义主题色"></a>自定义主题色</h2><p>可以修改大部分UI颜色</p>
-<blockquote>
-<p>颜色值必须被双引号包裹，就像”#000”而不是#000。否则将会在构建的时候报错！</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">theme_color:</span><br><span class="line">  enable: true</span><br><span class="line">  main: &quot;#49B1F5&quot;</span><br><span class="line">  paginator: &quot;#00c4b6&quot;</span><br><span class="line">  button_hover: &quot;#FF7242&quot;</span><br><span class="line">  text_selection: &quot;#00c4b6&quot;</span><br><span class="line">  link_color: &quot;#99a9bf&quot;</span><br><span class="line">  meta_color: &quot;#858585&quot;</span><br><span class="line">  hr_color: &quot;#A4D8FA&quot;</span><br><span class="line">  code_foreground: &quot;#F47466&quot;</span><br><span class="line">  code_background: &quot;rgba(27, 31, 35, .05)&quot;</span><br><span class="line">  toc_color: &quot;#00c4b6&quot;</span><br><span class="line">  blockquote_padding_color: &quot;#49b1f5&quot;</span><br><span class="line">  blockquote_background_color: &quot;#49b1f5&quot;</span><br><span class="line">  scrollbar_color: &quot;#49b1f5&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="主页top-img显示大小"><a href="#主页top-img显示大小" class="headerlink" title="主页top_img显示大小"></a>主页top_img显示大小</h2><p>默认的显示为全屏。site-info的区域会居中显示</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 主页设置</span><br><span class="line"># 默认top_img全屏，site_info在中间</span><br><span class="line"># 使用默认, 都无需填写（建议默认）</span><br><span class="line">index_site_info_top: # 主页标题距离顶部距离  例如 300px/300em/300rem/10%</span><br><span class="line">index_top_img_height:  #主页top_img高度 例如 300px/300em/300rem  不能使用百分比</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="网站背景"><a href="#网站背景" class="headerlink" title="网站背景"></a>网站背景</h2><p>默认显示白色，可设置图片或者颜色</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 图片格式 url(http://xxxxxx.com/xxx.jpg)</span><br><span class="line"># 颜色（HEX值/RGB值/顔色单词/渐变色)</span><br><span class="line"># 留空 不显示背景</span><br><span class="line">background:</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>留意: 如果你的网站根目录不是’&#x2F;‘,使用本地图片时，需加上你的根目录。<br>例如：网站是 <a href="https://yoursite.com/blog,%E5%BC%95%E7%94%A8%E4%B8%80%E5%BC%A0img/xx.png%E5%9B%BE%E7%89%87%EF%BC%8C%E5%88%99%E8%AE%BE%E7%BD%AEbackground%E4%B8%BA">https://yoursite.com/blog,引用一张img/xx.png图片，则设置background为</a> &#96;url(&#x2F;blog&#x2F;img&#x2F;xx.png)</p>
-</blockquote>
-<h2 id="打字效果"><a href="#打字效果" class="headerlink" title="打字效果"></a>打字效果</h2><p>打字效果activate-power-mode</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Typewriter Effect (打字效果)</span><br><span class="line"># https://github.com/disjukr/activate-power-mode</span><br><span class="line">activate_power_mode:</span><br><span class="line">  enable: true</span><br><span class="line">  colorful: true # open particle animation (冒光特效)</span><br><span class="line">  shake: true #  open shake (抖动特效)</span><br><span class="line">  mobile: false</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="背景特效"><a href="#背景特效" class="headerlink" title="背景特效"></a>背景特效</h2><h3 id="静止彩带"><a href="#静止彩带" class="headerlink" title="静止彩带"></a>静止彩带</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">canvas_ribbon:</span><br><span class="line">  enable: false</span><br><span class="line">  size: 150</span><br><span class="line">  alpha: 0.6</span><br><span class="line">  zIndex: -1</span><br><span class="line">  click_to_change: false  #设置是否每次点击都更换綵带</span><br><span class="line">  mobile: false # false 手机端不显示 true 手机端显示</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="动态彩带"><a href="#动态彩带" class="headerlink" title="动态彩带"></a>动态彩带</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">canvas_fluttering_ribbon:</span><br><span class="line">  enable: true</span><br><span class="line">  mobile: false # false 手机端不显示 true 手机端显示</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="光点"><a href="#光点" class="headerlink" title="光点"></a>光点</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">canvas_nest:</span><br><span class="line">  enable: true</span><br><span class="line">  color: &#x27;0,0,255&#x27; #color of lines, default: &#x27;0,0,0&#x27;; RGB values: (R,G,B).(note: use &#x27;,&#x27; to separate.)</span><br><span class="line">  opacity: 0.7 # the opacity of line (0~1), default: 0.5.</span><br><span class="line">  zIndex: -1 # z-index property of the background, default: -1.</span><br><span class="line">  count: 99 # the number of lines, default: 99.</span><br><span class="line">  mobile: false # false 手机端不显示 true 手机端显示</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="鼠标点击效果"><a href="#鼠标点击效果" class="headerlink" title="鼠标点击效果"></a>鼠标点击效果</h2><h3 id="烟花"><a href="#烟花" class="headerlink" title="烟花"></a>烟花</h3><p><code>zIndex</code>建议只在-1和9999上选<br><code>-1</code> 代表烟火效果在底部<br><code>9999</code> 代表烟火效果在前面</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fireworks:</span><br><span class="line">  enable: true</span><br><span class="line">  zIndex: 9999 # -1 or 9999</span><br><span class="line">  mobile: false</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="字数统计"><a href="#字数统计" class="headerlink" title="字数统计"></a>字数统计</h2><p>要为Butterfly配上字数统计特性, 你需要如下几个步骤:</p>
-<p>打开 hexo 工作目录</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-wordcount --save or yarn add hexo-wordcount</span><br></pre></td></tr></table></figure>
-
-<p>修改 主题配置文件:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wordcount:</span><br><span class="line">  enable: true</span><br><span class="line">  post_wordcount: true</span><br><span class="line">  min2read: true</span><br><span class="line">  total_wordcount: true</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Live2D教程-看板娘"><a href="#Live2D教程-看板娘" class="headerlink" title="Live2D教程-看板娘"></a>Live2D教程-看板娘</h1><p>参考：<a href="https://www.fomal.cc/posts/eec9786.html#%E4%BE%A7%E8%BE%B9%E6%A0%8F%E7%94%B5%E5%AD%90%E6%97%B6%E9%92%9F-%E5%AE%89%E7%9F%A5%E9%B1%BC">博客魔改教程总结(一) | Fomalhaut🥝</a></p>
-<p>目前只推荐这个(因为消耗资源较少)，这是博客自带的看板娘，这孩子不会说话也不能换装，只会跟着你的鼠标晃动脑袋，不过有几款超可爱。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
-<li><p>在Hexo根目录<code>[BlogRoot]</code>下打开终端，输入以下指令安装必要插件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打开站点配置文件<code>[BlogRoot]\config.yml</code><br>搜索live2d,按照如下注释内容指示进行操作。<br>如果没有搜到live2d的配置项，就直接把以下内容复制到最底部。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Live2D</span><br><span class="line">## https://github.com/EYHN/hexo-helper-live2d</span><br><span class="line">live2d:</span><br><span class="line">  enable: true #开关插件版看板娘</span><br><span class="line">  scriptFrom: local # 默认</span><br><span class="line">  pluginRootPath: live2dw/ # 插件在站点上的根目录(相对路径)</span><br><span class="line">  pluginJsPath: lib/ # 脚本文件相对与插件根目录路径</span><br><span class="line">  pluginModelPath: assets/ # 模型文件相对与插件根目录路径</span><br><span class="line">  # scriptFrom: jsdelivr # jsdelivr CDN</span><br><span class="line">  # scriptFrom: unpkg # unpkg CDN</span><br><span class="line">  # scriptFrom: https://npm.elemecdn.com/live2d-widget@3.x/lib/L2Dwidget.min.js # 你的自定义 url</span><br><span class="line">  tagMode: false # 标签模式, 是否仅替换 live2d tag标签而非插入到所有页面中</span><br><span class="line">  debug: false # 调试, 是否在控制台输出日志</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-wanko # npm-module package name</span><br><span class="line">    # use: wanko # 博客根目录/live2d_models/ 下的目录名</span><br><span class="line">    # use: ./wives/wanko # 相对于博客根目录的路径</span><br><span class="line">    # use: https://npm.elemecdn.com/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json # 你的自定义 url</span><br><span class="line">  display:</span><br><span class="line">    position: right #控制看板娘位置</span><br><span class="line">    width: 150 #控制看板娘大小</span><br><span class="line">    height: 300 #控制看板娘大小</span><br><span class="line">  mobile:</span><br><span class="line">    show: true # 手机中是否展示</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>完成后保存修改，在Hexo根目录下运行指令。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>之所以必须要使用<code>hexo clean</code>是因为我们需要清空缓存重新生成静态页面，不然看板娘没被加入生成的静态页面里，是不会出现的。</p>
-</li>
-</ol>
-<h2 id="更换"><a href="#更换" class="headerlink" title="更换"></a>更换</h2><ol>
-<li><p>同样是在Hexo根目录<code>[BlogRoot]</code>下，打开终端，选择想要的看板娘进行安装，例如我这里用到的是 <code>live2d-widget-model-koharu</code>，一个Q版小正太。其他的模型也可以在<a href="https://huaji8.top/post/live2d-plugin-2.0/">模型预览</a>里查看以供选择。</p>
-</li>
-<li><p>输入指令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install --save live2d-widget-model-koharu</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>然后在站点配置文件<code>[BlogRoot]\_config.yml</code>里找到<code>model</code>项修改为期望的模型</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">model:</span><br><span class="line">  use: live2d-widget-model-koharu</span><br><span class="line">  # 默认为live2d-widget-model-wanko</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>之后按部就班的运行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>就能在<code>localhost:4000</code>上查看效果了。</p>
-</li>
-</ol>
-<h2 id="卸载看板娘"><a href="#卸载看板娘" class="headerlink" title="卸载看板娘"></a>卸载看板娘</h2><p>卸载插件和卸载模型的指令都是通过npm进行操作的。在博客根目录<code>[BlogRoot]</code>打开终端，输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-helper-live2d <span class="comment">#卸载看板娘插件</span></span><br><span class="line">npm uninstall live2d-widget-model-modelname <span class="comment">#卸载看板娘模型。记得替换modelname为看板娘名称</span></span><br></pre></td></tr></table></figure>
-
-<p>卸载后为了保证配置项不出错，记得把<code>[BlogRoot]\_config.yml</code>里的配置项给注释或者删除掉。</p>
-<h1 id="一图流教程"><a href="#一图流教程" class="headerlink" title="一图流教程"></a>一图流教程</h1><ol>
-<li><p>在<code>[BlogRoot]\source</code>文件夹下新建一个文件夹<code>css</code>，该文件夹用于存放自定义的<code>css样式</code>，再新建一个名为<code>custom.css</code>，在里面写入以下代码：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 页脚与头图透明 */</span></span><br><span class="line"><span class="selector-id">#footer</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: transparent <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#page-header</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: transparent <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 白天模式遮罩透明 */</span></span><br><span class="line"><span class="selector-id">#footer</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: transparent <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#page-header</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: transparent <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 夜间模式遮罩透明 */</span></span><br><span class="line"><span class="selector-attr">[data-theme=<span class="string">&quot;dark&quot;</span>]</span> <span class="selector-id">#footer</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: transparent <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-attr">[data-theme=<span class="string">&quot;dark&quot;</span>]</span> <span class="selector-id">#page-header</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: transparent <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在主题配置文件<code>[BlogRoot]\_config.butterfly.yml</code>文件中的<code>inject</code>配置项的<code>head</code>子项加入以下代码，代表引入刚刚创建的<code>custom.css</code>文件（这是相对路径的写法）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">inject:</span><br><span class="line">  head:</span><br><span class="line">    - &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/custom.css&quot; media=&quot;defer&quot; onload=&quot;this.media=&#x27;all&#x27;&quot;&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在主题配置文件<code>[BlogRoot]\_config.butterfly.yml</code>文件中的<code>index_img</code>和<code>footer_bg</code>配置项取消头图与页脚图的加载项避免冗余加载</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># The banner image of home page</span></span><br><span class="line"><span class="attr">index_img:</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># Footer Background</span></span><br><span class="line"><span class="attr">footer_bg:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>部分人反映一图流改完了背景图也没了，那大概率是你之前没设置背景图。在主题配置文件<code>[BlogRoot]\_config.butterfly.yml</code>文件中的<code>background</code>配置项设置背景图</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">background:</span> <span class="string">url(https://source.fomal.cc/img/home_bg.webp)</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="黑夜霓虹灯1-0（js计时器实现）"><a href="#黑夜霓虹灯1-0（js计时器实现）" class="headerlink" title="黑夜霓虹灯1.0（js计时器实现）"></a>黑夜霓虹灯1.0（js计时器实现）</h1><p>此教程会有两处地方有霓虹灯效果：一个是大标题和个人信息的动态霓虹灯，默认周期为1200ms；另外的是菜单栏的小字有夜光效果，为你的博客增添几分赛博朋克风~</p>
-<ol>
-<li><p>首先在自定义的样式文件<code>[BlogRoot]\source\css\custom.css</code>中引入以下代码，变量部分<code>var(--theme-color)</code>可以换为自己喜欢的颜色，例如紫色<code>rgb(179, 71, 241)</code>，后面的颜色连续渐变效果根据个人喜好选择，有的人喜欢连续的，有的人喜欢断续的</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 夜间模式菜单栏发光字 */</span></span><br><span class="line"><span class="selector-attr">[data-theme=<span class="string">&quot;dark&quot;</span>]</span> <span class="selector-id">#nav</span> <span class="selector-class">.site-page</span>,</span><br><span class="line"><span class="selector-attr">[data-theme=<span class="string">&quot;dark&quot;</span>]</span> <span class="selector-id">#nav</span> <span class="selector-class">.menus_items</span> <span class="selector-class">.menus_item</span> <span class="selector-class">.menus_item_child</span> <span class="selector-tag">li</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">2px</span> <span class="built_in">var</span>(--theme-color) <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 手机端适配 */</span></span><br><span class="line"><span class="selector-attr">[data-theme=<span class="string">&quot;dark&quot;</span>]</span> <span class="selector-id">#sidebar</span> <span class="selector-id">#sidebar-menus</span> <span class="selector-class">.menus_items</span> <span class="selector-class">.site-page</span> &#123;</span><br><span class="line">  <span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">2px</span> <span class="built_in">var</span>(--theme-color) <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 闪烁变动颜色连续渐变 */</span></span><br><span class="line"><span class="selector-id">#site-name</span>,</span><br><span class="line"><span class="selector-id">#site-title</span>,</span><br><span class="line"><span class="selector-id">#site-subtitle</span>,</span><br><span class="line"><span class="selector-id">#post-info</span>,</span><br><span class="line"><span class="selector-class">.author-info__name</span>,</span><br><span class="line"><span class="selector-class">.author-info__description</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: text-shadow <span class="number">1s</span> linear <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新建文件<code>[BlogRoot]\source\js\light.js</code>并写入以下代码，本质就是计时器，大家可以根据自己的喜好调节闪烁周期，默认为<code>1200ms</code>：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 霓虹灯效果</span></span><br><span class="line"><span class="comment">// 颜色数组</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">&quot;#39c5bb&quot;</span>, <span class="string">&quot;#f14747&quot;</span>, <span class="string">&quot;#f1a247&quot;</span>, <span class="string">&quot;#f1ee47&quot;</span>, <span class="string">&quot;#b347f1&quot;</span>, <span class="string">&quot;#1edbff&quot;</span>, <span class="string">&quot;#ed709b&quot;</span>, <span class="string">&quot;#5636ed&quot;</span>];</span><br><span class="line"><span class="comment">// 颜色索引</span></span><br><span class="line"><span class="keyword">var</span> idx = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 切换颜色</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">changeColor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 仅夜间模式才启用</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;html&#x27;</span>)[<span class="number">0</span>].<span class="title function_">getAttribute</span>(<span class="string">&#x27;data-theme&#x27;</span>) == <span class="string">&#x27;dark&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-name&quot;</span>))</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-name&quot;</span>).<span class="property">style</span>.<span class="property">textShadow</span> = arr[idx] + <span class="string">&quot; 0 0 15px&quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-title&quot;</span>))</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-title&quot;</span>).<span class="property">style</span>.<span class="property">textShadow</span> = arr[idx] + <span class="string">&quot; 0 0 15px&quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-subtitle&quot;</span>))</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-subtitle&quot;</span>).<span class="property">style</span>.<span class="property">textShadow</span> = arr[idx] + <span class="string">&quot; 0 0 10px&quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;post-info&quot;</span>))</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;post-info&quot;</span>).<span class="property">style</span>.<span class="property">textShadow</span> = arr[idx] + <span class="string">&quot; 0 0 5px&quot;</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;author-info__name&quot;</span>)[<span class="number">0</span>].<span class="property">style</span>.<span class="property">textShadow</span> = arr[idx] + <span class="string">&quot; 0 0 12px&quot;</span>;</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;author-info__description&quot;</span>)[<span class="number">0</span>].<span class="property">style</span>.<span class="property">textShadow</span> = arr[idx] + <span class="string">&quot; 0 0 12px&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        idx++;</span><br><span class="line">        <span class="keyword">if</span> (idx == <span class="number">8</span>) &#123;</span><br><span class="line">            idx = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 白天模式恢复默认</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-name&quot;</span>))</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-name&quot;</span>).<span class="property">style</span>.<span class="property">textShadow</span> = <span class="string">&quot;#1e1e1ee0 1px 1px 1px&quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-title&quot;</span>))</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-title&quot;</span>).<span class="property">style</span>.<span class="property">textShadow</span> = <span class="string">&quot;#1e1e1ee0 1px 1px 1px&quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-subtitle&quot;</span>))</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;site-subtitle&quot;</span>).<span class="property">style</span>.<span class="property">textShadow</span> = <span class="string">&quot;#1e1e1ee0 1px 1px 1px&quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;post-info&quot;</span>))</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;post-info&quot;</span>).<span class="property">style</span>.<span class="property">textShadow</span> = <span class="string">&quot;#1e1e1ee0 1px 1px 1px&quot;</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;author-info__name&quot;</span>)[<span class="number">0</span>].<span class="property">style</span>.<span class="property">textShadow</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;author-info__description&quot;</span>)[<span class="number">0</span>].<span class="property">style</span>.<span class="property">textShadow</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 开启计时器</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="built_in">setInterval</span>(changeColor, <span class="number">1200</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在主题配置文件<code>_config.butterfly.yml</code>引入以上两个文件，要注意的是，js文件这里必须为<code>defer</code>，不能为<code>ansyc</code>，保证脚本会延迟到整个页面都解析完后再执行，此时才有对应的元素进行操作：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">head:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&lt;link</span> <span class="string">rel=&quot;stylesheet&quot;</span> <span class="string">href=&quot;/css/custom.css&quot;</span> <span class="string">media=&quot;defer&quot;</span> <span class="string">onload=&quot;this.media=&#x27;all&#x27;&quot;&gt;</span></span><br><span class="line">  <span class="attr">bottom:</span> </span><br><span class="line">    <span class="bullet">-</span> <span class="string">&lt;script</span> <span class="string">defer</span> <span class="string">src=&quot;/js/light.js&quot;&gt;&lt;/script&gt;</span> <span class="comment"># 霓虹灯(必须defer否则有时候会不生效)</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重启项目即可看到效果</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo cl; hexo s</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="星空背景和流星特效"><a href="#星空背景和流星特效" class="headerlink" title="星空背景和流星特效"></a>星空背景和流星特效</h1><ol>
-<li><p>在<code>[BlogRoot]/source/js</code>目录下新建<code>universe.js</code>，输入以下代码：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">dark</span>(<span class="params"></span>) &#123;<span class="variable language_">window</span>.<span class="property">requestAnimationFrame</span>=<span class="variable language_">window</span>.<span class="property">requestAnimationFrame</span>||<span class="variable language_">window</span>.<span class="property">mozRequestAnimationFrame</span>||<span class="variable language_">window</span>.<span class="property">webkitRequestAnimationFrame</span>||<span class="variable language_">window</span>.<span class="property">msRequestAnimationFrame</span>;<span class="keyword">var</span> n,e,i,h,t=<span class="number">.05</span>,s=<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;universe&quot;</span>),o=!<span class="number">0</span>,a=<span class="string">&quot;180,184,240&quot;</span>,r=<span class="string">&quot;226,225,142&quot;</span>,d=<span class="string">&quot;226,225,224&quot;</span>,c=[];<span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>)&#123;n=<span class="variable language_">window</span>.<span class="property">innerWidth</span>,e=<span class="variable language_">window</span>.<span class="property">innerHeight</span>,i=<span class="number">.216</span>*n,s.<span class="title function_">setAttribute</span>(<span class="string">&quot;width&quot;</span>,n),s.<span class="title function_">setAttribute</span>(<span class="string">&quot;height&quot;</span>,e)&#125;<span class="keyword">function</span> <span class="title function_">u</span>(<span class="params"></span>)&#123;h.<span class="title function_">clearRect</span>(<span class="number">0</span>,<span class="number">0</span>,n,e);<span class="keyword">for</span>(<span class="keyword">var</span> t=c.<span class="property">length</span>,i=<span class="number">0</span>;i&lt;t;i++)&#123;<span class="keyword">var</span> s=c[i];s.<span class="title function_">move</span>(),s.<span class="title function_">fadeIn</span>(),s.<span class="title function_">fadeOut</span>(),s.<span class="title function_">draw</span>()&#125;&#125;<span class="keyword">function</span> <span class="title function_">y</span>(<span class="params"></span>)&#123;<span class="variable language_">this</span>.<span class="property">reset</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;<span class="variable language_">this</span>.<span class="property">giant</span>=<span class="title function_">m</span>(<span class="number">3</span>),<span class="variable language_">this</span>.<span class="property">comet</span>=!<span class="variable language_">this</span>.<span class="property">giant</span>&amp;&amp;!o&amp;&amp;<span class="title function_">m</span>(<span class="number">10</span>),<span class="variable language_">this</span>.<span class="property">x</span>=<span class="title function_">l</span>(<span class="number">0</span>,n-<span class="number">10</span>),<span class="variable language_">this</span>.<span class="property">y</span>=<span class="title function_">l</span>(<span class="number">0</span>,e),<span class="variable language_">this</span>.<span class="property">r</span>=<span class="title function_">l</span>(<span class="number">1.1</span>,<span class="number">2.6</span>),<span class="variable language_">this</span>.<span class="property">dx</span>=<span class="title function_">l</span>(t,<span class="number">6</span>*t)+(<span class="variable language_">this</span>.<span class="property">comet</span>+<span class="number">1</span>-<span class="number">1</span>)*t*<span class="title function_">l</span>(<span class="number">50</span>,<span class="number">120</span>)+<span class="number">2</span>*t,<span class="variable language_">this</span>.<span class="property">dy</span>=-<span class="title function_">l</span>(t,<span class="number">6</span>*t)-(<span class="variable language_">this</span>.<span class="property">comet</span>+<span class="number">1</span>-<span class="number">1</span>)*t*<span class="title function_">l</span>(<span class="number">50</span>,<span class="number">120</span>),<span class="variable language_">this</span>.<span class="property">fadingOut</span>=<span class="literal">null</span>,<span class="variable language_">this</span>.<span class="property">fadingIn</span>=!<span class="number">0</span>,<span class="variable language_">this</span>.<span class="property">opacity</span>=<span class="number">0</span>,<span class="variable language_">this</span>.<span class="property">opacityTresh</span>=<span class="title function_">l</span>(<span class="number">.2</span>,<span class="number">1</span>-<span class="number">.4</span>*(<span class="variable language_">this</span>.<span class="property">comet</span>+<span class="number">1</span>-<span class="number">1</span>)),<span class="variable language_">this</span>.<span class="property">do</span>=<span class="title function_">l</span>(<span class="number">5e-4</span>,<span class="number">.002</span>)+<span class="number">.001</span>*(<span class="variable language_">this</span>.<span class="property">comet</span>+<span class="number">1</span>-<span class="number">1</span>)&#125;,<span class="variable language_">this</span>.<span class="property">fadeIn</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;<span class="variable language_">this</span>.<span class="property">fadingIn</span>&amp;&amp;(<span class="variable language_">this</span>.<span class="property">fadingIn</span>=!(<span class="variable language_">this</span>.<span class="property">opacity</span>&gt;<span class="variable language_">this</span>.<span class="property">opacityTresh</span>),<span class="variable language_">this</span>.<span class="property">opacity</span>+=<span class="variable language_">this</span>.<span class="property">do</span>)&#125;,<span class="variable language_">this</span>.<span class="property">fadeOut</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;<span class="variable language_">this</span>.<span class="property">fadingOut</span>&amp;&amp;(<span class="variable language_">this</span>.<span class="property">fadingOut</span>=!(<span class="variable language_">this</span>.<span class="property">opacity</span>&lt;<span class="number">0</span>),<span class="variable language_">this</span>.<span class="property">opacity</span>-=<span class="variable language_">this</span>.<span class="property">do</span>/<span class="number">2</span>,(<span class="variable language_">this</span>.<span class="property">x</span>&gt;n||<span class="variable language_">this</span>.<span class="property">y</span>&lt;<span class="number">0</span>)&amp;&amp;(<span class="variable language_">this</span>.<span class="property">fadingOut</span>=!<span class="number">1</span>,<span class="variable language_">this</span>.<span class="title function_">reset</span>()))&#125;,<span class="variable language_">this</span>.<span class="property">draw</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;<span class="keyword">if</span>(h.<span class="title function_">beginPath</span>(),<span class="variable language_">this</span>.<span class="property">giant</span>)h.<span class="property">fillStyle</span>=<span class="string">&quot;rgba(&quot;</span>+a+<span class="string">&quot;,&quot;</span>+<span class="variable language_">this</span>.<span class="property">opacity</span>+<span class="string">&quot;)&quot;</span>,h.<span class="title function_">arc</span>(<span class="variable language_">this</span>.<span class="property">x</span>,<span class="variable language_">this</span>.<span class="property">y</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>*<span class="title class_">Math</span>.<span class="property">PI</span>,!<span class="number">1</span>);<span class="keyword">else</span> <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">comet</span>)&#123;h.<span class="property">fillStyle</span>=<span class="string">&quot;rgba(&quot;</span>+d+<span class="string">&quot;,&quot;</span>+<span class="variable language_">this</span>.<span class="property">opacity</span>+<span class="string">&quot;)&quot;</span>,h.<span class="title function_">arc</span>(<span class="variable language_">this</span>.<span class="property">x</span>,<span class="variable language_">this</span>.<span class="property">y</span>,<span class="number">1.5</span>,<span class="number">0</span>,<span class="number">2</span>*<span class="title class_">Math</span>.<span class="property">PI</span>,!<span class="number">1</span>);<span class="keyword">for</span>(<span class="keyword">var</span> t=<span class="number">0</span>;t&lt;<span class="number">30</span>;t++)h.<span class="property">fillStyle</span>=<span class="string">&quot;rgba(&quot;</span>+d+<span class="string">&quot;,&quot;</span>+(<span class="variable language_">this</span>.<span class="property">opacity</span>-<span class="variable language_">this</span>.<span class="property">opacity</span>/<span class="number">20</span>*t)+<span class="string">&quot;)&quot;</span>,h.<span class="title function_">rect</span>(<span class="variable language_">this</span>.<span class="property">x</span>-<span class="variable language_">this</span>.<span class="property">dx</span>/<span class="number">4</span>*t,<span class="variable language_">this</span>.<span class="property">y</span>-<span class="variable language_">this</span>.<span class="property">dy</span>/<span class="number">4</span>*t-<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>),h.<span class="title function_">fill</span>()&#125;<span class="keyword">else</span> h.<span class="property">fillStyle</span>=<span class="string">&quot;rgba(&quot;</span>+r+<span class="string">&quot;,&quot;</span>+<span class="variable language_">this</span>.<span class="property">opacity</span>+<span class="string">&quot;)&quot;</span>,h.<span class="title function_">rect</span>(<span class="variable language_">this</span>.<span class="property">x</span>,<span class="variable language_">this</span>.<span class="property">y</span>,<span class="variable language_">this</span>.<span class="property">r</span>,<span class="variable language_">this</span>.<span class="property">r</span>);h.<span class="title function_">closePath</span>(),h.<span class="title function_">fill</span>()&#125;,<span class="variable language_">this</span>.<span class="property">move</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;<span class="variable language_">this</span>.<span class="property">x</span>+=<span class="variable language_">this</span>.<span class="property">dx</span>,<span class="variable language_">this</span>.<span class="property">y</span>+=<span class="variable language_">this</span>.<span class="property">dy</span>,!<span class="number">1</span>===<span class="variable language_">this</span>.<span class="property">fadingOut</span>&amp;&amp;<span class="variable language_">this</span>.<span class="title function_">reset</span>(),(<span class="variable language_">this</span>.<span class="property">x</span>&gt;n-n/<span class="number">4</span>||<span class="variable language_">this</span>.<span class="property">y</span>&lt;<span class="number">0</span>)&amp;&amp;(<span class="variable language_">this</span>.<span class="property">fadingOut</span>=!<span class="number">0</span>)&#125;,<span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;o=!<span class="number">1</span>&#125;,<span class="number">50</span>)&#125;<span class="keyword">function</span> <span class="title function_">m</span>(<span class="params">t</span>)&#123;<span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="number">1e3</span>*<span class="title class_">Math</span>.<span class="title function_">random</span>())+<span class="number">1</span>&lt;<span class="number">10</span>*t&#125;<span class="keyword">function</span> <span class="title function_">l</span>(<span class="params">t,i</span>)&#123;<span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">random</span>()*(i-t)+t&#125;<span class="title function_">f</span>(),<span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;resize&quot;</span>,f,!<span class="number">1</span>),<span class="keyword">function</span>(<span class="params"></span>)&#123;h=s.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);<span class="keyword">for</span>(<span class="keyword">var</span> t=<span class="number">0</span>;t&lt;i;t++)c[t]=<span class="keyword">new</span> y,c[t].<span class="title function_">reset</span>();<span class="title function_">u</span>()&#125;(),<span class="keyword">function</span> <span class="title function_">t</span>(<span class="params"></span>)&#123;<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;html&#x27;</span>)[<span class="number">0</span>].<span class="title function_">getAttribute</span>(<span class="string">&#x27;data-theme&#x27;</span>)==<span class="string">&#x27;dark&#x27;</span>&amp;&amp;<span class="title function_">u</span>(),<span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(t)&#125;()&#125;;</span><br><span class="line"><span class="title function_">dark</span>()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在<code>[BlogRoot]/source/css</code>目录下新建<code>universe.css</code>，输入以下代码：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 背景宇宙星光  */</span></span><br><span class="line"><span class="selector-id">#universe</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">position</span>: fixed;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">outline</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">pointer-events</span>: none;</span><br><span class="line">  <span class="comment">/* 这个是调置顶的优先级的，-1在文章页下面，背景上面，个人推荐这种 */</span></span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在主题配置文件<code>_config.butterfly.yml</code>的<code>inject</code>配置项中<code>bottom</code>下填入：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">bottom:</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">&lt;canvas</span> <span class="string">id=&quot;universe&quot;&gt;&lt;/canvas&gt;</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">&lt;script</span> <span class="string">defer</span> <span class="string">src=&quot;/js/universe.js&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在主题配置文件<code>_config.butterfly.yml</code>的<code>inject</code>配置项中<code>head</code>下填入：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">head:</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">&lt;link</span> <span class="string">rel=&quot;stylesheet&quot;</span> <span class="string">href=&quot;/css/universe.css&quot;&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重新编译即可看到效果。</p>
-</li>
-</ol>
-<h1 id="侧边栏电子时钟-安知鱼"><a href="#侧边栏电子时钟-安知鱼" class="headerlink" title="侧边栏电子时钟(安知鱼)"></a>侧边栏电子时钟(安知鱼)</h1><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><ol>
-<li><p>如果有安装店长的插件版侧边栏电子钟（与店长的电子钟冲突），在博客根目录<code>[BlogRoot]</code>下打开终端，运行以下指令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 卸载原版电子钟</span></span><br><span class="line">npm uninstall hexo-butterfly-clock</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装插件,在博客根目录<code>[BlogRoot]</code>下打开终端，运行以下指令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-butterfly-clock-anzhiyu --save</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加配置信息，以下为写法示例<br>在主题配置文件<code>_config.butterfly.yml</code>（注意一定要主题配置文件）中添加：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># electric_clock (安知鱼电子钟)</span></span><br><span class="line"><span class="comment"># see https://anzhiy.cn/posts/fc18.html</span></span><br><span class="line"><span class="attr">electric_clock:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment"># 开关</span></span><br><span class="line">  <span class="attr">priority:</span> <span class="number">5</span> <span class="comment">#过滤器优先权</span></span><br><span class="line">  <span class="attr">enable_page:</span> <span class="string">/</span> <span class="comment"># 应用页面</span></span><br><span class="line">  <span class="attr">exclude:</span></span><br><span class="line">    <span class="comment"># - /posts/</span></span><br><span class="line">    <span class="comment"># - /about/</span></span><br><span class="line">  <span class="attr">layout:</span> <span class="comment"># 挂载容器类型</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">class</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">sticky_layout</span></span><br><span class="line">    <span class="attr">index:</span> <span class="number">0</span></span><br><span class="line">  <span class="attr">loading:</span> <span class="string">https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif</span> <span class="comment">#加载动画自定义</span></span><br><span class="line">  <span class="attr">clock_css:</span> <span class="string">https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css</span></span><br><span class="line">  <span class="attr">clock_js:</span> <span class="string">https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js</span></span><br><span class="line">  <span class="attr">ip_api:</span> <span class="string">https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0</span></span><br><span class="line">  <span class="attr">qweather_key:</span>  <span class="comment"># 和风天气key</span></span><br><span class="line">  <span class="attr">gaud_map_key:</span>  <span class="comment"># 高得地图web服务key</span></span><br><span class="line">  <span class="attr">default_rectangle:</span> <span class="literal">false</span> <span class="comment"># 开启后将一直显示rectangle位置的天气，否则将获取访问者的地理位置与天气</span></span><br><span class="line">  <span class="attr">rectangle:</span> <span class="number">113.34532</span><span class="string">,23.15624</span> <span class="comment"># 获取访问者位置失败时会显示该位置的天气，同时该位置为开启default_rectangle后的位置</span></span><br></pre></td></tr></table></figure>
-
-<p>其中qweather_key 和gaud_map_key 最好自己去申请对应的 api key，默认使用<code>鱼</code>的，可能会被限制，不保证可靠性。</p>
-</li>
-<li><p>参数释义</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>备选值&#x2F;类型</th>
-<th>释义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>priority</td>
-<td>number</td>
-<td>【可选】过滤器优先级，数值越小，执行越早，默认为 10，选填</td>
-</tr>
-<tr>
-<td>enable</td>
-<td>true&#x2F;false</td>
-<td>【必选】控制开关</td>
-</tr>
-<tr>
-<td>enable_page</td>
-<td>path&#x2F;all</td>
-<td>【可选】填写想要应用的页面的相对路径（即路由地址）,如根目录就填’&#x2F;‘,分类页面就填’&#x2F;categories&#x2F;‘。若要应用于所有页面，就填’all’，默认为 all</td>
-</tr>
-<tr>
-<td>exclude</td>
-<td>path</td>
-<td>【可选】填写想要屏蔽的页面，可以多个。写法见示例。原理是将屏蔽项的内容逐个放到当前路径去匹配，若当前路径包含任一屏蔽项，则不会挂载。</td>
-</tr>
-<tr>
-<td>layout.type</td>
-<td>id&#x2F;class</td>
-<td>【可选】挂载容器类型，填写 id 或 class，不填则默认为 id</td>
-</tr>
-<tr>
-<td><a href="http://layout.name/">layout.name</a></td>
-<td>text</td>
-<td>【必选】挂载容器名称</td>
-</tr>
-<tr>
-<td>layout.index</td>
-<td>0和正整数</td>
-<td>【可选】前提是 layout.type 为 class，因为同一页面可能有多个 class，此项用来确认究竟排在第几个顺位</td>
-</tr>
-<tr>
-<td>loading</td>
-<td>URL</td>
-<td>【可选】电子钟加载动画的图片</td>
-</tr>
-<tr>
-<td>clock_css</td>
-<td>URL</td>
-<td>【可选】电子钟样式 CDN 资源</td>
-</tr>
-<tr>
-<td>clock_js</td>
-<td>URL</td>
-<td>【可选】电子钟执行脚本 CDN 资源</td>
-</tr>
-<tr>
-<td>ip_api</td>
-<td>URL</td>
-<td>【可选】获取时钟 IP 的 API</td>
-</tr>
-<tr>
-<td>qweather_key</td>
-<td>text</td>
-<td>【可选】和风天气 key</td>
-</tr>
-<tr>
-<td>gaud_map_key</td>
-<td>text</td>
-<td>【可选】高得地图 web 服务 key</td>
-</tr>
-<tr>
-<td>default_rectangle</td>
-<td>text</td>
-<td>【可选】开启后将一直显示 rectangle 位置的天气，否则将获取访问者的地理位置与天气</td>
-</tr>
-<tr>
-<td>rectangle</td>
-<td>text</td>
-<td>【可选】获取访问者位置失败时会显示该位置的天气，同时该位置为开启 default_rectangle 后的位置</td>
-</tr>
-</tbody></table>
-<h1 id="个人卡片渐变色"><a href="#个人卡片渐变色" class="headerlink" title="个人卡片渐变色"></a>个人卡片渐变色</h1><p>在<code>[BlogRoot]\source\css\custom.css</code>自定义样式的文件中引入如下代码（最后记得在<code>inject</code>配置项引入!!!）：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 侧边栏个人信息卡片动态渐变色 */</span></span><br><span class="line"><span class="selector-id">#aside-content</span> &gt; <span class="selector-class">.card-widget</span><span class="selector-class">.card-info</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(</span><br><span class="line">    -<span class="number">45deg</span>,</span><br><span class="line">    <span class="number">#e8d8b9</span>,</span><br><span class="line">    <span class="number">#eccec5</span>,</span><br><span class="line">    <span class="number">#a3e9eb</span>,</span><br><span class="line">    <span class="number">#bdbdf0</span>,</span><br><span class="line">    <span class="number">#eec1ea</span></span><br><span class="line">  );</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgb</span>(<span class="number">66</span>, <span class="number">68</span>, <span class="number">68</span>);</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">background-size</span>: <span class="number">400%</span> <span class="number">400%</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation</span>: Gradient <span class="number">10s</span> ease infinite;</span><br><span class="line">  -moz-<span class="attribute">animation</span>: Gradient <span class="number">10s</span> ease infinite;</span><br><span class="line">  <span class="attribute">animation</span>: Gradient <span class="number">10s</span> ease infinite <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@-webkit-keyframes</span> Gradient &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">0%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">50%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">100%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">0%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@-moz-keyframes</span> Gradient &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">0%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">50%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">100%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">0%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@keyframes</span> Gradient &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">0%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">50%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">100%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">0%</span> <span class="number">50%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 黑夜模式适配 */</span></span><br><span class="line"><span class="selector-attr">[data-theme=<span class="string">&quot;dark&quot;</span>]</span> <span class="selector-id">#aside-content</span> &gt; <span class="selector-class">.card-widget</span><span class="selector-class">.card-info</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#191919ee</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 个人信息Follow me按钮 */</span></span><br><span class="line"><span class="selector-id">#aside-content</span> &gt; <span class="selector-class">.card-widget</span><span class="selector-class">.card-info</span> &gt; <span class="selector-id">#card-info-btn</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#3eb8be</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">8px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="直达底部按钮"><a href="#直达底部按钮" class="headerlink" title="直达底部按钮"></a>直达底部按钮</h1><p>在<code>[BlogRoot]\themes\butterfly\layout\includes\rightside.pug</code>做以下修改:</p>
-<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line">button#go-up(type=&quot;button&quot; title=_p(&quot;rightside.back_to_top&quot;))</span><br><span class="line">  i.fas.fa-arrow-up</span><br><span class="line"></span><br><span class="line"><span class="addition">+button#go-down(type=&quot;button&quot; title=&quot;直达底部&quot; onclick=&quot;btf.scrollToDest(document.body.scrollHeight, 500)&quot;)</span></span><br><span class="line"><span class="addition">+  i.fas.fa-arrow-down</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
-        <tag>Butterfly主题</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo博客搭建（9）——魔改主题文件（高级）</title>
     <url>/2023/07/23/hexo/Hexo_build09/</url>
     <content><![CDATA[<h1 id="“前面的区域以后再来探索吧”"><a href="#“前面的区域以后再来探索吧”" class="headerlink" title="“前面的区域以后再来探索吧”"></a>“前面的区域以后再来探索吧”</h1>]]></content>
@@ -989,66 +989,6 @@
 <p>使用的时候可以直接复制粘贴图片到<code>Typora</code>文章中，根据上方的设置它会被存到<code>C:\Users\CLAY\img</code>，之后再Typora上方<code>格式-&gt;图像-&gt;上传本地所有图片</code>，之后就会发现图片的地址变成了图片的URL地址。也可以<code>右键-&gt;上传图片</code>单独上传。<br>如果不是文章中的图片，可以直接将图片拖到<code>PicGo上传区</code>上传，并且可以选择连接格式（上传后直接可以直接粘贴）</p>
 </li>
 </ol>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo博客搭建（12）——网站SEO优化</title>
-    <url>/2023/07/26/hexo/Hexo_build12/</url>
-    <content><![CDATA[<p>   网站推广是一个比较烦人的事情，特别是对于专心搞技术的来说，可能就不是很擅长，那么怎么才能让别人知道我们网站呢？也就是说我们需要想办法让别人通过搜索就可以搜索到博客的内容，给我们带来自然流量，这就需要seo优化,让我们的站点变得对搜索引擎友好。</p>
-<blockquote>
-<p>SEO是由英文Search Engine Optimization缩写而来， 中文意译为“搜索引擎优化”。SEO是指通过站内优化比如网站结构调整、网站内容建设、网站代码优化等以及站外优化。</p>
-</blockquote>
-<h1 id="百度收录站点"><a href="#百度收录站点" class="headerlink" title="百度收录站点"></a>百度收录站点</h1><p>​        首先要做的就是让各大搜索引擎收录你的站点，我们在刚建站的时候各个搜索引擎是没有收录我们网站的，在搜索引擎中输入<code>site:&lt;域名&gt;</code>,如果如下图所示就是说明我们的网站并没有被百度收录。我们可以直接点击下面的“网址提交”来提交我们的网站。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729161224909.png" alt="image-20230729161224909"></p>
-<h2 id="验证网络所有权"><a href="#验证网络所有权" class="headerlink" title="验证网络所有权"></a>验证网络所有权</h2><p>登录百度站长搜索资源平台， 只要有百度旗下的账号就可以登录，登录成功之后在站点管理中点击添加网站然后输入你的站点地址。在填完网址选择完网站的类型之后需要验证网站的所有权，验证网站所有权的方式有2种：</p>
-<ul>
-<li>文件验证。</li>
-<li>html标签验证</li>
-</ul>
-<p>​        我是用的是文件验证的方式：</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729161642882.png" alt="image-20230729161642882"></p>
-<p>只需要下载验证文件，复制到&#x2F;mylog&#x2F;source中，并在其最上方加入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">layout: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p>不然hexo会解析文件，避免hexo对其进行操作。之后<code>hexo clean，hexo g -d</code>部署后返回网页完成验证即可。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729164353402.png" alt="image-20230729164353402"></p>
-<h1 id="生成网站地图"><a href="#生成网站地图" class="headerlink" title="生成网站地图"></a>生成网站地图</h1><p>需要使用<code>npm</code>自动生成网站的<code>sitemap</code>，然后将生成的<code>sitemap</code>提交到百度和其他搜索引擎。</p>
-<ul>
-<li><p>安装<code>sitemap</code>插件下属两个分别针对谷歌和百度的插件:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save     </span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
-
-<p>在安装过程中可能报出网络问题，设置<code>proxy</code>的错误，只需要先执行：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm config set registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改Hexo配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> # URL</span><br><span class="line"> ## If your site is put in a subdirectory, set url as &#x27;http://example.com/child&#x27; and root as &#x27;/child/&#x27;</span><br><span class="line"> url: https://liuruibin.com</span><br><span class="line"> root: /</span><br><span class="line"> permalink: posts/:abbrlink.html  </span><br><span class="line">permalink_defaults:</span><br><span class="line"> pretty_urls:</span><br><span class="line"> trailing_index: true </span><br><span class="line">   trailing_html: true </span><br></pre></td></tr></table></figure>
-
-<p>主要是<code>url</code>更改成自己的站点<code>url</code>。执行完<code>hexo g</code>命令之后就会在<code>/mylog/public</code>生成<code>sitemap.xml</code>文件和<code>baidusitemap.xml</code>文件，可以通过：<code>https://zhangyuanhe.top/baidusitemap.xml</code>, 查看该文件是否生成，其中<code>sitemap.xml</code>文件是搜索引擎通用的文件，<code>baidusitemap.xml</code>是百度专用的<code>sitemap</code>文件。</p>
-</li>
-<li><p>向百度提交连接</p>
-<p>提交链接有四种方法，我使用的是主动推送的方式：</p>
-<p>首先安装插件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-baidu-url-submit --save</span><br></pre></td></tr></table></figure>
-
-<p>然后再根目录的配置文件中新增字段:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">baidu_url_submit:</span><br><span class="line">  count: 80             # 提交最新的一个链接</span><br><span class="line">  host: liuruibin.com # 在百度站长平台中注册的域名</span><br><span class="line">  token: xxxxxxxxxxxxx # 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!</span><br><span class="line">  path: baidu_urls.txt  # 文本文档的地址， 新链接会保存在此文本文档里</span><br></pre></td></tr></table></figure>
-
-<p>密钥是在站点之家的普通收录一栏，链接<code>=</code>符号后就是密钥。</p>
-<p>最后加入新的<code>deploye</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line"> - type: baidu_url_submitter</span><br></pre></td></tr></table></figure>
-
-<p>这样执行<code>hexo deploy</code>的时候，新的链接就会被推送了。</p>
-</li>
-</ul>
-<h1 id="谷歌收录站点"><a href="#谷歌收录站点" class="headerlink" title="谷歌收录站点"></a>谷歌收录站点</h1><p>​        相比于百度，google的效率实在不能更快，貌似十分钟左右站点就被收录了，其实方法是和百度是一样的，需要科学上网(iGuge谷歌访问助手)。google站点平台：<code>https://www.google.com/webmasters/</code>。之后<code>注册登录Google Search Console-&gt;站点地图-&gt;添加新的站点地图</code>输入之前在<code>public</code>生成的<code>sitemap</code>文件的地址即可：</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729175953566.png" alt="image-20230729175953566"></p>
 ]]></content>
       <categories>
         <category>博客搭建</category>
@@ -1206,6 +1146,66 @@
         <tag>hexo</tag>
         <tag>服务器</tag>
         <tag>Butterfly主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（12）——网站SEO优化</title>
+    <url>/2023/07/26/hexo/Hexo_build12/</url>
+    <content><![CDATA[<p>   网站推广是一个比较烦人的事情，特别是对于专心搞技术的来说，可能就不是很擅长，那么怎么才能让别人知道我们网站呢？也就是说我们需要想办法让别人通过搜索就可以搜索到博客的内容，给我们带来自然流量，这就需要seo优化,让我们的站点变得对搜索引擎友好。</p>
+<blockquote>
+<p>SEO是由英文Search Engine Optimization缩写而来， 中文意译为“搜索引擎优化”。SEO是指通过站内优化比如网站结构调整、网站内容建设、网站代码优化等以及站外优化。</p>
+</blockquote>
+<h1 id="百度收录站点"><a href="#百度收录站点" class="headerlink" title="百度收录站点"></a>百度收录站点</h1><p>​        首先要做的就是让各大搜索引擎收录你的站点，我们在刚建站的时候各个搜索引擎是没有收录我们网站的，在搜索引擎中输入<code>site:&lt;域名&gt;</code>,如果如下图所示就是说明我们的网站并没有被百度收录。我们可以直接点击下面的“网址提交”来提交我们的网站。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729161224909.png" alt="image-20230729161224909"></p>
+<h2 id="验证网络所有权"><a href="#验证网络所有权" class="headerlink" title="验证网络所有权"></a>验证网络所有权</h2><p>登录百度站长搜索资源平台， 只要有百度旗下的账号就可以登录，登录成功之后在站点管理中点击添加网站然后输入你的站点地址。在填完网址选择完网站的类型之后需要验证网站的所有权，验证网站所有权的方式有2种：</p>
+<ul>
+<li>文件验证。</li>
+<li>html标签验证</li>
+</ul>
+<p>​        我是用的是文件验证的方式：</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729161642882.png" alt="image-20230729161642882"></p>
+<p>只需要下载验证文件，复制到&#x2F;mylog&#x2F;source中，并在其最上方加入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">layout: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>不然hexo会解析文件，避免hexo对其进行操作。之后<code>hexo clean，hexo g -d</code>部署后返回网页完成验证即可。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729164353402.png" alt="image-20230729164353402"></p>
+<h1 id="生成网站地图"><a href="#生成网站地图" class="headerlink" title="生成网站地图"></a>生成网站地图</h1><p>需要使用<code>npm</code>自动生成网站的<code>sitemap</code>，然后将生成的<code>sitemap</code>提交到百度和其他搜索引擎。</p>
+<ul>
+<li><p>安装<code>sitemap</code>插件下属两个分别针对谷歌和百度的插件:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save     </span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
+
+<p>在安装过程中可能报出网络问题，设置<code>proxy</code>的错误，只需要先执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm config set registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改Hexo配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> # URL</span><br><span class="line"> ## If your site is put in a subdirectory, set url as &#x27;http://example.com/child&#x27; and root as &#x27;/child/&#x27;</span><br><span class="line"> url: https://liuruibin.com</span><br><span class="line"> root: /</span><br><span class="line"> permalink: posts/:abbrlink.html  </span><br><span class="line">permalink_defaults:</span><br><span class="line"> pretty_urls:</span><br><span class="line"> trailing_index: true </span><br><span class="line">   trailing_html: true </span><br></pre></td></tr></table></figure>
+
+<p>主要是<code>url</code>更改成自己的站点<code>url</code>。执行完<code>hexo g</code>命令之后就会在<code>/mylog/public</code>生成<code>sitemap.xml</code>文件和<code>baidusitemap.xml</code>文件，可以通过：<code>https://zhangyuanhe.top/baidusitemap.xml</code>, 查看该文件是否生成，其中<code>sitemap.xml</code>文件是搜索引擎通用的文件，<code>baidusitemap.xml</code>是百度专用的<code>sitemap</code>文件。</p>
+</li>
+<li><p>向百度提交连接</p>
+<p>提交链接有四种方法，我使用的是主动推送的方式：</p>
+<p>首先安装插件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-baidu-url-submit --save</span><br></pre></td></tr></table></figure>
+
+<p>然后再根目录的配置文件中新增字段:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">baidu_url_submit:</span><br><span class="line">  count: 80             # 提交最新的一个链接</span><br><span class="line">  host: liuruibin.com # 在百度站长平台中注册的域名</span><br><span class="line">  token: xxxxxxxxxxxxx # 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!</span><br><span class="line">  path: baidu_urls.txt  # 文本文档的地址， 新链接会保存在此文本文档里</span><br></pre></td></tr></table></figure>
+
+<p>密钥是在站点之家的普通收录一栏，链接<code>=</code>符号后就是密钥。</p>
+<p>最后加入新的<code>deploye</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line"> - type: baidu_url_submitter</span><br></pre></td></tr></table></figure>
+
+<p>这样执行<code>hexo deploy</code>的时候，新的链接就会被推送了。</p>
+</li>
+</ul>
+<h1 id="谷歌收录站点"><a href="#谷歌收录站点" class="headerlink" title="谷歌收录站点"></a>谷歌收录站点</h1><p>​        相比于百度，google的效率实在不能更快，貌似十分钟左右站点就被收录了，其实方法是和百度是一样的，需要科学上网(iGuge谷歌访问助手)。google站点平台：<code>https://www.google.com/webmasters/</code>。之后<code>注册登录Google Search Console-&gt;站点地图-&gt;添加新的站点地图</code>输入之前在<code>public</code>生成的<code>sitemap</code>文件的地址即可：</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729175953566.png" alt="image-20230729175953566"></p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
       </tags>
   </entry>
 </search>
