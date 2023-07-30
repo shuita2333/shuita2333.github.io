@@ -1,42 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World test</title>
-    <url>/2023/07/02/hello/hello-world-test/</url>
-    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>正文</p>
-<p><code>代码段</code></p>
-<ol>
-<li>有序列表</li>
-<li>+1</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">代码块</span><br></pre></td></tr></table></figure>
-
-<p>链接测试：<a href="https://62.234.219.169/2023/07/20/hello-world/">Hello World | ZYH’s blog</a></p>
-<p>emojy:  :laughing:</p>
-<p>picture:</p>
-<p>在线文件</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon2.png" alt="我是水獭"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2023/07/01/hello/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Hexo博客搭建（1）——部署服务器和配置服务器端</title>
     <url>/2023/07/15/hexo/Hexo_build01/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>搭建自己的服务器是喜忧参半的</p>
@@ -198,31 +162,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客搭建（3）——Hexo的目录结构</title>
-    <url>/2023/07/17/hexo/Hexo_build03/</url>
-    <content><![CDATA[<p>本地部署后在系统盘的用户目录下生成Hexo文件，对其目录结构需要有一定的了解，在之后的Hexo配置和优化离不开里面的各种文件，因此需要对它的目录结构有一定了解：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- _config.yml</span><br><span class="line">|-- node_modules</span><br><span class="line">|-- scaffolds</span><br><span class="line">|-- source</span><br><span class="line">   |-- _posts</span><br><span class="line">|-- public</span><br><span class="line">|-- themes</span><br><span class="line">|-- .gitignore</span><br><span class="line">|-- db.json</span><br><span class="line">|-- package.json</span><br><span class="line">|-- package-lock.json</span><br></pre></td></tr></table></figure>
-
-<p><code>_config.yml</code>：网站的全局配置文件，设置包括网站标题、副标题、作者、关键字和描述信息等。</p>
-<p><code>node_modules</code>：是<code>nodejs</code>库文件目录，也就是我们通过”npm install”命令安装的文件位置</p>
-<p><code>scaffolds</code>：本意是 “脚手架” 的意思，这里引申为模板文件夹。当你 <code>hexo new &lt;layout(布局)&gt; &lt;title&gt; 的时候</code>，Hexo 会根据该文件夹下的对应文件进行初始化构建。</p>
-<p><code>source</code>：正如其名，<code>source</code> 文件夹存储一些直接来自用户的文件，它很重要，如果不出意外你的文章就是保存在这个文件夹下（<em>posts）。</em><code>posts</code> 目录下的md文件，会被编译成 html 文件，放到 public 文件夹下。</p>
-<p><code>public</code>：参考 <code>source</code> 文件夹，在初始化后是没有 <code>public</code> 文件夹的，除非 <code>hexo g</code> 编译生成静态文件后，<code>public</code> 文件夹会自动生成。使用 <code>hexo clean</code> 清除 <code>db.json</code> 和 <code>public</code> 文件夹下的所有文件。</p>
-<p><code>themes</code>：主题文件夹，存储主题。相关的主题可以在 Github 上免费采购。</p>
-<p><code>.gitignore</code>：<code>.gitignore</code> 文件作用是声明不被 git 记录的文件，<code>hexo init &lt;folder&gt;</code> 也会产生一个 <code>.gitignore</code> 文件，可以先删除或者直接编辑，对hexo不会有影响。</p>
-<p><code>db.json</code>：里面存放了一些由<code>source</code>目录下<code>.md</code> 的所有文件解析得到的数据</p>
-<p><code>package.json</code>：框架的基本参数信息和它所依赖的插件，在 npm 安装时使用 <code>--save</code> 保存进去。</p>
-<p><code>package-lock.json</code>：锁定安装时的包的版本号，并且需要上传到git，以保证其他人在npm install时大家的依赖能保证一致。</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo博客搭建（4）——更换主题</title>
     <url>/2023/07/18/hexo/Hexo_build04/</url>
     <content><![CDATA[<p>Hexo的主题有很多，可以在其官网上选择自己喜欢的。</p>
@@ -251,6 +190,31 @@
         <tag>hexo</tag>
         <tag>服务器</tag>
         <tag>Butterfly主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（3）——Hexo的目录结构</title>
+    <url>/2023/07/17/hexo/Hexo_build03/</url>
+    <content><![CDATA[<p>本地部署后在系统盘的用户目录下生成Hexo文件，对其目录结构需要有一定的了解，在之后的Hexo配置和优化离不开里面的各种文件，因此需要对它的目录结构有一定了解：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- _config.yml</span><br><span class="line">|-- node_modules</span><br><span class="line">|-- scaffolds</span><br><span class="line">|-- source</span><br><span class="line">   |-- _posts</span><br><span class="line">|-- public</span><br><span class="line">|-- themes</span><br><span class="line">|-- .gitignore</span><br><span class="line">|-- db.json</span><br><span class="line">|-- package.json</span><br><span class="line">|-- package-lock.json</span><br></pre></td></tr></table></figure>
+
+<p><code>_config.yml</code>：网站的全局配置文件，设置包括网站标题、副标题、作者、关键字和描述信息等。</p>
+<p><code>node_modules</code>：是<code>nodejs</code>库文件目录，也就是我们通过”npm install”命令安装的文件位置</p>
+<p><code>scaffolds</code>：本意是 “脚手架” 的意思，这里引申为模板文件夹。当你 <code>hexo new &lt;layout(布局)&gt; &lt;title&gt; 的时候</code>，Hexo 会根据该文件夹下的对应文件进行初始化构建。</p>
+<p><code>source</code>：正如其名，<code>source</code> 文件夹存储一些直接来自用户的文件，它很重要，如果不出意外你的文章就是保存在这个文件夹下（<em>posts）。</em><code>posts</code> 目录下的md文件，会被编译成 html 文件，放到 public 文件夹下。</p>
+<p><code>public</code>：参考 <code>source</code> 文件夹，在初始化后是没有 <code>public</code> 文件夹的，除非 <code>hexo g</code> 编译生成静态文件后，<code>public</code> 文件夹会自动生成。使用 <code>hexo clean</code> 清除 <code>db.json</code> 和 <code>public</code> 文件夹下的所有文件。</p>
+<p><code>themes</code>：主题文件夹，存储主题。相关的主题可以在 Github 上免费采购。</p>
+<p><code>.gitignore</code>：<code>.gitignore</code> 文件作用是声明不被 git 记录的文件，<code>hexo init &lt;folder&gt;</code> 也会产生一个 <code>.gitignore</code> 文件，可以先删除或者直接编辑，对hexo不会有影响。</p>
+<p><code>db.json</code>：里面存放了一些由<code>source</code>目录下<code>.md</code> 的所有文件解析得到的数据</p>
+<p><code>package.json</code>：框架的基本参数信息和它所依赖的插件，在 npm 安装时使用 <code>--save</code> 保存进去。</p>
+<p><code>package-lock.json</code>：锁定安装时的包的版本号，并且需要上传到git，以保证其他人在npm install时大家的依赖能保证一致。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
       </tags>
   </entry>
   <entry>
@@ -588,69 +552,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客搭建（10）——部署SSl证书</title>
-    <url>/2023/07/25/hexo/Hexo_build10/</url>
-    <content><![CDATA[<p> 部署SSL证书的意义在于，如果不部署SSL输入域名进入网站，浏览器会提示不安全的字样。别人看到这样的字样会犹豫是否进入，是否存在危险等。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110435052.png" alt="image-20230729110435052"></p>
-<h1 id="准备SSL证书"><a href="#准备SSL证书" class="headerlink" title="准备SSL证书"></a>准备SSL证书</h1><p>​        腾讯云是可以申请免费的SSL证书。在腾讯云中搜索找到SSL证书-&gt;我的证书-&gt;申请免费证书按照申请的提示输入信息即可（选取的是RSA加密）。之后就是等待腾讯云的审核和签发，这个等待时间一般在几个小时左右。申请完成后状态：</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110631777.png" alt="image-20230729110631777"></p>
-<h1 id="安装Filezilla-软件"><a href="#安装Filezilla-软件" class="headerlink" title="安装Filezilla 软件"></a>安装Filezilla 软件</h1><p>​        打开Filezilla软件官网下载并安装，它是一个本机FTP软件，可以提供与云服务器接发文件的功能。</p>
-<h1 id="云服务器安装FTP服务"><a href="#云服务器安装FTP服务" class="headerlink" title="云服务器安装FTP服务"></a>云服务器安装FTP服务</h1><ol>
-<li><p>安装vsftpd</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y vsftpd</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/vsftpd/vsftpd.conf</span><br></pre></td></tr></table></figure>
-
-<p>修改第12行，禁止匿名用户登录：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">anonymous_enable=No </span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="上传SSL证书文件"><a href="#上传SSL证书文件" class="headerlink" title="上传SSL证书文件"></a>上传SSL证书文件</h1><p>​        打开Filezilla 软件输入云服务器IP等信息后连接，端口选用22端口。</p>
-<p>​		 去腾讯云服务器下载SSL证书。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110848329.png" alt="image-20230729110848329"></p>
-<p>  在Filezilla 软件本地站点（左边一栏）找到你下载的SSL证书，双击即可提示上传到云服务器用户目录下。</p>
-<h1 id="部署SSL证书"><a href="#部署SSL证书" class="headerlink" title="部署SSL证书"></a>部署SSL证书</h1><ol>
-<li><p>文件默认上传至我们的用户文件夹下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/zyh</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
-
-<p>返回结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com.zip  zhangyuanhe.git</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>解压缩文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com.zip</span><br></pre></td></tr></table></figure>
-
-<p>再ls查看目录返回的结果是：</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729112613573.png" alt="image-20230729112613573"></p>
-<p>可以看见有四个文件，这里只需要crt文件和key文件。</p>
-</li>
-<li><p>将Nginx文件夹下的文件复制到新建的文件夹下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /etc/nginx/ssl/</span><br><span class="line">cd /home/zhangyuanhe/Nginx</span><br></pre></td></tr></table></figure>
-
-<p>用ls查看目录返回结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com_bundle.crt  zhangyuanhe.com.key</span><br></pre></td></tr></table></figure>
-
-<p>复制到ssl文件夹下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp zhangyuanhe.com_bundle.crt /etc/nginx/ssl/</span><br><span class="line">cp zhangyuanhe.com.key /etc/nginx/ssl/</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打开nginx.conf 文件夹 修改配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
-
-<p>删除掉下方最前面注释并进行更改：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> server &#123;</span><br><span class="line">        listen       443 ssl;</span><br><span class="line">        listen       [::]:443 ssl http2 default_server;</span><br><span class="line">        server_name  liuruibin.com; #域名</span><br><span class="line">        root         /home/hexo;    #网站主目录</span><br><span class="line"></span><br><span class="line">        ssl_certificate &quot;/etc/nginx/ssl/zhangyuanhe.com_bundle.crt&quot;; #crt文件路径</span><br><span class="line">        ssl_certificate_key &quot;/etc/nginx/ssl/zhangyuanhe.com.key&quot;;    #key文件路径</span><br><span class="line">        ssl_session_cache shared:SSL:1m;</span><br><span class="line">        ssl_session_timeout  10m;</span><br><span class="line">        ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line">		</span><br><span class="line">        # Load configuration files for the default server block.</span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line">        </span><br><span class="line">	   #默认请求</span><br><span class="line">        location / &#123;</span><br><span class="line">                root /home/hexo;</span><br><span class="line">			  #定义首页索引文件名称</span><br><span class="line">                index index.html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看是否有报错，无报错重启服务器</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nginx -t</span><br><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo博客搭建（9）——魔改主题文件（高级）</title>
     <url>/2023/07/23/hexo/Hexo_build09/</url>
     <content><![CDATA[<h1 id="“前面的区域以后再来探索吧”"><a href="#“前面的区域以后再来探索吧”" class="headerlink" title="“前面的区域以后再来探索吧”"></a>“前面的区域以后再来探索吧”</h1>]]></content>
@@ -970,6 +871,69 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo博客搭建（10）——部署SSl证书</title>
+    <url>/2023/07/25/hexo/Hexo_build10/</url>
+    <content><![CDATA[<p> 部署SSL证书的意义在于，如果不部署SSL输入域名进入网站，浏览器会提示不安全的字样。别人看到这样的字样会犹豫是否进入，是否存在危险等。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110435052.png" alt="image-20230729110435052"></p>
+<h1 id="准备SSL证书"><a href="#准备SSL证书" class="headerlink" title="准备SSL证书"></a>准备SSL证书</h1><p>​        腾讯云是可以申请免费的SSL证书。在腾讯云中搜索找到SSL证书-&gt;我的证书-&gt;申请免费证书按照申请的提示输入信息即可（选取的是RSA加密）。之后就是等待腾讯云的审核和签发，这个等待时间一般在几个小时左右。申请完成后状态：</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110631777.png" alt="image-20230729110631777"></p>
+<h1 id="安装Filezilla-软件"><a href="#安装Filezilla-软件" class="headerlink" title="安装Filezilla 软件"></a>安装Filezilla 软件</h1><p>​        打开Filezilla软件官网下载并安装，它是一个本机FTP软件，可以提供与云服务器接发文件的功能。</p>
+<h1 id="云服务器安装FTP服务"><a href="#云服务器安装FTP服务" class="headerlink" title="云服务器安装FTP服务"></a>云服务器安装FTP服务</h1><ol>
+<li><p>安装vsftpd</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y vsftpd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/vsftpd/vsftpd.conf</span><br></pre></td></tr></table></figure>
+
+<p>修改第12行，禁止匿名用户登录：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">anonymous_enable=No </span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="上传SSL证书文件"><a href="#上传SSL证书文件" class="headerlink" title="上传SSL证书文件"></a>上传SSL证书文件</h1><p>​        打开Filezilla 软件输入云服务器IP等信息后连接，端口选用22端口。</p>
+<p>​		 去腾讯云服务器下载SSL证书。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110848329.png" alt="image-20230729110848329"></p>
+<p>  在Filezilla 软件本地站点（左边一栏）找到你下载的SSL证书，双击即可提示上传到云服务器用户目录下。</p>
+<h1 id="部署SSL证书"><a href="#部署SSL证书" class="headerlink" title="部署SSL证书"></a>部署SSL证书</h1><ol>
+<li><p>文件默认上传至我们的用户文件夹下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/zyh</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+
+<p>返回结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com.zip  zhangyuanhe.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压缩文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com.zip</span><br></pre></td></tr></table></figure>
+
+<p>再ls查看目录返回的结果是：</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729112613573.png" alt="image-20230729112613573"></p>
+<p>可以看见有四个文件，这里只需要crt文件和key文件。</p>
+</li>
+<li><p>将Nginx文件夹下的文件复制到新建的文件夹下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /etc/nginx/ssl/</span><br><span class="line">cd /home/zhangyuanhe/Nginx</span><br></pre></td></tr></table></figure>
+
+<p>用ls查看目录返回结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com_bundle.crt  zhangyuanhe.com.key</span><br></pre></td></tr></table></figure>
+
+<p>复制到ssl文件夹下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp zhangyuanhe.com_bundle.crt /etc/nginx/ssl/</span><br><span class="line">cp zhangyuanhe.com.key /etc/nginx/ssl/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开nginx.conf 文件夹 修改配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p>删除掉下方最前面注释并进行更改：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> server &#123;</span><br><span class="line">        listen       443 ssl;</span><br><span class="line">        listen       [::]:443 ssl http2 default_server;</span><br><span class="line">        server_name  liuruibin.com; #域名</span><br><span class="line">        root         /home/hexo;    #网站主目录</span><br><span class="line"></span><br><span class="line">        ssl_certificate &quot;/etc/nginx/ssl/zhangyuanhe.com_bundle.crt&quot;; #crt文件路径</span><br><span class="line">        ssl_certificate_key &quot;/etc/nginx/ssl/zhangyuanhe.com.key&quot;;    #key文件路径</span><br><span class="line">        ssl_session_cache shared:SSL:1m;</span><br><span class="line">        ssl_session_timeout  10m;</span><br><span class="line">        ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line">		</span><br><span class="line">        # Load configuration files for the default server block.</span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line">        </span><br><span class="line">	   #默认请求</span><br><span class="line">        location / &#123;</span><br><span class="line">                root /home/hexo;</span><br><span class="line">			  #定义首页索引文件名称</span><br><span class="line">                index index.html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看是否有报错，无报错重启服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nginx -t</span><br><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo博客搭建（8）——魔改主题文件（进阶）</title>
     <url>/2023/07/22/hexo/Hexo_build08/</url>
     <content><![CDATA[<h1 id="夜间模式动画"><a href="#夜间模式动画" class="headerlink" title="夜间模式动画"></a>夜间模式动画</h1><p>详见：<a href="https://www.fomal.cc/posts/d739261b.html">博客魔改教程总结(一) | Fomalhaut🥝</a></p>
@@ -1240,5 +1204,41 @@
         <tag>hexo</tag>
         <tag>服务器</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World test</title>
+    <url>/2023/07/02/hello/hello-world-test/</url>
+    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>正文</p>
+<p><code>代码段</code></p>
+<ol>
+<li>有序列表</li>
+<li>+1</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">代码块</span><br></pre></td></tr></table></figure>
+
+<p>链接测试：<a href="https://62.234.219.169/2023/07/20/hello-world/">Hello World | ZYH’s blog</a></p>
+<p>emojy:  :laughing:</p>
+<p>picture:</p>
+<p>在线文件</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon2.png" alt="我是水獭"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2023/07/01/hello/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
 </search>
