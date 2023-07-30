@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zhangyuanhe.top/2023/07/30/BUPT_note/BUPT01/</loc>
+    
+    <lastmod>2023-07-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/digital_logic/DL2/</loc>
     
     <lastmod>2023-07-30</lastmod>
@@ -12,15 +21,6 @@
   
   <url>
     <loc>https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/digital_logic/DL1/</loc>
-    
-    <lastmod>2023-07-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhangyuanhe.top/2023/07/30/BUPT_note/BUPT01/</loc>
     
     <lastmod>2023-07-30</lastmod>
     
