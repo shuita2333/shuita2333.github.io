@@ -1,6 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/2023/07/01/hello/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello World test</title>
+    <url>/2023/07/02/hello/hello-world-test/</url>
+    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>正文</p>
+<p><code>代码段</code></p>
+<ol>
+<li>有序列表</li>
+<li>+1</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">代码块</span><br></pre></td></tr></table></figure>
+
+<p>链接测试：<a href="https://62.234.219.169/2023/07/20/hello-world/">Hello World | ZYH’s blog</a></p>
+<p>emojy:  :laughing:</p>
+<p>picture:</p>
+<p>在线文件</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon2.png" alt="我是水獭"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（1）——部署服务器和配置服务器端</title>
+    <url>/2023/07/15/hexo/Hexo_build01/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>搭建自己的服务器是喜忧参半的</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">好处:</span><br><span class="line">1.不用担心别的第三方静态部署平台有什么变化；</span><br><span class="line">2.自己的其他东西也可以放到自己的服务器，拓展博客趣味性；</span><br><span class="line">3.没事自己捣鼓捣鼓，对个人的技术成长和作品展示都是有好处的，也是非常有意思的事情</span><br><span class="line">坏处:</span><br><span class="line">1.国内需要ICP备案和公安备案【香港澳门等除外】；</span><br><span class="line">2.可能需要一些技术能力，比如反向代理，linux知识；</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="选取配置"><a href="#选取配置" class="headerlink" title="选取配置"></a>选取配置</h1><ul>
+<li><strong>腾讯云</strong></li>
+</ul>
+<p>腾讯云没有阿里云那么多云服务器业务型号，它主要强在轻量应用服务器的多配置机型，和标准云服务器的高带宽、大硬盘、带数据盘！</p>
+<p>入门最高性价比推荐：腾讯云轻量应用服务器2核4G 5M带宽 一年168元，在促销的时候还有更多优惠。</p>
+<ul>
+<li><strong>阿里云</strong></li>
+</ul>
+<p>没什么好说的，入门机型没优势，价格偏高了，目前只有s6、c5、g5机型，c6、机型比较占优势。</p>
+<ul>
+<li><strong>华为云</strong></li>
+</ul>
+<p>目前阿里云和腾讯云经过一波价格调整，已经不是以前那种低价来占据市场了，完全内卷不动了，目前国内头部云厂商，云服务器折扣力度最大的，是华为云服务器，而且官网页面可领取优惠券。</p>
+<ul>
+<li><strong>硅云</strong></li>
+</ul>
+<p>硅云是中小型企业，专门针对香港和国外服务器，性价比挺高的术业有专攻，如果是想要建网站免备案，可选他们家。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">此外选取国内租用云服务器需要备案，大概流程要一个月左右。租用香港及国外云服务器目前不需要备案。</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="购买设备"><a href="#购买设备" class="headerlink" title="购买设备"></a>购买设备</h1><h2 id="购买云服务器"><a href="#购买云服务器" class="headerlink" title="购买云服务器"></a>购买云服务器</h2><p>我选取的是腾讯云服务器——轻量应用服务器2核2G</p>
+<p>6·18时候促销直接买的三年租用。</p>
+<p>购买之后需要安装配置服务器系统：</p>
+<p>地区：<code>北京五区</code>(离哪里近选择哪里) 系统：<code>CentOS 7.6 64位</code> 实例规格：<code>标准型S5</code></p>
+<p>配置完之后就可以在<code>控制台-&gt;云服务器-&gt;实例</code>中看到自己购买的服务器啦~</p>
+<h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p> 域名的出现是因为IP地址不方便记忆，因此通过DNS服务器可以通过好记的域名找到IP地址。如果不买域名完全可以用上方图片的IPv4地址访问服务器。</p>
+<p>在腾讯云主页的域名特惠中可以选取不同的后缀，不同后缀的域名价格不同。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">top后缀域名一般最便宜</span><br><span class="line">cn、com、net较为常用</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="云服务器配置"><a href="#云服务器配置" class="headerlink" title="云服务器配置"></a>云服务器配置</h1><p>！！！建议不要直接安装自带配置软件的与服务器！！！</p>
+<p>！！！不要一上来就安装宝塔！！！</p>
+<p><em>宝塔在可视化安装软件时会将软件安装在 www 目录下，而不是常用命令行的安装目录，而且会缺失一些文件，不利于后续操作。</em></p>
+<p><strong>开始配置：</strong></p>
+<ol>
+<li><p>安装依赖库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装编译工具</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查是否已安装Git</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git version</span><br></pre></td></tr></table></figure>
+
+<p>返回的结果<code>git version 1.8.3.1</code>即可</p>
+</li>
+<li><p>配置Git环境</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo &#x27;export PATH=$PATH:/usr/local/git/bin&#x27; &gt;&gt; /etc/bashrc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>刷新环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source /etc/bashrc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建Git用户并修改权限</p>
+<p>创建后期上传hexo的git指定用户，这里以hyh为例(这个用户名可以自定义，但是要保证后面的需要用户名的地方需要改成自己自定义的用户名即可)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adduser zyh</span><br><span class="line">passwd zyh</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的便是在设置密码时，设置密码时是没有回显的</p>
+<p>赋予zyh用户相关权限</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod 740 /etc/sudoers   # 设置权限</span><br><span class="line">vim /etc/sudoers # 编辑/etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<p>使用 set: nu 显示行号，找到100行左右，添加如下信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">root ALL=(ALL)  ALL</span><br><span class="line">- zyh  ALL=(ALL)   ALL  #主要添加这句话（这里zyh是你刚才创建的用户名）</span><br></pre></td></tr></table></figure>
+
+<p>直接:<code>wq!</code>，进行保存，保存后再次修改权限。因为 <code>sudoers</code>是只读文件，所有要使用 <code>!</code>进行保存，否则会失败。</p>
+<p>将&#x2F;etc&#x2F;sudoers 修改成只读类型</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod 600 /etc/sudoers   //改回权限</span><br></pre></td></tr></table></figure>
+
+
+
+<p>创建hexo文件夹及赋予文件夹权限</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /home/hexo  #这个也是自定义的</span><br><span class="line">chown hyh:hyh -R /home/hexo #授予权限</span><br></pre></td></tr></table></figure>
+
+
+
+<p>安装Nginx<br>这里基本没啥好说的，直接运行就可以，然后看到最后一行显示Complete就说明完事了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y nginx  </span><br></pre></td></tr></table></figure>
+
+
+
+<p>这个时候我们可以通过以下命令，启动一下，看看效果，如果没有报错的话就ok</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl start nginx.service</span><br></pre></td></tr></table></figure>
+
+
+
+<p>配置Nginx文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p>在38行进行修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123; </span><br><span class="line">	listen 80 default_server; </span><br><span class="line">	listen [::]:80 default_server; </span><br><span class="line">	server_name liuruibin.com; #域名 </span><br><span class="line">	root /home/hexo; #网站目录</span><br></pre></td></tr></table></figure>
+
+<p>保存退出后，重启服务器，<br>修改完配置以后，需要重启一下Nginx服务。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl reload nginx.service  </span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（3）——Hexo的目录结构</title>
+    <url>/2023/07/17/hexo/Hexo_build03/</url>
+    <content><![CDATA[<p>本地部署后在系统盘的用户目录下生成Hexo文件，对其目录结构需要有一定的了解，在之后的Hexo配置和优化离不开里面的各种文件，因此需要对它的目录结构有一定了解：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- _config.yml</span><br><span class="line">|-- node_modules</span><br><span class="line">|-- scaffolds</span><br><span class="line">|-- source</span><br><span class="line">   |-- _posts</span><br><span class="line">|-- public</span><br><span class="line">|-- themes</span><br><span class="line">|-- .gitignore</span><br><span class="line">|-- db.json</span><br><span class="line">|-- package.json</span><br><span class="line">|-- package-lock.json</span><br></pre></td></tr></table></figure>
+
+<p><code>_config.yml</code>：网站的全局配置文件，设置包括网站标题、副标题、作者、关键字和描述信息等。</p>
+<p><code>node_modules</code>：是<code>nodejs</code>库文件目录，也就是我们通过”npm install”命令安装的文件位置</p>
+<p><code>scaffolds</code>：本意是 “脚手架” 的意思，这里引申为模板文件夹。当你 <code>hexo new &lt;layout(布局)&gt; &lt;title&gt; 的时候</code>，Hexo 会根据该文件夹下的对应文件进行初始化构建。</p>
+<p><code>source</code>：正如其名，<code>source</code> 文件夹存储一些直接来自用户的文件，它很重要，如果不出意外你的文章就是保存在这个文件夹下（<em>posts）。</em><code>posts</code> 目录下的md文件，会被编译成 html 文件，放到 public 文件夹下。</p>
+<p><code>public</code>：参考 <code>source</code> 文件夹，在初始化后是没有 <code>public</code> 文件夹的，除非 <code>hexo g</code> 编译生成静态文件后，<code>public</code> 文件夹会自动生成。使用 <code>hexo clean</code> 清除 <code>db.json</code> 和 <code>public</code> 文件夹下的所有文件。</p>
+<p><code>themes</code>：主题文件夹，存储主题。相关的主题可以在 Github 上免费采购。</p>
+<p><code>.gitignore</code>：<code>.gitignore</code> 文件作用是声明不被 git 记录的文件，<code>hexo init &lt;folder&gt;</code> 也会产生一个 <code>.gitignore</code> 文件，可以先删除或者直接编辑，对hexo不会有影响。</p>
+<p><code>db.json</code>：里面存放了一些由<code>source</code>目录下<code>.md</code> 的所有文件解析得到的数据</p>
+<p><code>package.json</code>：框架的基本参数信息和它所依赖的插件，在 npm 安装时使用 <code>--save</code> 保存进去。</p>
+<p><code>package-lock.json</code>：锁定安装时的包的版本号，并且需要上传到git，以保证其他人在npm install时大家的依赖能保证一致。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（2）——配置客户端并建立连接</title>
+    <url>/2023/07/16/hexo/Hexo_build02/</url>
+    <content><![CDATA[<h1 id="相关链接和参考内容"><a href="#相关链接和参考内容" class="headerlink" title="相关链接和参考内容"></a>相关链接和参考内容</h1><p>Node：<a href="https://nodejs.org/zh-cn">Node.js (nodejs.org)</a></p>
+<p>Git： <a href="https://git-scm.com/downloads">Git - Downloads (git-scm.com)</a></p>
+<p>Typora： <a href="https://www.typora.io/">https://www.typora.io/</a></p>
+<p>hexo说明文档： <a href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a></p>
+<h1 id="本地安装和配置Hexo"><a href="#本地安装和配置Hexo" class="headerlink" title="本地安装和配置Hexo"></a>本地安装和配置Hexo</h1><p>请先自行安装git和node，这个教程就比较多了，在这里就不进行赘述了</p>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="初始化hexo"><a href="#初始化hexo" class="headerlink" title="初始化hexo"></a>初始化hexo</h2><p>这里myblog可以去掉，加myblog只不过是为了使所生成的文件全都放到myblog文件夹中</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init myblog  </span><br><span class="line">cd ./myblog</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+
+<p>目前基本的hexo已经ok了，本地运行一下看看</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中输入：<code>http://localhost:4000/</code>即可查看</p>
+<h2 id="上传到服务器"><a href="#上传到服务器" class="headerlink" title="上传到服务器"></a>上传到服务器</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">su zyh  //登录你用来上传博客的用户</span><br><span class="line">mkdir ~/.ssh   //创建存放密钥的文件夹</span><br><span class="line">vim ~/.ssh/authorized_keys  //写入密钥</span><br></pre></td></tr></table></figure>
+
+<p>这里需要一个秘钥，在你的物理机上C:\Users\Administrator\ .ssh的文件中找到id_rsa文件（如未找到ssh文件请参考文末）</p>
+<p>复制全部信息到你的服务器中</p>
+<p>测试物理机与服务器能否跑通</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -v zyh@62.234.219.169 //服务器ip</span><br></pre></td></tr></table></figure>
+
+<p>我们需要在config.yml中的最后一行编辑以下信息，然后咱们就可以把自己的博客推送上去了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  - type: git</span><br><span class="line">    repository: zyh@62.234.219.169:/home/zyh/blog.git</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以通过以下命令进行推送了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo -d</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="附录）本地Windows10使用Git-Bash创建密钥"><a href="#附录）本地Windows10使用Git-Bash创建密钥" class="headerlink" title="(附录）本地Windows10使用Git Bash创建密钥"></a>(附录）本地Windows10使用Git Bash创建密钥</h2><p>打开到本地的博客文件目录下，右键Git Bush进入命令框，输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+
+<p>输入完后一顿空格即可，之后会返回SHA256密钥和密钥图。并且在你用户界面下发现出现了.ssh文件夹。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>北邮网安大类课程介绍（21级）</title>
     <url>/2023/07/30/BUPT_note/BUPT01/</url>
     <content><![CDATA[<p>由于网安院建院时间较短，培养方案还在不断更改，每一届的同学所学课程的顺序都有可能发生变化，以下内容仅供参考。本人平时成绩一般，主要靠考前突击，奉劝大家平时还是要好好学习，期末突击不可靠。</p>
@@ -139,7 +361,30 @@
 <li>b站：速通流必备[王道计算机考研](<a href="https://www.bilibili.com/video/BV19E411D78Q/?vd_source=845dacbec2fc56dd00bc736f8d842991">王道计算机考研 计算机网络_</a></li>
 <li>百度网盘：笔记、课件、作业</li>
 <li>百度网盘-学长流传：早年间的卷子、实验（我们好像都没做过）</li>
-<li>实验可以直接看博客：</li>
+<li>实验可以直接看博客：<a href="https://zhangyuanhe.top/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C/">分类：计算机网络实验 </a></li>
+</ol>
+<h1 id="汇编语言与逆向工程"><a href="#汇编语言与逆向工程" class="headerlink" title="汇编语言与逆向工程"></a>汇编语言与逆向工程</h1><p>非常实验的一门课，上课讲的都逆向工程的方法。期末是开卷闭网考试，5道逆向题目，每个都是获取flag并简单说明下如何解题。还是需要看应试技巧，期末题目不是按难易排序的。考的知识点还算固定，复习考试范围就可以。</p>
+<ol>
+<li>百度网盘：解题思路、ppt、练习题、作业题</li>
+<li>百度网盘-学长流传：视频资料、一些工具</li>
+<li>博客准备开一个板块放逆向的内容，以后可能会放链接</li>
+</ol>
+<h1 id="现代密码学"><a href="#现代密码学" class="headerlink" title="现代密码学"></a>现代密码学</h1><p>经典专业课+1，从古典密码一直到现代加密通信。要记的东西不少，学起来有点痛苦。考试题目偏理论，闭卷考试。</p>
+<ol>
+<li>百度网盘：ppt、笔记、作业题</li>
+<li>百度网盘-学长流传：教材电子版</li>
+</ol>
+<h1 id="数字内容安全"><a href="#数字内容安全" class="headerlink" title="数字内容安全"></a>数字内容安全</h1><p>科普类课程，但是有闭卷考试，主要靠考前画的知识点用几个小时突击。最后一个月会有实验，实验比较复杂而且每一届好像不太一样。</p>
+<ol>
+<li>百度网盘：ppt、实验报告</li>
+</ol>
+<h1 id="毛泽东思想和中国特色社会主义理论体系概论"><a href="#毛泽东思想和中国特色社会主义理论体系概论" class="headerlink" title="毛泽东思想和中国特色社会主义理论体系概论"></a>毛泽东思想和中国特色社会主义理论体系概论</h1><p>毛中特，最后一门政治课，会画大题考点，重点看这几个考点就够了。有小组作业，还有实践调研。每节课同学自愿报名上台点评热点新闻，期末有一定加分。</p>
+<ol>
+<li>百度网盘：实践作业、小组作业、思维导图</li>
+</ol>
+<h1 id="数学建模与模拟"><a href="#数学建模与模拟" class="headerlink" title="数学建模与模拟"></a>数学建模与模拟</h1><p>限选课之一，相较于另外两门，这一个算是最友善的。没有期末考试，讲的内容也能够理解。需要使用matlab工具。</p>
+<ol>
+<li>百度网盘：作业、课件</li>
 </ol>
 <h1 id="公选课"><a href="#公选课" class="headerlink" title="公选课"></a>公选课</h1><p>公选课属于自行选修课程，最后不会算在保研排名中，无法靠公选课拉绩点哦！</p>
 <h2 id="中国古建筑文化与鉴赏（在线课程）"><a href="#中国古建筑文化与鉴赏（在线课程）" class="headerlink" title="中国古建筑文化与鉴赏（在线课程）"></a>中国古建筑文化与鉴赏（在线课程）</h2><p>非常水的智慧树网课，很好通过。期末是在线考试选择题，可以在网上查到成套的往年题，一边考试一边借鉴就可。智慧树一般开课比较晚，会比正常学期完一个月左右，不要着急。</p>
@@ -155,259 +400,6 @@
         <tag>北邮信安</tag>
         <tag>学习笔记</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2023/07/01/hello/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Hexo博客搭建（2）——配置客户端并建立连接</title>
-    <url>/2023/07/16/hexo/Hexo_build02/</url>
-    <content><![CDATA[<h1 id="相关链接和参考内容"><a href="#相关链接和参考内容" class="headerlink" title="相关链接和参考内容"></a>相关链接和参考内容</h1><p>Node：<a href="https://nodejs.org/zh-cn">Node.js (nodejs.org)</a></p>
-<p>Git： <a href="https://git-scm.com/downloads">Git - Downloads (git-scm.com)</a></p>
-<p>Typora： <a href="https://www.typora.io/">https://www.typora.io/</a></p>
-<p>hexo说明文档： <a href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a></p>
-<h1 id="本地安装和配置Hexo"><a href="#本地安装和配置Hexo" class="headerlink" title="本地安装和配置Hexo"></a>本地安装和配置Hexo</h1><p>请先自行安装git和node，这个教程就比较多了，在这里就不进行赘述了</p>
-<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="初始化hexo"><a href="#初始化hexo" class="headerlink" title="初始化hexo"></a>初始化hexo</h2><p>这里myblog可以去掉，加myblog只不过是为了使所生成的文件全都放到myblog文件夹中</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init myblog  </span><br><span class="line">cd ./myblog</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
-
-<p>目前基本的hexo已经ok了，本地运行一下看看</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>在浏览器中输入：<code>http://localhost:4000/</code>即可查看</p>
-<h2 id="上传到服务器"><a href="#上传到服务器" class="headerlink" title="上传到服务器"></a>上传到服务器</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">su zyh  //登录你用来上传博客的用户</span><br><span class="line">mkdir ~/.ssh   //创建存放密钥的文件夹</span><br><span class="line">vim ~/.ssh/authorized_keys  //写入密钥</span><br></pre></td></tr></table></figure>
-
-<p>这里需要一个秘钥，在你的物理机上C:\Users\Administrator\ .ssh的文件中找到id_rsa文件（如未找到ssh文件请参考文末）</p>
-<p>复制全部信息到你的服务器中</p>
-<p>测试物理机与服务器能否跑通</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -v zyh@62.234.219.169 //服务器ip</span><br></pre></td></tr></table></figure>
-
-<p>我们需要在config.yml中的最后一行编辑以下信息，然后咱们就可以把自己的博客推送上去了</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  - type: git</span><br><span class="line">    repository: zyh@62.234.219.169:/home/zyh/blog.git</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
-
-<p>然后就可以通过以下命令进行推送了</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo -d</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="附录）本地Windows10使用Git-Bash创建密钥"><a href="#附录）本地Windows10使用Git-Bash创建密钥" class="headerlink" title="(附录）本地Windows10使用Git Bash创建密钥"></a>(附录）本地Windows10使用Git Bash创建密钥</h2><p>打开到本地的博客文件目录下，右键Git Bush进入命令框，输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-
-<p>输入完后一顿空格即可，之后会返回SHA256密钥和密钥图。并且在你用户界面下发现出现了.ssh文件夹。</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo博客搭建（3）——Hexo的目录结构</title>
-    <url>/2023/07/17/hexo/Hexo_build03/</url>
-    <content><![CDATA[<p>本地部署后在系统盘的用户目录下生成Hexo文件，对其目录结构需要有一定的了解，在之后的Hexo配置和优化离不开里面的各种文件，因此需要对它的目录结构有一定了解：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- _config.yml</span><br><span class="line">|-- node_modules</span><br><span class="line">|-- scaffolds</span><br><span class="line">|-- source</span><br><span class="line">   |-- _posts</span><br><span class="line">|-- public</span><br><span class="line">|-- themes</span><br><span class="line">|-- .gitignore</span><br><span class="line">|-- db.json</span><br><span class="line">|-- package.json</span><br><span class="line">|-- package-lock.json</span><br></pre></td></tr></table></figure>
-
-<p><code>_config.yml</code>：网站的全局配置文件，设置包括网站标题、副标题、作者、关键字和描述信息等。</p>
-<p><code>node_modules</code>：是<code>nodejs</code>库文件目录，也就是我们通过”npm install”命令安装的文件位置</p>
-<p><code>scaffolds</code>：本意是 “脚手架” 的意思，这里引申为模板文件夹。当你 <code>hexo new &lt;layout(布局)&gt; &lt;title&gt; 的时候</code>，Hexo 会根据该文件夹下的对应文件进行初始化构建。</p>
-<p><code>source</code>：正如其名，<code>source</code> 文件夹存储一些直接来自用户的文件，它很重要，如果不出意外你的文章就是保存在这个文件夹下（<em>posts）。</em><code>posts</code> 目录下的md文件，会被编译成 html 文件，放到 public 文件夹下。</p>
-<p><code>public</code>：参考 <code>source</code> 文件夹，在初始化后是没有 <code>public</code> 文件夹的，除非 <code>hexo g</code> 编译生成静态文件后，<code>public</code> 文件夹会自动生成。使用 <code>hexo clean</code> 清除 <code>db.json</code> 和 <code>public</code> 文件夹下的所有文件。</p>
-<p><code>themes</code>：主题文件夹，存储主题。相关的主题可以在 Github 上免费采购。</p>
-<p><code>.gitignore</code>：<code>.gitignore</code> 文件作用是声明不被 git 记录的文件，<code>hexo init &lt;folder&gt;</code> 也会产生一个 <code>.gitignore</code> 文件，可以先删除或者直接编辑，对hexo不会有影响。</p>
-<p><code>db.json</code>：里面存放了一些由<code>source</code>目录下<code>.md</code> 的所有文件解析得到的数据</p>
-<p><code>package.json</code>：框架的基本参数信息和它所依赖的插件，在 npm 安装时使用 <code>--save</code> 保存进去。</p>
-<p><code>package-lock.json</code>：锁定安装时的包的版本号，并且需要上传到git，以保证其他人在npm install时大家的依赖能保证一致。</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo博客搭建（1）——部署服务器和配置服务器端</title>
-    <url>/2023/07/15/hexo/Hexo_build01/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>搭建自己的服务器是喜忧参半的</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">好处:</span><br><span class="line">1.不用担心别的第三方静态部署平台有什么变化；</span><br><span class="line">2.自己的其他东西也可以放到自己的服务器，拓展博客趣味性；</span><br><span class="line">3.没事自己捣鼓捣鼓，对个人的技术成长和作品展示都是有好处的，也是非常有意思的事情</span><br><span class="line">坏处:</span><br><span class="line">1.国内需要ICP备案和公安备案【香港澳门等除外】；</span><br><span class="line">2.可能需要一些技术能力，比如反向代理，linux知识；</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="选取配置"><a href="#选取配置" class="headerlink" title="选取配置"></a>选取配置</h1><ul>
-<li><strong>腾讯云</strong></li>
-</ul>
-<p>腾讯云没有阿里云那么多云服务器业务型号，它主要强在轻量应用服务器的多配置机型，和标准云服务器的高带宽、大硬盘、带数据盘！</p>
-<p>入门最高性价比推荐：腾讯云轻量应用服务器2核4G 5M带宽 一年168元，在促销的时候还有更多优惠。</p>
-<ul>
-<li><strong>阿里云</strong></li>
-</ul>
-<p>没什么好说的，入门机型没优势，价格偏高了，目前只有s6、c5、g5机型，c6、机型比较占优势。</p>
-<ul>
-<li><strong>华为云</strong></li>
-</ul>
-<p>目前阿里云和腾讯云经过一波价格调整，已经不是以前那种低价来占据市场了，完全内卷不动了，目前国内头部云厂商，云服务器折扣力度最大的，是华为云服务器，而且官网页面可领取优惠券。</p>
-<ul>
-<li><strong>硅云</strong></li>
-</ul>
-<p>硅云是中小型企业，专门针对香港和国外服务器，性价比挺高的术业有专攻，如果是想要建网站免备案，可选他们家。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">此外选取国内租用云服务器需要备案，大概流程要一个月左右。租用香港及国外云服务器目前不需要备案。</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="购买设备"><a href="#购买设备" class="headerlink" title="购买设备"></a>购买设备</h1><h2 id="购买云服务器"><a href="#购买云服务器" class="headerlink" title="购买云服务器"></a>购买云服务器</h2><p>我选取的是腾讯云服务器——轻量应用服务器2核2G</p>
-<p>6·18时候促销直接买的三年租用。</p>
-<p>购买之后需要安装配置服务器系统：</p>
-<p>地区：<code>北京五区</code>(离哪里近选择哪里) 系统：<code>CentOS 7.6 64位</code> 实例规格：<code>标准型S5</code></p>
-<p>配置完之后就可以在<code>控制台-&gt;云服务器-&gt;实例</code>中看到自己购买的服务器啦~</p>
-<h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p> 域名的出现是因为IP地址不方便记忆，因此通过DNS服务器可以通过好记的域名找到IP地址。如果不买域名完全可以用上方图片的IPv4地址访问服务器。</p>
-<p>在腾讯云主页的域名特惠中可以选取不同的后缀，不同后缀的域名价格不同。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">top后缀域名一般最便宜</span><br><span class="line">cn、com、net较为常用</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="云服务器配置"><a href="#云服务器配置" class="headerlink" title="云服务器配置"></a>云服务器配置</h1><p>！！！建议不要直接安装自带配置软件的与服务器！！！</p>
-<p>！！！不要一上来就安装宝塔！！！</p>
-<p><em>宝塔在可视化安装软件时会将软件安装在 www 目录下，而不是常用命令行的安装目录，而且会缺失一些文件，不利于后续操作。</em></p>
-<p><strong>开始配置：</strong></p>
-<ol>
-<li><p>安装依赖库</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装编译工具</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>检查是否已安装Git</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git version</span><br></pre></td></tr></table></figure>
-
-<p>返回的结果<code>git version 1.8.3.1</code>即可</p>
-</li>
-<li><p>配置Git环境</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo &#x27;export PATH=$PATH:/usr/local/git/bin&#x27; &gt;&gt; /etc/bashrc</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>刷新环境变量</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source /etc/bashrc</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建Git用户并修改权限</p>
-<p>创建后期上传hexo的git指定用户，这里以hyh为例(这个用户名可以自定义，但是要保证后面的需要用户名的地方需要改成自己自定义的用户名即可)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adduser zyh</span><br><span class="line">passwd zyh</span><br></pre></td></tr></table></figure>
-
-<p>需要注意的便是在设置密码时，设置密码时是没有回显的</p>
-<p>赋予zyh用户相关权限</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod 740 /etc/sudoers   # 设置权限</span><br><span class="line">vim /etc/sudoers # 编辑/etc/sudoers</span><br></pre></td></tr></table></figure>
-
-<p>使用 set: nu 显示行号，找到100行左右，添加如下信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">root ALL=(ALL)  ALL</span><br><span class="line">- zyh  ALL=(ALL)   ALL  #主要添加这句话（这里zyh是你刚才创建的用户名）</span><br></pre></td></tr></table></figure>
-
-<p>直接:<code>wq!</code>，进行保存，保存后再次修改权限。因为 <code>sudoers</code>是只读文件，所有要使用 <code>!</code>进行保存，否则会失败。</p>
-<p>将&#x2F;etc&#x2F;sudoers 修改成只读类型</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod 600 /etc/sudoers   //改回权限</span><br></pre></td></tr></table></figure>
-
-
-
-<p>创建hexo文件夹及赋予文件夹权限</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /home/hexo  #这个也是自定义的</span><br><span class="line">chown hyh:hyh -R /home/hexo #授予权限</span><br></pre></td></tr></table></figure>
-
-
-
-<p>安装Nginx<br>这里基本没啥好说的，直接运行就可以，然后看到最后一行显示Complete就说明完事了</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y nginx  </span><br></pre></td></tr></table></figure>
-
-
-
-<p>这个时候我们可以通过以下命令，启动一下，看看效果，如果没有报错的话就ok</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl start nginx.service</span><br></pre></td></tr></table></figure>
-
-
-
-<p>配置Nginx文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
-
-<p>在38行进行修改：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123; </span><br><span class="line">	listen 80 default_server; </span><br><span class="line">	listen [::]:80 default_server; </span><br><span class="line">	server_name liuruibin.com; #域名 </span><br><span class="line">	root /home/hexo; #网站目录</span><br></pre></td></tr></table></figure>
-
-<p>保存退出后，重启服务器，<br>修改完配置以后，需要重启一下Nginx服务。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl reload nginx.service  </span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo博客搭建（4）——更换主题</title>
-    <url>/2023/07/18/hexo/Hexo_build04/</url>
-    <content><![CDATA[<p>Hexo的主题有很多，可以在其官网上选择自己喜欢的。</p>
-<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p>Hexo官方主题页：<a href="https://hexo.io/themes/">Themes | Hexo</a></p>
-<p>我使用的主题：<a href="https://github.com/zhangzeli/hexo-theme-butterfly">Butterfly</a></p>
-<h1 id="更改方法"><a href="#更改方法" class="headerlink" title="更改方法"></a>更改方法</h1><p>在Github上下载了主题ZIP文件后，放到hexo文件夹根目录themes文件下解压。之后打开hexo文件夹中_config.yml，找到Extensions.theme将其改为hexo-theme-matery。重启本地服务器就可以看到主题改过来啦。</p>
-<p>建议下载稳定版，在建立的Hexo博客文件根目录打开终端，输入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/Butterfly</span><br></pre></td></tr></table></figure>
-
-<p>打开根目录文件<code>_config.yml</code>更改</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">theme: Butterfly</span><br></pre></td></tr></table></figure>
-
-<p>随后重新部署一下就可以看见更改后的主题了</p>
-<p>以下步骤以后不再赘述：</p>
-<p>输入以下代码可在本地查看</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>输入以下代码可部署到网站</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo -d</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
-        <tag>Butterfly主题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World test</title>
-    <url>/2023/07/02/hello/hello-world-test/</url>
-    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>正文</p>
-<p><code>代码段</code></p>
-<ol>
-<li>有序列表</li>
-<li>+1</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">代码块</span><br></pre></td></tr></table></figure>
-
-<p>链接测试：<a href="https://62.234.219.169/2023/07/20/hello-world/">Hello World | ZYH’s blog</a></p>
-<p>emojy:  :laughing:</p>
-<p>picture:</p>
-<p>在线文件</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon2.png" alt="我是水獭"></p>
-]]></content>
   </entry>
   <entry>
     <title>Hexo博客搭建（5）——自定义Hexo文件</title>
@@ -466,287 +458,27 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客搭建（6）——魔改主题文件（基础）</title>
-    <url>/2023/07/20/hexo/Hexo_build06/</url>
-    <content><![CDATA[<h1 id="导航栏设置-Navigation-bar-settings"><a href="#导航栏设置-Navigation-bar-settings" class="headerlink" title="导航栏设置 (Navigation bar settings)"></a>导航栏设置 (Navigation bar settings)</h1><h2 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h2><p>主题配置文件中（注意不是根目录配置文件）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nav:</span><br><span class="line">  logo: #image</span><br><span class="line">  display_title: true</span><br><span class="line">  fixed: false # fixed navigation bar</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>logo</td>
-<td>网站的 logo，支持图片，直接填入图片链接</td>
-</tr>
-<tr>
-<td>display_title</td>
-<td>是否显示网站标题，填写 true 或者 false</td>
-</tr>
-<tr>
-<td>fixed</td>
-<td>是否固定状态栏，填写 true 或者 false</td>
-</tr>
-</tbody></table>
-<h2 id="菜单-目录"><a href="#菜单-目录" class="headerlink" title="菜单&#x2F;目录"></a>菜单&#x2F;目录</h2><p>​	修改 <code>主题配置文件</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Home: / || fas fa-home</span><br><span class="line">Archives: /archives/ || fas fa-archive</span><br><span class="line">Tags: /tags/ || fas fa-tags</span><br><span class="line">Categories: /categories/ || fas fa-folder-open</span><br><span class="line">List||fas fa-list:</span><br><span class="line">  Music: /music/ || fas fa-music</span><br><span class="line">  Movie: /movies/ || fas fa-video</span><br><span class="line">Link: /link/ || fas fa-link</span><br><span class="line">About: /about/ || fas fa-heart</span><br></pre></td></tr></table></figure>
-
-<p>必须是 <code>/xxx/</code>，后面<code>||</code>分开，然后写图标名。</p>
-<p>如果不希望显示图标，图标名可不写。</p>
-<p>默认子目录是展开的，如果你想要隐藏，在子目录里添加 <code>hide</code> 。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List||fas fa-list||hide:</span><br><span class="line">  Music: /music/ || fas fa-music</span><br><span class="line">  Movie: /movies/ || fas fa-video</span><br></pre></td></tr></table></figure>
-
-<p>注意： 导航的文字可自行更改</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  首页: / || fas fa-home</span><br><span class="line">  时间轴: /archives/ || fas fa-archive</span><br><span class="line">  标签: /tags/ || fas fa-tags</span><br><span class="line">  分类: /categories/ || fas fa-folder-open</span><br><span class="line">  清单||fa fa-heartbeat:</span><br><span class="line">    音乐: /music/ || fas fa-music</span><br><span class="line">    照片: /Gallery/ || fas fa-images</span><br><span class="line">    电影: /movies/ || fas fa-video</span><br><span class="line">  友链: /link/ || fas fa-link</span><br><span class="line">  关于: /about/ || fas fa-heart</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="代码-Code-Blocks"><a href="#代码-Code-Blocks" class="headerlink" title="代码 (Code Blocks)"></a>代码 (Code Blocks)</h1><h2 id="代码高亮主题"><a href="#代码高亮主题" class="headerlink" title="代码高亮主题"></a>代码高亮主题</h2><p>Butterfly 支持6种代码高亮样式：</p>
-<ul>
-<li>darker</li>
-<li>pale night</li>
-<li>light</li>
-<li>ocean</li>
-<li>mac</li>
-<li>mac light</li>
-</ul>
-<p>修改 主题配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">highlight_theme: light</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="代码复制"><a href="#代码复制" class="headerlink" title="代码复制"></a>代码复制</h2><p>主题支持代码复制功能</p>
-<p>修改 主题配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">highlight_copy: true</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="代码框展开-关闭"><a href="#代码框展开-关闭" class="headerlink" title="代码框展开&#x2F;关闭"></a>代码框展开&#x2F;关闭</h2><p>在默认情况下，代码框自动展开，可设置是否所有代码框都关闭状态，点击&gt;可展开代码</p>
-<ul>
-<li>true 全部代码框不展开，需点击&gt;打开</li>
-<li>false 代码框展开，有&gt;点击按钮</li>
-<li>none 不显示&gt;按钮</li>
-</ul>
-<p>修改 主题配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">highlight_shrink: true #代码框不展开，需点击 &#x27;&gt;&#x27; 打开</span><br></pre></td></tr></table></figure>
-
-<p>你也可以在<code>post/page</code>页对应的markdown文件<code>front-matter</code>添加highlight_shrink来独立配置。</p>
-<p>当主题配置文件中的 <code>highlight_shrink</code> 设为<code>true</code>时，可在<code>front-matter</code>添加<code>highlight_shrink: false</code>来单独配置文章展开代码框。</p>
-<p>当主题配置文件中的 <code>highlight_shrink</code> 设为<code>false</code>时，可在<code>front-matter</code>添加<code>highlight_shrink: true</code>来单独配置文章收缩代码框。</p>
-<h2 id="代码换行"><a href="#代码换行" class="headerlink" title="代码换行"></a>代码换行</h2><p>在默认情况下，Hexo 在编译的时候不会实现代码自动换行。如果你不希望在代码块的区域里有横向滚动条的话，那么你可以考虑开启这个功能。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">code_word_wrap: true</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="社交图标-Social-Settings"><a href="#社交图标-Social-Settings" class="headerlink" title="社交图标 (Social Settings)"></a>社交图标 (Social Settings)</h1><p><code>Butterfly</code>支持 <code>font-awesome v6</code> 图标.</p>
-<p>书写格式 图标名：<code>url || 描述性文字 || color</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">social:</span><br><span class="line">  fab fa-github: https://github.com/xxxxx || Github || &quot;#hdhfbb&quot;</span><br><span class="line">  fas fa-envelope: mailto:xxxxxx@gmail.com || Email || &quot;#000000&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="头像"><a href="#头像" class="headerlink" title="头像"></a>头像</h1><p>修改 主题配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  img: /img/avatar.png</span><br><span class="line">  effect: true # 头像会一直转圈</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="顶部图"><a href="#顶部图" class="headerlink" title="顶部图"></a>顶部图</h1><p>如果不要显示顶部图，可直接配置 <code>disable_top_img: true</code></p>
-<p>顶部图的获取顺序，如果都没有配置，则不显示顶部图。</p>
-<ol>
-<li><p>页面顶部图的获取顺序：</p>
-<p>各自配置的 <code>top_img &gt;</code> 配置文件的 <code>default_top_img</code></p>
-</li>
-<li><p>文章页顶部图的获取顺序：</p>
-<p>各自配置的 <code>top_img &gt; cover &gt;</code> 配置文件的 <code>default_top_img</code></p>
-</li>
-</ol>
-<p>配置中的值：</p>
-<table>
-<thead>
-<tr>
-<th>配置</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>index_img</td>
-<td>主页的 top_img</td>
-</tr>
-<tr>
-<td>default_top_img</td>
-<td>默认的 top_img，当页面的 top_img 没有配置时，会显示 default_top_img</td>
-</tr>
-<tr>
-<td>archive_img</td>
-<td>归档页面的 top_img</td>
-</tr>
-<tr>
-<td>tag_img</td>
-<td>tag 子页面 的 默认 top_img</td>
-</tr>
-<tr>
-<td>tag_per_img</td>
-<td>tag 子页面的 top_img，可配置每个 tag 的 top_img</td>
-</tr>
-<tr>
-<td>category_img</td>
-<td>category 子页面 的 默认 top_img</td>
-</tr>
-<tr>
-<td>category_per_img</td>
-<td>category 子页面的 top_img，可配置每个 category 的 top_img</td>
-</tr>
-</tbody></table>
-<p>并不推荐为每个 tag 和每个 category 都配置不同的顶部图，因为配置太多会拖慢生成速度</p>
-<h1 id="文章封面"><a href="#文章封面" class="headerlink" title="文章封面"></a>文章封面</h1><p>文章的 <code>markdown</code> 文档上,在 <code>Front-matter</code> 添加 <code>cover</code> ,并填上要显示的图片地址。</p>
-<p>如果不配置 <code>cover</code>,可以设置显示默认的 <code>cover</code>。</p>
-<p>如果不想在首页显示 <code>cover</code>, 可以设置为 <code>false</code>。</p>
-<p>文章封面的获取顺序 <code>Front-matter</code> 的 cover &gt; 配置文件的 default_cover &gt; false</p>
-<p>修改 主题配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cover:</span><br><span class="line">  # 是否显示文章封面</span><br><span class="line">  index_enable: true #主页是否显示文章封面图</span><br><span class="line">  aside_enable: true #侧栏是否显示文章封面图</span><br><span class="line">  archives_enable: true #	归档页面是否显示文章封面图</span><br><span class="line">  # 封面显示的位置</span><br><span class="line">  # 三个值可配置 left , right , both</span><br><span class="line">  position: both</span><br><span class="line">  # 当没有设置cover时，默认的封面显示</span><br><span class="line">  default_cover: </span><br></pre></td></tr></table></figure>
-
-<p>当配置多张图片时,会随机选择一张作为cover.此时写法应为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">default_cover:</span><br><span class="line">  - https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png</span><br><span class="line">  - https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg2.png</span><br><span class="line">  - https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="页面-meta-显示"><a href="#页面-meta-显示" class="headerlink" title="页面 meta 显示"></a>页面 meta 显示</h1><p>这个选项是用来显示文章的相关信息的。</p>
-<p>修改 主题配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">post_meta:</span><br><span class="line">  page:</span><br><span class="line">    date_type: both # created or updated or both 主页文章日期是创建日或者更新日或都显示</span><br><span class="line">    date_format: relative # date/relative 显示日期还是相对日期</span><br><span class="line">    categories: true # true or false 主页是否显示分类</span><br><span class="line">    tags: true # true or false 主页是否显示标签</span><br><span class="line">    label: true # true or false 显示描述性文字</span><br><span class="line">  post:</span><br><span class="line">    date_type: both # created or updated or both 文章页日期是创建日或者更新日或都显示</span><br><span class="line">    date_format: relative # date/relative 显示日期还是相对日期</span><br><span class="line">    categories: true # true or false 文章页是否显示分类</span><br><span class="line">    tags: true # true or false 文章页是否显示标签</span><br><span class="line">    label: true # true or false 显示描述性文字</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="主页文章节选-自动节选和文章页description"><a href="#主页文章节选-自动节选和文章页description" class="headerlink" title="主页文章节选(自动节选和文章页description)"></a>主页文章节选(自动节选和文章页description)</h1><p>因为主题UI的关係，主页文章节选只支持自动节选和文章页<code>description</code>。</p>
-<p>在<code>butterfly</code>里，有四种可供选择</p>
-<ol>
-<li>description： 只显示<code>description</code></li>
-<li>both： 优先选择&#96;&#96;，如果没有配置description，则显示自动节选的内容</li>
-<li>auto_excerpt：只显示自动节选</li>
-<li>false： 不显示文章内容</li>
-</ol>
-<p>修改 主题配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">index_post_content:</span><br><span class="line">  method: 3</span><br><span class="line">  length: 500 # if you set method to 2 or 3, the length need to config</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="页面锚点"><a href="#页面锚点" class="headerlink" title="页面锚点"></a>页面锚点</h2><p>开启页面锚点后，当你在进行滚动时，页面链接会根据标题ID进行替换<br>(注意: 每替换一次，会留下一个历史记录。所以如果一篇文章有很多锚点的话，网页的历史记录会很多。)</p>
-<p>修改 主题配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># anchor</span><br><span class="line"># when you scroll in post , the url will update according to header id.</span><br><span class="line">anchor:</span><br><span class="line">  button:</span><br><span class="line">    enable: false</span><br><span class="line">    always_show: false</span><br><span class="line">    icon: # the unicode value of Font Awesome icon, such as &#x27;\3423&#x27;</span><br><span class="line">  auto_update: false # when you scroll in post, the URL will update according to header id.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="复制相关配置"><a href="#复制相关配置" class="headerlink" title="复制相关配置"></a>复制相关配置</h2><p>可配置网站是否可以复制、复制的内容是否添加版权信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># copy settings</span><br><span class="line"># copyright: Add the copyright information after copied content (复制的内容后面加上版权信息)</span><br><span class="line">copy:</span><br><span class="line">  enable: true #	是否开启网站复制权限</span><br><span class="line">  copyright: #复制的内容后面加上版权信息</span><br><span class="line">    enable: true #	是否开启复制版权信息添加</span><br><span class="line">    limit_count: 50 #字数限制，当复制文字大于这个字数限制时，将在复制的内容后面加上版权信息</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="文章页相关配置"><a href="#文章页相关配置" class="headerlink" title="文章页相关配置"></a>文章页相关配置</h1><h2 id="文章版权"><a href="#文章版权" class="headerlink" title="文章版权"></a>文章版权</h2><p>为你的博客文章展示文章版权和许可协议。</p>
-<p>修改 主题配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">post_copyright:</span><br><span class="line">  enable: true</span><br><span class="line">  decode: false</span><br><span class="line">  author_href:</span><br><span class="line">  license: CC BY-NC-SA 4.0</span><br><span class="line">  license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="文章打赏"><a href="#文章打赏" class="headerlink" title="文章打赏"></a>文章打赏</h2><p>在你每篇文章的结尾，可以添加打赏按钮。相关二维码可以自行配置。</p>
-<p>对于没有提供二维码的，可配置一张软件的<code>icon</code>图片，然后在link上添加相应的打赏链接。用户点击图片就会跳转到链接去。</p>
-<p><code>link</code>可以不写，会默认为图片的链接。</p>
-<p>修改 主题配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">reward:</span><br><span class="line">  enable: true</span><br><span class="line">  QR_code:</span><br><span class="line">    - img: /img/wechat.jpg</span><br><span class="line">      link:</span><br><span class="line">      text: 微信</span><br><span class="line">    - img: /img/alipay.jpg</span><br><span class="line">      link:</span><br><span class="line">      text: 支付宝</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="TOC"><a href="#TOC" class="headerlink" title="TOC"></a>TOC</h1><p>在文章页，会有一个目录，用于显示TOC。</p>
-<p>修改 主题配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  post: true #文章页是否显示 TOC</span><br><span class="line">  page: true #	普通页面是否显示 TOC</span><br><span class="line">  number: true #	是否显示章节数</span><br><span class="line">  expand: false #是否展开 TOC</span><br><span class="line">  style_simple: false # for post #简洁模式（侧边栏只显示 TOC, 只对文章页有效 ）</span><br><span class="line">  scroll_percent: true #	是否显示滚动进度百分比</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="文章过期提醒"><a href="#文章过期提醒" class="headerlink" title="文章过期提醒"></a>文章过期提醒</h1><p>可设置是否显示文章过期提醒，以更新时间为基准。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Displays outdated notice for a post (文章过期提醒)</span><br><span class="line">noticeOutdate:</span><br><span class="line">  enable: true</span><br><span class="line">  style: flat # style: simple/flat</span><br><span class="line">  limit_day: 365 # When will it be shown</span><br><span class="line">  position: top # position: top/bottom</span><br><span class="line">  message_prev: It has been</span><br><span class="line">  message_next: days since the last update, the content of the article may be outdated.</span><br></pre></td></tr></table></figure>
-
-<p><code>limit_day</code>： 距离更新时间多少天才显示文章过期提醒</p>
-<p><code>message_prev</code> ： 天数之前的文字</p>
-<p><code>message_next</code>：天数之后的文字</p>
-<h1 id="文章分页按钮"><a href="#文章分页按钮" class="headerlink" title="文章分页按钮"></a>文章分页按钮</h1><p>当文章封面设置为 false 时，或者没有获取到封面配置，分页背景将会显示主题色。</p>
-<p>可设置分页的逻辑，也可以关闭分页显示</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># post_pagination (分页)</span><br><span class="line"># value: 1 || 2 || false</span><br><span class="line"># 1: The &#x27;next post&#x27; will link to old post</span><br><span class="line"># 2: The &#x27;next post&#x27; will link to new post</span><br><span class="line"># false: disable pagination</span><br><span class="line">post_pagination: false</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Footer-设置"><a href="#Footer-设置" class="headerlink" title="Footer 设置"></a>Footer 设置</h1><h2 id="博客年份"><a href="#博客年份" class="headerlink" title="博客年份"></a>博客年份</h2><p><code>since</code>是一个来展示你站点起始时间的选项。它位于页面的最底部。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">footer:</span><br><span class="line">  owner:</span><br><span class="line">    enable: true</span><br><span class="line">    since: 2018</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="页脚自定义文本"><a href="#页脚自定义文本" class="headerlink" title="页脚自定义文本"></a>页脚自定义文本</h2><p><code>custom_text</code>是一个给你用来在页脚自定义文本的选项。通常你可以在这里写声明文本等。支持 HTML。</p>
-<p>修改 主题配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">custom_text: Hi, welcome to my &lt;a href=&quot;https://butterfly.js.org/&quot;&gt;blog&lt;/a&gt;!</span><br></pre></td></tr></table></figure>
-
-<p>对于部分人需要写 ICP 的，也可以写在 <code>custom_text</code>里</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">custom_text: &lt;a href=&quot;icp链接&quot;&gt;&lt;img class=&quot;icp-icon&quot; src=&quot;icp图片&quot;&gt;&lt;span&gt;备案号：xxxxxx&lt;/span&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="侧边栏设置-aside"><a href="#侧边栏设置-aside" class="headerlink" title="侧边栏设置 (aside)"></a>侧边栏设置 (aside)</h1><h2 id="侧边排版"><a href="#侧边排版" class="headerlink" title="侧边排版"></a>侧边排版</h2><p>可自行决定哪个项目需要显示，可决定位置，也可以设置不显示侧边栏。</p>
-<p>修改 主题配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">aside:</span><br><span class="line">  enable: true</span><br><span class="line">  hide: false</span><br><span class="line">  button: true</span><br><span class="line">  mobile: true # display on mobile</span><br><span class="line">  position: right # left or right</span><br><span class="line">  display:</span><br><span class="line">    archive: true</span><br><span class="line">    tag: true</span><br><span class="line">    category: true</span><br><span class="line">  card_author:</span><br><span class="line">    enable: true</span><br><span class="line">    description:</span><br><span class="line">    button:</span><br><span class="line">      enable: true</span><br><span class="line">      icon: fab fa-github</span><br><span class="line">      text: Follow Me</span><br><span class="line">      link: https://github.com/xxxxxx</span><br><span class="line">  card_announcement:</span><br><span class="line">    enable: true</span><br><span class="line">    content: This is my Blog</span><br><span class="line">  card_recent_post:</span><br><span class="line">    enable: true</span><br><span class="line">    limit: 5 # if set 0 will show all</span><br><span class="line">    sort: date # date or updated</span><br><span class="line">    sort_order: # Don&#x27;t modify the setting unless you know how it works</span><br><span class="line">  card_categories:</span><br><span class="line">    enable: true</span><br><span class="line">    limit: 8 # if set 0 will show all</span><br><span class="line">    expand: none # none/true/false</span><br><span class="line">    sort_order: # Don&#x27;t modify the setting unless you know how it works</span><br><span class="line">  card_tags:</span><br><span class="line">    enable: true</span><br><span class="line">    limit: 40 # if set 0 will show all</span><br><span class="line">    color: false</span><br><span class="line">    orderby: random # Order of tags, random/name/length</span><br><span class="line">    order: 1 # Sort of order. 1, asc for ascending; -1, desc for descending</span><br><span class="line">    sort_order: # Don&#x27;t modify the setting unless you know how it works</span><br><span class="line">  card_archives:</span><br><span class="line">    enable: true</span><br><span class="line">    type: monthly # yearly or monthly</span><br><span class="line">    format: MMMM YYYY # eg: YYYY年MM月</span><br><span class="line">    order: -1 # Sort of order. 1, asc for ascending; -1, desc for descending</span><br><span class="line">    limit: 8 # if set 0 will show all</span><br><span class="line">    sort_order: # Don&#x27;t modify the setting unless you know how it works</span><br><span class="line">  card_webinfo:</span><br><span class="line">    enable: true</span><br><span class="line">    post_count: true</span><br><span class="line">    last_push_date: true</span><br><span class="line">    sort_order: # Don&#x27;t modify the setting unless you know how it works</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="访问人数-busuanzi-UV-和-PV"><a href="#访问人数-busuanzi-UV-和-PV" class="headerlink" title="访问人数 busuanzi (UV 和 PV)"></a>访问人数 busuanzi (UV 和 PV)</h1><p>访问 busuanzi 的官方网站查看更多的介绍。<a href="http://busuanzi.ibruce.info/">不蒜子 - 极简网页计数器 (ibruce.info)</a></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">busuanzi:</span><br><span class="line">  site_uv: true</span><br><span class="line">  site_pv: true</span><br><span class="line">  page_pv: true</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="运行时间"><a href="#运行时间" class="headerlink" title="运行时间"></a>运行时间</h2><p>网页已运行时间</p>
-<p>修改 主题配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">runtimeshow:</span><br><span class="line">  enable: true</span><br><span class="line">  publish_date: 6/7/2018 00:00:00  </span><br><span class="line">  ##网页开通时间</span><br><span class="line">  #格式: 月/日/年 时间</span><br><span class="line">  #也可以写成 年/月/日 时间</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="最新评论"><a href="#最新评论" class="headerlink" title="最新评论"></a>最新评论</h2><p>3.1.0 起支持</p>
-<p>最新评论只会在刷新时才会去读取，并不会实时变化</p>
-<blockquote>
-<p>由于 API 有 访问次数限制，为了避免调用太多，主题默认存取期限为 10 分钟。也就是説，调用后资料会存在 localStorage 里，10分钟内刷新网站只会去 localStorage 读取资料。 10 分钟期限一过，刷新页面时才会去调取 API 读取新的数据。（ 3.6.0 新增了 storage 配置，可自行配置缓存时间）</p>
-</blockquote>
-<p>在侧边栏显示最新评论板块</p>
-<p>修改 主题配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Aside widget - Newest Comments</span><br><span class="line">newest_comments:</span><br><span class="line">  enable: true</span><br><span class="line">  sort_order: # Don&#x27;t modify the setting unless you know how it works</span><br><span class="line">  limit: 6 #显示的数量</span><br><span class="line">  storage: 10 # unit: mins, save data to localStorage 设置缓存时间，单位 分钟</span><br><span class="line">  avatar: true #	是否显示头像</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="閲读模式"><a href="#閲读模式" class="headerlink" title="閲读模式"></a>閲读模式</h2><p>閲读模式下会去掉除文章外的内容，避免干扰閲读。</p>
-<p>只会出现在文章页面，右下角会有閲读模式按钮。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">readmode: true</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="夜间模式"><a href="#夜间模式" class="headerlink" title="夜间模式"></a>夜间模式</h2><p>右下角会有夜间模式按钮</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># dark mode</span><br><span class="line">darkmode:</span><br><span class="line">  enable: true</span><br><span class="line">  # dark mode和 light mode切换按钮</span><br><span class="line">  button: true #	是否在右下角显示日夜模式切换按钮</span><br><span class="line">  autoChangeMode: false</span><br><span class="line">  # Set the light mode time. The value is between 0 and 24. If not set, the default value is 6 and 18</span><br><span class="line">  start: # 8</span><br><span class="line">  end: # 22</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="滚动状态百分比"><a href="#滚动状态百分比" class="headerlink" title="滚动状态百分比"></a>滚动状态百分比</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># show scroll percent in scroll-to-top button</span><br><span class="line">rightside_scroll_percent: true</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="按钮排序"><a href="#按钮排序" class="headerlink" title="按钮排序"></a>按钮排序</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Don&#x27;t modify the following settings unless you know how they work (非必要请不要修改 )</span><br><span class="line"># Choose: readmode,translate,darkmode,hideAside,toc,chat,comment</span><br><span class="line"># Don&#x27;t repeat 不要重复</span><br><span class="line">rightside_item_order:</span><br><span class="line">  enable: false</span><br><span class="line">  hide: # readmode,translate,darkmode,hideAside</span><br><span class="line">  show: # toc,chat,comment</span><br></pre></td></tr></table></figure>
+    <title>Hexo博客搭建（4）——更换主题</title>
+    <url>/2023/07/18/hexo/Hexo_build04/</url>
+    <content><![CDATA[<p>Hexo的主题有很多，可以在其官网上选择自己喜欢的。</p>
+<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p>Hexo官方主题页：<a href="https://hexo.io/themes/">Themes | Hexo</a></p>
+<p>我使用的主题：<a href="https://github.com/zhangzeli/hexo-theme-butterfly">Butterfly</a></p>
+<h1 id="更改方法"><a href="#更改方法" class="headerlink" title="更改方法"></a>更改方法</h1><p>在Github上下载了主题ZIP文件后，放到hexo文件夹根目录themes文件下解压。之后打开hexo文件夹中_config.yml，找到Extensions.theme将其改为hexo-theme-matery。重启本地服务器就可以看到主题改过来啦。</p>
+<p>建议下载稳定版，在建立的Hexo博客文件根目录打开终端，输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/Butterfly</span><br></pre></td></tr></table></figure>
+
+<p>打开根目录文件<code>_config.yml</code>更改</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">theme: Butterfly</span><br></pre></td></tr></table></figure>
+
+<p>随后重新部署一下就可以看见更改后的主题了</p>
+<p>以下步骤以后不再赘述：</p>
+<p>输入以下代码可在本地查看</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>输入以下代码可部署到网站</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo -d</span><br></pre></td></tr></table></figure>
 
 ]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>服务器</tag>
-        <tag>Butterfly主题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo博客搭建（9）——魔改主题文件（高级）</title>
-    <url>/2023/07/23/hexo/Hexo_build09/</url>
-    <content><![CDATA[<h1 id="“前面的区域以后再来探索吧”"><a href="#“前面的区域以后再来探索吧”" class="headerlink" title="“前面的区域以后再来探索吧”"></a>“前面的区域以后再来探索吧”</h1>]]></content>
       <categories>
         <category>博客搭建</category>
       </categories>
@@ -1065,59 +797,273 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客搭建（10）——部署SSl证书</title>
-    <url>/2023/07/25/hexo/Hexo_build10/</url>
-    <content><![CDATA[<p> 部署SSL证书的意义在于，如果不部署SSL输入域名进入网站，浏览器会提示不安全的字样。别人看到这样的字样会犹豫是否进入，是否存在危险等。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110435052.png" alt="image-20230729110435052"></p>
-<h1 id="准备SSL证书"><a href="#准备SSL证书" class="headerlink" title="准备SSL证书"></a>准备SSL证书</h1><p>​        腾讯云是可以申请免费的SSL证书。在腾讯云中搜索找到SSL证书-&gt;我的证书-&gt;申请免费证书按照申请的提示输入信息即可（选取的是RSA加密）。之后就是等待腾讯云的审核和签发，这个等待时间一般在几个小时左右。申请完成后状态：</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110631777.png" alt="image-20230729110631777"></p>
-<h1 id="安装Filezilla-软件"><a href="#安装Filezilla-软件" class="headerlink" title="安装Filezilla 软件"></a>安装Filezilla 软件</h1><p>​        打开Filezilla软件官网下载并安装，它是一个本机FTP软件，可以提供与云服务器接发文件的功能。</p>
-<h1 id="云服务器安装FTP服务"><a href="#云服务器安装FTP服务" class="headerlink" title="云服务器安装FTP服务"></a>云服务器安装FTP服务</h1><ol>
-<li><p>安装vsftpd</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y vsftpd</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/vsftpd/vsftpd.conf</span><br></pre></td></tr></table></figure>
+    <title>Hexo博客搭建（6）——魔改主题文件（基础）</title>
+    <url>/2023/07/20/hexo/Hexo_build06/</url>
+    <content><![CDATA[<h1 id="导航栏设置-Navigation-bar-settings"><a href="#导航栏设置-Navigation-bar-settings" class="headerlink" title="导航栏设置 (Navigation bar settings)"></a>导航栏设置 (Navigation bar settings)</h1><h2 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h2><p>主题配置文件中（注意不是根目录配置文件）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nav:</span><br><span class="line">  logo: #image</span><br><span class="line">  display_title: true</span><br><span class="line">  fixed: false # fixed navigation bar</span><br></pre></td></tr></table></figure>
 
-<p>修改第12行，禁止匿名用户登录：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">anonymous_enable=No </span><br></pre></td></tr></table></figure></li>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>logo</td>
+<td>网站的 logo，支持图片，直接填入图片链接</td>
+</tr>
+<tr>
+<td>display_title</td>
+<td>是否显示网站标题，填写 true 或者 false</td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>是否固定状态栏，填写 true 或者 false</td>
+</tr>
+</tbody></table>
+<h2 id="菜单-目录"><a href="#菜单-目录" class="headerlink" title="菜单&#x2F;目录"></a>菜单&#x2F;目录</h2><p>​	修改 <code>主题配置文件</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Home: / || fas fa-home</span><br><span class="line">Archives: /archives/ || fas fa-archive</span><br><span class="line">Tags: /tags/ || fas fa-tags</span><br><span class="line">Categories: /categories/ || fas fa-folder-open</span><br><span class="line">List||fas fa-list:</span><br><span class="line">  Music: /music/ || fas fa-music</span><br><span class="line">  Movie: /movies/ || fas fa-video</span><br><span class="line">Link: /link/ || fas fa-link</span><br><span class="line">About: /about/ || fas fa-heart</span><br></pre></td></tr></table></figure>
+
+<p>必须是 <code>/xxx/</code>，后面<code>||</code>分开，然后写图标名。</p>
+<p>如果不希望显示图标，图标名可不写。</p>
+<p>默认子目录是展开的，如果你想要隐藏，在子目录里添加 <code>hide</code> 。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List||fas fa-list||hide:</span><br><span class="line">  Music: /music/ || fas fa-music</span><br><span class="line">  Movie: /movies/ || fas fa-video</span><br></pre></td></tr></table></figure>
+
+<p>注意： 导航的文字可自行更改</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  首页: / || fas fa-home</span><br><span class="line">  时间轴: /archives/ || fas fa-archive</span><br><span class="line">  标签: /tags/ || fas fa-tags</span><br><span class="line">  分类: /categories/ || fas fa-folder-open</span><br><span class="line">  清单||fa fa-heartbeat:</span><br><span class="line">    音乐: /music/ || fas fa-music</span><br><span class="line">    照片: /Gallery/ || fas fa-images</span><br><span class="line">    电影: /movies/ || fas fa-video</span><br><span class="line">  友链: /link/ || fas fa-link</span><br><span class="line">  关于: /about/ || fas fa-heart</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="代码-Code-Blocks"><a href="#代码-Code-Blocks" class="headerlink" title="代码 (Code Blocks)"></a>代码 (Code Blocks)</h1><h2 id="代码高亮主题"><a href="#代码高亮主题" class="headerlink" title="代码高亮主题"></a>代码高亮主题</h2><p>Butterfly 支持6种代码高亮样式：</p>
+<ul>
+<li>darker</li>
+<li>pale night</li>
+<li>light</li>
+<li>ocean</li>
+<li>mac</li>
+<li>mac light</li>
+</ul>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">highlight_theme: light</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="代码复制"><a href="#代码复制" class="headerlink" title="代码复制"></a>代码复制</h2><p>主题支持代码复制功能</p>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">highlight_copy: true</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="代码框展开-关闭"><a href="#代码框展开-关闭" class="headerlink" title="代码框展开&#x2F;关闭"></a>代码框展开&#x2F;关闭</h2><p>在默认情况下，代码框自动展开，可设置是否所有代码框都关闭状态，点击&gt;可展开代码</p>
+<ul>
+<li>true 全部代码框不展开，需点击&gt;打开</li>
+<li>false 代码框展开，有&gt;点击按钮</li>
+<li>none 不显示&gt;按钮</li>
+</ul>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">highlight_shrink: true #代码框不展开，需点击 &#x27;&gt;&#x27; 打开</span><br></pre></td></tr></table></figure>
+
+<p>你也可以在<code>post/page</code>页对应的markdown文件<code>front-matter</code>添加highlight_shrink来独立配置。</p>
+<p>当主题配置文件中的 <code>highlight_shrink</code> 设为<code>true</code>时，可在<code>front-matter</code>添加<code>highlight_shrink: false</code>来单独配置文章展开代码框。</p>
+<p>当主题配置文件中的 <code>highlight_shrink</code> 设为<code>false</code>时，可在<code>front-matter</code>添加<code>highlight_shrink: true</code>来单独配置文章收缩代码框。</p>
+<h2 id="代码换行"><a href="#代码换行" class="headerlink" title="代码换行"></a>代码换行</h2><p>在默认情况下，Hexo 在编译的时候不会实现代码自动换行。如果你不希望在代码块的区域里有横向滚动条的话，那么你可以考虑开启这个功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">code_word_wrap: true</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="社交图标-Social-Settings"><a href="#社交图标-Social-Settings" class="headerlink" title="社交图标 (Social Settings)"></a>社交图标 (Social Settings)</h1><p><code>Butterfly</code>支持 <code>font-awesome v6</code> 图标.</p>
+<p>书写格式 图标名：<code>url || 描述性文字 || color</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">social:</span><br><span class="line">  fab fa-github: https://github.com/xxxxx || Github || &quot;#hdhfbb&quot;</span><br><span class="line">  fas fa-envelope: mailto:xxxxxx@gmail.com || Email || &quot;#000000&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="头像"><a href="#头像" class="headerlink" title="头像"></a>头像</h1><p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  img: /img/avatar.png</span><br><span class="line">  effect: true # 头像会一直转圈</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="顶部图"><a href="#顶部图" class="headerlink" title="顶部图"></a>顶部图</h1><p>如果不要显示顶部图，可直接配置 <code>disable_top_img: true</code></p>
+<p>顶部图的获取顺序，如果都没有配置，则不显示顶部图。</p>
+<ol>
+<li><p>页面顶部图的获取顺序：</p>
+<p>各自配置的 <code>top_img &gt;</code> 配置文件的 <code>default_top_img</code></p>
+</li>
+<li><p>文章页顶部图的获取顺序：</p>
+<p>各自配置的 <code>top_img &gt; cover &gt;</code> 配置文件的 <code>default_top_img</code></p>
+</li>
 </ol>
-<h1 id="上传SSL证书文件"><a href="#上传SSL证书文件" class="headerlink" title="上传SSL证书文件"></a>上传SSL证书文件</h1><p>​        打开Filezilla 软件输入云服务器IP等信息后连接，端口选用22端口。</p>
-<p>​		 去腾讯云服务器下载SSL证书。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110848329.png" alt="image-20230729110848329"></p>
-<p>  在Filezilla 软件本地站点（左边一栏）找到你下载的SSL证书，双击即可提示上传到云服务器用户目录下。</p>
-<h1 id="部署SSL证书"><a href="#部署SSL证书" class="headerlink" title="部署SSL证书"></a>部署SSL证书</h1><ol>
-<li><p>文件默认上传至我们的用户文件夹下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/zyh</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+<p>配置中的值：</p>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>index_img</td>
+<td>主页的 top_img</td>
+</tr>
+<tr>
+<td>default_top_img</td>
+<td>默认的 top_img，当页面的 top_img 没有配置时，会显示 default_top_img</td>
+</tr>
+<tr>
+<td>archive_img</td>
+<td>归档页面的 top_img</td>
+</tr>
+<tr>
+<td>tag_img</td>
+<td>tag 子页面 的 默认 top_img</td>
+</tr>
+<tr>
+<td>tag_per_img</td>
+<td>tag 子页面的 top_img，可配置每个 tag 的 top_img</td>
+</tr>
+<tr>
+<td>category_img</td>
+<td>category 子页面 的 默认 top_img</td>
+</tr>
+<tr>
+<td>category_per_img</td>
+<td>category 子页面的 top_img，可配置每个 category 的 top_img</td>
+</tr>
+</tbody></table>
+<p>并不推荐为每个 tag 和每个 category 都配置不同的顶部图，因为配置太多会拖慢生成速度</p>
+<h1 id="文章封面"><a href="#文章封面" class="headerlink" title="文章封面"></a>文章封面</h1><p>文章的 <code>markdown</code> 文档上,在 <code>Front-matter</code> 添加 <code>cover</code> ,并填上要显示的图片地址。</p>
+<p>如果不配置 <code>cover</code>,可以设置显示默认的 <code>cover</code>。</p>
+<p>如果不想在首页显示 <code>cover</code>, 可以设置为 <code>false</code>。</p>
+<p>文章封面的获取顺序 <code>Front-matter</code> 的 cover &gt; 配置文件的 default_cover &gt; false</p>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cover:</span><br><span class="line">  # 是否显示文章封面</span><br><span class="line">  index_enable: true #主页是否显示文章封面图</span><br><span class="line">  aside_enable: true #侧栏是否显示文章封面图</span><br><span class="line">  archives_enable: true #	归档页面是否显示文章封面图</span><br><span class="line">  # 封面显示的位置</span><br><span class="line">  # 三个值可配置 left , right , both</span><br><span class="line">  position: both</span><br><span class="line">  # 当没有设置cover时，默认的封面显示</span><br><span class="line">  default_cover: </span><br></pre></td></tr></table></figure>
 
-<p>返回结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com.zip  zhangyuanhe.git</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>解压缩文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com.zip</span><br></pre></td></tr></table></figure>
+<p>当配置多张图片时,会随机选择一张作为cover.此时写法应为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">default_cover:</span><br><span class="line">  - https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png</span><br><span class="line">  - https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg2.png</span><br><span class="line">  - https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png</span><br></pre></td></tr></table></figure>
 
-<p>再ls查看目录返回的结果是：</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729112613573.png" alt="image-20230729112613573"></p>
-<p>可以看见有四个文件，这里只需要crt文件和key文件。</p>
-</li>
-<li><p>将Nginx文件夹下的文件复制到新建的文件夹下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /etc/nginx/ssl/</span><br><span class="line">cd /home/zhangyuanhe/Nginx</span><br></pre></td></tr></table></figure>
 
-<p>用ls查看目录返回结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com_bundle.crt  zhangyuanhe.com.key</span><br></pre></td></tr></table></figure>
 
-<p>复制到ssl文件夹下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp zhangyuanhe.com_bundle.crt /etc/nginx/ssl/</span><br><span class="line">cp zhangyuanhe.com.key /etc/nginx/ssl/</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打开nginx.conf 文件夹 修改配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+<h1 id="页面-meta-显示"><a href="#页面-meta-显示" class="headerlink" title="页面 meta 显示"></a>页面 meta 显示</h1><p>这个选项是用来显示文章的相关信息的。</p>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">post_meta:</span><br><span class="line">  page:</span><br><span class="line">    date_type: both # created or updated or both 主页文章日期是创建日或者更新日或都显示</span><br><span class="line">    date_format: relative # date/relative 显示日期还是相对日期</span><br><span class="line">    categories: true # true or false 主页是否显示分类</span><br><span class="line">    tags: true # true or false 主页是否显示标签</span><br><span class="line">    label: true # true or false 显示描述性文字</span><br><span class="line">  post:</span><br><span class="line">    date_type: both # created or updated or both 文章页日期是创建日或者更新日或都显示</span><br><span class="line">    date_format: relative # date/relative 显示日期还是相对日期</span><br><span class="line">    categories: true # true or false 文章页是否显示分类</span><br><span class="line">    tags: true # true or false 文章页是否显示标签</span><br><span class="line">    label: true # true or false 显示描述性文字</span><br></pre></td></tr></table></figure>
 
-<p>删除掉下方最前面注释并进行更改：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> server &#123;</span><br><span class="line">        listen       443 ssl;</span><br><span class="line">        listen       [::]:443 ssl http2 default_server;</span><br><span class="line">        server_name  liuruibin.com; #域名</span><br><span class="line">        root         /home/hexo;    #网站主目录</span><br><span class="line"></span><br><span class="line">        ssl_certificate &quot;/etc/nginx/ssl/zhangyuanhe.com_bundle.crt&quot;; #crt文件路径</span><br><span class="line">        ssl_certificate_key &quot;/etc/nginx/ssl/zhangyuanhe.com.key&quot;;    #key文件路径</span><br><span class="line">        ssl_session_cache shared:SSL:1m;</span><br><span class="line">        ssl_session_timeout  10m;</span><br><span class="line">        ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line">		</span><br><span class="line">        # Load configuration files for the default server block.</span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line">        </span><br><span class="line">	   #默认请求</span><br><span class="line">        location / &#123;</span><br><span class="line">                root /home/hexo;</span><br><span class="line">			  #定义首页索引文件名称</span><br><span class="line">                index index.html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看是否有报错，无报错重启服务器</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nginx -t</span><br><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure></li>
+
+
+<h1 id="主页文章节选-自动节选和文章页description"><a href="#主页文章节选-自动节选和文章页description" class="headerlink" title="主页文章节选(自动节选和文章页description)"></a>主页文章节选(自动节选和文章页description)</h1><p>因为主题UI的关係，主页文章节选只支持自动节选和文章页<code>description</code>。</p>
+<p>在<code>butterfly</code>里，有四种可供选择</p>
+<ol>
+<li>description： 只显示<code>description</code></li>
+<li>both： 优先选择&#96;&#96;，如果没有配置description，则显示自动节选的内容</li>
+<li>auto_excerpt：只显示自动节选</li>
+<li>false： 不显示文章内容</li>
 </ol>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">index_post_content:</span><br><span class="line">  method: 3</span><br><span class="line">  length: 500 # if you set method to 2 or 3, the length need to config</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="页面锚点"><a href="#页面锚点" class="headerlink" title="页面锚点"></a>页面锚点</h2><p>开启页面锚点后，当你在进行滚动时，页面链接会根据标题ID进行替换<br>(注意: 每替换一次，会留下一个历史记录。所以如果一篇文章有很多锚点的话，网页的历史记录会很多。)</p>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># anchor</span><br><span class="line"># when you scroll in post , the url will update according to header id.</span><br><span class="line">anchor:</span><br><span class="line">  button:</span><br><span class="line">    enable: false</span><br><span class="line">    always_show: false</span><br><span class="line">    icon: # the unicode value of Font Awesome icon, such as &#x27;\3423&#x27;</span><br><span class="line">  auto_update: false # when you scroll in post, the URL will update according to header id.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="复制相关配置"><a href="#复制相关配置" class="headerlink" title="复制相关配置"></a>复制相关配置</h2><p>可配置网站是否可以复制、复制的内容是否添加版权信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># copy settings</span><br><span class="line"># copyright: Add the copyright information after copied content (复制的内容后面加上版权信息)</span><br><span class="line">copy:</span><br><span class="line">  enable: true #	是否开启网站复制权限</span><br><span class="line">  copyright: #复制的内容后面加上版权信息</span><br><span class="line">    enable: true #	是否开启复制版权信息添加</span><br><span class="line">    limit_count: 50 #字数限制，当复制文字大于这个字数限制时，将在复制的内容后面加上版权信息</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="文章页相关配置"><a href="#文章页相关配置" class="headerlink" title="文章页相关配置"></a>文章页相关配置</h1><h2 id="文章版权"><a href="#文章版权" class="headerlink" title="文章版权"></a>文章版权</h2><p>为你的博客文章展示文章版权和许可协议。</p>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">post_copyright:</span><br><span class="line">  enable: true</span><br><span class="line">  decode: false</span><br><span class="line">  author_href:</span><br><span class="line">  license: CC BY-NC-SA 4.0</span><br><span class="line">  license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="文章打赏"><a href="#文章打赏" class="headerlink" title="文章打赏"></a>文章打赏</h2><p>在你每篇文章的结尾，可以添加打赏按钮。相关二维码可以自行配置。</p>
+<p>对于没有提供二维码的，可配置一张软件的<code>icon</code>图片，然后在link上添加相应的打赏链接。用户点击图片就会跳转到链接去。</p>
+<p><code>link</code>可以不写，会默认为图片的链接。</p>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">reward:</span><br><span class="line">  enable: true</span><br><span class="line">  QR_code:</span><br><span class="line">    - img: /img/wechat.jpg</span><br><span class="line">      link:</span><br><span class="line">      text: 微信</span><br><span class="line">    - img: /img/alipay.jpg</span><br><span class="line">      link:</span><br><span class="line">      text: 支付宝</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="TOC"><a href="#TOC" class="headerlink" title="TOC"></a>TOC</h1><p>在文章页，会有一个目录，用于显示TOC。</p>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  post: true #文章页是否显示 TOC</span><br><span class="line">  page: true #	普通页面是否显示 TOC</span><br><span class="line">  number: true #	是否显示章节数</span><br><span class="line">  expand: false #是否展开 TOC</span><br><span class="line">  style_simple: false # for post #简洁模式（侧边栏只显示 TOC, 只对文章页有效 ）</span><br><span class="line">  scroll_percent: true #	是否显示滚动进度百分比</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="文章过期提醒"><a href="#文章过期提醒" class="headerlink" title="文章过期提醒"></a>文章过期提醒</h1><p>可设置是否显示文章过期提醒，以更新时间为基准。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Displays outdated notice for a post (文章过期提醒)</span><br><span class="line">noticeOutdate:</span><br><span class="line">  enable: true</span><br><span class="line">  style: flat # style: simple/flat</span><br><span class="line">  limit_day: 365 # When will it be shown</span><br><span class="line">  position: top # position: top/bottom</span><br><span class="line">  message_prev: It has been</span><br><span class="line">  message_next: days since the last update, the content of the article may be outdated.</span><br></pre></td></tr></table></figure>
+
+<p><code>limit_day</code>： 距离更新时间多少天才显示文章过期提醒</p>
+<p><code>message_prev</code> ： 天数之前的文字</p>
+<p><code>message_next</code>：天数之后的文字</p>
+<h1 id="文章分页按钮"><a href="#文章分页按钮" class="headerlink" title="文章分页按钮"></a>文章分页按钮</h1><p>当文章封面设置为 false 时，或者没有获取到封面配置，分页背景将会显示主题色。</p>
+<p>可设置分页的逻辑，也可以关闭分页显示</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># post_pagination (分页)</span><br><span class="line"># value: 1 || 2 || false</span><br><span class="line"># 1: The &#x27;next post&#x27; will link to old post</span><br><span class="line"># 2: The &#x27;next post&#x27; will link to new post</span><br><span class="line"># false: disable pagination</span><br><span class="line">post_pagination: false</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Footer-设置"><a href="#Footer-设置" class="headerlink" title="Footer 设置"></a>Footer 设置</h1><h2 id="博客年份"><a href="#博客年份" class="headerlink" title="博客年份"></a>博客年份</h2><p><code>since</code>是一个来展示你站点起始时间的选项。它位于页面的最底部。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">footer:</span><br><span class="line">  owner:</span><br><span class="line">    enable: true</span><br><span class="line">    since: 2018</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="页脚自定义文本"><a href="#页脚自定义文本" class="headerlink" title="页脚自定义文本"></a>页脚自定义文本</h2><p><code>custom_text</code>是一个给你用来在页脚自定义文本的选项。通常你可以在这里写声明文本等。支持 HTML。</p>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">custom_text: Hi, welcome to my &lt;a href=&quot;https://butterfly.js.org/&quot;&gt;blog&lt;/a&gt;!</span><br></pre></td></tr></table></figure>
+
+<p>对于部分人需要写 ICP 的，也可以写在 <code>custom_text</code>里</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">custom_text: &lt;a href=&quot;icp链接&quot;&gt;&lt;img class=&quot;icp-icon&quot; src=&quot;icp图片&quot;&gt;&lt;span&gt;备案号：xxxxxx&lt;/span&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="侧边栏设置-aside"><a href="#侧边栏设置-aside" class="headerlink" title="侧边栏设置 (aside)"></a>侧边栏设置 (aside)</h1><h2 id="侧边排版"><a href="#侧边排版" class="headerlink" title="侧边排版"></a>侧边排版</h2><p>可自行决定哪个项目需要显示，可决定位置，也可以设置不显示侧边栏。</p>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">aside:</span><br><span class="line">  enable: true</span><br><span class="line">  hide: false</span><br><span class="line">  button: true</span><br><span class="line">  mobile: true # display on mobile</span><br><span class="line">  position: right # left or right</span><br><span class="line">  display:</span><br><span class="line">    archive: true</span><br><span class="line">    tag: true</span><br><span class="line">    category: true</span><br><span class="line">  card_author:</span><br><span class="line">    enable: true</span><br><span class="line">    description:</span><br><span class="line">    button:</span><br><span class="line">      enable: true</span><br><span class="line">      icon: fab fa-github</span><br><span class="line">      text: Follow Me</span><br><span class="line">      link: https://github.com/xxxxxx</span><br><span class="line">  card_announcement:</span><br><span class="line">    enable: true</span><br><span class="line">    content: This is my Blog</span><br><span class="line">  card_recent_post:</span><br><span class="line">    enable: true</span><br><span class="line">    limit: 5 # if set 0 will show all</span><br><span class="line">    sort: date # date or updated</span><br><span class="line">    sort_order: # Don&#x27;t modify the setting unless you know how it works</span><br><span class="line">  card_categories:</span><br><span class="line">    enable: true</span><br><span class="line">    limit: 8 # if set 0 will show all</span><br><span class="line">    expand: none # none/true/false</span><br><span class="line">    sort_order: # Don&#x27;t modify the setting unless you know how it works</span><br><span class="line">  card_tags:</span><br><span class="line">    enable: true</span><br><span class="line">    limit: 40 # if set 0 will show all</span><br><span class="line">    color: false</span><br><span class="line">    orderby: random # Order of tags, random/name/length</span><br><span class="line">    order: 1 # Sort of order. 1, asc for ascending; -1, desc for descending</span><br><span class="line">    sort_order: # Don&#x27;t modify the setting unless you know how it works</span><br><span class="line">  card_archives:</span><br><span class="line">    enable: true</span><br><span class="line">    type: monthly # yearly or monthly</span><br><span class="line">    format: MMMM YYYY # eg: YYYY年MM月</span><br><span class="line">    order: -1 # Sort of order. 1, asc for ascending; -1, desc for descending</span><br><span class="line">    limit: 8 # if set 0 will show all</span><br><span class="line">    sort_order: # Don&#x27;t modify the setting unless you know how it works</span><br><span class="line">  card_webinfo:</span><br><span class="line">    enable: true</span><br><span class="line">    post_count: true</span><br><span class="line">    last_push_date: true</span><br><span class="line">    sort_order: # Don&#x27;t modify the setting unless you know how it works</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="访问人数-busuanzi-UV-和-PV"><a href="#访问人数-busuanzi-UV-和-PV" class="headerlink" title="访问人数 busuanzi (UV 和 PV)"></a>访问人数 busuanzi (UV 和 PV)</h1><p>访问 busuanzi 的官方网站查看更多的介绍。<a href="http://busuanzi.ibruce.info/">不蒜子 - 极简网页计数器 (ibruce.info)</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">busuanzi:</span><br><span class="line">  site_uv: true</span><br><span class="line">  site_pv: true</span><br><span class="line">  page_pv: true</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="运行时间"><a href="#运行时间" class="headerlink" title="运行时间"></a>运行时间</h2><p>网页已运行时间</p>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">runtimeshow:</span><br><span class="line">  enable: true</span><br><span class="line">  publish_date: 6/7/2018 00:00:00  </span><br><span class="line">  ##网页开通时间</span><br><span class="line">  #格式: 月/日/年 时间</span><br><span class="line">  #也可以写成 年/月/日 时间</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="最新评论"><a href="#最新评论" class="headerlink" title="最新评论"></a>最新评论</h2><p>3.1.0 起支持</p>
+<p>最新评论只会在刷新时才会去读取，并不会实时变化</p>
+<blockquote>
+<p>由于 API 有 访问次数限制，为了避免调用太多，主题默认存取期限为 10 分钟。也就是説，调用后资料会存在 localStorage 里，10分钟内刷新网站只会去 localStorage 读取资料。 10 分钟期限一过，刷新页面时才会去调取 API 读取新的数据。（ 3.6.0 新增了 storage 配置，可自行配置缓存时间）</p>
+</blockquote>
+<p>在侧边栏显示最新评论板块</p>
+<p>修改 主题配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Aside widget - Newest Comments</span><br><span class="line">newest_comments:</span><br><span class="line">  enable: true</span><br><span class="line">  sort_order: # Don&#x27;t modify the setting unless you know how it works</span><br><span class="line">  limit: 6 #显示的数量</span><br><span class="line">  storage: 10 # unit: mins, save data to localStorage 设置缓存时间，单位 分钟</span><br><span class="line">  avatar: true #	是否显示头像</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="閲读模式"><a href="#閲读模式" class="headerlink" title="閲读模式"></a>閲读模式</h2><p>閲读模式下会去掉除文章外的内容，避免干扰閲读。</p>
+<p>只会出现在文章页面，右下角会有閲读模式按钮。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">readmode: true</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="夜间模式"><a href="#夜间模式" class="headerlink" title="夜间模式"></a>夜间模式</h2><p>右下角会有夜间模式按钮</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># dark mode</span><br><span class="line">darkmode:</span><br><span class="line">  enable: true</span><br><span class="line">  # dark mode和 light mode切换按钮</span><br><span class="line">  button: true #	是否在右下角显示日夜模式切换按钮</span><br><span class="line">  autoChangeMode: false</span><br><span class="line">  # Set the light mode time. The value is between 0 and 24. If not set, the default value is 6 and 18</span><br><span class="line">  start: # 8</span><br><span class="line">  end: # 22</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="滚动状态百分比"><a href="#滚动状态百分比" class="headerlink" title="滚动状态百分比"></a>滚动状态百分比</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># show scroll percent in scroll-to-top button</span><br><span class="line">rightside_scroll_percent: true</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="按钮排序"><a href="#按钮排序" class="headerlink" title="按钮排序"></a>按钮排序</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Don&#x27;t modify the following settings unless you know how they work (非必要请不要修改 )</span><br><span class="line"># Choose: readmode,translate,darkmode,hideAside,toc,chat,comment</span><br><span class="line"># Don&#x27;t repeat 不要重复</span><br><span class="line">rightside_item_order:</span><br><span class="line">  enable: false</span><br><span class="line">  hide: # readmode,translate,darkmode,hideAside</span><br><span class="line">  show: # toc,chat,comment</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>博客搭建</category>
@@ -1125,6 +1071,20 @@
       <tags>
         <tag>hexo</tag>
         <tag>服务器</tag>
+        <tag>Butterfly主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建（9）——魔改主题文件（高级）</title>
+    <url>/2023/07/23/hexo/Hexo_build09/</url>
+    <content><![CDATA[<h1 id="“前面的区域以后再来探索吧”"><a href="#“前面的区域以后再来探索吧”" class="headerlink" title="“前面的区域以后再来探索吧”"></a>“前面的区域以后再来探索吧”</h1>]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+        <tag>Butterfly主题</tag>
       </tags>
   </entry>
   <entry>
@@ -1278,6 +1238,69 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo博客搭建（10）——部署SSl证书</title>
+    <url>/2023/07/25/hexo/Hexo_build10/</url>
+    <content><![CDATA[<p> 部署SSL证书的意义在于，如果不部署SSL输入域名进入网站，浏览器会提示不安全的字样。别人看到这样的字样会犹豫是否进入，是否存在危险等。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110435052.png" alt="image-20230729110435052"></p>
+<h1 id="准备SSL证书"><a href="#准备SSL证书" class="headerlink" title="准备SSL证书"></a>准备SSL证书</h1><p>​        腾讯云是可以申请免费的SSL证书。在腾讯云中搜索找到SSL证书-&gt;我的证书-&gt;申请免费证书按照申请的提示输入信息即可（选取的是RSA加密）。之后就是等待腾讯云的审核和签发，这个等待时间一般在几个小时左右。申请完成后状态：</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110631777.png" alt="image-20230729110631777"></p>
+<h1 id="安装Filezilla-软件"><a href="#安装Filezilla-软件" class="headerlink" title="安装Filezilla 软件"></a>安装Filezilla 软件</h1><p>​        打开Filezilla软件官网下载并安装，它是一个本机FTP软件，可以提供与云服务器接发文件的功能。</p>
+<h1 id="云服务器安装FTP服务"><a href="#云服务器安装FTP服务" class="headerlink" title="云服务器安装FTP服务"></a>云服务器安装FTP服务</h1><ol>
+<li><p>安装vsftpd</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y vsftpd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/vsftpd/vsftpd.conf</span><br></pre></td></tr></table></figure>
+
+<p>修改第12行，禁止匿名用户登录：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">anonymous_enable=No </span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="上传SSL证书文件"><a href="#上传SSL证书文件" class="headerlink" title="上传SSL证书文件"></a>上传SSL证书文件</h1><p>​        打开Filezilla 软件输入云服务器IP等信息后连接，端口选用22端口。</p>
+<p>​		 去腾讯云服务器下载SSL证书。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729110848329.png" alt="image-20230729110848329"></p>
+<p>  在Filezilla 软件本地站点（左边一栏）找到你下载的SSL证书，双击即可提示上传到云服务器用户目录下。</p>
+<h1 id="部署SSL证书"><a href="#部署SSL证书" class="headerlink" title="部署SSL证书"></a>部署SSL证书</h1><ol>
+<li><p>文件默认上传至我们的用户文件夹下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/zyh</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+
+<p>返回结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com.zip  zhangyuanhe.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压缩文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com.zip</span><br></pre></td></tr></table></figure>
+
+<p>再ls查看目录返回的结果是：</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729112613573.png" alt="image-20230729112613573"></p>
+<p>可以看见有四个文件，这里只需要crt文件和key文件。</p>
+</li>
+<li><p>将Nginx文件夹下的文件复制到新建的文件夹下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /etc/nginx/ssl/</span><br><span class="line">cd /home/zhangyuanhe/Nginx</span><br></pre></td></tr></table></figure>
+
+<p>用ls查看目录返回结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zhangyuanhe.com_bundle.crt  zhangyuanhe.com.key</span><br></pre></td></tr></table></figure>
+
+<p>复制到ssl文件夹下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp zhangyuanhe.com_bundle.crt /etc/nginx/ssl/</span><br><span class="line">cp zhangyuanhe.com.key /etc/nginx/ssl/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开nginx.conf 文件夹 修改配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p>删除掉下方最前面注释并进行更改：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> server &#123;</span><br><span class="line">        listen       443 ssl;</span><br><span class="line">        listen       [::]:443 ssl http2 default_server;</span><br><span class="line">        server_name  liuruibin.com; #域名</span><br><span class="line">        root         /home/hexo;    #网站主目录</span><br><span class="line"></span><br><span class="line">        ssl_certificate &quot;/etc/nginx/ssl/zhangyuanhe.com_bundle.crt&quot;; #crt文件路径</span><br><span class="line">        ssl_certificate_key &quot;/etc/nginx/ssl/zhangyuanhe.com.key&quot;;    #key文件路径</span><br><span class="line">        ssl_session_cache shared:SSL:1m;</span><br><span class="line">        ssl_session_timeout  10m;</span><br><span class="line">        ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line">		</span><br><span class="line">        # Load configuration files for the default server block.</span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line">        </span><br><span class="line">	   #默认请求</span><br><span class="line">        location / &#123;</span><br><span class="line">                root /home/hexo;</span><br><span class="line">			  #定义首页索引文件名称</span><br><span class="line">                index index.html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看是否有报错，无报错重启服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nginx -t</span><br><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo博客搭建（11）——使用COS图床</title>
     <url>/2023/07/26/hexo/Hexo_build11/</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>​        腾讯云COS服务名为对象存储，是腾讯云提供的一种存储海量文件的分布式存储服务，用户可通过网络随时存储和查看数据。腾讯云 COS 使所有用户都能使用具备高扩展性、低成本、可靠和安全的数据存储服务。</p>
@@ -1337,46 +1360,6 @@
       <tags>
         <tag>hexo</tag>
         <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>c++网络编程传输密文</title>
-    <url>/2023/07/30/Information_Security_Experiment/Network_Security/NS1/</url>
-    <content><![CDATA[<h1 id="1-实验内容及原理"><a href="#1-实验内容及原理" class="headerlink" title="1. 实验内容及原理"></a><strong>1.</strong> 实验内容及原理</h1><p>使用c&#x2F;c++进行网络编程，实现两台电脑之间的信息传输</p>
-<h1 id="2-实验环境"><a href="#2-实验环境" class="headerlink" title="2. 实验环境"></a><strong>2.</strong> 实验环境</h1><p><em>（实验拓扑、节点介绍）</em></p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps1-1690797715615-1.jpg" alt="img"> </p>
-<h1 id="3-程序概要设计-或使用的工具介绍"><a href="#3-程序概要设计-或使用的工具介绍" class="headerlink" title="3. 程序概要设计(或使用的工具介绍)"></a><strong>3.</strong> 程序概要设计(或使用的工具介绍)</h1><p>虚拟实验平台、VS编程软件、Xftp传输工具</p>
-<h1 id="4-实验步骤、实验结果、分析"><a href="#4-实验步骤、实验结果、分析" class="headerlink" title="4. 实验步骤、实验结果、分析"></a><strong>4.</strong> 实验步骤、实验结果、分析</h1><p>一：编写两端代码</p>
-<p>发送端代码（client.cpp）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">\#include &lt;stdio.h&gt;</span><br><span class="line">\#include &lt;string.h&gt;</span><br><span class="line">\#include &lt;unistd.h&gt;</span><br><span class="line">\#include &lt;stdlib.h&gt;</span><br><span class="line">\#include &lt;netdb.h&gt;</span><br><span class="line">\#include &lt;sys/types.h&gt;</span><br><span class="line">\#include &lt;sys/socket.h&gt;</span><br><span class="line">\#include &lt;arpa/inet.h&gt;</span><br><span class="line">\#include &lt;string&gt;</span><br><span class="line">\#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">int main(int argc, char* argv[])</span><br><span class="line">&#123;</span><br><span class="line">  if (argc != 3)</span><br><span class="line">  &#123;</span><br><span class="line">    printf(&quot;Using:./client ip port\nExample:./client 127.0.0.1 5005\n\n&quot;); return -1;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   // 第1步：创建客户端的socket。</span><br><span class="line">  int sockfd;</span><br><span class="line">  if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) == -1) &#123; perror(&quot;socket&quot;); return -1; &#125;</span><br><span class="line"></span><br><span class="line">   // 第2步：向服务器发起连接请求。</span><br><span class="line">  struct hostent* h;</span><br><span class="line">  if ((h = gethostbyname(argv[1])) == 0)  // 指定服务端的ip地址。</span><br><span class="line">  &#123;</span><br><span class="line">    printf(&quot;gethostbyname failed.\n&quot;); close(sockfd); return -1;</span><br><span class="line">  &#125;</span><br><span class="line">  struct sockaddr_in servaddr;</span><br><span class="line">  memset(&amp;servaddr, 0, sizeof(servaddr));</span><br><span class="line">  servaddr.sin_family = AF_INET;</span><br><span class="line">  servaddr.sin_port = htons(atoi(argv[2])); // 指定服务端的通信端口。</span><br><span class="line">  memcpy(&amp;servaddr.sin_addr, h-&gt;h_addr, h-&gt;h_length);</span><br><span class="line">  if (connect(sockfd, (struct sockaddr*)&amp;servaddr, sizeof(servaddr)) != 0)  // 向服务端发起连接清求。</span><br><span class="line">  &#123;</span><br><span class="line">    perror(&quot;connect&quot;); close(sockfd); return -1;</span><br><span class="line">  &#125;</span><br><span class="line">   char buffer[1024];</span><br><span class="line"> </span><br><span class="line">  // 第3步：与服务端通信，发送一个报文后等待回复，然后再发下一个报文。</span><br><span class="line">  char a[100]=&#123;0&#125;;</span><br><span class="line">  cout &lt;&lt; &quot;please enter the key:&quot;;</span><br><span class="line">  cin.getline(a, 100);</span><br><span class="line">  cout &lt;&lt; &quot;the key is:&quot;&lt;&lt;a;</span><br><span class="line">  int i = 0;</span><br><span class="line">  for (i = 0; i &lt; 100; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    a[i] += 5;</span><br><span class="line">  &#125;</span><br><span class="line">    int iret;</span><br><span class="line">    strcpy(buffer, a);</span><br><span class="line">//    memset(buffer, 0, sizeof(buffer));</span><br><span class="line">    cout &lt;&lt; buffer &lt;&lt; endl;</span><br><span class="line">    if ((iret = send(sockfd, buffer, strlen(buffer), 0)) &lt;= 0) // 向服务端发送请求报文。</span><br><span class="line">    &#123;</span><br><span class="line">      perror(&quot;send&quot;); //break;</span><br><span class="line">    &#125;</span><br><span class="line">//     printf(&quot;%s\n&quot;, buffer);</span><br><span class="line">     memset(buffer, 0, sizeof(buffer));</span><br><span class="line">    if ((iret = recv(sockfd, buffer, sizeof(buffer), 0)) &lt;= 0) // 接收服务端的回应报文。</span><br><span class="line">    &#123;</span><br><span class="line">      printf(&quot;iret=%d\n&quot;, iret); //break;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;receive:%s\n&quot;, buffer);</span><br><span class="line"></span><br><span class="line">  // 第4步：关闭socket，释放资源。</span><br><span class="line">  close(sockfd);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
-
-<p>接收端代码（servers.cpp）</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;netdb.h&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (argc != <span class="number">2</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Using:./server port\nExample:./server 5005\n\n&quot;</span>); <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 第1步：创建服务端的socket。</span></span><br><span class="line">  <span class="type">int</span> listenfd;</span><br><span class="line">  <span class="keyword">if</span> ((listenfd = <span class="built_in">socket</span>(AF_INET, SOCK_STREAM, <span class="number">0</span>)) == <span class="number">-1</span>) &#123; <span class="built_in">perror</span>(<span class="string">&quot;socket&quot;</span>); <span class="keyword">return</span> <span class="number">-1</span>; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 第2步：把服务端用于通信的地址和端口绑定到socket上。</span></span><br><span class="line">  <span class="keyword">struct</span> <span class="title class_">sockaddr_in</span> servaddr;   <span class="comment">// 服务端地址信息的数据结构。</span></span><br><span class="line">  <span class="built_in">memset</span>(&amp;servaddr, <span class="number">0</span>, <span class="built_in">sizeof</span>(servaddr));</span><br><span class="line">  servaddr.sin_family = AF_INET;  <span class="comment">// 协议族，在socket编程中只能是AF_INET。</span></span><br><span class="line">  servaddr.sin_addr.s_addr = <span class="built_in">htonl</span>(INADDR_ANY);      <span class="comment">// 任意ip地址。</span></span><br><span class="line">  <span class="comment">//servaddr.sin_addr.s_addr = inet_addr(&quot;192.168.190.134&quot;); // 指定ip地址。</span></span><br><span class="line">  servaddr.sin_port = <span class="built_in">htons</span>(<span class="built_in">atoi</span>(argv[<span class="number">1</span>]));  <span class="comment">// 指定通信端口。</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">bind</span>(listenfd, (<span class="keyword">struct</span> sockaddr*)&amp;servaddr, <span class="built_in">sizeof</span>(servaddr)) != <span class="number">0</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">perror</span>(<span class="string">&quot;bind&quot;</span>); <span class="built_in">close</span>(listenfd); <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 第3步：把socket设置为监听模式。</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">listen</span>(listenfd, <span class="number">5</span>) != <span class="number">0</span>) &#123; <span class="built_in">perror</span>(<span class="string">&quot;listen&quot;</span>); <span class="built_in">close</span>(listenfd); <span class="keyword">return</span> <span class="number">-1</span>; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 第4步：接受客户端的连接。</span></span><br><span class="line">  <span class="type">int</span> clientfd;          <span class="comment">// 客户端的socket。</span></span><br><span class="line">  <span class="type">int</span> socklen = <span class="built_in">sizeof</span>(<span class="keyword">struct</span> sockaddr_in); <span class="comment">// struct sockaddr_in的大小</span></span><br><span class="line">  <span class="keyword">struct</span> <span class="title class_">sockaddr_in</span> clientaddr;  <span class="comment">// 客户端的地址信息。</span></span><br><span class="line">  clientfd = <span class="built_in">accept</span>(listenfd, (<span class="keyword">struct</span> sockaddr*)&amp;clientaddr, (<span class="type">socklen_t</span>*)&amp;socklen);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;client(%s)has connect.\n&quot;</span>, <span class="built_in">inet_ntoa</span>(clientaddr.sin_addr));</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 第5步：与客户端通信，接收客户端发过来的报文后，回复ok。</span></span><br><span class="line">  <span class="type">char</span> buffer[<span class="number">100</span>];</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;the receive key is:&quot;</span>;</span><br><span class="line">  <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="type">int</span> iret;</span><br><span class="line">    <span class="built_in">memset</span>(buffer, <span class="number">0</span>, <span class="built_in">sizeof</span>(buffer));</span><br><span class="line">    <span class="keyword">if</span> ((iret = <span class="built_in">recv</span>(clientfd, buffer, <span class="built_in">sizeof</span>(buffer), <span class="number">0</span>)) &lt;= <span class="number">0</span>) <span class="comment">// 接收客户端的请求报文。</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;iret=%d\n&quot;</span>, iret); <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">      buffer[i] -= <span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, buffer);</span><br><span class="line">    <span class="built_in">strcpy</span>(buffer, <span class="string">&quot;ok&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> ((iret = <span class="built_in">send</span>(clientfd, buffer, <span class="built_in">strlen</span>(buffer), <span class="number">0</span>)) &lt;= <span class="number">0</span>) <span class="comment">// 向客户端发送响应结果。</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="built_in">perror</span>(<span class="string">&quot;send&quot;</span>); <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;cent:%s\n&quot;</span>, buffer);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 第6步：关闭socket，释放资源。</span></span><br><span class="line">  <span class="built_in">close</span>(listenfd); <span class="built_in">close</span>(clientfd);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>二：将编写好的代码通过xftp软件传输到两端的虚拟机中。</p>
-<p>打开接收端虚拟机运行代码，选择合适的端口，我这里使用的是5001。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps2-1690797715615-2.jpg" alt="img"> </p>
-<p>随后进入等待阶段，等待数据传入。</p>
-<p>三：打开发送端虚拟机，同样运行编写好的cpp文件并输入要访问的ip地址和端口</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps3.jpg" alt="img"> </p>
-<p>这样就可以输入要传输的密码了。</p>
-<p>四：输入密码并传输</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps4.jpg" alt="img"><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps5.jpg" alt="img"> </p>
-<p>这时收到接收端返回的ok说明传输成功。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps6.jpg" alt="img"> </p>
-<p>在接收端也可以看见已经被解密的密文。</p>
-<h1 id="5-实现过程中遇到的问题、原因和解决"><a href="#5-实现过程中遇到的问题、原因和解决" class="headerlink" title="5.实现过程中遇到的问题、原因和解决"></a>5.实现过程中遇到的问题、原因和解决</h1><p>编写代码会有困难需要查阅大量相关库文件</p>
-<p>传输信息是容易出错</p>
-<h1 id="6-实验总结"><a href="#6-实验总结" class="headerlink" title="6.实验总结"></a>6.实验总结</h1><p>该实验让我了解了如何使用简易的网络编程，并大概了解了网络编程的原理和TCP协议的三次握手原理。</p>
-]]></content>
-      <categories>
-        <category>信安课程实验</category>
-        <category>网络安全实验</category>
-      </categories>
-      <tags>
-        <tag>北邮信安</tag>
-        <tag>实验报告</tag>
-        <tag>网络安全实验</tag>
       </tags>
   </entry>
   <entry>
@@ -1440,58 +1423,34 @@
       </tags>
   </entry>
   <entry>
-    <title>拒绝服务攻击检测</title>
-    <url>/2023/07/30/Information_Security_Experiment/Network_Security/NS2/</url>
-    <content><![CDATA[<h1 id="1-实验内容及原理"><a href="#1-实验内容及原理" class="headerlink" title="1.实验内容及原理"></a>1.实验内容及原理</h1><p>实验内容：理解拒绝服务攻击导致的资源消耗原理和危害，自主设计构建网络攻击场景。</p>
-<p>开发和执行拒绝服务攻击程序，并从网络用户端对比存在和不存在网络 攻击两种场景下访问网络应用的情况。</p>
-<p>使用网络流量分析工具 Wireshark 等观察、分析和总结拒绝服务攻击流 量特征。</p>
-<p>实验原理：DoS攻击是指故意的攻击网络协议实现的缺陷或直接通过野蛮手段残忍地耗尽被攻击对象的资源，目的是让目标计算机或网络无法提供正常的服务或资源访问，使目标系统服务系统停止响应甚至崩溃，而在此攻击中并不包括侵入目标服务器或目标网络设备。这些服务资源包括网络带宽，文件系统空间容量，开放的进程或者允许的连接。这种攻击会导致资源的匮乏，无论计算机的处理速度多快、内存容量多大、网络带宽的速度多快都无法避免这种攻击带来的后果。</p>
+    <title>c++网络编程传输密文</title>
+    <url>/2023/07/30/Information_Security_Experiment/Network_Security/NS1/</url>
+    <content><![CDATA[<h1 id="1-实验内容及原理"><a href="#1-实验内容及原理" class="headerlink" title="1. 实验内容及原理"></a><strong>1.</strong> 实验内容及原理</h1><p>使用c&#x2F;c++进行网络编程，实现两台电脑之间的信息传输</p>
 <h1 id="2-实验环境"><a href="#2-实验环境" class="headerlink" title="2. 实验环境"></a><strong>2.</strong> 实验环境</h1><p><em>（实验拓扑、节点介绍）</em></p>
-<p>网络安全虚拟仿真实验系统</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps1-1690798085557-1.jpg" alt="img"> </p>
-<h1 id="3-程序概要设计-或使用的工具介绍"><a href="#3-程序概要设计-或使用的工具介绍" class="headerlink" title="3. 程序概要设计(或使用的工具介绍)"></a><strong>3.</strong> 程序概要设计(或使用的工具介绍)</h1><p>攻击端使用Python脚本，入侵检测使用攻击wireshark。</p>
-<h1 id="4-实验步骤、实验结果、分析"><a href="#4-实验步骤、实验结果、分析" class="headerlink" title="4. 实验步骤、实验结果、分析"></a><strong>4.</strong> 实验步骤、实验结果、分析</h1><h2 id="实验1：使用Windows攻击"><a href="#实验1：使用Windows攻击" class="headerlink" title="实验1：使用Windows攻击"></a>实验1：使用Windows攻击</h2><h3 id="1步骤一"><a href="#1步骤一" class="headerlink" title="1步骤一"></a>1步骤一</h3><p>1）登录<a href="https://vse.bupt.edu.cn/practice/show_topo/?to=life">网络安全虚拟仿真实验系统 (bupt.edu.cn)</a></p>
-<p>2）创建网络拓扑。创建拒绝服务攻击网络拓扑。选择“实例管理-创建实例拓扑”，通过拖拽方式在场景中构建 Web 拒绝服务攻击者、网络用户、Web 服务器、交换机、入侵检测设备，通过绘制连接线完成设备之间的网络互联。右键设置设备的具体信息，攻击者、网络用户和Web服务器均可选择Win10_DoS_WebAttacker模板，入侵检测设备网络配置中需要将交换机设为目标节点。</p>
-<p>3）保存并部署。</p>
-<h3 id="2-步骤二"><a href="#2-步骤二" class="headerlink" title="2 步骤二"></a>2 步骤二</h3><p>1）使用用户端访问服务器端的ip，并查看任务管理器相关情况。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps2-1690798085557-2.jpg" alt="img"><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps3-1690798085557-3.jpg" alt="img">2）打开攻击端，该版本的windos已经配置好Python文件，直接在控制台启动即可。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps4-1690798085557-4.jpg" alt="img"> </p>
-<p>3）代码执行后打开攻击端和服务器的任务管理器，观察cpu情况。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps5-1690798085557-5.jpg" alt="img"><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps6-1690798085557-6.jpg" alt="img"> </p>
-<p>可以看出二者CPU占用率都很高。</p>
-<p>4）打开用户端再次访问服务器。已经不能再访问的。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps7-1690798085557-7.jpg" alt="img"> </p>
-<p>5）打开攻击检测的Wireshark，开始抓包</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps8-1690798085557-8.jpg" alt="img"> </p>
-<p>这里我的攻击检测端模式选错了所以又做了一遍，这是新的数据</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps9-1690798085557-9.jpg" alt="img"> </p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps10-1690798085557-10.jpg" alt="img"> </p>
-<p>6）结束攻击端的工作，将其关机。用户再次访问服务器ip，一切恢复正常。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps11-1690798085557-11.jpg" alt="img"> </p>
-<h2 id="实验2：使用linux攻击"><a href="#实验2：使用linux攻击" class="headerlink" title="实验2：使用linux攻击"></a>实验2：使用linux攻击</h2><h3 id="1步骤一-1"><a href="#1步骤一-1" class="headerlink" title="1步骤一"></a>1步骤一</h3><p>1）登录<a href="https://vse.bupt.edu.cn/practice/show_topo/?to=life">网络安全虚拟仿真实验系统 (bupt.edu.cn)</a></p>
-<p>2）创建网络拓扑。创建拒绝服务攻击网络拓扑。选择“实例管理-创建实例拓扑”，通过拖拽方式在场景中构建 Web 拒绝服务攻击者、网络用户、Web 服务器、交换机、入侵检测设备，通过绘制连接线完成设备之间的网络互联。右键设置设备的具体信息，攻击者、网络用户和Web服务器均可选择Win10_DoS_WebAttacker模板，入侵检测设备网络配置中需要将交换机设为目标节点。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps12-1690798085557-12.jpg" alt="img"> </p>
-<p>3）保存并部署。</p>
-<h3 id="2-步骤二-1"><a href="#2-步骤二-1" class="headerlink" title="2 步骤二"></a>2 步骤二</h3><p>1）使用用户端访问服务器端的ip，并查看任务管理器相关情况。访问服务器一切正常。</p>
-<p>2）打开攻击端。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps13-1690798085557-13.jpg" alt="img"> </p>
-<p>此时cpu使用情况。</p>
-<p>使用hping指令实施攻击。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps14-1690798085558-14.jpg" alt="img"> </p>
-<p>3）代码执行后打开攻击端和服务器的任务管理器，观察cpu情况。</p>
-<p>此时CPU占用率很高。但用户仍可以访问</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps15-1690798085558-15.jpg" alt="img"> </p>
-<p>4）使用多台攻击后，打开用户端再次访问服务器。已经不能再访问的。</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps16-1690798085558-16.jpg" alt="img"> </p>
-<p>5）结束攻击端的工作，将其关机。用户再次访问服务器ip，一切恢复正常。</p>
-<h2 id="3测试与结果"><a href="#3测试与结果" class="headerlink" title="3测试与结果"></a>3测试与结果</h2><p>（测试网络拓扑、测试数据、测试步骤、测试结果及分析）</p>
-<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps17-1690798085558-17.jpg" alt="img"> </p>
-<p>根据wireshark的抓包数据可以看出，攻击端在不断向服务器发送链接请求，导致服务器瘫痪无法回复正常用户的请求。</p>
-<h2 id="4-实现过程中遇到的问题、原因和解决"><a href="#4-实现过程中遇到的问题、原因和解决" class="headerlink" title="4.实现过程中遇到的问题、原因和解决"></a>4.实现过程中遇到的问题、原因和解决</h2><p>1攻击端桌面的Python程序打不开会闪退，只能打开cmd直接运行。</p>
-<p>2执行攻击后攻击端会非常卡，需要耐心等待。</p>
-<p>3入侵检测一定要配置成监听模式，不然无法检测。</p>
-<p>4 用linux系统的hping功能进行攻击，由于ping的强度不够高，导致虽然可以攻击但是却不影响服务器和用户的正常交互，所以要使用多台攻击端进行大量攻击。</p>
-<h1 id="5-实验总结"><a href="#5-实验总结" class="headerlink" title="5.实验总结"></a>5.实验总结</h1><p>这次实验我了解了Dos攻击的原理和应用方法，也懂得了如何对DoS攻击进行甄别和防范。对网络安全和计算机网络的相关知识有了一定的概念。DoS攻击虽然只是实现占满服务器的访问空间，但是实现方法却有很多种，自己编写代码虽较为麻烦，不过灵活性最高，可以更好理解各个层面的攻击，其次就是使用已经成型的软件进行攻击，软件功能完备，使用起来较为方便。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps1-1690797715615-1.jpg" alt="img"> </p>
+<h1 id="3-程序概要设计-或使用的工具介绍"><a href="#3-程序概要设计-或使用的工具介绍" class="headerlink" title="3. 程序概要设计(或使用的工具介绍)"></a><strong>3.</strong> 程序概要设计(或使用的工具介绍)</h1><p>虚拟实验平台、VS编程软件、Xftp传输工具</p>
+<h1 id="4-实验步骤、实验结果、分析"><a href="#4-实验步骤、实验结果、分析" class="headerlink" title="4. 实验步骤、实验结果、分析"></a><strong>4.</strong> 实验步骤、实验结果、分析</h1><p>一：编写两端代码</p>
+<p>发送端代码（client.cpp）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">\#include &lt;stdio.h&gt;</span><br><span class="line">\#include &lt;string.h&gt;</span><br><span class="line">\#include &lt;unistd.h&gt;</span><br><span class="line">\#include &lt;stdlib.h&gt;</span><br><span class="line">\#include &lt;netdb.h&gt;</span><br><span class="line">\#include &lt;sys/types.h&gt;</span><br><span class="line">\#include &lt;sys/socket.h&gt;</span><br><span class="line">\#include &lt;arpa/inet.h&gt;</span><br><span class="line">\#include &lt;string&gt;</span><br><span class="line">\#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">int main(int argc, char* argv[])</span><br><span class="line">&#123;</span><br><span class="line">  if (argc != 3)</span><br><span class="line">  &#123;</span><br><span class="line">    printf(&quot;Using:./client ip port\nExample:./client 127.0.0.1 5005\n\n&quot;); return -1;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   // 第1步：创建客户端的socket。</span><br><span class="line">  int sockfd;</span><br><span class="line">  if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) == -1) &#123; perror(&quot;socket&quot;); return -1; &#125;</span><br><span class="line"></span><br><span class="line">   // 第2步：向服务器发起连接请求。</span><br><span class="line">  struct hostent* h;</span><br><span class="line">  if ((h = gethostbyname(argv[1])) == 0)  // 指定服务端的ip地址。</span><br><span class="line">  &#123;</span><br><span class="line">    printf(&quot;gethostbyname failed.\n&quot;); close(sockfd); return -1;</span><br><span class="line">  &#125;</span><br><span class="line">  struct sockaddr_in servaddr;</span><br><span class="line">  memset(&amp;servaddr, 0, sizeof(servaddr));</span><br><span class="line">  servaddr.sin_family = AF_INET;</span><br><span class="line">  servaddr.sin_port = htons(atoi(argv[2])); // 指定服务端的通信端口。</span><br><span class="line">  memcpy(&amp;servaddr.sin_addr, h-&gt;h_addr, h-&gt;h_length);</span><br><span class="line">  if (connect(sockfd, (struct sockaddr*)&amp;servaddr, sizeof(servaddr)) != 0)  // 向服务端发起连接清求。</span><br><span class="line">  &#123;</span><br><span class="line">    perror(&quot;connect&quot;); close(sockfd); return -1;</span><br><span class="line">  &#125;</span><br><span class="line">   char buffer[1024];</span><br><span class="line"> </span><br><span class="line">  // 第3步：与服务端通信，发送一个报文后等待回复，然后再发下一个报文。</span><br><span class="line">  char a[100]=&#123;0&#125;;</span><br><span class="line">  cout &lt;&lt; &quot;please enter the key:&quot;;</span><br><span class="line">  cin.getline(a, 100);</span><br><span class="line">  cout &lt;&lt; &quot;the key is:&quot;&lt;&lt;a;</span><br><span class="line">  int i = 0;</span><br><span class="line">  for (i = 0; i &lt; 100; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    a[i] += 5;</span><br><span class="line">  &#125;</span><br><span class="line">    int iret;</span><br><span class="line">    strcpy(buffer, a);</span><br><span class="line">//    memset(buffer, 0, sizeof(buffer));</span><br><span class="line">    cout &lt;&lt; buffer &lt;&lt; endl;</span><br><span class="line">    if ((iret = send(sockfd, buffer, strlen(buffer), 0)) &lt;= 0) // 向服务端发送请求报文。</span><br><span class="line">    &#123;</span><br><span class="line">      perror(&quot;send&quot;); //break;</span><br><span class="line">    &#125;</span><br><span class="line">//     printf(&quot;%s\n&quot;, buffer);</span><br><span class="line">     memset(buffer, 0, sizeof(buffer));</span><br><span class="line">    if ((iret = recv(sockfd, buffer, sizeof(buffer), 0)) &lt;= 0) // 接收服务端的回应报文。</span><br><span class="line">    &#123;</span><br><span class="line">      printf(&quot;iret=%d\n&quot;, iret); //break;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;receive:%s\n&quot;, buffer);</span><br><span class="line"></span><br><span class="line">  // 第4步：关闭socket，释放资源。</span><br><span class="line">  close(sockfd);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<p>接收端代码（servers.cpp）</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;netdb.h&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line">\<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (argc != <span class="number">2</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Using:./server port\nExample:./server 5005\n\n&quot;</span>); <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 第1步：创建服务端的socket。</span></span><br><span class="line">  <span class="type">int</span> listenfd;</span><br><span class="line">  <span class="keyword">if</span> ((listenfd = <span class="built_in">socket</span>(AF_INET, SOCK_STREAM, <span class="number">0</span>)) == <span class="number">-1</span>) &#123; <span class="built_in">perror</span>(<span class="string">&quot;socket&quot;</span>); <span class="keyword">return</span> <span class="number">-1</span>; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 第2步：把服务端用于通信的地址和端口绑定到socket上。</span></span><br><span class="line">  <span class="keyword">struct</span> <span class="title class_">sockaddr_in</span> servaddr;   <span class="comment">// 服务端地址信息的数据结构。</span></span><br><span class="line">  <span class="built_in">memset</span>(&amp;servaddr, <span class="number">0</span>, <span class="built_in">sizeof</span>(servaddr));</span><br><span class="line">  servaddr.sin_family = AF_INET;  <span class="comment">// 协议族，在socket编程中只能是AF_INET。</span></span><br><span class="line">  servaddr.sin_addr.s_addr = <span class="built_in">htonl</span>(INADDR_ANY);      <span class="comment">// 任意ip地址。</span></span><br><span class="line">  <span class="comment">//servaddr.sin_addr.s_addr = inet_addr(&quot;192.168.190.134&quot;); // 指定ip地址。</span></span><br><span class="line">  servaddr.sin_port = <span class="built_in">htons</span>(<span class="built_in">atoi</span>(argv[<span class="number">1</span>]));  <span class="comment">// 指定通信端口。</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">bind</span>(listenfd, (<span class="keyword">struct</span> sockaddr*)&amp;servaddr, <span class="built_in">sizeof</span>(servaddr)) != <span class="number">0</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">perror</span>(<span class="string">&quot;bind&quot;</span>); <span class="built_in">close</span>(listenfd); <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 第3步：把socket设置为监听模式。</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">listen</span>(listenfd, <span class="number">5</span>) != <span class="number">0</span>) &#123; <span class="built_in">perror</span>(<span class="string">&quot;listen&quot;</span>); <span class="built_in">close</span>(listenfd); <span class="keyword">return</span> <span class="number">-1</span>; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 第4步：接受客户端的连接。</span></span><br><span class="line">  <span class="type">int</span> clientfd;          <span class="comment">// 客户端的socket。</span></span><br><span class="line">  <span class="type">int</span> socklen = <span class="built_in">sizeof</span>(<span class="keyword">struct</span> sockaddr_in); <span class="comment">// struct sockaddr_in的大小</span></span><br><span class="line">  <span class="keyword">struct</span> <span class="title class_">sockaddr_in</span> clientaddr;  <span class="comment">// 客户端的地址信息。</span></span><br><span class="line">  clientfd = <span class="built_in">accept</span>(listenfd, (<span class="keyword">struct</span> sockaddr*)&amp;clientaddr, (<span class="type">socklen_t</span>*)&amp;socklen);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;client(%s)has connect.\n&quot;</span>, <span class="built_in">inet_ntoa</span>(clientaddr.sin_addr));</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 第5步：与客户端通信，接收客户端发过来的报文后，回复ok。</span></span><br><span class="line">  <span class="type">char</span> buffer[<span class="number">100</span>];</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;the receive key is:&quot;</span>;</span><br><span class="line">  <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="type">int</span> iret;</span><br><span class="line">    <span class="built_in">memset</span>(buffer, <span class="number">0</span>, <span class="built_in">sizeof</span>(buffer));</span><br><span class="line">    <span class="keyword">if</span> ((iret = <span class="built_in">recv</span>(clientfd, buffer, <span class="built_in">sizeof</span>(buffer), <span class="number">0</span>)) &lt;= <span class="number">0</span>) <span class="comment">// 接收客户端的请求报文。</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;iret=%d\n&quot;</span>, iret); <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">      buffer[i] -= <span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, buffer);</span><br><span class="line">    <span class="built_in">strcpy</span>(buffer, <span class="string">&quot;ok&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> ((iret = <span class="built_in">send</span>(clientfd, buffer, <span class="built_in">strlen</span>(buffer), <span class="number">0</span>)) &lt;= <span class="number">0</span>) <span class="comment">// 向客户端发送响应结果。</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="built_in">perror</span>(<span class="string">&quot;send&quot;</span>); <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;cent:%s\n&quot;</span>, buffer);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 第6步：关闭socket，释放资源。</span></span><br><span class="line">  <span class="built_in">close</span>(listenfd); <span class="built_in">close</span>(clientfd);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>二：将编写好的代码通过xftp软件传输到两端的虚拟机中。</p>
+<p>打开接收端虚拟机运行代码，选择合适的端口，我这里使用的是5001。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps2-1690797715615-2.jpg" alt="img"> </p>
+<p>随后进入等待阶段，等待数据传入。</p>
+<p>三：打开发送端虚拟机，同样运行编写好的cpp文件并输入要访问的ip地址和端口</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps3.jpg" alt="img"> </p>
+<p>这样就可以输入要传输的密码了。</p>
+<p>四：输入密码并传输</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps4.jpg" alt="img"><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps5.jpg" alt="img"> </p>
+<p>这时收到接收端返回的ok说明传输成功。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps6.jpg" alt="img"> </p>
+<p>在接收端也可以看见已经被解密的密文。</p>
+<h1 id="5-实现过程中遇到的问题、原因和解决"><a href="#5-实现过程中遇到的问题、原因和解决" class="headerlink" title="5.实现过程中遇到的问题、原因和解决"></a>5.实现过程中遇到的问题、原因和解决</h1><p>编写代码会有困难需要查阅大量相关库文件</p>
+<p>传输信息是容易出错</p>
+<h1 id="6-实验总结"><a href="#6-实验总结" class="headerlink" title="6.实验总结"></a>6.实验总结</h1><p>该实验让我了解了如何使用简易的网络编程，并大概了解了网络编程的原理和TCP协议的三次握手原理。</p>
 ]]></content>
       <categories>
         <category>信安课程实验</category>
@@ -1680,6 +1639,70 @@
         <tag>北邮信安</tag>
         <tag>实验报告</tag>
         <tag>计算机网络实验</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>拒绝服务攻击检测</title>
+    <url>/2023/07/30/Information_Security_Experiment/Network_Security/NS2/</url>
+    <content><![CDATA[<h1 id="1-实验内容及原理"><a href="#1-实验内容及原理" class="headerlink" title="1.实验内容及原理"></a>1.实验内容及原理</h1><p>实验内容：理解拒绝服务攻击导致的资源消耗原理和危害，自主设计构建网络攻击场景。</p>
+<p>开发和执行拒绝服务攻击程序，并从网络用户端对比存在和不存在网络 攻击两种场景下访问网络应用的情况。</p>
+<p>使用网络流量分析工具 Wireshark 等观察、分析和总结拒绝服务攻击流 量特征。</p>
+<p>实验原理：DoS攻击是指故意的攻击网络协议实现的缺陷或直接通过野蛮手段残忍地耗尽被攻击对象的资源，目的是让目标计算机或网络无法提供正常的服务或资源访问，使目标系统服务系统停止响应甚至崩溃，而在此攻击中并不包括侵入目标服务器或目标网络设备。这些服务资源包括网络带宽，文件系统空间容量，开放的进程或者允许的连接。这种攻击会导致资源的匮乏，无论计算机的处理速度多快、内存容量多大、网络带宽的速度多快都无法避免这种攻击带来的后果。</p>
+<h1 id="2-实验环境"><a href="#2-实验环境" class="headerlink" title="2. 实验环境"></a><strong>2.</strong> 实验环境</h1><p><em>（实验拓扑、节点介绍）</em></p>
+<p>网络安全虚拟仿真实验系统</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps1-1690798085557-1.jpg" alt="img"> </p>
+<h1 id="3-程序概要设计-或使用的工具介绍"><a href="#3-程序概要设计-或使用的工具介绍" class="headerlink" title="3. 程序概要设计(或使用的工具介绍)"></a><strong>3.</strong> 程序概要设计(或使用的工具介绍)</h1><p>攻击端使用Python脚本，入侵检测使用攻击wireshark。</p>
+<h1 id="4-实验步骤、实验结果、分析"><a href="#4-实验步骤、实验结果、分析" class="headerlink" title="4. 实验步骤、实验结果、分析"></a><strong>4.</strong> 实验步骤、实验结果、分析</h1><h2 id="实验1：使用Windows攻击"><a href="#实验1：使用Windows攻击" class="headerlink" title="实验1：使用Windows攻击"></a>实验1：使用Windows攻击</h2><h3 id="1步骤一"><a href="#1步骤一" class="headerlink" title="1步骤一"></a>1步骤一</h3><p>1）登录<a href="https://vse.bupt.edu.cn/practice/show_topo/?to=life">网络安全虚拟仿真实验系统 (bupt.edu.cn)</a></p>
+<p>2）创建网络拓扑。创建拒绝服务攻击网络拓扑。选择“实例管理-创建实例拓扑”，通过拖拽方式在场景中构建 Web 拒绝服务攻击者、网络用户、Web 服务器、交换机、入侵检测设备，通过绘制连接线完成设备之间的网络互联。右键设置设备的具体信息，攻击者、网络用户和Web服务器均可选择Win10_DoS_WebAttacker模板，入侵检测设备网络配置中需要将交换机设为目标节点。</p>
+<p>3）保存并部署。</p>
+<h3 id="2-步骤二"><a href="#2-步骤二" class="headerlink" title="2 步骤二"></a>2 步骤二</h3><p>1）使用用户端访问服务器端的ip，并查看任务管理器相关情况。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps2-1690798085557-2.jpg" alt="img"><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps3-1690798085557-3.jpg" alt="img">2）打开攻击端，该版本的windos已经配置好Python文件，直接在控制台启动即可。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps4-1690798085557-4.jpg" alt="img"> </p>
+<p>3）代码执行后打开攻击端和服务器的任务管理器，观察cpu情况。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps5-1690798085557-5.jpg" alt="img"><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps6-1690798085557-6.jpg" alt="img"> </p>
+<p>可以看出二者CPU占用率都很高。</p>
+<p>4）打开用户端再次访问服务器。已经不能再访问的。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps7-1690798085557-7.jpg" alt="img"> </p>
+<p>5）打开攻击检测的Wireshark，开始抓包</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps8-1690798085557-8.jpg" alt="img"> </p>
+<p>这里我的攻击检测端模式选错了所以又做了一遍，这是新的数据</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps9-1690798085557-9.jpg" alt="img"> </p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps10-1690798085557-10.jpg" alt="img"> </p>
+<p>6）结束攻击端的工作，将其关机。用户再次访问服务器ip，一切恢复正常。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps11-1690798085557-11.jpg" alt="img"> </p>
+<h2 id="实验2：使用linux攻击"><a href="#实验2：使用linux攻击" class="headerlink" title="实验2：使用linux攻击"></a>实验2：使用linux攻击</h2><h3 id="1步骤一-1"><a href="#1步骤一-1" class="headerlink" title="1步骤一"></a>1步骤一</h3><p>1）登录<a href="https://vse.bupt.edu.cn/practice/show_topo/?to=life">网络安全虚拟仿真实验系统 (bupt.edu.cn)</a></p>
+<p>2）创建网络拓扑。创建拒绝服务攻击网络拓扑。选择“实例管理-创建实例拓扑”，通过拖拽方式在场景中构建 Web 拒绝服务攻击者、网络用户、Web 服务器、交换机、入侵检测设备，通过绘制连接线完成设备之间的网络互联。右键设置设备的具体信息，攻击者、网络用户和Web服务器均可选择Win10_DoS_WebAttacker模板，入侵检测设备网络配置中需要将交换机设为目标节点。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps12-1690798085557-12.jpg" alt="img"> </p>
+<p>3）保存并部署。</p>
+<h3 id="2-步骤二-1"><a href="#2-步骤二-1" class="headerlink" title="2 步骤二"></a>2 步骤二</h3><p>1）使用用户端访问服务器端的ip，并查看任务管理器相关情况。访问服务器一切正常。</p>
+<p>2）打开攻击端。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps13-1690798085557-13.jpg" alt="img"> </p>
+<p>此时cpu使用情况。</p>
+<p>使用hping指令实施攻击。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps14-1690798085558-14.jpg" alt="img"> </p>
+<p>3）代码执行后打开攻击端和服务器的任务管理器，观察cpu情况。</p>
+<p>此时CPU占用率很高。但用户仍可以访问</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps15-1690798085558-15.jpg" alt="img"> </p>
+<p>4）使用多台攻击后，打开用户端再次访问服务器。已经不能再访问的。</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps16-1690798085558-16.jpg" alt="img"> </p>
+<p>5）结束攻击端的工作，将其关机。用户再次访问服务器ip，一切恢复正常。</p>
+<h2 id="3测试与结果"><a href="#3测试与结果" class="headerlink" title="3测试与结果"></a>3测试与结果</h2><p>（测试网络拓扑、测试数据、测试步骤、测试结果及分析）</p>
+<p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps17-1690798085558-17.jpg" alt="img"> </p>
+<p>根据wireshark的抓包数据可以看出，攻击端在不断向服务器发送链接请求，导致服务器瘫痪无法回复正常用户的请求。</p>
+<h2 id="4-实现过程中遇到的问题、原因和解决"><a href="#4-实现过程中遇到的问题、原因和解决" class="headerlink" title="4.实现过程中遇到的问题、原因和解决"></a>4.实现过程中遇到的问题、原因和解决</h2><p>1攻击端桌面的Python程序打不开会闪退，只能打开cmd直接运行。</p>
+<p>2执行攻击后攻击端会非常卡，需要耐心等待。</p>
+<p>3入侵检测一定要配置成监听模式，不然无法检测。</p>
+<p>4 用linux系统的hping功能进行攻击，由于ping的强度不够高，导致虽然可以攻击但是却不影响服务器和用户的正常交互，所以要使用多台攻击端进行大量攻击。</p>
+<h1 id="5-实验总结"><a href="#5-实验总结" class="headerlink" title="5.实验总结"></a>5.实验总结</h1><p>这次实验我了解了Dos攻击的原理和应用方法，也懂得了如何对DoS攻击进行甄别和防范。对网络安全和计算机网络的相关知识有了一定的概念。DoS攻击虽然只是实现占满服务器的访问空间，但是实现方法却有很多种，自己编写代码虽较为麻烦，不过灵活性最高，可以更好理解各个层面的攻击，其次就是使用已经成型的软件进行攻击，软件功能完备，使用起来较为方便。</p>
+]]></content>
+      <categories>
+        <category>信安课程实验</category>
+        <category>网络安全实验</category>
+      </categories>
+      <tags>
+        <tag>北邮信安</tag>
+        <tag>实验报告</tag>
+        <tag>网络安全实验</tag>
       </tags>
   </entry>
   <entry>
