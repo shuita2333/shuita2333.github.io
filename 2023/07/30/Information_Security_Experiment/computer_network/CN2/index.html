@@ -1,0 +1,593 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>支持Web Mail的SMTP邮件服务器 | ZYH's blog</title><meta name="author" content="Charmes"><meta name="copyright" content="Charmes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="使用Socket API编写一个邮件服务器程序，该程序使用HTTP接收来自浏览器客户端的邮件，并使用SMTP转发到实际的接收邮件服务器的用户邮箱">
+<meta property="og:type" content="article">
+<meta property="og:title" content="支持Web Mail的SMTP邮件服务器">
+<meta property="og:url" content="https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/computer_network/CN2/index.html">
+<meta property="og:site_name" content="ZYH&#39;s blog">
+<meta property="og:description" content="使用Socket API编写一个邮件服务器程序，该程序使用HTTP接收来自浏览器客户端的邮件，并使用SMTP转发到实际的接收邮件服务器的用户邮箱">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png">
+<meta property="article:published_time" content="2023-07-30T01:00:00.000Z">
+<meta property="article:modified_time" content="2023-07-31T12:21:31.428Z">
+<meta property="article:author" content="Charmes">
+<meta property="article:tag" content="北邮信安">
+<meta property="article:tag" content="实验报告">
+<meta property="article:tag" content="计算机网络实验">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/computer_network/CN2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: Charmes","link":"链接: ","source":"来源: ZYH's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '支持Web Mail的SMTP邮件服务器',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-31 20:21:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 8 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><span id="fps"></span><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-categories-card/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="ZYH's blog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png')"><nav id="nav"><span id="blog-info"><a href="/" title="ZYH's blog"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/logo.png"/><span class="site-name">ZYH's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">支持Web Mail的SMTP邮件服务器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-30T01:00:00.000Z" title="发表于 2023-07-30 09:00:00">2023-07-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-31T12:21:31.428Z" title="更新于 2023-07-31 20:21:31">2023-07-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/">信安课程实验</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C/">计算机网络实验</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="支持Web Mail的SMTP邮件服务器"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<h1 id="一-实验内容"><a href="#一-实验内容" class="headerlink" title="一 实验内容"></a>一 实验内容</h1><ol>
+<li>作为 Web 服务器，接收浏览器的 TCP 连接请求， 接收 HTTP 命令和邮件数据，将邮件保存在文件中；</li>
+<li>作为SMTP 客户端，建立到实际邮件服务器的TCP 连接，发送 SMTP 命令，将保存的邮件发送给实际邮件服 务器；</li>
+<li>提供发件人和收件人 Email 地址格式检查功能，例 如 下 列 邮 件 地 址 是 错 误 的 ：  chengli ，  chengli@ ， bupt.edu.cn，  … .</li>
+<li>提供邮件差错报告，要求处理两种差错：收件人不 存在、邮件超过规定长度，将差错报告转发给发件人；</li>
+<li>支持一封邮件多个接收者，要求接收者属于不同的 域 (如 bupt.edu.cn、163.com、qq.com, … ) ；</li>
+<li>在命令行窗口显示通信的主要过程，包括：通信对 端的 IP 地址和端口号；发送的消息 (或状态码) 、接收的 消息 (或状态码) 、</li>
+<li>可选功能：支持 SSL 安全连接。</li>
+</ol>
+</blockquote>
+<h1 id="一、实验内容和实验环境描述"><a href="#一、实验内容和实验环境描述" class="headerlink" title="一、实验内容和实验环境描述"></a>一、实验内容和实验环境描述</h1><h2 id="1-实验任务"><a href="#1-实验任务" class="headerlink" title="1.实验任务"></a>1.实验任务</h2><p>1 ) 作为 Web 服务器，接收浏览器的 TCP 连接请求，接收 HTTP 命令和邮 件数据，将邮件保存在文件中；</p>
+<ol start="2">
+<li>作为 SMTP 客户端，建立到实际邮件服务器的 TCP 连接，发送 SMTP 命令，将保存的邮件发送给实际邮件服务器；</li>
+<li>提供发件人和收件人 Email 地址格式检查功能，例如下列邮件地址是错 误的：chengli ，chengli@ ，bupt.edu.cn ，  … .</li>
+<li>提供邮件差错报告，要求处理两种差错：收件人不存在、邮件超过规定 长度，将差错报告转发给发件人；</li>
+<li>支持一封邮件多个接收者，要求接收者属于不同的域 (如 bupt.edu.cn、 163.com、qq.com, … ) ；</li>
+<li>在命令行窗口显示通信的主要过程，包括：通信对端的 IP 地址和端口号； 发送的消息 (或状态码) 、接收的消息 (或状态码) 、</li>
+<li>可选功能：支持 SSL 安全连接。</li>
+</ol>
+<h2 id="2-实验内容"><a href="#2-实验内容" class="headerlink" title="2.实验内容"></a>2.实验内容</h2><p>实验任务是编写一个邮件服务器程序，使用 SocketAPI 进行开发。该程序 需要作为 Web 服务器接收来自浏览器的TCP 连接请求，接收 HTTP 命令和邮 件数据，并将邮件保存在文件中。同时，作为 SMTP 客户端，它还需要建立到 实际邮件服务器的 TCP 连接，发送 SMTP 命令，将保存的邮件代理转发给实际 邮件服务器。</p>
+<p>该实验的主要功能模块包括：</p>
+<p>Web 服务器代理模块：接收浏览器的 TCP 连接请求，解析 HTTP 命令和邮 件数据，并将邮件保存在文件中。在保存邮件数据后，充当SMTP 客户端的角 色，使用SMTP 命令将保存的邮件数据转发到实际邮件服务器。</p>
+<p>SMTP 客户端模块：建立到实际邮件服务器的 TCP 连接，发送 SMTP 命令，</p>
+<p>将保存的邮件发送给实际邮件服务器。</p>
+<p>地址格式检查模块：对发件人和收件人的 Email 地址进行格式检查，确保地 址的正确性。</p>
+<p>差错处理模块：根据实际邮件服务器的响应码，处理差错情况</p>
+<p>多接收者支持模块：支持一封邮件有多个接收者，且这些接收者属于不同的 域。</p>
+<p>通信显示模块：在命令行窗口显示通信的主要过程，包括通信对端的 IP 地 址和端口号，发送的消息 (或状态码) 、接收的消息 (或状态码) 。</p>
+<h2 id="3-实验环境"><a href="#3-实验环境" class="headerlink" title="3.实验环境"></a>3.实验环境</h2><p>操作系统：Windows</p>
+<p>编程语言和库：C++和 Python ，需要安装相应的编译器和 Python 解 释 器 。 并 且 需 要 安 装 所 需 的 第 三 方 库 ，  可 以 使 用 pip  install -r requirements.txt 命令安装。</p>
+<p>网络通信：程序需要与服务器进行 TCP&#x2F;IP 通信，确保网络连接正常， 并且可以访问目标服务器。</p>
+<p>网络信息获取：程序需要获取本地网络信息，确保能够正常获取网卡 和 IP 地址。</p>
+<p>线程支持：程序使用了多线程，确保操作系统支持多线程并设置合适 的线程数。</p>
+<h1 id="二、软件设计"><a href="#二、软件设计" class="headerlink" title="二、软件设计"></a>二、软件设计</h1><h2 id="1-数据结构"><a href="#1-数据结构" class="headerlink" title="1.数据结构"></a>1.数据结构</h2><p>C++ 代码中主要有以下结构体&#x2F;类：</p>
+<p>enum class TcpStatus</p>
+<p>这个枚举类定义了TCP 连接的所有状态，其含有如下成员。 OK &#x3D; 0x00,</p>
+<p>Closed &#x3D; 0x01,</p>
+<p>WsaStartupFailed &#x3D; 0xFE,</p>
+<p>GetAddrInfoFailed &#x3D; 0xFD,</p>
+<p>SocketFailed &#x3D; 0xFB,</p>
+<p>ConnServerFailed &#x3D; 0xF7,</p>
+<p>RecvFailed &#x3D; 0xEF,</p>
+<p>SendFailed &#x3D; 0xDF,</p>
+<p>ShutdownFailed &#x3D; 0xBF,</p>
+<p>UnknownError &#x3D; 0xFF,</p>
+<p>class ClientTcp</p>
+<p>这个类对 Winsock 2  提供的 socket 接口进行封装，用于进行客户端的 TCP 连接。其含有如下成员变量。</p>
+<p>WSADATAwsaData;</p>
+<p>SOCKET ConnectSocket;</p>
+<p>struct addrinfo* result, * ptr, hints;</p>
+<p>int iResult;</p>
+<p>char* recvbuf;</p>
+<p>size_t buflen;</p>
+<p>std::function&lt;void(const char*)&gt; log;</p>
+<p>TcpStatus status;</p>
+<p>std::string status_info;</p>
+<p>其中，wsaData ，ConnectSocket ，result ，ptr，hints 用于 socket 的构造， iResult 存储 socket 相关函数的返回值，recvbuf 作为接收 socket 数据的缓冲区， buflen 定义了动态分配缓冲区的长度，log 用于出错时回调输出信息，status ， status_info 用于向上层提供状态信息。</p>
+<p>enum class SmtpReplyCode</p>
+<p>这个枚举类定义了SMTP 所有可能的状态码。其含有如下成员。</p>
+<p>CmdSyntaxErr &#x3D; 500,</p>
+<p>ParamSyntaxErr &#x3D; 501,</p>
+<p>CmdNotImpl &#x3D; 502,</p>
+<p>BadCmdSeq &#x3D; 503,</p>
+<p>ParamNotImpl &#x3D; 504,</p>
+<p>SysStatus &#x3D; 211,</p>
+<p>HelpMsg &#x3D; 214,</p>
+<p>ServiceReady &#x3D; 220,</p>
+<p>ServiceClosing &#x3D; 221,</p>
+<p>ServiceUnavailable &#x3D; 421,</p>
+<p>Completed &#x3D; 250,</p>
+<p>Forward &#x3D; 251,</p>
+<p>UnverifiedAccept &#x3D; 252,</p>
+<p>UnableAccommodateParam &#x3D; 455,</p>
+<p>MailParamNotImpl &#x3D; 555,</p>
+<p>TransientMailboxUnavailable &#x3D; 450,</p>
+<p>PermanentMailboxUnavailable &#x3D; 550,</p>
+<p>ProcessingErr &#x3D; 451,</p>
+<p>UserNotLocal &#x3D; 452,</p>
+<p>InsufficientSysStorage &#x3D; 452,</p>
+<p>ExceededStorageAllocation &#x3D; 552,</p>
+<p>MailboxNotAllowed &#x3D; 553,</p>
+<p>StartingMailInput &#x3D; 354,</p>
+<p>TransactionFailed &#x3D; 554,</p>
+<p>class BasicSmtp</p>
+<p>这个类实现了基础的SMTP 客户端功能。其含有如下成员变量。 ClientTcp* tcp_conn;</p>
+<p>SmtpStatus status;</p>
+<p>SmtpReplyCode reply_code;</p>
+<p>std::string reply_msg;</p>
+<p>std::function&lt;void(const char*)&gt; log &#x3D; NULL;</p>
+<p>std::string info;</p>
+<p>其 中 ，tcp_conn 用于 TCP 连接 ，status 记录 当前 SMTP 连接状态 ， reply_code 与 reply_msg 记录服务器传回的消息，log 回调函数用于日志记录， info 用于与上层模块通信。</p>
+<p>Python 代码中主要有以下类：</p>
+<p>HttpRequestPacket</p>
+<p>用于解析与储存收到的 HTTP 报文。其含有如下成员变量。</p>
+<p>req_line：请求行</p>
+<p>method：HTTP 方法</p>
+<p>req_uri：HTTP 请求地址</p>
+<p>version：HTTP 版本号</p>
+<p>req_header：请求标头</p>
+<p>headers：解析的标头字典</p>
+<p>host：主机地址</p>
+<p>req_data：请求数据</p>
+<h2 id="2-模块结构"><a href="#2-模块结构" class="headerlink" title="2.模块结构"></a>2.模块结构</h2><p>如下图</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps1.png" alt="img"> </p>
+<h2 id="3-算法流程"><a href="#3-算法流程" class="headerlink" title="3.算法流程"></a>3.算法流程</h2><p>如上图</p>
+<h2 id="4-主要功能模块的实现要点"><a href="#4-主要功能模块的实现要点" class="headerlink" title="4. 主要功能模块的实现要点"></a>4. 主要功能模块的实现要点</h2><h3 id="4-1-代理"><a href="#4-1-代理" class="headerlink" title="4.1 代理"></a>4.1 代理</h3><p>接收 HTTP 传入请求。对于 HTTP 连接，需要正确转发至目的地。对于 HTTPS 连接，需要为其建立专门的 TCP 连接。检测到疑似为 Webmail 的数据 包 (开头为 “POST <a target="_blank" rel="noopener" href="http://mail.qq.com/cgi-bin/compose_send">http://mail.qq.com/cgi-bin/compose_send</a>“) 时，需要启动 后续模块的进程。</p>
+<h3 id="4-2-解析包"><a href="#4-2-解析包" class="headerlink" title="4.2 解析包"></a>4.2 解析包</h3><p>需要对传入的数据包进行解析，得到 Webmail 发送的邮件信息。检查是否 有 关 键 字 段 缺 失 ( 发 件 人 “sendmailname” ，  收 件 人 “To” ，  邮 件 正 文 “content__html”) 。若检查无误，则写入文件，启动后续模块的进程。</p>
+<h3 id="4-3-转发邮件"><a href="#4-3-转发邮件" class="headerlink" title="4.3  转发邮件"></a>4.3  转发邮件</h3><p>4.3.1 BasicSmtp 库的 TCP 客户端服务</p>
+<p>该模块实现了一个基本的 TCP 发送客户端，用于转发电子邮件。以下是每 个功能模块的实现要点的总结：</p>
+<p>构造函数和析构函数：</p>
+<p>构造函数初始化了函数 MailProxy::ClientTcp::ClientTcp。初始化构造一个缓 冲区用来存放接收到的信息，同时又定义 log 变量用来存放错误信息。</p>
+<p>析构函数中释放用来存放接受信息的缓冲区。</p>
+<p>record_error()函数：</p>
+<p>用来封装报错反馈功能，由于每个功能模块基本都有报错的可能，重复撰写 报错功能会占用大量空间，因此将其封装。</p>
+<p>tcp_connect()函数：</p>
+<p>TCP 协议链接函数，首先确保所有字段的初始值为 0 ，指定适用于 IPv4 或 IPv6 的地址，指定套接字类型为流式套接字 (TCP) ，指定使用TCP 协议。</p>
+<p>解析服务器的地址和端口。将解析结果存储在指针中，并返回结果代码，循 环遍历解析结果。</p>
+<p>使用socket 函数根据解析结果创建一个套接字。根据 ptr 指针中的地址族、 套接字类型和协议，创建一个用于连接服务器的套接字。</p>
+<p>与服务器建立连接。</p>
+<p>连接成功，跳出循环，完成 TCP 连接的建立。</p>
+<p>tcp_send()函数：</p>
+<p>向服务器发送数据。</p>
+<p>关闭连接套接字，释放与服务器的 TCP 连接。</p>
+<p>将连接套接字设置为无效的套接字，清理使用 Windows 套接字库的资源。 如果发送失败，会记录错误信息，并进行连接和资源的清理操作。</p>
+<p>tcp_receive()函数：</p>
+<p>从服务器接收数据</p>
+<p>将接收到的数据放入缓冲区。</p>
+<p>如果接收失败，会记录错误信息，并进行连接和资源的清理操作。</p>
+<p>tcp_shutdown()函数：</p>
+<p>检查 ConnectSocket 是否为有效的套接字。如果是有效的套接字，表示存 在一个与服务器建立的 TCP 连接，此函数用于判断是否存在连接并对其进行关 闭。</p>
+<p>关闭连接。</p>
+<p>如果关闭失败，会记录错误信息，并进行连接和资源的清理操作。</p>
+<p>get_received()函数：</p>
+<p>读取 received 的取指中存储的内容。</p>
+<p>get_status()函数：</p>
+<p>读取status 的取指中存储的内容。</p>
+<p>get_status_info()函数：</p>
+<p>读取 status_info 的取指中存储的内容。</p>
+<p>4.3.2 BasicSmtp 库的 SMTP 客户端服务</p>
+<p>实现了一个基本的 SMTP 客户端，用于发送电子邮件。以下是每个功能模 块的实现要点的总结：</p>
+<p>构造函数和析构函数：</p>
+<p>构造函数初始化了一个 MailProxy::ClientTcp 对象，并设置了一个 Lambda 函数作为参数，用于处理 TCP 连接的日志输出。</p>
+<p>析构函数发送 QUIT 命令给 SMTP 服务器，接收响应并关闭 TCP 连接</p>
+<p>smtp_login()函数：</p>
+<p>使用给定的服务器地址、用户名和密码进行 SMTP 登录。</p>
+<p>向 SMTP 服务器发送 EHLO 命令以建立与服务器的连接。</p>
+<p>发送 AUTH LOGIN 命令以进行身份验证。</p>
+<p>将用户名和密码以 base64 编码形式发送给服务器。</p>
+<p>检查每个步骤的响应码和响应消息，根据情况设置 SMTP 状态。</p>
+<p>smtp_send()函数：</p>
+<p>发送电子邮件。</p>
+<p>发送 MAIL FROM 命令以设置发件人。</p>
+<p>发送 RCPT TO 命令以设置收件人 (包括 To、Cc 和 Bcc) 。 发送 DATA 命令以指示开始发送邮件内容。</p>
+<p>构建邮件的头部和正文，并将其以字符串形式发送给服务器。 检查每个步骤的响应码和响应消息，根据情况设置 SMTP 状态。</p>
+<p>smtp_send_raw()函数：</p>
+<p>发送原始的电子邮件数据。</p>
+<p>发送 MAIL FROM 命令以设置发件人。</p>
+<p>发送 RCPT TO 命令以设置收件人。</p>
+<p>发送 DATA 命令以指示开始发送邮件内容。</p>
+<p>将原始数据以字符串形式发送给服务器。</p>
+<p>检查每个步骤的响应码和响应消息，根据情况设置 SMTP 状态。</p>
+<p>check_tcp()函数：</p>
+<p>检查 TCP 连接状态，用于确定 TCP 连接是否正常。</p>
+<p>如果连接状态不是 OK ，设置 SMTP 状态为 TcpErr，表明TCP 连接失败， 并返回 false ，否则返回 true。</p>
+<p>check()函数：</p>
+<p>在检查 TCP 连接状态的基础上，提取 SMTP 响应的响应码和响应消息，并 根据响应码判断 SMTP 状态，用于确定SMTP 是否正常。如果响应码以 4 或 5 开头，设置 SMTP 状态为 SmtpErr 并返回 false ，否则返回 true。</p>
+<p>4.3.3 post 主程序</p>
+<p>实现整个邮件发送流程，包括登录、构建邮件、发送和检查响应等。以下是 每个功能模块实现流程的总结：</p>
+<p>构建邮件对象:  提取原始文件内容，构建邮件信息，把发件人、收件人、抄 送、密送、邮件标题和正文等信息作为参数，并根据这些信息创建一个包含邮件 头和内容的字符串。</p>
+<p>编码登录名和授权码：调用 base64_encode 编码登录名和授权码，使用动 态分配的字符数存放登录名和授权码的 Base64  编码</p>
+<p>SMTP 登录操作:  调用smtp_login 函数用于进行 SMTP 服务器的登录操作。 它接受 SMTP 服务器地址、用户名和密码作为参数，并通过建立 TCP 连接和 发送登录命令来完成登录过程。</p>
+<p>发送邮件:  调用 smtp_send_raw 函数用于邮件发送。它接受邮件内容和 SMTP 服务器实例作为参数，并通过与服务器的交互来发送邮件。发送过程包 括发送邮件数据、处理服务器响应以及检查发送状态等步骤。</p>
+<p>检查响应并处理：通过检查服务器的响应，并根据不同的响应状态进行相应 的处理。如果状态为 SmtpErr，输出 SMTP 错误码和错误信息，并发送反馈。 如果状态为 TcpErr ，输出 TCP 服务错误并退出程序。如果状态正常，输出成 功消息表示邮件发布成功。</p>
+<h1 id="三、实验结果演示及分析"><a href="#三、实验结果演示及分析" class="headerlink" title="三、实验结果演示及分析"></a>三、实验结果演示及分析</h1><h2 id="1-功能测试"><a href="#1-功能测试" class="headerlink" title="1.功能测试"></a>1.功能测试</h2><p>代理服务器端查看主机 IP 地址</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps2.png" alt="img"> </p>
+<p>用户端使用网络代理</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps3-1690805636246-1.jpg" alt="img"> </p>
+<p>代理服务器端开启代理服务器</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps4.png" alt="img"> </p>
+<p>代理服务器端打开 wireshark 抓包</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps5-1690805636246-2.jpg" alt="img"> </p>
+<p>用户端发送文件</p>
+<p>发送文件成功，并实现转发功能</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps6.png" alt="img"> </p>
+<p>代理服务器端可以看到邮件已经发送成功</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps7.png" alt="img"> </p>
+<p>代理服务器端查看抓包，查找 HTTP 协议，可以看见发送邮件的内容。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps8.png" alt="img"> </p>
+<p>代理服务器端查看抓包，查找 SMTP 协议，可以看见发送邮件的通信流程。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps9.png" alt="img"> </p>
+<h2 id="2-差错处理"><a href="#2-差错处理" class="headerlink" title="2. 差错处理"></a>2. 差错处理</h2><h3 id="2-1TCP-差错处理"><a href="#2-1TCP-差错处理" class="headerlink" title="2.1TCP 差错处理"></a>2.1TCP 差错处理</h3><p>在 TCP 层的连接和发送中，主要由 record_error()函数封装报错内容。</p>
+<p>record_error()函数接收参数分别用来保存错误状态、错误信息、错误代码， 并将错误信息记录到日志中。同时将错误信息记录格式化后储存，并作为参数传</p>
+<p>递给 log ，以记录错误信息到日志中，便于在后续进行输出。</p>
+<p>差错内容：</p>
+<p>Winsock 初始化失败：WsaStartupFailed ，若在构造函数时网络编程接口 初始化失败报此内容。</p>
+<p>getaddrinfo 失败：  GetAddrInfoFailed ，若在解析服务器的地址和端口时 失败报此内容。</p>
+<p>Socket 初始化失败：SocketFailed ，若在建立接收解析服务器数据的内存 空间时失败报此内容。</p>
+<p>发送数据失败：SendFailed ，在发送 TCP 协议文件时出现问题报此内容。 接收数据失败：RecvFailed ，在接收 TCP 协议文件时出现问题报此内容。 关闭连接失败：ShutdownFailed ，在关闭 TCP 连接时出现问题报此内容。 未知错误：UnknownError 在流程中出现其他未知错误时报此内容。</p>
+<h3 id="2-2-SMTP-差错处理"><a href="#2-2-SMTP-差错处理" class="headerlink" title="2.2 SMTP 差错处理"></a>2.2 SMTP 差错处理</h3><p>在 SMTP 应用层，SMTP 差错处理的检查函数主要是 check_tcp()和 check()。 实现根据服务器的响应判断是否出现 TCP 错误或 SMTP 错误，并根据情况设置 相应的状态。这样可以根据 SMTP 状态来执行相应的处理逻辑，如输出错误信 息或成功消息。</p>
+<p>针对邮件检验主要是 check_email_addr()函数，对基本的邮件地址验证， 以确保在发送邮件或处理邮件时使用的地址是有效的和合法的</p>
+<p>check_tcp() 函 数 ： 用 于 检 查 TCP 连 接 的 状 态 ， 如 果 连 接 状 态 不 是 TcpStatus::OK ，则将 SMTP 状态设置为 SmtpStatus::TcpErr 并返回 false。</p>
+<p>check()函数：首先通过 tcp_conn-&gt;get_received()获取服务器的响应消息。 然后从响应消息中截取出响应码 code 和响应信息 reply_msg 。将响应码转换为 枚举类型，并将其赋值给 reply_code 成员变量。接下来，根据响应码的第一位 数字判断 SMTP 状态。如果是以 4 或 5 开头的响应码，认为是 SMTP 错误，将 SMTP 状态设置为 SmtpErr 并返回false 。否则，将 SMTP 状态设置为 OK。</p>
+<p>check_email_addr()函数：检查给定的邮件地址是否符合标准的电子邮件地 址格式。通过使用正则表达式来验证邮件地址是否满足特定的模式。该正则表达 式模式包含了电子邮件地址的各个部分，如用户名部分、域名部分等。它对地址 的格式进行了详细的验证，包括以下几个方面：</p>
+<p>用户名部分可以包含字母、数字以及一些特定的符号，如点号、加号、减号、 下划线等。</p>
+<p>域名部分可以是一个 IP 地址，形如 [x.x.x.x] ，也可以是一个域名，形如 example.com。</p>
+<p>域名部分至少包含两个组成部分，如 example.com，而不是仅有一个部分， 如 example。</p>
+<h3 id="2-3-解析包差错处理"><a href="#2-3-解析包差错处理" class="headerlink" title="2.3 解析包差错处理"></a>2.3 解析包差错处理</h3><p>对于格式不正确的包 (例如qq 邮箱保存至草稿箱的数据包) ，停止后续操 作并输出相关信息。</p>
+<h2 id="2-和课堂上学习的-HTTP协议和SMTP-协议相比，-自制程序的不同之处"><a href="#2-和课堂上学习的-HTTP协议和SMTP-协议相比，-自制程序的不同之处" class="headerlink" title="2. 和课堂上学习的 HTTP协议和SMTP 协议相比， 自制程序的不同之处"></a>2. 和课堂上学习的 HTTP协议和SMTP 协议相比， 自制程序的不同之处</h2><p>HTTP 和 SMTP 协议是互联网中常用的协议，用于在网络中传输数据。它 们是通用协议，可以用来传输 Web 页面、 电子邮件等多种数据。而我们自制程 序只是针对特定邮件进行捕捉并转发成 SMTP 协议文件，对于其他 http 文件仅 进行中转功能。</p>
+<p>在学习中，HTTP 和SMTP 协议是已经定义好的协议，有标准规范和实现。 而自制程序并没有封装好，需要定义自己的数据格式、错误捕捉等内容，只能在 tcp 基础上自己进行实现。</p>
+<p>HTTP 和 SMTP 协议是复杂的协议，涉及多个不同的请求和响应类型、头 部字段、状态码等细节。我们的程序根据索要实现的功能需求进行了简化。</p>
+<p>总之，学习 HTTP 和 SMTP 协议是了解和理解互联网通信的基本原理，而 自制程序则需要根据具体需求设计和实现自己的通信逻辑和协议。</p>
+<h2 id="3-和实际的-Webmail-及-SMTP-服务器相比，程序的优点和不足"><a href="#3-和实际的-Webmail-及-SMTP-服务器相比，程序的优点和不足" class="headerlink" title="3. 和实际的 Webmail 及 SMTP 服务器相比，程序的优点和不足"></a>3. 和实际的 Webmail 及 SMTP 服务器相比，程序的优点和不足</h2><p>优点：</p>
+<p>1 ) 我们的程序面向邮件转发而开发，对邮件的接收和转发有详细的过程记 录。可以快速发现出现问题的地方，并且保证了一定的安全性。</p>
+<ol start="2">
+<li>程序可以根据需求进行快速调节。可以根据想要使用进行转发的邮箱进 行更改，快速实现邮件转发功能，避免第三方软件介入，提高了便利性。</li>
+<li>我们的程序可以随时根据需要进行功能扩展，通过各种语言对功能进行 添加。</li>
+</ol>
+<p>不足之处：</p>
+<p>1 ) SMTP 服务和 HTTP 服务具有一定的复杂性。自制程序可能难以达到与</p>
+<p>专业产品相同的复杂程度和稳定性。</p>
+<ol start="2">
+<li>SMTP 服务器和 Webmail 应用通常大量的身份验证、加密传输等安全措 施。 自制程序的安全性能相对匮乏，容易被攻击。</li>
+<li>实际的 Webmail 和 SMTP 服务器经过广泛测试和兼容性验证，能够在 不同的操作系统和浏览器上正常运行。我们的程序有一定的兼容性问题，在新平 台上运行时还要适当提前进行配置。</li>
+</ol>
+<p>总体而言，我们的程序具有定制性和灵活性等优点，但在复杂性、安全性和 可用性方面还存在一些挑战。</p>
+<h1 id="四、实验总结和心得体会"><a href="#四、实验总结和心得体会" class="headerlink" title="四、实验总结和心得体会"></a>四、实验总结和心得体会</h1><h2 id="1-实际上机调试时间"><a href="#1-实际上机调试时间" class="headerlink" title="1. 实际上机调试时间"></a>1. 实际上机调试时间</h2><p>TCP 实现部分：4h</p>
+<p>SMTP 实现部分：4h</p>
+<p>接受文件实现部分：6h</p>
+<p>接口对接整体调试：5h</p>
+<p>不同平台调试：4h</p>
+<p>总用时：23h</p>
+<h2 id="2-编程工具方面遇到的问题"><a href="#2-编程工具方面遇到的问题" class="headerlink" title="2. 编程工具方面遇到的问题"></a>2. 编程工具方面遇到的问题</h2><p>1 ) 运行 CMAKE 的工具：想运用 CMAKE 用于管理软件项目的构建过程， 后来发现 Developer PowerShell 提供了一个强大的命令行界面，可以很好实现 CMAKE 相关的任务和操作。它使得配置、构建和调试 CMake 项目变得更加方 柏霓，很好的满足了我们的需求</p>
+<ol start="2">
+<li>在最后代码汇总是使用的是 mac 系统，并且配置了一些代码库环境。后 续在其他电脑编译运行时需要重新配置环境。并根据 Windows 系统进行调整如 更改 Unicode 编码格式。</li>
+</ol>
+<h2 id="3-编程语言方面遇到的问题"><a href="#3-编程语言方面遇到的问题" class="headerlink" title="3. 编程语言方面遇到的问题"></a>3. 编程语言方面遇到的问题</h2><ol>
+<li>C++的 list 容器使用：list 是与数组或向量等其他容器类型有所不同。 一开始缺少对链表结构的认识，对于迭代器的使用不够熟练，通过文档阅读和时</li>
+</ol>
+<p>间逐渐了解。</p>
+<ol start="2">
+<li>理解 lamba 函数：对 Lambda 函数的参数传递机制不清楚，不知道如 何传递参数给 Lambda 函数或在 Lambda 函数中使用外部参数。通过阅读使用 Lambda 函数的实际示例和代码片段，以便在实际应用中看到它们的用途和优势。</li>
+</ol>
+<h2 id="4-协议方面遇到的问题"><a href="#4-协议方面遇到的问题" class="headerlink" title="4.协议方面遇到的问题"></a>4.协议方面遇到的问题</h2><p>1 ) SMTP 的标准和规范理解：SMTP 的标准文档使用了大量的技术术语和 符号，理解和记忆这些术语需要一定的时间和实践。并且文档详细描述了协议的 各个方面，包括协议的命令、响应、消息格式、状态码等。描述过于细节，一开 始难以找到关键信息。</p>
+<h2 id="5-通过本次试验，你认为-HTTP-协议和SMTP-协议有哪些不足？有何改进思路？"><a href="#5-通过本次试验，你认为-HTTP-协议和SMTP-协议有哪些不足？有何改进思路？" class="headerlink" title="5. 通过本次试验，你认为 HTTP 协议和SMTP 协议有哪些不足？有何改进思路？"></a>5. 通过本次试验，你认为 HTTP 协议和SMTP 协议有哪些不足？有何改进思路？</h2><h3 id="5-1-不足"><a href="#5-1-不足" class="headerlink" title="5.1 不足"></a>5.1 不足</h3><ol start="5">
+<li>1.1 HTTP 不足</li>
+</ol>
+<p>明文传输：HTTP 协议默认使用明文传输，容易被窃听和篡改，缺乏安全性。 无状态性：HTTP 协议是无状态的，服务器无法保留客户端的状态信息。</p>
+<p>安全性问题：HTTP 协议本身没有内置的身份验证和授权机制，容易受到中 间人攻击和伪造请求。</p>
+<ol start="5">
+<li>1.2 SMTP 不足</li>
+</ol>
+<p>明文传输：SMTP 协议默认使用明文传输，邮件内容和身份信息容易被窃听 和篡改。</p>
+<p>垃圾邮件问题：SMTP 协议没有内置的垃圾邮件过滤机制，容易受到垃圾邮 件的滥用。</p>
+<p>可信度和可靠性问题：SMTP 协议的可信度和可靠性较低，邮件可能会丢失、 延迟或被拒绝。</p>
+<p>缺乏身份验证：SMTP 协议没有强制的身份验证机制，允许匿名发送邮件。</p>
+<h3 id="5-2-改进思路"><a href="#5-2-改进思路" class="headerlink" title="5.2 改进思路"></a>5.2 改进思路</h3><p>5.2.1 HTTP 改进</p>
+<p>针对明文传输问题：使用传输层安全性协议 (TLS) 来加密通信，利用对称 加密，客户端和服务器协商一个共享的对称密钥，该对称密钥用于加密和解密数 据。结合非加密服务器持有私钥，用于解密客户端发来的对称密钥，而客户端持 有服务器的公钥，用于加密对称密钥和加密通信内容。 比如现在广泛使用的 HTTPS 协议。</p>
+<p>针对无状态性问题：可以引入会话管理机制，如引入会话标识符来跟踪客户 端状态，减轻服务器负担。 比如服务器在客户端首次请求时创建一个唯一的 Session 标识符，并将该标识符发送给客户端，通常通过 Cookie 进行存储。客 户端在后续的请求中会携带该 Session 标识符，服务器根据标识符查找对应的会 话信息，恢复客户端的状态。</p>
+<p>针对安全性问题：可以引入更强大的身份验证和授权机制，如使用令牌、数 字签名等来确保请求的合法性和安全性。比如在与服务器建立 TLS 连接时，验 证服务器提供的数字证书的有效性和合法性，进行身份认证。</p>
+<p>5.2.2 SMTP 改进</p>
+<p>针对明文传输问题：可以通过使用加密算法来保护数据的机密性和完整性， 如 SMTP over SSL&#x2F;TLS (SMTPS) 等命令来保护通信的安全性。可以在建立 SMTP 连接之后，通过 SSL&#x2F;TLS 协议与服务器进行握手，建立安全的加密通道。</p>
+<p>针对垃圾邮件问题：可以引入更强大的反垃圾邮件技术，如使用黑名单、白 名单、内容过滤等来过滤和拦截垃圾邮件。</p>
+<p>针对可信度和可靠性问题：可以引入更可靠的投递和排队机制，如使用消息 队列或可靠的SMTP 代理来提高邮件的传递率和可靠性。</p>
+<p>针对缺乏身份验证问题：可以引入强制的身份验证机制，如使用 SMTP 认 证或 DKIM 等技术来验证发件人的身份。</p>
+<h2 id="6-实验总结"><a href="#6-实验总结" class="headerlink" title="6. 实验总结"></a>6. 实验总结</h2><p>这个实验加深了我对网络通信和协议的理解，提高了我的编程和软件设计能</p>
+<p>力，培养了我解决问题和进行项目开发的能力，增强团队协作能力，和队友间建 立了深厚的友谊。</p>
+<p>SOCKET 机制方面： 通过实现 TCP 连接和 SMTP 发送功能 ，我们对</p>
+<p>SOCKET 机制有了更深入的理解。学会了如何建立和管理 TCP 连接，如何使用 SOCKET API 进行数据的发送和接收， 以及如何处理连接错误和异常情况。这 使我对网络通信的底层机制有了更全面的了解。</p>
+<p>协议软件设计方面：在实现代理和 SMTP 发送功能的过程中，我们学会了 如何设计和实现协议软件。我们需要考虑协议的各个方面，包括命令和响应的格 式、状态管理、错误处理等，学会了将协议规范转化为可执行的代码，并进行测 试和调试，以确保软件的正确性和稳定性。</p>
+<p>理论学习方面：通过这个实验，我们对网络通信和电子邮件协议的理论知识 有了更深入的了解。我们学习了 TCP&#x2F;IP 协议栈的工作原理，了解了SMTP 协议 的基本原理和命令格式。这使我们能够更好地理解实验中涉及的概念和技术，并 能够将理论知识应用到实际项目中。</p>
+<p>软件工程方面：在实现这个实验的过程中，我们锻炼了软件工程方面的能力， 学会了进行需求分析和设计，合理划分模块和函数，编写可读性和可维护性高的 代码，进行单元测试和集成测试，以及进行错误处理和异常处理。我相信这些软 件工程的技能对于未来发展将会发挥至关重要的作用。</p>
+<p>团队协作方面：在团队中，我们需要进行频繁的沟通与协调，共享信息和进 展，解决问题和取得共识。每个成员负责实现特定的功能模块。我们确保彼此之 间的工作是互相协调和兼容的，并及时进行交流和整合，共同努力找到最佳的解 决方案。让我们进一步认识到团队协作的伟力，增强了团队协作能力。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://zhangyuanhe.top">Charmes</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/computer_network/CN2/">https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/computer_network/CN2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="null" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zhangyuanhe.top" target="_blank">ZYH's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/">北邮信安</a><a class="post-meta__tags" href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C/">计算机网络实验</a></div><div class="post_share"><div class="social-share" data-image="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/07/30/Information_Security_Experiment/digital_logic/DL2/" title="时序逻辑实验报告"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">时序逻辑实验报告</div></div></a></div><div class="next-post pull-right"><a href="/2023/07/26/hexo/Hexo_build12/" title="Hexo博客搭建（12）——网站SEO优化"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729155123532.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hexo博客搭建（12）——网站SEO优化</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/07/30/Information_Security_Experiment/computer_network/CN1/" title="http、smtp抓包及分析实验"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-30</div><div class="title">http、smtp抓包及分析实验</div></div></a></div><div><a href="/2023/07/30/Information_Security_Experiment/Network_Security/NS1/" title="c++网络编程传输密文"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-30</div><div class="title">c++网络编程传输密文</div></div></a></div><div><a href="/2023/07/30/Information_Security_Experiment/Network_Security/NS2/" title="拒绝服务攻击检测"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-30</div><div class="title">拒绝服务攻击检测</div></div></a></div><div><a href="/2023/07/30/Information_Security_Experiment/digital_logic/DL1/" title="组合逻辑实验报告"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-30</div><div class="title">组合逻辑实验报告</div></div></a></div><div><a href="/2023/07/30/Information_Security_Experiment/digital_logic/DL2/" title="时序逻辑实验报告"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-30</div><div class="title">时序逻辑实验报告</div></div></a></div><div><a href="/2023/07/30/BUPT_note/BUPT01/" title="北邮网安大类课程介绍（21级）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-30</div><div class="title">北邮网安大类课程介绍（21级）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="card-info-avatar"> <div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-status-box"><div class="author-status"><g-emoji class="g-emoji" alias="palm_tree" fallback-src="https://lskypro.acozycotage.net/LightPicture/2022/12/fe1dc0402e623096.jpg">🐟</g-emoji><span>认真摸鱼中</span></div></div></div><div class="author-info__name">Charmes</div><div class="author-info__description">敏于思 慎于行</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/shuita2333"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/shuita2333" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:603747072@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://gitee.com/bank-beaver" target="_blank" title="Gitee"><i class="fab fa-git-square" style="color: #d5382a;"></i></a><a class="social-icon" href="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729200147469.png" target="_blank" title="wechat"><i class="fab fa-weixin" style="color: #3CB371;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80-%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="toc-number">1.</span> <span class="toc-text">一 实验内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9%E5%92%8C%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E6%8F%8F%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">一、实验内容和实验环境描述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9E%E9%AA%8C%E4%BB%BB%E5%8A%A1"><span class="toc-number">2.1.</span> <span class="toc-text">1.实验任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="toc-number">2.2.</span> <span class="toc-text">2.实验内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83"><span class="toc-number">2.3.</span> <span class="toc-text">3.实验环境</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.</span> <span class="toc-text">二、软件设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">3.1.</span> <span class="toc-text">1.数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%A8%A1%E5%9D%97%E7%BB%93%E6%9E%84"><span class="toc-number">3.2.</span> <span class="toc-text">2.模块结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B"><span class="toc-number">3.3.</span> <span class="toc-text">3.算法流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AE%9E%E7%8E%B0%E8%A6%81%E7%82%B9"><span class="toc-number">3.4.</span> <span class="toc-text">4. 主要功能模块的实现要点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E4%BB%A3%E7%90%86"><span class="toc-number">3.4.1.</span> <span class="toc-text">4.1 代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E8%A7%A3%E6%9E%90%E5%8C%85"><span class="toc-number">3.4.2.</span> <span class="toc-text">4.2 解析包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E8%BD%AC%E5%8F%91%E9%82%AE%E4%BB%B6"><span class="toc-number">3.4.3.</span> <span class="toc-text">4.3  转发邮件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%E6%BC%94%E7%A4%BA%E5%8F%8A%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">三、实验结果演示及分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-number">4.1.</span> <span class="toc-text">1.功能测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%B7%AE%E9%94%99%E5%A4%84%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">2. 差错处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1TCP-%E5%B7%AE%E9%94%99%E5%A4%84%E7%90%86"><span class="toc-number">4.2.1.</span> <span class="toc-text">2.1TCP 差错处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-SMTP-%E5%B7%AE%E9%94%99%E5%A4%84%E7%90%86"><span class="toc-number">4.2.2.</span> <span class="toc-text">2.2 SMTP 差错处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%B7%AE%E9%94%99%E5%A4%84%E7%90%86"><span class="toc-number">4.2.3.</span> <span class="toc-text">2.3 解析包差错处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%92%8C%E8%AF%BE%E5%A0%82%E4%B8%8A%E5%AD%A6%E4%B9%A0%E7%9A%84-HTTP%E5%8D%8F%E8%AE%AE%E5%92%8CSMTP-%E5%8D%8F%E8%AE%AE%E7%9B%B8%E6%AF%94%EF%BC%8C-%E8%87%AA%E5%88%B6%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B8%8D%E5%90%8C%E4%B9%8B%E5%A4%84"><span class="toc-number">4.3.</span> <span class="toc-text">2. 和课堂上学习的 HTTP协议和SMTP 协议相比， 自制程序的不同之处</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%92%8C%E5%AE%9E%E9%99%85%E7%9A%84-Webmail-%E5%8F%8A-SMTP-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%B8%E6%AF%94%EF%BC%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%BC%98%E7%82%B9%E5%92%8C%E4%B8%8D%E8%B6%B3"><span class="toc-number">4.4.</span> <span class="toc-text">3. 和实际的 Webmail 及 SMTP 服务器相比，程序的优点和不足</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E9%AA%8C%E6%80%BB%E7%BB%93%E5%92%8C%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">四、实验总结和心得体会</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9E%E9%99%85%E4%B8%8A%E6%9C%BA%E8%B0%83%E8%AF%95%E6%97%B6%E9%97%B4"><span class="toc-number">5.1.</span> <span class="toc-text">1. 实际上机调试时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7%E6%96%B9%E9%9D%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">5.2.</span> <span class="toc-text">2. 编程工具方面遇到的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E6%96%B9%E9%9D%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">5.3.</span> <span class="toc-text">3. 编程语言方面遇到的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%8D%8F%E8%AE%AE%E6%96%B9%E9%9D%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">5.4.</span> <span class="toc-text">4.协议方面遇到的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E9%80%9A%E8%BF%87%E6%9C%AC%E6%AC%A1%E8%AF%95%E9%AA%8C%EF%BC%8C%E4%BD%A0%E8%AE%A4%E4%B8%BA-HTTP-%E5%8D%8F%E8%AE%AE%E5%92%8CSMTP-%E5%8D%8F%E8%AE%AE%E6%9C%89%E5%93%AA%E4%BA%9B%E4%B8%8D%E8%B6%B3%EF%BC%9F%E6%9C%89%E4%BD%95%E6%94%B9%E8%BF%9B%E6%80%9D%E8%B7%AF%EF%BC%9F"><span class="toc-number">5.5.</span> <span class="toc-text">5. 通过本次试验，你认为 HTTP 协议和SMTP 协议有哪些不足？有何改进思路？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E4%B8%8D%E8%B6%B3"><span class="toc-number">5.5.1.</span> <span class="toc-text">5.1 不足</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E6%94%B9%E8%BF%9B%E6%80%9D%E8%B7%AF"><span class="toc-number">5.5.2.</span> <span class="toc-text">5.2 改进思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%AE%9E%E9%AA%8C%E6%80%BB%E7%BB%93"><span class="toc-number">5.6.</span> <span class="toc-text">6. 实验总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/07/30/BUPT_note/BUPT01/" title="北邮网安大类课程介绍（21级）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="北邮网安大类课程介绍（21级）"/></a><div class="content"><a class="title" href="/2023/07/30/BUPT_note/BUPT01/" title="北邮网安大类课程介绍（21级）">北邮网安大类课程介绍（21级）</a><time datetime="2023-07-30T01:00:00.000Z" title="发表于 2023-07-30 09:00:00">2023-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/30/Information_Security_Experiment/Network_Security/NS1/" title="c++网络编程传输密文"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="c++网络编程传输密文"/></a><div class="content"><a class="title" href="/2023/07/30/Information_Security_Experiment/Network_Security/NS1/" title="c++网络编程传输密文">c++网络编程传输密文</a><time datetime="2023-07-30T01:00:00.000Z" title="发表于 2023-07-30 09:00:00">2023-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/30/Information_Security_Experiment/Network_Security/NS2/" title="拒绝服务攻击检测"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="拒绝服务攻击检测"/></a><div class="content"><a class="title" href="/2023/07/30/Information_Security_Experiment/Network_Security/NS2/" title="拒绝服务攻击检测">拒绝服务攻击检测</a><time datetime="2023-07-30T01:00:00.000Z" title="发表于 2023-07-30 09:00:00">2023-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/30/Information_Security_Experiment/computer_network/CN1/" title="http、smtp抓包及分析实验"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="http、smtp抓包及分析实验"/></a><div class="content"><a class="title" href="/2023/07/30/Information_Security_Experiment/computer_network/CN1/" title="http、smtp抓包及分析实验">http、smtp抓包及分析实验</a><time datetime="2023-07-30T01:00:00.000Z" title="发表于 2023-07-30 09:00:00">2023-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/30/Information_Security_Experiment/digital_logic/DL1/" title="组合逻辑实验报告"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="组合逻辑实验报告"/></a><div class="content"><a class="title" href="/2023/07/30/Information_Security_Experiment/digital_logic/DL1/" title="组合逻辑实验报告">组合逻辑实验报告</a><time datetime="2023-07-30T01:00:00.000Z" title="发表于 2023-07-30 09:00:00">2023-07-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer-wrap"></div><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>再看看那个光点，它就在这里，这是家园，这是我们 —— 你所爱的每一个人，你认识的一个人，你听说过的每一个人，曾经有过的每一个人，都在它上面度过他们的一生✨</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://stellarium.org/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/link/">我的朋友</a></li><li> <a href="/about/">关于作者</a></li><li> <a href="/archives/">文章归档</a></li><li> <a href="/categories/">文章分类</a></li><li> <a href="/tags/">文章标签</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="https://zhangyuanhe.top/" title="Charmes"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon1.png" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://liuruibin.com/" title="LRBlog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lrblog-img-1304667442.file.myqcloud.com/method.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://akilar.top/" title="Akilarの糖果屋"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lskypro.acozycotage.net/LightPicture/2022/12/6bf1ed05796db59c.jpg" alt=""/></a></div></div></div></div><div class="copyright"><span><b>&copy;2023</b></span><span><b>&nbsp;&nbsp;By Charmes</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a><span class="footer-separator">|</span><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src=/img/icp.png>
+<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2023019220号-1</a></div><div id="workboard"></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button class="share" type="button" title="右键模式" onclick="changeMouseMode()"><i class="fas fa-mouse"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div class="js-pjax" id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());window.location.reload();"><i class="fa fa-search"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-too"><a class="rightMenu-item" href="javascript:window.open(window.getSelection().toString());window.location.reload();"><i class="fa fa-link"></i><span>转到链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-paste"><a class="rightMenu-item" href="javascript:rmf.paste()"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comment"></i><span>空降评论</span></a><a class="rightMenu-item" href="javascript:rmf.copyWordsLink()"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-to"><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:rmf.open()"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-img"><a class="rightMenu-item" href="javascript:rmf.saveAs()"><i class="fa fa-download"></i><span>保存图片</span></a><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制图片链接</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:randomPost()"><i class="fa fa-paper-plane"></i><span>随便逛逛</span></a><a class="rightMenu-item" href="javascript:switchNightMode();"><i class="fa fa-moon"></i><span>昼夜切换</span></a><a class="rightMenu-item" href="/about/"><i class="fa fa-info-circle"></i><span>关于博客</span></a><a class="rightMenu-item" href="javascript:toggleWinbox();"><i class="fas fa-cog"></i><span>美化设置</span></a><a class="rightMenu-item" href="javascript:rmf.fullScreen();"><i class="fas fa-expand"></i><span>切换全屏</span></a><a class="rightMenu-item" href="javascript:window.print();"><i class="fa-solid fa-print"></i><span>打印页面</span></a></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.textContent = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/light.js"></script><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script src="/js/sun_moon.js" async></script><script type="text/javascript" src="https://cdn1.tianli0.top/npm/jquery@latest/dist/jquery.min.js"></script><script type="text/javascript" src="/js/rightmenu.js"></script><script defer src="/js/another.js"></script><script defer src="/js/runtime.js"></script><script async src="/js/fps.js"></script><script async src="/js/title.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729155123532.png);"> <a class="categoryBar-list-link" href="categories/课程笔记/">课程笔记</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">博客搭建过程笔记</span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/博客搭建/">博客搭建</a><span class="categoryBar-list-count">12</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/信安课程实验/">信安课程实验</a><span class="categoryBar-list-count">6</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/信安课程实验/网络安全实验/">网络安全实验</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/信安课程实验/计算机网络实验/">计算机网络实验</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/信安课程实验/数字逻辑/">数字逻辑</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var qweather_key = 'b16a1fa0e63c46a4b8f28abfb06ae3fe';
+  var gaud_map_key = 'e2b04289e870b005374ee030148d64fd&s=rsv3';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '113.34532,23.15624';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>
