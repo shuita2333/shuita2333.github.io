@@ -1,9 +1,9 @@
 https://zhangyuanhe.top/2023/07/31/BUPT_note/BUPT01/
+https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/computer_network/CN1/
 https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/Network_Security/NS2/
 https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/Network_Security/NS1/
-https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/computer_network/CN1/
-https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/computer_network/CN2/
 https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/digital_logic/DL1/
+https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/computer_network/CN2/
 https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/digital_logic/DL2/
 https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build12/
 https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build11/
