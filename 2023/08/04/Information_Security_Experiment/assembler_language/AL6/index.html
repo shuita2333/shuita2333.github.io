@@ -1,0 +1,705 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>汇编语言基础代码解读 | ZYH's blog</title><meta name="author" content="Charmes"><meta name="copyright" content="Charmes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="对常见语言进行解释，便于后续阅读源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汇编语言基础代码解读">
+<meta property="og:url" content="https://zhangyuanhe.top/2023/08/04/Information_Security_Experiment/assembler_language/AL6/index.html">
+<meta property="og:site_name" content="ZYH&#39;s blog">
+<meta property="og:description" content="对常见语言进行解释，便于后续阅读源码">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png">
+<meta property="article:published_time" content="2023-08-04T01:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-04T09:22:27.570Z">
+<meta property="article:author" content="Charmes">
+<meta property="article:tag" content="北邮信安">
+<meta property="article:tag" content="实验报告">
+<meta property="article:tag" content="汇编语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://zhangyuanhe.top/2023/08/04/Information_Security_Experiment/assembler_language/AL6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: Charmes","link":"链接: ","source":"来源: ZYH's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '汇编语言基础代码解读',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-04 17:22:27'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 8 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><span id="fps"></span><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="ZYH's blog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png')"><nav id="nav"><span id="blog-info"><a href="/" title="ZYH's blog"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/logo.png"/><span class="site-name">ZYH's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">汇编语言基础代码解读</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-08-04T01:00:00.000Z" title="发表于 2023-08-04 09:00:00">2023-08-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-04T09:22:27.570Z" title="更新于 2023-08-04 17:22:27">2023-08-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/">信安课程实验</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="汇编语言基础代码解读"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>8080汇编手册数据传输指令</p>
+<p>──────────────────────────────</p>
+<p>它们在存贮器和寄存器、寄存器和输入输出端口之间传送数据。</p>
+<h1 id="1。-通用数据传送指令。"><a href="#1。-通用数据传送指令。" class="headerlink" title="1。 通用数据传送指令。"></a><strong>1。 通用数据传送指令。</strong></h1><p>MOV 传送字或字节。</p>
+<p>MOVSX 先符号扩展，再传送。</p>
+<p>MOVZX 先零扩展，再传送。</p>
+<p>PUSH 把字压入堆栈。</p>
+<p>POP 把字弹出堆栈。</p>
+<p>PUSHA 把AX，CX，DX，BX，SP，BP，SI，DI依次压入堆栈。</p>
+<p>POPA 把DI，SI，BP，SP，BX，DX，CX，AX依次弹出堆栈。</p>
+<p>PUSHAD 把EAX，ECX，EDX，EBX，ESP，EBP，ESI，EDI依次压入堆栈。</p>
+<p>POPAD 把EDI，ESI，EBP，ESP，EBX，EDX，ECX，EAX依次弹出堆栈。</p>
+<p>BSWAP 交换32位寄存器里字节的顺序</p>
+<p>XCHG 交换字或字节。( 至少有一个操作数为寄存器，段寄存器不可作为操作数)</p>
+<p>CMPXCHG 比较并交换操作数。( 第二个操作数必须为累加器AL&#x2F;AX&#x2F;EAX )</p>
+<p>XADD 先交换再累加。( 结果在第一个操作数里 )</p>
+<p>XLAT 字节查表转换。</p>
+<p>── BX 指向一张 256 字节的表的起点， AL 为表的索引值 (0-255，即</p>
+<p>0-FFH); 返回 AL 为查表结果。 ( [BX+AL]-&gt;AL )</p>
+<p>2。 输入输出端口传送指令。</p>
+<p>IN I&#x2F;O端口输入。 ( 语法: IN 累加器， {端口号│DX} )</p>
+<p>OUT I&#x2F;O端口输出。 ( 语法: OUT {端口号│DX}，累加器 )</p>
+<p>输入输出端口由立即方式指定时， 其范围是 0-255; 由寄存器 DX 指定时，</p>
+<p>其范围是 0-65535。</p>
+<p>3。 目的地址传送指令。</p>
+<p>LEA 装入有效地址。</p>
+<p>例: LEA DX，string ;把偏移地址存到DX。</p>
+<p>LDS 传送目标指针，把指针内容装入DS。</p>
+<p>例: LDS SI，string ;把段地址:偏移地址存到DS:SI。</p>
+<p>LES 传送目标指针，把指针内容装入ES。</p>
+<p>例: LES DI，string ;把段地址:偏移地址存到ES:DI。</p>
+<p>LFS 传送目标指针，把指针内容装入FS。</p>
+<p>例: LFS DI，string ;把段地址:偏移地址存到FS:DI。</p>
+<p>LGS 传送目标指针，把指针内容装入GS。</p>
+<p>例: LGS DI，string ;把段地址:偏移地址存到GS:DI。</p>
+<p>LSS 传送目标指针，把指针内容装入SS。</p>
+<p>例: LSS DI，string ;把段地址:偏移地址存到SS:DI。</p>
+<p>4。 标志传送指令。</p>
+<p>LAHF 标志寄存器传送，把标志装入AH。</p>
+<p>SAHF 标志寄存器传送，把AH内容装入标志寄存器。</p>
+<p>PUSHF 标志入栈。</p>
+<p>POPF 标志出栈。</p>
+<p>PUSHD 32位标志入栈。</p>
+<p>POPD 32位标志出栈。</p>
+<h1 id="二、算术运算指令"><a href="#二、算术运算指令" class="headerlink" title="二、算术运算指令"></a><strong>二、算术运算指令</strong></h1><p>──────────────────────────────</p>
+<p>ADD 加法。</p>
+<p>ADC 带进位加法。</p>
+<p>INC 加 1。</p>
+<p>AAA 加法的ASCII码调整。</p>
+<p>DAA 加法的十进制调整。</p>
+<p>SUB 减法。</p>
+<p>SBB 带借位减法。</p>
+<p>DEC 减 1。</p>
+<p>NEC 求反(以 0 减之)。</p>
+<p>CMP 比较。(两操作数作减法，仅修改标志位，不回送结果)。</p>
+<p>AAS 减法的ASCII码调整。</p>
+<p>DAS 减法的十进制调整。</p>
+<p>MUL 无符号乘法。</p>
+<p>IMUL 整数乘法。</p>
+<p>以上两条，结果回送AH和AL(字节运算)，或DX和AX(字运算)，</p>
+<p>AAM 乘法的ASCII码调整。</p>
+<p>DIV 无符号除法。</p>
+<p>IDIV 整数除法。</p>
+<p>以上两条，结果回送:</p>
+<p>商回送AL，余数回送AH， (字节运算);</p>
+<p>或 商回送AX，余数回送DX， (字运算)。</p>
+<p>AAD 除法的ASCII码调整。</p>
+<p>CBW 字节转换为字。 (把AL中字节的符号扩展到AH中去)</p>
+<p>CWD 字转换为双字。 (把AX中的字的符号扩展到DX中去)</p>
+<p>CWDE 字转换为双字。 (把AX中的字符号扩展到EAX中去)</p>
+<p>CDQ 双字扩展。 (把EAX中的字的符号扩展到EDX中去)</p>
+<h1 id="三、逻辑运算指令"><a href="#三、逻辑运算指令" class="headerlink" title="三、逻辑运算指令"></a><strong>三、逻辑运算指令</strong></h1><p>────────────────────────────</p>
+<p>AND 与运算。</p>
+<p>OR 或运算。</p>
+<p>XOR 异或运算。</p>
+<p>NOT 取反。</p>
+<p>TEST 测试。(两操作数作与运算，仅修改标志位，不回送结果)。</p>
+<p>SHL 逻辑左移。</p>
+<p>SAL 算术左移。(&#x3D;SHL)</p>
+<p>SHR 逻辑右移。</p>
+<p>SAR 算术右移。(&#x3D;SHR)</p>
+<p>ROL 循环左移。</p>
+<p>ROR 循环右移。</p>
+<p>RCL 通过进位的循环左移。</p>
+<p>RCR 通过进位的循环右移。</p>
+<p>以上八种移位指令，其移位次数可达255次。</p>
+<p>移位一次时， 可直接用操作码。 如 SHL AX，1。</p>
+<p>移位&gt;1次时， 则由寄存器CL给出移位次数。</p>
+<p>如 MOV CL，04</p>
+<p>SHL AX，CL</p>
+<h1 id="四、串指令"><a href="#四、串指令" class="headerlink" title="四、串指令"></a><strong>四、串指令</strong></h1><p>───────────────────────────</p>
+<p>DS:SI 源串段寄存器 :源串变址。</p>
+<p>ES:DI 目标串段寄存器:目标串变址。</p>
+<p>CX 重复次数计数器。</p>
+<p>AL&#x2F;AX 扫描值。</p>
+<p>D标志 0表示重复操作中SI和DI应自动增量; 1表示应自动减量。</p>
+<p>Z标志 用来控制扫描或比较操作的结束。</p>
+<p>MOVS 串传送。</p>
+<p>( MOVSB 传送字符。 MOVSW 传送字。 MOVSD 传送双字。 )</p>
+<p>CMPS 串比较。</p>
+<p>( CMPSB 比较字符。 CMPSW 比较字。 )</p>
+<p>SCAS 串扫描。</p>
+<p>把AL或AX的内容与目标串作比较，比较结果反映在标志位。</p>
+<p>LODS 装入串。</p>
+<p>把源串中的元素(字或字节)逐一装入AL或AX中。</p>
+<p>( LODSB 传送字符。 LODSW 传送字。 LODSD 传送双字。 )</p>
+<p>STOS 保存串。</p>
+<p>是LODS的逆过程。</p>
+<p>REP 当CX&#x2F;ECX&lt;&gt;0时重复。</p>
+<p>REPE&#x2F;REPZ 当ZF&#x3D;1或比较结果相等，且CX&#x2F;ECX&lt;&gt;0时重复。</p>
+<p>REPNE&#x2F;REPNZ 当ZF&#x3D;0或比较结果不相等，且CX&#x2F;ECX&lt;&gt;0时重复。</p>
+<p>REPC 当CF&#x3D;1且CX&#x2F;ECX&lt;&gt;0时重复。</p>
+<p>REPNC 当CF&#x3D;0且CX&#x2F;ECX&lt;&gt;0时重复。</p>
+<h1 id="五、程序转移指令"><a href="#五、程序转移指令" class="headerlink" title="五、程序转移指令"></a><strong>五、程序转移指令</strong></h1><p>──────────────────────────</p>
+<p>1&gt;无条件转移指令 (长转移)</p>
+<p>JMP 无条件转移指令</p>
+<p>CALL 过程调用</p>
+<p>RET&#x2F;RETF过程返回。</p>
+<p>2&gt;条件转移指令 (短转移，-128到+127的距离内)</p>
+<p>( 当且仅当(SF XOR OF)&#x3D;1时，OP1 JA&#x2F;JNBE 不小于或不等于时转移。</p>
+<p>JAE&#x2F;JNB 大于或等于转移。</p>
+<p>JB&#x2F;JNAE 小于转移。</p>
+<p>JBE&#x2F;JNA 小于或等于转移。</p>
+<p>以上四条，测试无符号整数运算的结果(标志C和Z)。</p>
+<p>JG&#x2F;JNLE 大于转移。</p>
+<p>JGE&#x2F;JNL 大于或等于转移。</p>
+<p>JL&#x2F;JNGE 小于转移。</p>
+<p>JLE&#x2F;JNG 小于或等于转移。</p>
+<p>以上四条，测试带符号整数运算的结果(标志S，O和Z)。</p>
+<p>JE&#x2F;JZ 等于转移。</p>
+<p>JNE&#x2F;JNZ 不等于时转移。</p>
+<p>JC 有进位时转移。</p>
+<p>JNC 无进位时转移。</p>
+<p>JNO 不溢出时转移。</p>
+<p>JNP&#x2F;JPO 奇偶性为奇数时转移。</p>
+<p>JNS 符号位为 “0” 时转移。</p>
+<p>JO 溢出转移。</p>
+<p>JP&#x2F;JPE 奇偶性为偶数时转移。</p>
+<p>JS 符号位为 “1” 时转移。</p>
+<p>3&gt;循环控制指令(短转移)</p>
+<p>LOOP CX不为零时循环。</p>
+<p>LOOPE&#x2F;LOOPZ CX不为零且标志Z&#x3D;1时循环。</p>
+<p>LOOPNE&#x2F;LOOPNZ CX不为零且标志Z&#x3D;0时循环。</p>
+<p>JCXZ CX为零时转移。</p>
+<p>JECXZ ECX为零时转移。</p>
+<p>4&gt;中断指令</p>
+<p>INT 中断指令</p>
+<p>INTO 溢出中断</p>
+<p>IRET 中断返回</p>
+<p>5&gt;处理器控制指令</p>
+<p>HLT 处理器暂停， 直到出现中断或复位信号才继续。</p>
+<p>WAIT 当芯片引线TEST为高电平时使CPU进入等待状态。</p>
+<p>ESC 转换到外处理器。</p>
+<p>LOCK 封锁总线。</p>
+<p>NOP 空操作。</p>
+<p>STC 置进位标志位。</p>
+<p>CLC 清进位标志位。</p>
+<p>CMC 进位标志取反。</p>
+<p>STD 置方向标志位。</p>
+<p>CLD 清方向标志位。</p>
+<p>STI 置中断允许位。</p>
+<p>CLI 清中断允许位。</p>
+<h1 id="六、伪指令"><a href="#六、伪指令" class="headerlink" title="六、伪指令"></a><strong>六、伪指令</strong></h1><p>───────────────────────────</p>
+<p>DW 定义字(2字节)。</p>
+<p>PROC 定义过程。</p>
+<p>ENDP 过程结束。</p>
+<p>SEGMENT 定义段。</p>
+<p>ASSUME 建立段寄存器寻址。</p>
+<p>ENDS 段结束。</p>
+<p>END 程序结束。</p>
+<h1 id="一-机械码-又称机器码"><a href="#一-机械码-又称机器码" class="headerlink" title="一.机械码,又称机器码."></a><strong>一.机械码,又称机器码.</strong></h1><p>ultraedit打开,编辑exe文件时你会看到</p>
+<p>许许多多的由0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F组成的数码,这些数码</p>
+<p>就是机器码.</p>
+<p>修改程序时必须通过修改机器码来修改exe文件.</p>
+<h1 id="二-需要熟练掌握的全部汇编知识-只有这么多"><a href="#二-需要熟练掌握的全部汇编知识-只有这么多" class="headerlink" title="二.需要熟练掌握的全部汇编知识(只有这么多)"></a><strong>二.需要熟练掌握的全部汇编知识(只有这么多)</strong></h1><p>不大容易理解,可先强行背住,混个脸儿熟,以后慢慢的就理解了</p>
+<p>cmp a,b 比较a与b</p>
+<p>mov a,b 把b的值送给a</p>
+<p>ret 返回主程序</p>
+<p>nop 无作用,英文“no operation”的简写，意思是“do nothing”(机器码90)***机器码的含义参看上面</p>
+<p>(解释:ultraedit打开编辑exe文件时你看到90,等同于汇编语句nop)</p>
+<p>call 调用子程序</p>
+<p>je 或jz 若相等则跳(机器码74 或0F84)</p>
+<p>jne或jnz 若不相等则跳(机器码75或0F85)</p>
+<p>jmp 无条件跳(机器码EB)</p>
+<p>jb 若小于则跳</p>
+<p>ja 若大于则跳</p>
+<p>jg 若大于则跳</p>
+<p>jge 若大于等于则跳</p>
+<p>jl 若小于则跳</p>
+<p>jle 若小于等于则跳</p>
+<p>pop 出栈</p>
+<p>push 压栈</p>
+<h1 id="三-常见修改-机器码"><a href="#三-常见修改-机器码" class="headerlink" title="三.常见修改(机器码)"></a>三.常见修改(机器码)</h1><p>74&#x3D;&gt;75 74&#x3D;&gt;90 74&#x3D;&gt;EB</p>
+<p>75&#x3D;&gt;74 75&#x3D;&gt;90 75&#x3D;&gt;EB</p>
+<p>jnz-&gt;nop</p>
+<p>75-&gt;90(相应的机器码修改)</p>
+<p>jnz -&gt; jmp</p>
+<p>75 -&gt; EB(相应的机器码修改)</p>
+<p>jnz -&gt; jz</p>
+<p>75-&gt;74 (正常) 0F 85 -&gt; 0F 84(特殊情况下,有时,相应的机器码修改)</p>
+<h1 id="四-两种不同情况的不同修改方法"><a href="#四-两种不同情况的不同修改方法" class="headerlink" title="四.两种不同情况的不同修改方法"></a>四.两种不同情况的不同修改方法</h1><p>1.修改为jmp</p>
+<p>je(jne,jz,jnz) &#x3D;&gt;jmp相应的机器码EB （出错信息向上找到的第一个跳转）jmp的作用是绝对跳，无条件跳，从而跳过下面的出错信息</p>
+<p>xxxxxxxxxxxx 出错信息，例如：注册码不对，sorry,未注册版不能…，”Function Not Avaible in Demo” 或 “Command Not Avaible” 或 “Can’t save in Shareware&#x2F;Demo”等 （我们希望把它跳过，不让它出现）</p>
+<p>。。。</p>
+<p>。。。</p>
+<p>xxxxxxxxxxxx 正确路线所在</p>
+<p>2.修改为nop</p>
+<p>je(jne,jz,jnz) &#x3D;&gt;nop相应的机器码90 （正确信息向上找到的第一个跳转） nop的作用是抹掉这个跳转，使这个跳转无效，失去作用，从而使程序顺利来到紧跟其后的正确信息处</p>
+<p>xxxxxxxxxxxx 正确信息，例如：注册成功，谢谢您的支持等（我们希望它不被跳过，让它出现，程序一定要顺利来到这里）</p>
+<p>。。。</p>
+<p>。。。</p>
+<p>xxxxxxxxxxxx 出错信息（我们希望不要跳到这里，不让它出现）它们在存贮器和寄存器、寄存器和输入输出端口之间传送数据. </p>
+<ol>
+<li>通用数据传送指令.</li>
+</ol>
+<p>MOV 传送字或字节. </p>
+<p>MOVSX 先符号扩展,再传送. </p>
+<p>MOVZX 先零扩展,再传送. </p>
+<p>PUSH 把字压入堆栈. </p>
+<p>POP 把字弹出堆栈. </p>
+<p>PUSHA 把AX,CX,DX,BX,SP,BP,SI,DI依次压入堆栈. </p>
+<p>POPA 把DI,SI,BP,SP,BX,DX,CX,AX依次弹出堆栈. </p>
+<p>PUSHAD 把EAX,ECX,EDX,EBX,ESP,EBP,ESI,EDI依次压入堆栈. </p>
+<p>POPAD 把EDI,ESI,EBP,ESP,EBX,EDX,ECX,EAX依次弹出堆栈. </p>
+<p>BSWAP 交换32位寄存器里字节的顺序 </p>
+<p>XCHG 交换字或字节.( 至少有一个操作数为寄存器,段寄存器不可作为操作数)</p>
+<p>CMPXCHG 比较并交换操作数.( 第二个操作数必须为累加器AL&#x2F;AX&#x2F;EAX )</p>
+<p>XADD 先交换再累加.( 结果在第一个操作数里 )</p>
+<p>XLAT 字节查表转换. </p>
+<p>── BX 指向一张 256 字节的表的起点, AL 为表的索引值 (0-255,即 </p>
+<p>0-FFH); 返回 AL 为查表结果. ( [BX+AL]-&gt;AL )</p>
+<ol start="2">
+<li>输入输出端口传送指令.</li>
+</ol>
+<p>IN I&#x2F;O端口输入. ( 语法: IN 累加器, {端口号│DX} )</p>
+<p>OUT I&#x2F;O端口输出. ( 语法: OUT {端口号│DX},累加器 )</p>
+<p>输入输出端口由立即方式指定时, 其范围是 0-255; 由寄存器 DX 指定时,</p>
+<p>其范围是 0-65535.</p>
+<ol start="3">
+<li>目的地址传送指令.</li>
+</ol>
+<p>LEA 装入有效地址. </p>
+<p>例: LEA DX,string ;把偏移地址存到DX. </p>
+<p>LDS 传送目标指针,把指针内容装入DS. </p>
+<p>例: LDS SI,string ;把段地址:偏移地址存到DS:SI. </p>
+<p>LES 传送目标指针,把指针内容装入ES. </p>
+<p>例: LES DI,string ;把段地址:偏移地址存到ESI. </p>
+<p>LFS 传送目标指针,把指针内容装入FS. </p>
+<p>例: LFS DI,string ;把段地址:偏移地址存到FSI. </p>
+<p>LGS 传送目标指针,把指针内容装入GS. </p>
+<p>例: LGS DI,string ;把段地址:偏移地址存到GSI. </p>
+<p>LSS 传送目标指针,把指针内容装入SS. </p>
+<p>例: LSS DI,string ;把段地址:偏移地址存到SSI. </p>
+<ol start="4">
+<li>标志传送指令.</li>
+</ol>
+<p>LAHF 标志寄存器传送,把标志装入AH. </p>
+<p>SAHF 标志寄存器传送,把AH内容装入标志寄存器. </p>
+<p>PUSHF 标志入栈. </p>
+<p>POPF 标志出栈. </p>
+<p>PUSHD 32位标志入栈. </p>
+<p>POPD 32位标志出栈. </p>
+<h1 id="二、算术运算指令-1"><a href="#二、算术运算指令-1" class="headerlink" title="二、算术运算指令"></a>二、算术运算指令</h1><p>─────────────────────────────────────── </p>
+<p>ADD 加法. </p>
+<p>ADC 带进位加法. </p>
+<p>INC 加 1.</p>
+<p>AAA 加法的ASCII码调整. </p>
+<p>DAA 加法的十进制调整. </p>
+<p>SUB 减法. </p>
+<p>SBB 带借位减法. </p>
+<p>DEC 减 1.</p>
+<p>NEC 求反(以 0 减之). </p>
+<p>CMP 比较.(两操作数作减法,仅修改标志位,不回送结果). </p>
+<p>AAS 减法的ASCII码调整. </p>
+<p>DAS 减法的十进制调整. </p>
+<p>MUL 无符号乘法. </p>
+<p>IMUL 整数乘法. </p>
+<p>以上两条,结果回送AH和AL(字节运算),或DX和AX(字运算),</p>
+<p>AAM 乘法的ASCII码调整. </p>
+<p>DIV 无符号除法. </p>
+<p>IDIV 整数除法. </p>
+<p>以上两条,结果回送:</p>
+<p>商回送AL,余数回送AH, (字节运算); </p>
+<p>或 商回送AX,余数回送DX, (字运算). </p>
+<p>AAD 除法的ASCII码调整. </p>
+<p>CBW 字节转换为字. (把AL中字节的符号扩展到AH中去)</p>
+<p>CWD 字转换为双字. (把AX中的字的符号扩展到DX中去)</p>
+<p>CWDE 字转换为双字. (把AX中的字符号扩展到EAX中去)</p>
+<p>CDQ 双字扩展. (把EAX中的字的符号扩展到EDX中去)</p>
+<h1 id="三、逻辑运算指令-1"><a href="#三、逻辑运算指令-1" class="headerlink" title="三、逻辑运算指令"></a>三、逻辑运算指令</h1><p>─────────────────────────────────────── </p>
+<p>AND 与运算. </p>
+<p>OR 或运算. </p>
+<p>XOR 异或运算. </p>
+<p>NOT 取反. </p>
+<p>TEST 测试.(两操作数作与运算,仅修改标志位,不回送结果). </p>
+<p>SHL 逻辑左移. </p>
+<p>SAL 算术左移.(&#x3D;SHL)</p>
+<p>SHR 逻辑右移. </p>
+<p>SAR 算术右移.(&#x3D;SHR)</p>
+<p>ROL 循环左移. </p>
+<p>ROR 循环右移. </p>
+<p>RCL 通过进位的循环左移. </p>
+<p>RCR 通过进位的循环右移. </p>
+<p>以上八种移位指令,其移位次数可达255次. </p>
+<p>移位一次时, 可直接用操作码. 如 SHL AX,1.</p>
+<p>移位&gt;1次时, 则由寄存器CL给出移位次数. </p>
+<p>如 MOV CL,04</p>
+<p>SHL AX,CL </p>
+<h1 id="四、串指令-1"><a href="#四、串指令-1" class="headerlink" title="四、串指令"></a>四、串指令</h1><p>─────────────────────────────────────── </p>
+<p>DS:SI 源串段寄存器 :源串变址. </p>
+<p>ESI 目标串段寄存器:目标串变址. </p>
+<p>CX 重复次数计数器. </p>
+<p>AL&#x2F;AX 扫描值. </p>
+<p>D标志 0表示重复操作中SI和DI应自动增量; 1表示应自动减量. </p>
+<p>Z标志 用来控制扫描或比较操作的结束. </p>
+<p>MOVS 串传送. </p>
+<p>( MOVSB 传送字符. MOVSW 传送字. MOVSD 传送双字. )</p>
+<p>CMPS 串比较. </p>
+<p>( CMPSB 比较字符. CMPSW 比较字. )</p>
+<p>SCAS 串扫描. </p>
+<p>把AL或AX的内容与目标串作比较,比较结果反映在标志位. </p>
+<p>LODS 装入串. </p>
+<p>把源串中的元素(字或字节)逐一装入AL或AX中. </p>
+<p>( LODSB 传送字符. LODSW 传送字. LODSD 传送双字. )</p>
+<p>STOS 保存串. </p>
+<p>是LODS的逆过程. </p>
+<p>REP 当CX&#x2F;ECX&lt;&gt;0时重复. </p>
+<p>REPE&#x2F;REPZ 当ZF&#x3D;1或比较结果相等,且CX&#x2F;ECX&lt;&gt;0时重复. </p>
+<p>REPNE&#x2F;REPNZ 当ZF&#x3D;0或比较结果不相等,且CX&#x2F;ECX&lt;&gt;0时重复. </p>
+<p>REPC 当CF&#x3D;1且CX&#x2F;ECX&lt;&gt;0时重复. </p>
+<p>REPNC 当CF&#x3D;0且CX&#x2F;ECX&lt;&gt;0时重复. </p>
+<h1 id="五、程序转移指令-1"><a href="#五、程序转移指令-1" class="headerlink" title="五、程序转移指令"></a>五、程序转移指令</h1><p>─────────────────────────────────────── </p>
+<p>1&gt;无条件转移指令 (长转移)</p>
+<p>JMP 无条件转移指令 </p>
+<p>CALL 过程调用 </p>
+<p>RET&#x2F;RETF过程返回. </p>
+<p>2&gt;条件转移指令 (短转移,-128到+127的距离内)</p>
+<p>( 当且仅当(SF XOR OF)&#x3D;1时,OP1&lt;OP2 )</p>
+<p>JA&#x2F;JNBE 不小于或不等于时转移. </p>
+<p>JAE&#x2F;JNB 大于或等于转移. </p>
+<p>JB&#x2F;JNAE 小于转移. </p>
+<p>JBE&#x2F;JNA 小于或等于转移. </p>
+<p>以上四条,测试无符号整数运算的结果(标志C和Z). </p>
+<p>JG&#x2F;JNLE 大于转移. </p>
+<p>JGE&#x2F;JNL 大于或等于转移. </p>
+<p>JL&#x2F;JNGE 小于转移. </p>
+<p>JLE&#x2F;JNG 小于或等于转移. </p>
+<p>以上四条,测试带符号整数运算的结果(标志S,O和Z). </p>
+<p>JE&#x2F;JZ 等于转移. </p>
+<p>JNE&#x2F;JNZ 不等于时转移. </p>
+<p>JC 有进位时转移. </p>
+<p>JNC 无进位时转移. </p>
+<p>JNO 不溢出时转移. </p>
+<p>JNP&#x2F;JPO 奇偶性为奇数时转移. </p>
+<p>JNS 符号位为 “0” 时转移. </p>
+<p>JO 溢出转移. </p>
+<p>JP&#x2F;JPE 奇偶性为偶数时转移. </p>
+<p>JS 符号位为 “1” 时转移. </p>
+<p>3&gt;循环控制指令(短转移)</p>
+<p>LOOP CX不为零时循环. </p>
+<p>LOOPE&#x2F;LOOPZ CX不为零且标志Z&#x3D;1时循环. </p>
+<p>LOOPNE&#x2F;LOOPNZ CX不为零且标志Z&#x3D;0时循环. </p>
+<p>JCXZ CX为零时转移. </p>
+<p>JECXZ ECX为零时转移. </p>
+<p>4&gt;中断指令 </p>
+<p>INT 中断指令 </p>
+<p>INTO 溢出中断 </p>
+<p>IRET 中断返回 </p>
+<p>5&gt;处理器控制指令 </p>
+<p>HLT 处理器暂停, 直到出现中断或复位信号才继续. </p>
+<p>WAIT 当芯片引线TEST为高电平时使CPU进入等待状态. </p>
+<p>ESC 转换到外处理器. </p>
+<p>LOCK 封锁总线. </p>
+<p>NOP 空操作. </p>
+<p>STC 置进位标志位. </p>
+<p>CLC 清进位标志位. </p>
+<p>CMC 进位标志取反. </p>
+<p>STD 置方向标志位. </p>
+<p>CLD 清方向标志位. </p>
+<p>STI 置中断允许位. </p>
+<p>CLI 清中断允许位. </p>
+<h1 id="六、伪指令-1"><a href="#六、伪指令-1" class="headerlink" title="六、伪指令"></a>六、伪指令</h1><p>─────────────────────────────────────── </p>
+<p>DW 定义字(2字节). </p>
+<p>PROC 定义过程. </p>
+<p>ENDP 过程结束. </p>
+<p>SEGMENT 定义段. </p>
+<p>ASSUME 建立段寄存器寻址. </p>
+<p>ENDS 段结束. </p>
+<p>END 程序结束</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://zhangyuanhe.top">Charmes</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zhangyuanhe.top/2023/08/04/Information_Security_Experiment/assembler_language/AL6/">https://zhangyuanhe.top/2023/08/04/Information_Security_Experiment/assembler_language/AL6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="null" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zhangyuanhe.top" target="_blank">ZYH's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/">北邮信安</a><a class="post-meta__tags" href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a><a class="post-meta__tags" href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">汇编语言</a></div><div class="post_share"><div class="social-share" data-image="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/08/04/Information_Security_Experiment/assembler_language/AL5/" title="包用包对的汇编破译小脚本"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">包用包对的汇编破译小脚本</div></div></a></div><div class="next-post pull-right"><a href="/2023/08/04/Information_Security_Experiment/assembler_language/AL2/" title="MD5加密程序解flag"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">MD5加密程序解flag</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/08/04/Information_Security_Experiment/assembler_language/AL3/" title="花指令及加密算法程序解flag"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-04</div><div class="title">花指令及加密算法程序解flag</div></div></a></div><div><a href="/2023/08/04/Information_Security_Experiment/assembler_language/AL4/" title="23年汇编期末考试答案（个人答案）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-04</div><div class="title">23年汇编期末考试答案（个人答案）</div></div></a></div><div><a href="/2023/08/04/Information_Security_Experiment/assembler_language/AL1/" title="二进制编辑修改"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-04</div><div class="title">二进制编辑修改</div></div></a></div><div><a href="/2023/08/04/Information_Security_Experiment/assembler_language/AL5/" title="包用包对的汇编破译小脚本"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-04</div><div class="title">包用包对的汇编破译小脚本</div></div></a></div><div><a href="/2023/08/04/Information_Security_Experiment/assembler_language/AL2/" title="MD5加密程序解flag"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-04</div><div class="title">MD5加密程序解flag</div></div></a></div><div><a href="/2023/07/30/Information_Security_Experiment/computer_network/CN1/" title="http、smtp抓包及分析实验"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-30</div><div class="title">http、smtp抓包及分析实验</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="card-info-avatar"> <div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-status-box"><div class="author-status"><g-emoji class="g-emoji" alias="palm_tree" fallback-src="https://lskypro.acozycotage.net/LightPicture/2022/12/fe1dc0402e623096.jpg">🐟</g-emoji><span>认真摸鱼中</span></div></div></div><div class="author-info__name">Charmes</div><div class="author-info__description">敏于思 慎于行</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/shuita2333"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/shuita2333" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:603747072@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://gitee.com/bank-beaver" target="_blank" title="Gitee"><i class="fab fa-git-square" style="color: #d5382a;"></i></a><a class="social-icon" href="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729200147469.png" target="_blank" title="wechat"><i class="fab fa-weixin" style="color: #3CB371;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%82-%E9%80%9A%E7%94%A8%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4%E3%80%82"><span class="toc-number">1.</span> <span class="toc-text">1。 通用数据传送指令。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">二、算术运算指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">三、逻辑运算指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%B8%B2%E6%8C%87%E4%BB%A4"><span class="toc-number">4.</span> <span class="toc-text">四、串指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%A8%8B%E5%BA%8F%E8%BD%AC%E7%A7%BB%E6%8C%87%E4%BB%A4"><span class="toc-number">5.</span> <span class="toc-text">五、程序转移指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E4%BC%AA%E6%8C%87%E4%BB%A4"><span class="toc-number">6.</span> <span class="toc-text">六、伪指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80-%E6%9C%BA%E6%A2%B0%E7%A0%81-%E5%8F%88%E7%A7%B0%E6%9C%BA%E5%99%A8%E7%A0%81"><span class="toc-number">7.</span> <span class="toc-text">一.机械码,又称机器码.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C-%E9%9C%80%E8%A6%81%E7%86%9F%E7%BB%83%E6%8E%8C%E6%8F%A1%E7%9A%84%E5%85%A8%E9%83%A8%E6%B1%87%E7%BC%96%E7%9F%A5%E8%AF%86-%E5%8F%AA%E6%9C%89%E8%BF%99%E4%B9%88%E5%A4%9A"><span class="toc-number">8.</span> <span class="toc-text">二.需要熟练掌握的全部汇编知识(只有这么多)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89-%E5%B8%B8%E8%A7%81%E4%BF%AE%E6%94%B9-%E6%9C%BA%E5%99%A8%E7%A0%81"><span class="toc-number">9.</span> <span class="toc-text">三.常见修改(机器码)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B-%E4%B8%A4%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95"><span class="toc-number">10.</span> <span class="toc-text">四.两种不同情况的不同修改方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4-1"><span class="toc-number">11.</span> <span class="toc-text">二、算术运算指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4-1"><span class="toc-number">12.</span> <span class="toc-text">三、逻辑运算指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%B8%B2%E6%8C%87%E4%BB%A4-1"><span class="toc-number">13.</span> <span class="toc-text">四、串指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%A8%8B%E5%BA%8F%E8%BD%AC%E7%A7%BB%E6%8C%87%E4%BB%A4-1"><span class="toc-number">14.</span> <span class="toc-text">五、程序转移指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E4%BC%AA%E6%8C%87%E4%BB%A4-1"><span class="toc-number">15.</span> <span class="toc-text">六、伪指令</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL3/" title="花指令及加密算法程序解flag"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="花指令及加密算法程序解flag"/></a><div class="content"><a class="title" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL3/" title="花指令及加密算法程序解flag">花指令及加密算法程序解flag</a><time datetime="2023-08-04T01:00:00.000Z" title="发表于 2023-08-04 09:00:00">2023-08-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL4/" title="23年汇编期末考试答案（个人答案）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="23年汇编期末考试答案（个人答案）"/></a><div class="content"><a class="title" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL4/" title="23年汇编期末考试答案（个人答案）">23年汇编期末考试答案（个人答案）</a><time datetime="2023-08-04T01:00:00.000Z" title="发表于 2023-08-04 09:00:00">2023-08-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL1/" title="二进制编辑修改"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="二进制编辑修改"/></a><div class="content"><a class="title" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL1/" title="二进制编辑修改">二进制编辑修改</a><time datetime="2023-08-04T01:00:00.000Z" title="发表于 2023-08-04 09:00:00">2023-08-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL5/" title="包用包对的汇编破译小脚本"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="包用包对的汇编破译小脚本"/></a><div class="content"><a class="title" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL5/" title="包用包对的汇编破译小脚本">包用包对的汇编破译小脚本</a><time datetime="2023-08-04T01:00:00.000Z" title="发表于 2023-08-04 09:00:00">2023-08-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL6/" title="汇编语言基础代码解读"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="汇编语言基础代码解读"/></a><div class="content"><a class="title" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL6/" title="汇编语言基础代码解读">汇编语言基础代码解读</a><time datetime="2023-08-04T01:00:00.000Z" title="发表于 2023-08-04 09:00:00">2023-08-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer-wrap"></div><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>再看看那个光点，它就在这里，这是家园，这是我们 —— 你所爱的每一个人，你认识的一个人，你听说过的每一个人，曾经有过的每一个人，都在它上面度过他们的一生✨</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://stellarium.org/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/link/">我的朋友</a></li><li> <a href="/about/">关于作者</a></li><li> <a href="/archives/">文章归档</a></li><li> <a href="/categories/">文章分类</a></li><li> <a href="/tags/">文章标签</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="https://zhangyuanhe.top/" title="Charmes"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon1.png" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://liuruibin.com/" title="LRBlog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lrblog-img-1304667442.file.myqcloud.com/method.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://akilar.top/" title="Akilarの糖果屋"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lskypro.acozycotage.net/LightPicture/2022/12/6bf1ed05796db59c.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="http://www.azuredust.cc" title="de4dst4r blog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://www.azuredust.cc/wp-content/themes/personalblogily/inc/starter_content/img/portrait.png" alt=""/></a></div></div></div></div><div class="copyright"><span><b>&copy;2023</b></span><span><b>&nbsp;&nbsp;By Charmes</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a><span class="footer-separator">|</span><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src=/img/icp.png>
+<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2023019220号-1</a></div><div id="workboard"></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button class="share" type="button" title="右键模式" onclick="changeMouseMode()"><i class="fas fa-mouse"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div class="js-pjax" id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());window.location.reload();"><i class="fa fa-search"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-too"><a class="rightMenu-item" href="javascript:window.open(window.getSelection().toString());window.location.reload();"><i class="fa fa-link"></i><span>转到链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-paste"><a class="rightMenu-item" href="javascript:rmf.paste()"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comment"></i><span>空降评论</span></a><a class="rightMenu-item" href="javascript:rmf.copyWordsLink()"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-to"><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:rmf.open()"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-img"><a class="rightMenu-item" href="javascript:rmf.saveAs()"><i class="fa fa-download"></i><span>保存图片</span></a><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制图片链接</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:randomPost()"><i class="fa fa-paper-plane"></i><span>随便逛逛</span></a><a class="rightMenu-item" href="javascript:switchNightMode();"><i class="fa fa-moon"></i><span>昼夜切换</span></a><a class="rightMenu-item" href="/about/"><i class="fa fa-info-circle"></i><span>关于博客</span></a><a class="rightMenu-item" href="javascript:toggleWinbox();"><i class="fas fa-cog"></i><span>美化设置</span></a><a class="rightMenu-item" href="javascript:rmf.fullScreen();"><i class="fas fa-expand"></i><span>切换全屏</span></a><a class="rightMenu-item" href="javascript:window.print();"><i class="fa-solid fa-print"></i><span>打印页面</span></a></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.textContent = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/light.js"></script><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script src="/js/sun_moon.js" async></script><script type="text/javascript" src="https://cdn1.tianli0.top/npm/jquery@latest/dist/jquery.min.js"></script><script type="text/javascript" src="/js/rightmenu.js"></script><script defer src="/js/another.js"></script><script defer src="/js/runtime.js"></script><script async src="/js/fps.js"></script><script async src="/js/title.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/博客搭建/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 Charmesの魔改教程 (12)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/课程笔记/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📒 Charmesの学习笔记 (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/信安课程实验/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👩‍💻 Charmesの编程学习 (19)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item" style="visibility: hidden"></div><a class="magnet_link_more"  href="https://zhangyuanhe.top/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var qweather_key = 'b16a1fa0e63c46a4b8f28abfb06ae3fe';
+  var gaud_map_key = 'e2b04289e870b005374ee030148d64fd&s=rsv3';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '113.34532,23.15624';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>

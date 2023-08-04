@@ -1,0 +1,390 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>图像差分隐私保护方案实验 | ZYH's blog</title><meta name="author" content="Charmes"><meta name="copyright" content="Charmes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="设计并实现基于离散傅立叶变换（DFT）的图像差分隐私保护算法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图像差分隐私保护方案实验">
+<meta property="og:url" content="https://zhangyuanhe.top/2023/08/02/Information_Security_Experiment/digital_content_security/DCS4/index.html">
+<meta property="og:site_name" content="ZYH&#39;s blog">
+<meta property="og:description" content="设计并实现基于离散傅立叶变换（DFT）的图像差分隐私保护算法。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png">
+<meta property="article:published_time" content="2023-08-02T09:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-02T10:02:27.518Z">
+<meta property="article:author" content="Charmes">
+<meta property="article:tag" content="北邮信安">
+<meta property="article:tag" content="实验报告">
+<meta property="article:tag" content="数字内容安全实验">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://zhangyuanhe.top/2023/08/02/Information_Security_Experiment/digital_content_security/DCS4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: Charmes","link":"链接: ","source":"来源: ZYH's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '图像差分隐私保护方案实验',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-02 18:02:27'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 8 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><span id="fps"></span><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="ZYH's blog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png')"><nav id="nav"><span id="blog-info"><a href="/" title="ZYH's blog"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/logo.png"/><span class="site-name">ZYH's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">图像差分隐私保护方案实验</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-08-02T09:00:00.000Z" title="发表于 2023-08-02 17:00:00">2023-08-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-02T10:02:27.518Z" title="更新于 2023-08-02 18:02:27">2023-08-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/">信安课程实验</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/%E6%95%B0%E5%AD%97%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C/">数字内容安全实验</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="图像差分隐私保护方案实验"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一、-实验目的"><a href="#一、-实验目的" class="headerlink" title="一、 *实验目的*"></a><strong>一、</strong> <em><strong>*实验目的*</strong></em></h1><p>了解差分隐私技术的基本特点，设计并实现基于离散傅立叶变换（DFT）的图像差分隐私保护算法。了解差分隐私技术在数字内容保护中的作用，掌握基于差分隐私的内容隐私保护方法。</p>
+<h1 id="二、-实验内容"><a href="#二、-实验内容" class="headerlink" title="二、 *实验内容*"></a><strong>二、</strong> <em><strong>*实验内容*</strong></em></h1><p>本实验实现一种基于离散傅立叶变换的图像差分隐私保护算法，可通过隐私预算控制噪声规模，保证隐私安全性，具体过程如下：</p>
+<ol>
+<li>读入一幅图像，对图像做预处理：如果读入的是彩色图像，将其转换为灰度图像（rgb2gray）；在灰度图像中利用差值方式将图像重采样为128*128的标准化图表示（imresize）IM；</li>
+<li>对标准化图像IM进行离散傅立叶变换，得到离散傅立叶变换矩阵FIM；</li>
+<li>对离散傅立叶变换矩阵FIM，选取其前k×k个DFT系数，计算给定隐私预算<code>ε</code>时的拉普拉斯机制的参数<code>λ</code>的最小值，以确定拉普拉斯机制需要添加的噪声；</li>
+<li>对离散傅立叶变换矩阵FIM，采样一组概率p，在参数<code>λ</code>最小时，计算相应的噪声值，以及融合噪声后的FIM’；</li>
+<li>对于FIM和FIM’，分别输入PCA+SVM的人脸识别程序中进行人脸识别分类预测。</li>
+<li>给出整个数据集上，人脸识别分类预测的准确率(Accuracy，测试集中分类器正确分类的样本数与总样本数之比)。</li>
+<li>以LFW中随机80%的图片为训练集，剩余为测试集，分析实验结果。</li>
+<li>关于实验报告</li>
+</ol>
+<p>（1）关于<code>ε</code>的选取，是一个经验值，其选取依据是根据测试集的准确率决定，给出选取过程。</p>
+<p>（2）关于k的选取，k值越大噪声越大,隐私安全性越强，但对人脸识别任务的鲁棒性会降低,因而需设定合适的k值，以满足隐私保护的人脸图像在识别精度和隐私性之间的折衷，给出选取过程。</p>
+<h1 id="三、-系统整体描述和分功能描述"><a href="#三、-系统整体描述和分功能描述" class="headerlink" title="三、 *系统整体描述和分功能描述*"></a><strong>三、</strong> <em><strong>*系统整体描述和分功能描述*</strong></em></h1><h2 id="系统整体描述"><a href="#系统整体描述" class="headerlink" title="*系统整体描述*"></a><em><strong>*系统整体描述*</strong></em></h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps63.jpg" alt="img"> </p>
+<p>​    </p>
+<h2 id="分功能描述"><a href="#分功能描述" class="headerlink" title="*分功能描述*"></a><em><strong>*分功能描述*</strong></em></h2><p>1）图像做预处理</p>
+<p>如果是彩色图像，转换为灰度图像</p>
+<p>将图像重采样为128×128的标准化图像</p>
+<p>用到的函数：def preprocess_image(image)</p>
+<p>2）对图像做离散傅立叶变换</p>
+<p>对图像做离散傅立叶变换，并将结果移动到中心</p>
+<p>选取中心的k×k个系数，并返回它们的幅度和相位</p>
+<p>用到的函数：def dft_image(image)</p>
+<p>3）生成一个服从标准均匀分布的随机数组</p>
+<p>根据拉普拉斯分布的逆变换公式，计算噪声值</p>
+<p>用到的函数：def laplace_noise(shape, b)</p>
+<p>4）对离散傅立叶变换的系数添加拉普拉斯噪声，并还原图像</p>
+<p>根据给定的隐私预算，计算拉普拉斯机制的参数b的最小值</p>
+<p>采样一组概率p，决定是否添加噪声</p>
+<p>计算相应的噪声值，并添加到幅度上</p>
+<p>将幅度和相位合并为复数矩阵</p>
+<p>进行逆离散傅立叶变换</p>
+<p>取实部作为还原后的图像</p>
+<p>用到的函数：def idft_image(magnitude_k, phase_k)</p>
+<p>5）读取数据集中的图像，并返回一个列表和一个标签数组</p>
+<p>遍历数据集中的每个文件夹，每个文件夹代表一个类别</p>
+<p>将文件夹的名字转换为整数作为标签遍历每个文件夹中的每个图像文件</p>
+<p>对图像做预处理</p>
+<p>将图像添加到列表中</p>
+<p>将标签添加到数组中</p>
+<p>用到的函数：def read_dataset(path)</p>
+<p>6）将图像列表转换为特征矩阵，并返回一个训练集和一个测试集</p>
+<p> 将图像列表转换为特征矩阵，每个图像的DFT系数作为一行</p>
+<p>将幅度矩阵展平为一维数组</p>
+<p>利用sklearn的train_test_split函数，按照给定的比例划分训练集和测试集</p>
+<p>用到的函数：def split_dataset(images, labels, test_ratio&#x3D;0.2)</p>
+<p>7）利用PCA和SVM进行人脸识别，并返回准确率</p>
+<p>利用sklearn的PCA模块，对特征矩阵进行降维，保留95%的方差</p>
+<p>利用sklearn的SVM模块，对降维后的特征进行分类，使用线性核函数和默认参数 </p>
+<p>利用sklearn的metrics模块，计算分类的准确率</p>
+<p>用到的函数：def face_recognition(X_train, X_test, y_train, y_test)</p>
+<h1 id="四、-实验步骤、结果及分析"><a href="#四、-实验步骤、结果及分析" class="headerlink" title="四、 *实验步骤、结果及分析*"></a><strong>四、</strong> <em><strong>*实验步骤、结果及分析*</strong></em></h1><h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="*实验步骤*"></a><em><strong>*实验步骤*</strong></em></h2><ol>
+<li>下载win10虚拟机</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps64.jpg" alt="img"> </p>
+<ol start="2">
+<li>开机后安装conda</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps65.jpg" alt="img"> </p>
+<p>Conda安装好后检查版本</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps66.jpg" alt="img"> </p>
+<p>配置好conda和pycharm</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps67.jpg" alt="img"> </p>
+<p>因为环境配置出现了一些问题，没有使用已给的检测模型，自己进行编写。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入所需的库</span></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一些常量</span></span><br><span class="line">k = <span class="number">10</span> <span class="comment"># 选取前k×k个DFT系数</span></span><br><span class="line">p = <span class="number">0.5</span> <span class="comment"># 采样概率</span></span><br><span class="line">epsilon = <span class="number">0.1</span> <span class="comment"># 隐私预算</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个函数，对图像做预处理</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">preprocess_image</span>(<span class="params">image</span>):</span><br><span class="line">    <span class="comment"># 如果是彩色图像，转换为灰度图像</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(image.shape) == <span class="number">3</span>:</span><br><span class="line">        image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)</span><br><span class="line">    <span class="comment"># 将图像重采样为128×128的标准化图像</span></span><br><span class="line">    image = cv2.resize(image, (<span class="number">128</span>, <span class="number">128</span>))</span><br><span class="line">    <span class="keyword">return</span> image</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个函数，对图像做离散傅立叶变换，并选取前k×k个系数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dft_image</span>(<span class="params">image</span>):</span><br><span class="line">    <span class="comment"># 对图像做离散傅立叶变换，并将结果移动到中心</span></span><br><span class="line">    f = np.fft.fft2(image)</span><br><span class="line">    fshift = np.fft.fftshift(f)</span><br><span class="line">    <span class="comment"># 选取中心的k×k个系数，并返回它们的幅度和相位</span></span><br><span class="line">    rows, cols = fshift.shape</span><br><span class="line">    crow, ccol = rows//<span class="number">2</span>, cols//<span class="number">2</span></span><br><span class="line">    fshift_k = fshift[crow-k//<span class="number">2</span>:crow+k//<span class="number">2</span>, ccol-k//<span class="number">2</span>:ccol+k//<span class="number">2</span>]</span><br><span class="line">    magnitude_k = np.<span class="built_in">abs</span>(fshift_k)</span><br><span class="line">    phase_k = np.angle(fshift_k)</span><br><span class="line">    <span class="keyword">return</span> magnitude_k, phase_k</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义laplace_noise函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">laplace_noise</span>(<span class="params">shape, b</span>):</span><br><span class="line">    <span class="comment"># 生成一个服从标准均匀分布的随机数组</span></span><br><span class="line">    u = np.random.uniform(-<span class="number">0.5</span>, <span class="number">0.5</span>, size=shape)</span><br><span class="line">    <span class="comment"># 根据拉普拉斯分布的逆变换公式，计算噪声值</span></span><br><span class="line">    noise = -b * np.sign(u) * np.log(<span class="number">1</span> - <span class="number">2</span> * np.<span class="built_in">abs</span>(u))</span><br><span class="line">    <span class="keyword">return</span> noise</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个函数，对离散傅立叶变换的系数添加拉普拉斯噪声，并还原图像</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">idft_image</span>(<span class="params">magnitude_k, phase_k</span>):</span><br><span class="line">    <span class="comment"># 根据给定的隐私预算，计算拉普拉斯机制的参数b的最小值</span></span><br><span class="line">    b_min = magnitude_k.size / epsilon</span><br><span class="line">    <span class="comment"># 采样一组概率p，决定是否添加噪声</span></span><br><span class="line">    mask = np.random.binomial(<span class="number">1</span>, p, size=magnitude_k.shape)</span><br><span class="line">    <span class="comment"># 计算相应的噪声值，并添加到幅度上</span></span><br><span class="line">    noise = np.random.laplace(<span class="number">0</span>, b_min, size=magnitude_k.shape)</span><br><span class="line">    magnitude_k_noisy = magnitude_k + mask * noise</span><br><span class="line">    <span class="comment"># 将幅度和相位合并为复数矩阵</span></span><br><span class="line">    complex_k_noisy = magnitude_k_noisy * np.exp(<span class="number">1j</span> * phase_k)</span><br><span class="line">    <span class="comment"># 进行逆离散傅立叶变换</span></span><br><span class="line">    image_noisy = np.fft.ifft2(complex_k_noisy)</span><br><span class="line">    <span class="comment"># 取实部作为还原后的图像</span></span><br><span class="line">    image_noisy = np.real(image_noisy)</span><br><span class="line">    <span class="keyword">return</span> image_noisy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个函数，读取数据集中的图像，并返回一个列表和一个标签数组</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_dataset</span>(<span class="params">path</span>):</span><br><span class="line">    images = [] <span class="comment"># 存储图像的列表</span></span><br><span class="line">    labels = [] <span class="comment"># 存储标签的数组</span></span><br><span class="line">    <span class="keyword">for</span> folder <span class="keyword">in</span> os.listdir(path): <span class="comment"># 遍历数据集中的每个文件夹，每个文件夹代表一个类别</span></span><br><span class="line">        label = <span class="built_in">int</span>(folder) <span class="comment"># 将文件夹的名字转换为整数作为标签</span></span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> os.listdir(os.path.join(path, folder)): <span class="comment"># 遍历每个文件夹中的每个图像文件</span></span><br><span class="line">            image = cv2.imread(os.path.join(path, folder, file)) <span class="comment"># 读取图像文件</span></span><br><span class="line">            image = preprocess_image(image) <span class="comment"># 对图像做预处理</span></span><br><span class="line">            images.append(image) <span class="comment"># 将图像添加到列表中</span></span><br><span class="line">            labels.append(label) <span class="comment"># 将标签添加到数组中</span></span><br><span class="line">    <span class="keyword">return</span> images, np.array(labels)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个函数，将图像列表转换为特征矩阵，并返回一个训练集和一个测试集</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">split_dataset</span>(<span class="params">images, labels, test_ratio=<span class="number">0.2</span></span>):</span><br><span class="line">    <span class="comment"># 将图像列表转换为特征矩阵，每个图像的DFT系数作为一行</span></span><br><span class="line">    features = []</span><br><span class="line">    <span class="keyword">for</span> image <span class="keyword">in</span> images:</span><br><span class="line">        magnitude_k, phase_k = dft_image(image)</span><br><span class="line">        feature = magnitude_k.flatten() <span class="comment"># 将幅度矩阵展平为一维数组</span></span><br><span class="line">        features.append(feature)</span><br><span class="line">    features = np.array(features)</span><br><span class="line">    <span class="comment"># 利用sklearn的train_test_split函数，按照给定的比例划分训练集和测试集</span></span><br><span class="line">    <span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">    X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=test_ratio, random_state=<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> X_train, X_test, y_train, y_test</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个函数，利用PCA和SVM进行人脸识别，并返回准确率</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">face_recognition</span>(<span class="params">X_train, X_test, y_train, y_test</span>):</span><br><span class="line">    <span class="comment"># 利用sklearn的PCA模块，对特征矩阵进行降维，保留95%的方差</span></span><br><span class="line">    <span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line">    pca = PCA(n_components=<span class="number">0.95</span>)</span><br><span class="line">    pca.fit(X_train)</span><br><span class="line">    X_train_pca = pca.transform(X_train)</span><br><span class="line">    X_test_pca = pca.transform(X_test)</span><br><span class="line">    <span class="comment"># 利用sklearn的SVM模块，对降维后的特征进行分类，使用线性核函数和默认参数</span></span><br><span class="line">    <span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line">    svm = SVC(kernel=<span class="string">&#x27;linear&#x27;</span>)</span><br><span class="line">    svm.fit(X_train_pca, y_train)</span><br><span class="line">    y_pred = svm.predict(X_test_pca)</span><br><span class="line">    <span class="comment"># 利用sklearn的metrics模块，计算分类的准确率</span></span><br><span class="line">    <span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</span><br><span class="line">    accuracy = accuracy_score(y_test, y_pred)</span><br><span class="line">    <span class="keyword">return</span> accuracy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 主程序</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 读取数据集中的图像和标签</span></span><br><span class="line">    images = []</span><br><span class="line">    labels = []</span><br><span class="line"></span><br><span class="line">    dataset_path = <span class="string">r&#x27;C:\data\study\second_done\number_safe\exercise4\lfwp\Abel_Pacheco&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(dataset_path):</span><br><span class="line">        image_path = os.path.join(dataset_path, filename)</span><br><span class="line">        label = filename.split(<span class="string">&#x27;.&#x27;</span>)[<span class="number">0</span>]  <span class="comment"># 使用文件名作为图像标签</span></span><br><span class="line">        image = cv2.imread(image_path)  <span class="comment"># 读取图像</span></span><br><span class="line">        images.append(image)</span><br><span class="line">        labels.append(label)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 划分训练集和测试集，按照80%和20%的比例</span></span><br><span class="line">    X_train, X_test, y_train, y_test = split_dataset(images, labels, test_ratio=<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 对测试集中的每个图像，添加拉普拉斯噪声，并还原为图像</span></span><br><span class="line">    images_noisy = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(X_test)):</span><br><span class="line">        image = X_test[i]  <span class="comment"># 原始图像</span></span><br><span class="line">        magnitude_k, phase_k = dft_image(image)  <span class="comment"># DFT系数</span></span><br><span class="line">        image_noisy = idft_image(magnitude_k, phase_k)  <span class="comment"># 带噪声的图像</span></span><br><span class="line">        images_noisy.append(image_noisy)</span><br><span class="line">    images_noisy = np.array(images_noisy)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 划分训练集和测试集，使用带噪声的图像作为测试集，按照80%和20%的比例</span></span><br><span class="line">    X_train_noisy, X_test_noisy, y_train_noisy, y_test_noisy = split_dataset(images_noisy, labels, test_ratio=<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 进行人脸识别，分别使用原始图像和带噪声的图像，并打印准确率</span></span><br><span class="line">    accuracy_original = face_recognition(X_train, X_test, y_train, y_test)</span><br><span class="line">    accuracy_noisy = face_recognition(X_train_noisy, X_test_noisy, y_train_noisy, y_test_noisy)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;人脸识别分类预测的准确率为:&#123;:.2f&#125;%&#x27;</span>.<span class="built_in">format</span>(accuracy_original * <span class="number">100</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># # 读取数据集中的图像和标签</span></span><br><span class="line">    <span class="comment"># images, labels = read_dataset(&#x27;dataset&#x27;)</span></span><br><span class="line">    <span class="comment"># # 划分训练集和测试集，按照80%和20%的比例</span></span><br><span class="line">    <span class="comment"># X_train, X_test, y_train, y_test = split_dataset(images, labels, test_ratio=0.2)</span></span><br><span class="line">    <span class="comment"># # 对测试集中的每个图像，添加拉普拉斯噪声，并还原为图像</span></span><br><span class="line">    <span class="comment"># images_noisy = []</span></span><br><span class="line">    <span class="comment"># for i in range(len(X_test)):</span></span><br><span class="line">    <span class="comment">#     image = images[i] # 原始图像</span></span><br><span class="line">    <span class="comment">#     magnitude_k, phase_k = dft_image(image) # DFT系数</span></span><br><span class="line">    <span class="comment">#     image_noisy = idft_image(magnitude_k, phase_k) # 带噪声的图像</span></span><br><span class="line">    <span class="comment">#     images_noisy.append(image_noisy)</span></span><br><span class="line">    <span class="comment"># images_noisy = np.array(images_noisy)</span></span><br><span class="line">    <span class="comment"># # 划分训练集和测试集，使用带噪声的图像作为测试集，按照80%和20%的比例</span></span><br><span class="line">    <span class="comment"># X_train_noisy, X_test_noisy, y_train_noisy, y_test_noisy = split_dataset(images_noisy, labels, test_ratio=0.2)</span></span><br><span class="line">    <span class="comment"># # 进行人脸识别，分别使用原始图像和带噪声的图像，并打印准确率</span></span><br><span class="line">    <span class="comment"># accuracy_original = face_recognition(X_train, X_test, y_train, y_test)</span></span><br><span class="line">    <span class="comment"># accuracy_noisy = face_recognition(X_train_noisy, X_test_noisy, y_train_noisy, y_test_noisy)</span></span><br><span class="line">    <span class="comment"># print(&#x27;原始图像的人脸识别准确率为：&#123;:.2f&#125;%&#x27;.format)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="实验结果及分析"><a href="#实验结果及分析" class="headerlink" title="实验结果及分析"></a><strong>实验结果及分析</strong></h2><p>对检测图片集进行运行</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps68.jpg" alt="img"> </p>
+<p>运行一段时间后反馈运行结果</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps69.jpg" alt="img"> </p>
+<p>可以看见反馈结果精准</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://zhangyuanhe.top">Charmes</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zhangyuanhe.top/2023/08/02/Information_Security_Experiment/digital_content_security/DCS4/">https://zhangyuanhe.top/2023/08/02/Information_Security_Experiment/digital_content_security/DCS4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="null" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zhangyuanhe.top" target="_blank">ZYH's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/">北邮信安</a><a class="post-meta__tags" href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E5%AD%97%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C/">数字内容安全实验</a></div><div class="post_share"><div class="social-share" data-image="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/08/02/Information_Security_Experiment/digital_content_security/DCS3/" title="垃圾邮件过滤系统"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">垃圾邮件过滤系统</div></div></a></div><div class="next-post pull-right"><a href="/2023/08/02/Information_Security_Experiment/digital_content_security/DCS5/" title="面向内容保护的区块链系统实验"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">面向内容保护的区块链系统实验</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/08/02/Information_Security_Experiment/digital_content_security/DCS1/" title="鲁棒图像感知哈希实验"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-02</div><div class="title">鲁棒图像感知哈希实验</div></div></a></div><div><a href="/2023/08/02/Information_Security_Experiment/digital_content_security/DCS2/" title="GAN 的生成器产生图片及换脸检测"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-02</div><div class="title">GAN 的生成器产生图片及换脸检测</div></div></a></div><div><a href="/2023/08/02/Information_Security_Experiment/digital_content_security/DCS3/" title="垃圾邮件过滤系统"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-02</div><div class="title">垃圾邮件过滤系统</div></div></a></div><div><a href="/2023/08/02/Information_Security_Experiment/digital_content_security/DCS5/" title="面向内容保护的区块链系统实验"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-02</div><div class="title">面向内容保护的区块链系统实验</div></div></a></div><div><a href="/2023/08/04/Information_Security_Experiment/assembler_language/AL3/" title="花指令及加密算法程序解flag"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-04</div><div class="title">花指令及加密算法程序解flag</div></div></a></div><div><a href="/2023/08/04/Information_Security_Experiment/assembler_language/AL4/" title="23年汇编期末考试答案（个人答案）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-04</div><div class="title">23年汇编期末考试答案（个人答案）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="card-info-avatar"> <div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-status-box"><div class="author-status"><g-emoji class="g-emoji" alias="palm_tree" fallback-src="https://lskypro.acozycotage.net/LightPicture/2022/12/fe1dc0402e623096.jpg">🐟</g-emoji><span>认真摸鱼中</span></div></div></div><div class="author-info__name">Charmes</div><div class="author-info__description">敏于思 慎于行</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/shuita2333"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/shuita2333" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:603747072@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://gitee.com/bank-beaver" target="_blank" title="Gitee"><i class="fab fa-git-square" style="color: #d5382a;"></i></a><a class="social-icon" href="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729200147469.png" target="_blank" title="wechat"><i class="fab fa-weixin" style="color: #3CB371;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="toc-number">1.</span> <span class="toc-text">一、 *实验目的*</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="toc-number">2.</span> <span class="toc-text">二、 *实验内容*</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81-%E7%B3%BB%E7%BB%9F%E6%95%B4%E4%BD%93%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%88%86%E5%8A%9F%E8%83%BD%E6%8F%8F%E8%BF%B0"><span class="toc-number">3.</span> <span class="toc-text">三、 *系统整体描述和分功能描述*</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%95%B4%E4%BD%93%E6%8F%8F%E8%BF%B0"><span class="toc-number">3.1.</span> <span class="toc-text">*系统整体描述*</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%8A%9F%E8%83%BD%E6%8F%8F%E8%BF%B0"><span class="toc-number">3.2.</span> <span class="toc-text">*分功能描述*</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81-%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4%E3%80%81%E7%BB%93%E6%9E%9C%E5%8F%8A%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">四、 *实验步骤、结果及分析*</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4"><span class="toc-number">4.1.</span> <span class="toc-text">*实验步骤*</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%E5%8F%8A%E5%88%86%E6%9E%90"><span class="toc-number">4.2.</span> <span class="toc-text">实验结果及分析</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL3/" title="花指令及加密算法程序解flag"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="花指令及加密算法程序解flag"/></a><div class="content"><a class="title" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL3/" title="花指令及加密算法程序解flag">花指令及加密算法程序解flag</a><time datetime="2023-08-04T01:00:00.000Z" title="发表于 2023-08-04 09:00:00">2023-08-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL4/" title="23年汇编期末考试答案（个人答案）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="23年汇编期末考试答案（个人答案）"/></a><div class="content"><a class="title" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL4/" title="23年汇编期末考试答案（个人答案）">23年汇编期末考试答案（个人答案）</a><time datetime="2023-08-04T01:00:00.000Z" title="发表于 2023-08-04 09:00:00">2023-08-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL1/" title="二进制编辑修改"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="二进制编辑修改"/></a><div class="content"><a class="title" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL1/" title="二进制编辑修改">二进制编辑修改</a><time datetime="2023-08-04T01:00:00.000Z" title="发表于 2023-08-04 09:00:00">2023-08-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL5/" title="包用包对的汇编破译小脚本"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="包用包对的汇编破译小脚本"/></a><div class="content"><a class="title" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL5/" title="包用包对的汇编破译小脚本">包用包对的汇编破译小脚本</a><time datetime="2023-08-04T01:00:00.000Z" title="发表于 2023-08-04 09:00:00">2023-08-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL6/" title="汇编语言基础代码解读"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="汇编语言基础代码解读"/></a><div class="content"><a class="title" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL6/" title="汇编语言基础代码解读">汇编语言基础代码解读</a><time datetime="2023-08-04T01:00:00.000Z" title="发表于 2023-08-04 09:00:00">2023-08-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer-wrap"></div><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>再看看那个光点，它就在这里，这是家园，这是我们 —— 你所爱的每一个人，你认识的一个人，你听说过的每一个人，曾经有过的每一个人，都在它上面度过他们的一生✨</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://stellarium.org/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/link/">我的朋友</a></li><li> <a href="/about/">关于作者</a></li><li> <a href="/archives/">文章归档</a></li><li> <a href="/categories/">文章分类</a></li><li> <a href="/tags/">文章标签</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="https://zhangyuanhe.top/" title="Charmes"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon1.png" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://liuruibin.com/" title="LRBlog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lrblog-img-1304667442.file.myqcloud.com/method.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://akilar.top/" title="Akilarの糖果屋"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lskypro.acozycotage.net/LightPicture/2022/12/6bf1ed05796db59c.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="http://www.azuredust.cc" title="de4dst4r blog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://www.azuredust.cc/wp-content/themes/personalblogily/inc/starter_content/img/portrait.png" alt=""/></a></div></div></div></div><div class="copyright"><span><b>&copy;2023</b></span><span><b>&nbsp;&nbsp;By Charmes</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a><span class="footer-separator">|</span><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src=/img/icp.png>
+<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2023019220号-1</a></div><div id="workboard"></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button class="share" type="button" title="右键模式" onclick="changeMouseMode()"><i class="fas fa-mouse"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div class="js-pjax" id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());window.location.reload();"><i class="fa fa-search"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-too"><a class="rightMenu-item" href="javascript:window.open(window.getSelection().toString());window.location.reload();"><i class="fa fa-link"></i><span>转到链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-paste"><a class="rightMenu-item" href="javascript:rmf.paste()"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comment"></i><span>空降评论</span></a><a class="rightMenu-item" href="javascript:rmf.copyWordsLink()"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-to"><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:rmf.open()"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-img"><a class="rightMenu-item" href="javascript:rmf.saveAs()"><i class="fa fa-download"></i><span>保存图片</span></a><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制图片链接</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:randomPost()"><i class="fa fa-paper-plane"></i><span>随便逛逛</span></a><a class="rightMenu-item" href="javascript:switchNightMode();"><i class="fa fa-moon"></i><span>昼夜切换</span></a><a class="rightMenu-item" href="/about/"><i class="fa fa-info-circle"></i><span>关于博客</span></a><a class="rightMenu-item" href="javascript:toggleWinbox();"><i class="fas fa-cog"></i><span>美化设置</span></a><a class="rightMenu-item" href="javascript:rmf.fullScreen();"><i class="fas fa-expand"></i><span>切换全屏</span></a><a class="rightMenu-item" href="javascript:window.print();"><i class="fa-solid fa-print"></i><span>打印页面</span></a></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.textContent = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/light.js"></script><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script src="/js/sun_moon.js" async></script><script type="text/javascript" src="https://cdn1.tianli0.top/npm/jquery@latest/dist/jquery.min.js"></script><script type="text/javascript" src="/js/rightmenu.js"></script><script defer src="/js/another.js"></script><script defer src="/js/runtime.js"></script><script async src="/js/fps.js"></script><script async src="/js/title.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/博客搭建/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 Charmesの魔改教程 (12)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/课程笔记/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📒 Charmesの学习笔记 (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/信安课程实验/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👩‍💻 Charmesの编程学习 (19)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item" style="visibility: hidden"></div><a class="magnet_link_more"  href="https://zhangyuanhe.top/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var qweather_key = 'b16a1fa0e63c46a4b8f28abfb06ae3fe';
+  var gaud_map_key = 'e2b04289e870b005374ee030148d64fd&s=rsv3';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '113.34532,23.15624';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>
