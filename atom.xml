@@ -6,7 +6,7 @@
   <link href="https://zhangyuanhe.top/atom.xml" rel="self"/>
   
   <link href="https://zhangyuanhe.top/"/>
-  <updated>2023-08-04T10:07:16.883Z</updated>
+  <updated>2023-08-04T10:07:27.112Z</updated>
   <id>https://zhangyuanhe.top/</id>
   
   <author>
@@ -15,33 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>二进制编辑修改</title>
-    <link href="https://zhangyuanhe.top/2023/08/04/Information_Security_Experiment/assembler_language/AL1/"/>
-    <id>https://zhangyuanhe.top/2023/08/04/Information_Security_Experiment/assembler_language/AL1/</id>
-    <published>2023-08-04T01:00:00.000Z</published>
-    <updated>2023-08-04T10:07:16.883Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li>第一次打开exe文件发现乱码，是因为编辑语言错误。</li><li>打开控制面板，调节语言。</li></ol><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps1-1691139848774-2.jpg" alt="img"> </p><ol start="3"><li>可以正常打开源文件</li></ol><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps2-1691139848773-1.jpg" alt="img"> </p><ol start="4"><li>使用010Editir另存源文件</li></ol><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps3-1691139848774-5.jpg" alt="img"> </p><ol start="5"><li>找到要修改的位置</li></ol><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps4-1691139848774-3.jpg" alt="img"> </p><ol start="6"><li>找到更改代码</li></ol><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps5-1691139848774-4.jpg" alt="img"> </p><ol start="7"><li>完成修改</li></ol><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps6-1691139848774-6.jpg" alt="img"> </p><ol start="8"><li>保存后运行程序，实验成功</li></ol><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps7-1691139848774-7.jpg" alt="img"> </p>]]></content>
-    
-    
-    <summary type="html">对exe程序文件进行二进制修改，从而改变原文内容</summary>
-    
-    
-    
-    <category term="信安课程实验" scheme="https://zhangyuanhe.top/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/"/>
-    
-    <category term="汇编语言" scheme="https://zhangyuanhe.top/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/"/>
-    
-    
-    <category term="北邮信安" scheme="https://zhangyuanhe.top/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/"/>
-    
-    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
-    
-    <category term="汇编语言" scheme="https://zhangyuanhe.top/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
   
   <entry>
     <title>MD5加密程序解flag</title>
@@ -81,6 +54,33 @@
     
     
     <summary type="html">通过源码取消花指令，再进入异常处理破解加密算法</summary>
+    
+    
+    
+    <category term="信安课程实验" scheme="https://zhangyuanhe.top/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/"/>
+    
+    <category term="汇编语言" scheme="https://zhangyuanhe.top/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/"/>
+    
+    
+    <category term="北邮信安" scheme="https://zhangyuanhe.top/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/"/>
+    
+    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
+    
+    <category term="汇编语言" scheme="https://zhangyuanhe.top/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二进制编辑修改</title>
+    <link href="https://zhangyuanhe.top/2023/08/04/Information_Security_Experiment/assembler_language/AL1/"/>
+    <id>https://zhangyuanhe.top/2023/08/04/Information_Security_Experiment/assembler_language/AL1/</id>
+    <published>2023-08-04T01:00:00.000Z</published>
+    <updated>2023-08-04T10:07:16.883Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>第一次打开exe文件发现乱码，是因为编辑语言错误。</li><li>打开控制面板，调节语言。</li></ol><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps1-1691139848774-2.jpg" alt="img"> </p><ol start="3"><li>可以正常打开源文件</li></ol><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps2-1691139848773-1.jpg" alt="img"> </p><ol start="4"><li>使用010Editir另存源文件</li></ol><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps3-1691139848774-5.jpg" alt="img"> </p><ol start="5"><li>找到要修改的位置</li></ol><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps4-1691139848774-3.jpg" alt="img"> </p><ol start="6"><li>找到更改代码</li></ol><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps5-1691139848774-4.jpg" alt="img"> </p><ol start="7"><li>完成修改</li></ol><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps6-1691139848774-6.jpg" alt="img"> </p><ol start="8"><li>保存后运行程序，实验成功</li></ol><p><img src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wps7-1691139848774-7.jpg" alt="img"> </p>]]></content>
+    
+    
+    <summary type="html">对exe程序文件进行二进制修改，从而改变原文内容</summary>
     
     
     
@@ -447,33 +447,6 @@
   </entry>
   
   <entry>
-    <title>c++网络编程传输密文</title>
-    <link href="https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/network_attack/NA1/"/>
-    <id>https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/network_attack/NA1/</id>
-    <published>2023-07-30T01:00:00.000Z</published>
-    <updated>2023-08-20T15:07:15.304Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://zhuanlan.zhihu.com/p/401296641">了解这几步，教你处理Linux挖矿木马 - 知乎 (zhihu.com)</a></p><p><img src="D:\my_data\blog\zyhblog-img\image-20230820230030521.png" alt="image-20230820230030521"></p><p><img src="D:\my_data\blog\zyhblog-img\image-20230820230112690.png" alt="image-20230820230112690"></p><p><img src="D:\my_data\blog\zyhblog-img\image-20230820230633801.png" alt="image-20230820230633801"><img src="D:\my_data\blog\zyhblog-img\image-20230820230650948.png" alt="image-20230820230650948"><img src="D:\my_data\blog\zyhblog-img\image-20230820230714421.png" alt="image-20230820230714421"></p>]]></content>
-    
-    
-    <summary type="html">使用c/c++进行网络编程，实现两台电脑之间的信息传输</summary>
-    
-    
-    
-    <category term="信安课程实验" scheme="https://zhangyuanhe.top/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/"/>
-    
-    <category term="网络安全实验" scheme="https://zhangyuanhe.top/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C/"/>
-    
-    
-    <category term="北邮信安" scheme="https://zhangyuanhe.top/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/"/>
-    
-    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
-    
-    <category term="网络安全实验" scheme="https://zhangyuanhe.top/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C/"/>
-    
-  </entry>
-  
-  <entry>
     <title>组合逻辑实验报告</title>
     <link href="https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/digital_logic/DL1/"/>
     <id>https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/digital_logic/DL1/</id>
@@ -524,6 +497,33 @@
     <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
     
     <category term="数字逻辑实验" scheme="https://zhangyuanhe.top/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%AE%9E%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>c++网络编程传输密文</title>
+    <link href="https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/network_attack/NA1/"/>
+    <id>https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/network_attack/NA1/</id>
+    <published>2023-07-30T01:00:00.000Z</published>
+    <updated>2023-08-20T15:07:15.304Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://zhuanlan.zhihu.com/p/401296641">了解这几步，教你处理Linux挖矿木马 - 知乎 (zhihu.com)</a></p><p><img src="D:\my_data\blog\zyhblog-img\image-20230820230030521.png" alt="image-20230820230030521"></p><p><img src="D:\my_data\blog\zyhblog-img\image-20230820230112690.png" alt="image-20230820230112690"></p><p><img src="D:\my_data\blog\zyhblog-img\image-20230820230633801.png" alt="image-20230820230633801"><img src="D:\my_data\blog\zyhblog-img\image-20230820230650948.png" alt="image-20230820230650948"><img src="D:\my_data\blog\zyhblog-img\image-20230820230714421.png" alt="image-20230820230714421"></p>]]></content>
+    
+    
+    <summary type="html">使用c/c++进行网络编程，实现两台电脑之间的信息传输</summary>
+    
+    
+    
+    <category term="信安课程实验" scheme="https://zhangyuanhe.top/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/"/>
+    
+    <category term="网络安全实验" scheme="https://zhangyuanhe.top/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C/"/>
+    
+    
+    <category term="北邮信安" scheme="https://zhangyuanhe.top/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/"/>
+    
+    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
+    
+    <category term="网络安全实验" scheme="https://zhangyuanhe.top/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C/"/>
     
   </entry>
   
