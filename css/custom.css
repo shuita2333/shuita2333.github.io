@@ -47,7 +47,7 @@
 
 
 
-  /* 夜间模式菜单栏发光字 */
+/* 夜间模式菜单栏发光字 */
 [data-theme="dark"] #nav .site-page,
 [data-theme="dark"] #nav .menus_items .menus_item .menus_item_child li a {
   text-shadow: 0 0 2px var(--theme-color) !important;
@@ -71,7 +71,7 @@
 
 
 /* 侧边栏个人信息卡片动态渐变色 */
-/* #aside-content > .card-widget.card-info {
+#aside-content > .card-widget.card-info {
   background: linear-gradient(
     -45deg,
     #e8d8b9,
@@ -119,32 +119,32 @@
   100% {
     background-position: 0% 50%;
   }
-} */
+} 
 
 /* 黑夜模式适配 */
-/* [data-theme="dark"] #aside-content > .card-widget.card-info {
+[data-theme="dark"] #aside-content > .card-widget.card-info {
   background: #191919ee;
-} */
+}
 
 /* 个人信息Follow me按钮 */
-/* #aside-content > .card-widget.card-info > #card-info-btn {
+#aside-content > .card-widget.card-info > #card-info-btn {
   background-color: #3eb8be;
   border-radius: 8px;
-} */
+}
 /* 侧边栏个人信息卡片动态渐变色  代码结束 */
 
 
 /* 右键菜单 */
-/* #rightMenu {
+#rightMenu {
   display: none;
   position: fixed;
   width: 160px;
   height: fit-content;
   top: 10%;
   left: 10%;
-    // 菜单面板背景色（注释） //
+    /* // 菜单面板背景色（注释） // */
   background-color: var(--card-bg);
-    // 菜单面板文字颜色（注释） //
+    /* // 菜单面板文字颜色（注释） // */
   border: 1px solid var(--font-color);
   border-radius: 8px;
   z-index: 100;
@@ -173,7 +173,7 @@
   padding: 0 4px;
 }
 #rightMenu .rightMenu-group .rightMenu-item:hover {
-    // 鼠标悬浮选项颜色（注释） //
+    /* // 鼠标悬浮选项颜色（注释） // */
   background-color: var(--text-bg-hover);
 }
 #rightMenu .rightMenu-group .rightMenu-item i {
@@ -194,7 +194,7 @@
 }
 .rightMenu-group.hide {
   display: none;
-} */
+}
 
 
 
