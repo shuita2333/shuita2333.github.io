@@ -1,0 +1,1215 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Latex语法学习 | ZYH's blog</title><meta name="author" content="Charmes"><meta name="copyright" content="Charmes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="学习使用Latex数学符号相关使用功能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Latex语法学习">
+<meta property="og:url" content="https://zhangyuanhe.top/2023/09/19/Software%20and%20App/Latex_study/index.html">
+<meta property="og:site_name" content="ZYH&#39;s blog">
+<meta property="og:description" content="学习使用Latex数学符号相关使用功能">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png">
+<meta property="article:published_time" content="2023-09-19T01:00:00.000Z">
+<meta property="article:modified_time" content="2023-10-28T11:12:57.553Z">
+<meta property="article:author" content="Charmes">
+<meta property="article:tag" content="软件学习">
+<meta property="article:tag" content="程序安装">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://zhangyuanhe.top/2023/09/19/Software%20and%20App/Latex_study/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: Charmes","link":"链接: ","source":"来源: ZYH's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Latex语法学习',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-10-28 19:12:57'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 8 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><span id="fps"></span><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="ZYH's blog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png')"><nav id="nav"><span id="blog-info"><a href="/" title="ZYH's blog"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/logo.png"/><span class="site-name">ZYH's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Latex语法学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-19T01:00:00.000Z" title="发表于 2023-09-19 09:00:00">2023-09-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-28T11:12:57.553Z" title="更新于 2023-10-28 19:12:57">2023-10-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0/">软件学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">763</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Latex语法学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Latex介绍"><a href="#Latex介绍" class="headerlink" title="Latex介绍"></a>Latex介绍</h1><p>Latex（LATEX，音译“拉泰赫”）是一种基于ΤΕΧ的排版系统，由美国计算机学家莱斯利·兰伯特（Leslie Lamport）在20世纪80年代初期开发，利用这种格式，即使使用者没有排版和程序设计的知识也可以充分发挥由 TEX 所提供的强大功能，能在几天、甚至几小时内生成很多具有书籍质量的印刷品。</p>
+<p>它构筑在 TEX 的基础之上，并加进了很多的功能以使得使用者可以更为方便的利用 TEX 的强大功能。使用Latex基本上不需要使用者自己设计命令和宏等，因为Latex已经替你做好了。</p>
+<p>对于生成复杂表格和数学公式，这一点表现得尤为突出。因此它非常适用于生成高印刷质量的科技和数学类文档。</p>
+<p>这个系统同样适用于生成从简单的信件、精致的简历、优雅的幻灯片到完整书籍的所有其他种类的文档。</p>
+<h1 id="相关语法"><a href="#相关语法" class="headerlink" title="相关语法"></a>相关语法</h1><h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/1/2/91205e81c98c486418902c88d5c396f5355491f1.png" alt="$\pm$"></td>
+<td>\pm</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/9/d/19dcb590e43ac06de8bf64daabdcae351c51ebe6.png" alt="$\mp$"></td>
+<td>\mp</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/a/c/bac4dbe1c696d11e8dc43dd7f613199b2120daa1.png" alt="$\times$"></td>
+<td>\times</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/c/8/1c81486a525ba08192aab8546dbe9a32bdbe0c07.png" alt="$\div$"></td>
+<td>\div</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/8/f/1/8f1fb66751f2ee2626c75303485dba473c39a2f2.png" alt="$\cdot$"></td>
+<td>\cdot</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/2/7/8/278afa87a7dfa8e2b3f40e608884a690fb1325f6.png" alt="$\ast$"></td>
+<td>\ast</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/1/7/d17950ad2ab63c764778b133f95a03dcf2969d57.png" alt="$\star$"></td>
+<td>\star</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/7/5/f/75fbdfd4148a2d76b66583eb07a05c0e1853e5ed.png" alt="$\dagger$"></td>
+<td>\dagger</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/e/e/1eee3cf7655b7f97127bfaf93851960caf8aa62f.png" alt="$\ddagger$"></td>
+<td>\ddagger</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/4/3/e43da851ce02ac27ab36f6708edf6c313febd609.png" alt="$\amalg$"></td>
+<td>\amalg</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/0/f/c0f2b8e02812dd6278501da3698b07563864df3d.png" alt="$\cap$"></td>
+<td>\cap</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/a/6/c/a6cef8fd2bc2c7f9f1e27327b739f2cd7baa31ac.png" alt="$\cup$"></td>
+<td>\cup</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/7/9/0/7909c20a66b5e6fa43a1a26710a8ebcfb82527ff.png" alt="$\uplus$"></td>
+<td>\uplus</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/1/7/f17c91e4f44cf3cef16793582abe63eea7b8d0b1.png" alt="$\sqcap$"></td>
+<td>\sqcap</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/4/e/14e23edff0ebfb9a1d7976b6d3553ce54c7c413a.png" alt="$\sqcup$"></td>
+<td>\sqcup</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/3/f/13f3b223fb942219e3d77d9dfa86ad0933513882.png" alt="$\vee$"></td>
+<td>\vee</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/d/8/bd8dcc3cdcaa4d91ba26f8bfb9c339862f7c0047.png" alt="$\wedge$"></td>
+<td>\wedge</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/7/c/f7c581af3f7cf7ed3abe62da090534eb4d1bd00f.png" alt="$\oplus$"></td>
+<td>\oplus</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/e/b/1eb5abf6a4d5640740fa3b2cd04b4044f2af4447.png" alt="$\ominus$"></td>
+<td>\ominus</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/8/8/b88c462e5d9319a7d2181ad94863658fa0a24736.png" alt="$\otimes$"></td>
+<td>\otimes</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/7/f/3/7f3b4ea3b8abe9ced6095c7d75f207a1127ee843.png" alt="$\circ$"></td>
+<td>\circ</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/5/3/d534b942086dae501cbdce030206adb87567bb07.png" alt="$\bullet$"></td>
+<td>\bullet</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/a/6/4/a64597fa971a2a89feef230c4a309e18d2bb0c8f.png" alt="$\diamond$"></td>
+<td>\diamond</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/a/1/5/a15fb2b22303748b71b538562bc38cf2f3d9c036.png" alt="$\lhd$"></td>
+<td>\lhd</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/7/2/372fab12125c6ece78ebae1fa64389c7bd788166.png" alt="$\rhd$"></td>
+<td>\rhd</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/c/4/bc4897ff6faf49b2f2ac26351bca603e931e7ec8.png" alt="$\unlhd$"></td>
+<td>\unlhd</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/d/d/bdd81dbaedba0355750058c7c6a2e40a015e28bb.png" alt="$\unrhd$"></td>
+<td>\unrhd</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/b/b/fbb803c0fc7f72787184624d4f91e71a171baa1f.png" alt="$\oslash$"></td>
+<td>\oslash</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/c/b/9cb84f78e824963c5609a057214128b8c7776183.png" alt="$\odot$"></td>
+<td>\odot</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/1/3/b1352e2dc4380ca6efe5d978cb4bfa2745354e11.png" alt="$\bigcirc$"></td>
+<td>\bigcirc</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/a/a/b/aab16e702194ef1900cf09684c138f410ef995e8.png" alt="$\triangleleft$"></td>
+<td>\triangleleft</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/7/6/e/76edde10cd8ffa25ad5bf5689c032fdf78aeef28.png" alt="$\Diamond$"></td>
+<td>\Diamond</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/5/d/0/5d0a21de4d02a9c17e9f716bc93020cb300dc335.png" alt="$\bigtriangleup$"></td>
+<td>\bigtriangleup</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/5/2/a/52a23e3c2f527965b4d5461bf5981ef112d51a2f.png" alt="$\bigtriangledown$"></td>
+<td>\bigtriangledown</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/1/2/c12dda010ebddef028cda1ec9d14986f4a26d07e.png" alt="$\Box$"></td>
+<td>\Box</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/1/7/c1731dedb14bb1b4781dc9a30b95f58825a50fa9.png" alt="$\triangleright$"></td>
+<td>\triangleright</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/8/a/a/8aa91c965a8fe7e59c49e1e97bc7d5828dc4d120.png" alt="$\setminus$"></td>
+<td>\setminus</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/4/1/341afd98eab5dbcdd2128223e84e2d9f1bb63365.png" alt="$\wr$"></td>
+<td>\wr</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/4/8/0/4805dddb4e6911989af8be91da334b5ba2054757.png" alt="$\sqrt{x}$"></td>
+<td>\sqrt{x}</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/a/9/da9bb652e84532a7cddad7b633cb769bc6946d4e.png" alt="$x^{\circ}$"></td>
+<td>x^{\circ}</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/8/4/8/848003f6d0389cb141c2bf3b624734556c9f746a.png" alt="$\triangledown$"></td>
+<td>\triangledown</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/0/2/d/02d35112ae0400463779b8c3320f3bc597d81374.png" alt="$\sqrt[n]{x}$"></td>
+<td>\sqrt[n]{x}</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/d/e/ddee543f04d6fbac4ab70309ce7aa5b8760aa897.png" alt="$a^x$"></td>
+<td>a^x</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/6/9/c690994d239dc33c27fd53c79940a75330eaf41e.png" alt="$a^{xyz}$"></td>
+<td>a^{xyz}</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/a/5/9a5af51cfec649afb7d8bf2c8b7080b58ba69830.png" alt="$a_x$"></td>
+<td>a_x</td>
+</tr>
+</tbody></table>
+<h2 id="关系符"><a href="#关系符" class="headerlink" title="关系符"></a>关系符</h2><table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/b/4/3b4cd01885cb569775f5d1143bc5139fff104bdc.png" alt="$\le$"></td>
+<td>\le</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/0/0/c/00c3863a5ca53a1be38db8921ae7b5bfbfbe1dc6.png" alt="$\ge$"></td>
+<td>\ge</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/3/4/e34abf3c7601f491cde20e6c318f54030b0237a2.png" alt="$\neq$"></td>
+<td>\neq</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/5/5/e55156a4008b0944ad00d5bc71bc5aa6315aabb7.png" alt="$\sim$"></td>
+<td>\sim</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/e/4/1e4d154223e7171ad7ae3b398a849d0152b575ad.png" alt="$\ll$"></td>
+<td>\ll</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/5/e/b5e95a72274f434ba9984d67dba7438a286158f3.png" alt="$\gg$"></td>
+<td>\gg</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/a/8/f/a8fa91f83671b6f0f19a4bb1b0839d1fc06ffbf9.png" alt="$\doteq$"></td>
+<td>\doteq</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/5/e/4/5e46ba9c72f86769fb14a32f8eb271bc440e2061.png" alt="$\simeq$"></td>
+<td>\simeq</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/6/f/e6ffbe0cb0b8d47bd10eec85fb336adf7694f896.png" alt="$\subset$"></td>
+<td>\subset</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/5/4/f5451590e41b731933710d9f34b93b6dd2994139.png" alt="$\supset$"></td>
+<td>\supset</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/a/c/b/acbc54ef8feabfc5d0a2329f0cfbd10af8a6a809.png" alt="$\approx$"></td>
+<td>\approx</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/6/d/c6dd6b322a1d042d13b2ceba7a6f45be7eb8de6c.png" alt="$\asymp$"></td>
+<td>\asymp</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/7/a/f/7af4f46fd0cf5cdbed23e67e7896f64cb380ee52.png" alt="$\subseteq$"></td>
+<td>\subseteq</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/a/5/5/a5544786abebf78b0ef72b5241cdb1196effabd2.png" alt="$\supseteq$"></td>
+<td>\supseteq</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/9/9/b9904282b277d5afca7b6fb12f3bb7c5ff616510.png" alt="$\cong$"></td>
+<td>\cong</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/9/d/b9d7bc7cf4a44200f381f9b8f7f09b27ba728018.png" alt="$\smile$"></td>
+<td>\smile</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/2/4/124b77b4b0cc873e5c027a76ab58cd5c7fed0ca1.png" alt="$\sqsubset$"></td>
+<td>\sqsubset</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/2/3/1/231bddf0e59b26209b1b6815d9a41f91d04ea701.png" alt="$\sqsupset$"></td>
+<td>\sqsupset</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/1/6/1165e91155febc4bc88785c5504eb52efe4f8c51.png" alt="$\equiv$"></td>
+<td>\equiv</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/d/0/cd0780b55db44ebfc68e984c2354c579314de704.png" alt="$\frown$"></td>
+<td>\frown</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/6/e/d6ee2b442ac5f3d7940a33c1eba386e93fc3381f.png" alt="$\sqsubseteq$"></td>
+<td>\sqsubseteq</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/6/9/3/693c0332817f1be148c7b691a1d419e0cdc971ed.png" alt="$\sqsupseteq$"></td>
+<td>\sqsupseteq</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/1/3/11303cd923877716bbb6fde144d09687260910fb.png" alt="$\propto$"></td>
+<td>\propto</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/5/a/c5a172ca1f59801643929daf4b59d0a225604ca7.png" alt="$\bowtie$"></td>
+<td>\bowtie</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/3/4/134004c561e4c0cca193dbf5122e5ca963dd5b7f.png" alt="$\in$"></td>
+<td>\in</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/8/9/d/89db07258d2e7a1c9aac138b7c1846645bdf79eb.png" alt="$\ni$"></td>
+<td>\ni</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/c/1/cc1075b75dff8acde28b91201acc216d0a343fce.png" alt="$\prec$"></td>
+<td>\prec</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/0/d/f0da9cf8e29547352b0d8a30fedb96f71f5def8b.png" alt="$\succ$"></td>
+<td>\succ</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/8/1/2/81226dce386555032afda7e4739639feabbc801a.png" alt="$\vdash$"></td>
+<td>\vdash</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/f/d/ffdb8a7364423bb7904d60840d7b7f9047dee450.png" alt="$\dashv$"></td>
+<td>\dashv</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/a/c/eac91ff45cea31243210756d0af2ecd0867f9dae.png" alt="$\preceq$"></td>
+<td>\preceq</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/b/0/db0f05af17a329d387f5234730350c6227d4ca0d.png" alt="$\succeq$"></td>
+<td>\succeq</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/1/a/31a65b06843b33bfe53a87920e8de3a8a40d93e4.png" alt="$\models$"></td>
+<td>\models</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/2/9/5/29501a90018e83d6d3e88b1f83bdfb71e692561e.png" alt="$\perp$"></td>
+<td>\perp</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/7/0/0/700b2122c7a66766d80c3dfe5109de9b58e65a66.png" alt="$\parallel$"></td>
+<td>\parallel</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>只要将not放在符号前面或者在 \ 和单词之间插入一个 n ，就可以形成许多这些关系的否定形式，这里有一些例子，加上一些其他的否定，它也适用于许多其他的。</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/8/3/b/83b17e0f7af5b49594ac16587442fe5f12a475fd.png" alt="$\nmid$"></td>
+<td>\nmid</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/6/8/c681d35dfe1a4f53de0ebda66832aa0fc286cbd0.png" alt="$\nleq$"></td>
+<td>\nleq</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/a/5/e/a5ea08782633e9e1db55ada7df9ec3cb1e74e212.png" alt="$\ngeq$"></td>
+<td>\ngeq</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/8/e/98e9b5dcdf4cef4c9a6eba2f89b79dbab6589f40.png" alt="$\nsim$"></td>
+<td>\nsim</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/f/2/ef2f2d4b87a19a87d9c6aae23f3515c44f49c5e4.png" alt="$\ncong$"></td>
+<td>\ncong</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/6/6/4/66459c2921421baabb23ba674f1c38644bfb94ae.png" alt="$\nparallel$"></td>
+<td>\nparallel</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/e/5/be5b21d425b39063889ffc39302122c302187840.png" alt="$\not&lt;$"></td>
+<td>\not&lt;</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/4/1/4/41484799e848722804569891f3c9f8f6ba85be72.png" alt="$\not&gt;$"></td>
+<td>\not&gt;</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/5/2/b52e41fffd6f799febf06948db4857add0cafdf5.png" alt="$\not=$"></td>
+<td>\not&#x3D; or \neq or \ne</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/8/8/0/8804323a929802098f7d5135effe13df72f99fe3.png" alt="$\not\le$"></td>
+<td>\not\le</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/3/6/c36f3836d4cf8e908a3e63d0640dbe5f3f6b3aac.png" alt="$\not\ge$"></td>
+<td>\not\ge</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/2/8/328e7366713d3594c6decd9a16c71d38ff66d24e.png" alt="$\not\sim$"></td>
+<td>\not\sim</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/4/c/14cef4209cbb6781580b82fcb49c5cabf42110b5.png" alt="$\not \approx$"></td>
+<td>\not\approx</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/d/b/9dba3e1547b02e8cfb16e73174d313ce3c44991d.png" alt="$\not\cong$"></td>
+<td>\not\cong</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/7/5/2/7524371d49900f0a110e8c41a6a626449310999d.png" alt="$\not\equiv$"></td>
+<td>\not\equiv</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/0/b/10babfcf66e652715e5ee499b569c4afaff8e347.png" alt="$\not\parallel$"></td>
+<td>\not\parallel</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/1/e/11ed3742359426af546f0f2c588934cc3d27d9a7.png" alt="$\nless$"></td>
+<td>\nless</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/8/0/e/80e8acc7c1a52a13f0b46fcdb855501582c1f258.png" alt="$\ngtr$"></td>
+<td>\ngtr</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/0/1/c/01cbbfb6098409250bba1da5cd3702a4f91b1062.png" alt="$\lneq$"></td>
+<td>\lneq</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/5/0/2/502aba7f2ebb4e5b0c07f1fc727f09a20c4b4bc6.png" alt="$\gneq$"></td>
+<td>\gneq</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/2/c/e/2ce172633b8db32cdba9196efe3d5912628e73db.png" alt="$\lnsim$"></td>
+<td>\lnsim</td>
+</tr>
+</tbody></table>
+<h2 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h2><table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/4/e/a/4eab2b4c3730f6ca28b181105160f87f84c49a08.png" alt="$\sum  \textstyle\sum$"></td>
+<td>\sum</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/6/d/1/6d14592f0872a308caf69a5d695581b8f56adaf4.png" alt="$\int  \textstyle\int$"></td>
+<td>\int</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/1/d/b1d46ca41500b244afd17f827dda9a43a1c606c1.png" alt="$\oint  \textstyle\oint$"></td>
+<td>\oint</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/8/c/e8cb398f2e1c14f174456af12526d1380de93042.png" alt="$\prod  \textstyle\prod$"></td>
+<td>\prod</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/7/f/f/7ff985aaf9cdb0a46821e8ca45369ea50dab16bf.png" alt="$\coprod  \textstyle\coprod$"></td>
+<td>\coprod</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/0/f/2/0f2b6687b87eba9a1b15c64bf1a510f3d8962533.png" alt="$\bigcap  \textstyle\bigcap$"></td>
+<td>\bigcap</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/c/3/dc3622235b09bd67ccd61d51706be0cdba8cde4a.png" alt="$\bigcup  \textstyle\bigcup$"></td>
+<td>\bigcup</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/4/c/1/4c1715b7d4bedcd82804947fff2234e526e67b9a.png" alt="$\bigsqcup  \textstyle\bigsqcup$"></td>
+<td>\bigsqcup</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/8/2/f8270dc629acde682ea1e18f9cee677e58c29cbb.png" alt="$\bigvee  \textstyle\bigvee$"></td>
+<td>\bigvee</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/b/b/ebb4ab4fbe044c44a446fe1bf274d3a80048284c.png" alt="$\bigwedge  \textstyle\bigwedge$"></td>
+<td>\bigwedge</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/3/1/e31ae477e5b4dc90514e2099723ae7faaef6fc3b.png" alt="$\bigodot  \textstyle\bigodot$"></td>
+<td>\bigodot</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/1/2/b12e4a1447f71f823eefb562ecac1e11ebd63915.png" alt="$\bigotimes  \textstyle\bigotimes$"></td>
+<td>\bigotimes</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/6/c/1/6c1138601b152c42594b90596c293aee1ee69840.png" alt="$\bigoplus  \textstyle\bigoplus$"></td>
+<td>\bigoplus</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/2/2/0/220392b0536ae9431accdeec479897a2247f4a4d.png" alt="$\biguplus  \textstyle\biguplus$"></td>
+<td>\biguplus</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="古希腊字母"><a href="#古希腊字母" class="headerlink" title="古希腊字母"></a>古希腊字母</h2><p>小写</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/0/f/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="$\alpha$"></td>
+<td>\alpha</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/d/b/fdb63b9e51abe6bbb16acfb5d7b773ddbb5bf4a8.png" alt="$\beta$"></td>
+<td>\beta</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/6/6/9/66981fa3920210c6ad8dbe5e968783d5dd7520c3.png" alt="$\gamma$"></td>
+<td>\gamma</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/a/f/eaf4418fbe935c15a606516d8f55dc380cd8e822.png" alt="$\epsilon$"></td>
+<td>\epsilon</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/2/a/e2a63918a6fa75b62ad87ad17aaf65f782d71546.png" alt="$\varepsilon$"></td>
+<td>\varepsilon</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/d/a/fda38f45a64bbd4451aedeeb4584e01d91239172.png" alt="$\zeta$"></td>
+<td>\zeta</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/5/2/e/52e8ed7a3ba22130ad3984eb2cd413406475a689.png" alt="$\theta$"></td>
+<td>\theta</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/a/3/9a32e414f13071a85f52c90ce88e25332fd2152c.png" alt="$\vartheta$"></td>
+<td>\vartheta</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/3/9/e394d1efd05a00d1e561e3dfa8deb80488d8a1a5.png" alt="$\iota$"></td>
+<td>\iota</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/e/4/ce4588fd900d02afcbd260bc07f54cce49a7dc4a.png" alt="$\lambda$"></td>
+<td>\lambda</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/2/d/8/2d8c833ed800824727cd7bd2fb9de1a12ad7e674.png" alt="$\mu$"></td>
+<td>\mu</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/6/a/d6a7ccf879c4a4fe694033606332cb83806db296.png" alt="$\nu$"></td>
+<td>\nu</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/2/c/f2ca003a7da0de4994b4733e203b74ff52d42553.png" alt="$\pi$"></td>
+<td>\pi</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/0/8/b/08b37549addb92da83c1b842518c22328f331746.png" alt="$\varpi$"></td>
+<td>\varpi</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/0/0/2/0027034d8a10372a06deaf4f4084c01956587479.png" alt="$\rho$"></td>
+<td>\rho</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/a/3/fa35d9fc104207e09a712110ac81612c5b279a6c.png" alt="$\sigma$"></td>
+<td>\sigma</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/4/f/b/4fb382b5e56d61bc1669509bfc060c8deb1d71ef.png" alt="$\varsigma$"></td>
+<td>\varsigma</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/d/c/1dc1c0119a604b91be9142370dc3159b6a9bbcb9.png" alt="$\tau$"></td>
+<td>\tau</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/2/c/1/2c175f60eecef1de7560c3bdea495d69f26f719d.png" alt="$\phi$"></td>
+<td>\phi</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/2/1/921aade3100afbc11d0d13f71cdd7e68d83ad52e.png" alt="$\varphi$"></td>
+<td>\varphi</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/6/d/c/6dcb9b88aaa5f14312835145edf06fb2d0823c29.png" alt="$\chi$"></td>
+<td>\chi</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/5/4/d/54d7d48553f4d9e7ab418118607ea324cbfddfda.png" alt="$\omega$"></td>
+<td>\omega</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>大写</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/1/3/913e49ea63c6c130bb8d9d1c3556b052ecc404f8.png" alt="$\Gamma$"></td>
+<td>\Gamma</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/0/a/7/0a737670d481129e2ead6d7223437f3cf70ea53f.png" alt="$\Delta$"></td>
+<td>\Delta</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/a/3/2/a321d1b883ba985b1f59ca076beaaf17aa8ab06c.png" alt="$\Theta$"></td>
+<td>\Theta</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/0/9/d091cd93291a02d01c92bdc835e0b73f7faed864.png" alt="$\Xi$"></td>
+<td>\Xi</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/3/e/c3e77f8dac39bd44cff4ca15469c871bab27c02e.png" alt="$\Pi$"></td>
+<td>\Pi</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/8/f/c8f77e3035db5fe9a4975967750ac1a6454bda8c.png" alt="$\Sigma$"></td>
+<td>\Sigma</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/8/5/b85bbfb165b853d6f5f9734be4cdabbb453f4e43.png" alt="$\Phi$"></td>
+<td>\Phi</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/8/6/6/866f0204648be9ca6b10e14dd72295295dd53a79.png" alt="$\Psi$"></td>
+<td>\Psi</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/e/2/9e2b196e9b7e57d1ec99f6534c581ea9759d2170.png" alt="$\Omega$"></td>
+<td>\Omega</td>
+</tr>
+</tbody></table>
+<h2 id="箭头"><a href="#箭头" class="headerlink" title="箭头"></a>箭头</h2><table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/7/6/d/76d08618ef0d890aaf8294c65225e6314ef5be97.png" alt="$\gets$"></td>
+<td>\gets</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/8/e/b8ea4e52bb41fa9c0a1f8a387ea39b5b9c993b74.png" alt="$\to$"></td>
+<td>\to</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/5/f/d5f9d8910bf9b877d37f48c842c045883c51300b.png" alt="$\leftarrow$"></td>
+<td>\leftarrow</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/7/7/d773375e7bd7f973b121cd9403ad90d3806d6996.png" alt="$\Leftarrow$"></td>
+<td>\Leftarrow</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/1/2/e12b6767375342ed57d27678e3ea1cdb97f47e15.png" alt="$\rightarrow$"></td>
+<td>\rightarrow</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/8/4/3/843622567e12d686e4e2f94ddfcb444e8ecde0d2.png" alt="$\Rightarrow$"></td>
+<td>\Rightarrow</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/4/5/d4563ad8c3bc2ead402d6ffc50768b0269bf073a.png" alt="$\leftrightarrow$"></td>
+<td>\leftrightarrow</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/a/6/e/a6ec0db174f3b705df19623976bf4b88ff502f3a.png" alt="$\Leftrightarrow$"></td>
+<td>\Leftrightarrow</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/2/3/5/2353b98d531c2da713a987ce5f2c39c566b621c8.png" alt="$\mapsto$"></td>
+<td>\mapsto</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/5/7/d57eef1a90f496dda224bb28c705b4cd6f75f38f.png" alt="$\hookleftarrow$"></td>
+<td>\hookleftarrow</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/3/9/b39c5d94ce0f366d4816ca9e22cdf213306167b4.png" alt="$\leftharpoonup$"></td>
+<td>\leftharpoonup</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/6/c/5/6c5a2cbfcd98ba58231d2cafa9ae6c4ef12fb125.png" alt="$\leftharpoondown$"></td>
+<td>\leftharpoondown</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/9/5/f95723e1bf335f9d1cfc3aeba7f8c6dd45a8b6c4.png" alt="$\rightleftharpoons$"></td>
+<td>\rightleftharpoons</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/4/0/c405b7ae3c69d93bd1b753f1cd3b49251283bd0f.png" alt="$\longleftarrow$"></td>
+<td>\longleftarrow</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/0/f/f0faeb12503890b80128f8ea8e99eab1ebb0d0b4.png" alt="$\Longleftarrow$"></td>
+<td>\Longleftarrow</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/d/6/3d6e222dc751bc632a3e4a0c1a87e7691ec86bba.png" alt="$\longrightarrow$"></td>
+<td>\longrightarrow</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/8/1/981cc6a2adc50878a6da811d05c34e5cfaf6cef7.png" alt="$\Longrightarrow$"></td>
+<td>\Longrightarrow</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/5/b/9/5b925f6b5359af8f3536c2139177aaded2f93757.png" alt="$\longleftrightarrow$"></td>
+<td>\longleftrightarrow</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/0/3/1/031f544836c18f6f1b3ce1fcab250a2e7b372203.png" alt="$\Longleftrightarrow$"></td>
+<td>\Longleftrightarrow</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/4/8/e48117c9370176c975b0cc0f3781ac51fdb420ea.png" alt="$\longmapsto$"></td>
+<td>\longmapsto</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/2/3/c/23c35a20a0d1a302656aaf89da7921f4f58df625.png" alt="$\hookrightarrow$"></td>
+<td>\hookrightarrow</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/6/0/b602fa4b55dcf9f3437a9e8fd72152ac371b5bba.png" alt="$\rightharpoonup$"></td>
+<td>\rightharpoonup</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/7/0/370fb1af83e5d67016f89663081f0f09eb7d296f.png" alt="$\rightharpoondown$"></td>
+<td>\rightharpoondown</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/5/f/b/5fbd98454ee144f57ef122f596384eaa5bf81fad.png" alt="$\leadsto$"></td>
+<td>\leadsto</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/3/9/d39cad522ccbe5a31209793365754665a4d65556.png" alt="$\uparrow$"></td>
+<td>\uparrow</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/c/b/1cbe1a0d9a674d0d0bbc0c5572b8e609f9e64437.png" alt="$\Uparrow$"></td>
+<td>\Uparrow</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/9/5/d95bdb4067e8005d19d15bfbd4e83d8980336c65.png" alt="$\downarrow$"></td>
+<td>\downarrow</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/d/9/cd90d68c14531a18fb1309c26d5cb62e9216da54.png" alt="$\Downarrow$"></td>
+<td>\Downarrow</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/7/4/c749573a62fd745696f1159c7ba3a9c4ee2b9951.png" alt="$\updownarrow$"></td>
+<td>\updownarrow</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/e/d/3edded002dccdd7b08329a57491d4047c8306717.png" alt="$\Updownarrow$"></td>
+<td>\Updownarrow</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/a/c/9ac7c661ed7237c252514b09cd4640d998e37511.png" alt="$\nearrow$"></td>
+<td>\nearrow</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/6/1/9619c49478e6be29b664a3b3edb8cf9b6fb9ec70.png" alt="$\searrow$"></td>
+<td>\searrow</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/a/d/4/ad4d3d05f5a30dc16128c8477a1dc2ff4b259320.png" alt="$\swarrow$"></td>
+<td>\swarrow</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/3/9/e399241c1cd2d58d0a397fd94728a5d6f60022d0.png" alt="$\nwarrow$"></td>
+<td>\nwarrow</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/a/8/d/a8dfbb08d2b4dac0825dded0c20a373dd129bd35.png" alt="$\overrightarrow{AB}$"></td>
+<td>\overrightarrow{AB}</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/8/a/0/8a0abef9be73c81cc0d02d1f1a0d4d99dc684fc5.png" alt="$\overleftarrow{AB}$"></td>
+<td>\overleftarrow{AB}</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/8/8/2/8820cdb9ddec09011a25ab50173aa7cd580c8240.png" alt="$\overleftrightarrow{AB}$"></td>
+<td>\overleftrightarrow{AB}</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="点"><a href="#点" class="headerlink" title="点"></a>点</h2><table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/8/f/1/8f1fb66751f2ee2626c75303485dba473c39a2f2.png" alt="$\cdot$"></td>
+<td>\cdot</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/6/9/c/69cdf7ec84ff918cbe7f21acf7543bf1bd243080.png" alt="$\vdots$"></td>
+<td>\vdots</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/6/4/6/64683f315744c851898c8d65dace1a8aa31b93ab.png" alt="$\dots$"></td>
+<td>\dots</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/1/b/91bc8b7d1415c5dbd9a3c232b323bde68dd8199c.png" alt="$\ddots$"></td>
+<td>\ddots</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/0/8/7/087594ea26fa196b8e61bc20a36228270dc695f8.png" alt="$\cdots$"></td>
+<td>\cdots</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/b/0/eb041173faa89f826c1e6e4a81194e2901ea334e.png" alt="$\iddots$"></td>
+<td>\iddots</td>
+</tr>
+</tbody></table>
+<h2 id="上标"><a href="#上标" class="headerlink" title="上标"></a>上标</h2><table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/4/7/6/4766b2cc3bd23afdfaa7ab46ebb5f2d0e0fd8b80.png" alt="$\hat{x}$"></td>
+<td>\hat{x}</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/9/a/19a5ff1cef4a98be4cbf3fadacd8e1784fa82ce0.png" alt="$\check{x}$"></td>
+<td>\check{x}</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/c/a/fcafbe903244d22c4dcd94f46f57e617baf47ad1.png" alt="$\dot{x}$"></td>
+<td>\dot{x}</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/7/c/17c5e14151dfe2f18740a32ba63870c7db167368.png" alt="$\breve{x}$"></td>
+<td>\breve{x}</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/a/3/a/a3aa851fec30dc95fc20220ce6e45fc4327d3ab0.png" alt="$\acute{x}$"></td>
+<td>\acute{x}</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/4/6/146440b27437438126da946e8e88924762c49b10.png" alt="$\ddot{x}$"></td>
+<td>\ddot{x}</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/0/d/f/0df1054a87870c7611e7a9224a310ab4524bfca6.png" alt="$\grave{x}$"></td>
+<td>\grave{x}</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/2/7/c27ef249f820f799c441683c186b5b97b7f93833.png" alt="$\tilde{x}$"></td>
+<td>\tilde{x}</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/1/6/c166329f174b82bee3440f1c1473a74f52938572.png" alt="$\mathring{x}$"></td>
+<td>\mathring{x}</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/0/6/f06e84fe84a6c63a9c2c392af11652f6e0d72cf4.png" alt="$\bar{x}$"></td>
+<td>\bar{x}</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/5/e/f5ec636e755349d4409f910e27d381c6da764230.png" alt="$\vec{x}$"></td>
+<td>\vec{x}</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="其他符号"><a href="#其他符号" class="headerlink" title="其他符号"></a>其他符号</h2><table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/6/7/b671f1bb7e4ee86584347d5d22f1dc8abdb5bef2.png" alt="$\infty$"></td>
+<td>\infty</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/0/0/9/009cf3eeb0ff3789cc057632947cadb200ab4663.png" alt="$\triangle$"></td>
+<td>\triangle</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/4/4/b/44b090a5a288a97413c95d2550887b0d15989112.png" alt="$\angle$"></td>
+<td>\angle</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/6/7/c/67c1fbfe4cf9dc91e7ba469a235b0bad54d6a5ab.png" alt="$\aleph$"></td>
+<td>\aleph</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/0/6/7/0678e85c9374aaebeb3099f934cb8a7e452c75da.png" alt="$\hbar$"></td>
+<td>\hbar</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/5/e/9/5e991343f163f34bab751574a500ee9ff3e759e4.png" alt="$\imath$"></td>
+<td>\imath</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/0/0/2/002ca021db0654c4009563a2ce9a16636cfdc1ac.png" alt="$\jmath$"></td>
+<td>\jmath</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/6/3/c/63c17c295325f731666c7d74952b563a01e00fcc.png" alt="$\ell$"></td>
+<td>\ell</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/c/f/bcf1dd80910fd624e03574ad36bd73d8f79f65ad.png" alt="$\wp$"></td>
+<td>\wp</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/2/e/12e3412ce1c7f9e9be5b98ec0dc7a513787fbbac.png" alt="$\Re$"></td>
+<td>\Re</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/1/6/b16edda9eb3f50e6bfcf5dc5fe307789444f321c.png" alt="$\Im$"></td>
+<td>\Im</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/c/f/9cfb316b7b1f6a9cf1e42272cd90a4c28bafa543.png" alt="$\mho$"></td>
+<td>\mho</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/6/8/c68e6a060376d1105a2fda31e4c447d4a5d7aa66.png" alt="$\prime$"></td>
+<td>\prime</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/8/4/2/84241c448cbf497968ba86136beecf766431a3ff.png" alt="$\emptyset$"></td>
+<td>\emptyset</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/5/3/1/53196dddfbaf8145fd14be11cf568c5154588ed5.png" alt="$\nabla$"></td>
+<td>\nabla</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/1/0/b10061a42e5fbda320e5ccef97d80f42166b05dc.png" alt="$\surd$"></td>
+<td>\surd</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/4/1/341d567d759ce5d4b0005bca4ce4a0a22c5f0f86.png" alt="$\partial$"></td>
+<td>\partial</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/8/9/98908d2f5a52e4be6e2e88e80b92993f42b36973.png" alt="$\top$"></td>
+<td>\top</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/f/0/bf09b3494b43408e17d842ee8dcda1edc17cc649.png" alt="$\bot$"></td>
+<td>\bot</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/8/1/2/81226dce386555032afda7e4739639feabbc801a.png" alt="$\vdash$"></td>
+<td>\vdash</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/f/d/ffdb8a7364423bb7904d60840d7b7f9047dee450.png" alt="$\dashv$"></td>
+<td>\dashv</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/5/3/6/536ba5a392431e74fec5a8db2257504c85fcc206.png" alt="$\forall$"></td>
+<td>\forall</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/4/e/c/4ecf8666cca5f1d089b9c656be83f9e09d0abd5c.png" alt="$\exists$"></td>
+<td>\exists</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/a/3/a/a3a70722f337e1529068359b303e4f0776ff68de.png" alt="$\neg$"></td>
+<td>\neg</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/8/d/d8db7bfbb234b4f05ddfd93d031375cb02a799b4.png" alt="$\flat$"></td>
+<td>\flat</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/b/d/3bdea32d3d98eca872e1c4562eac7553ee6a4d34.png" alt="$\natural$"></td>
+<td>\natural</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/f/0/9f0f728ec995ff8379cf1a72c0ff1416a2c60177.png" alt="$\sharp$"></td>
+<td>\sharp</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/8/5/385adced1eac31db28232371c6e5afb832d82bf7.png" alt="$\backslash$"></td>
+<td>\backslash</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/1/2/c12dda010ebddef028cda1ec9d14986f4a26d07e.png" alt="$\Box$"></td>
+<td>\Box</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/7/6/e/76edde10cd8ffa25ad5bf5689c032fdf78aeef28.png" alt="$\Diamond$"></td>
+<td>\Diamond</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/9/7/397606372567ab31725033a4d12d00c0276ba086.png" alt="$\clubsuit$"></td>
+<td>\clubsuit</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/6/d/c6dda9b4c504bad80fd4308d62fb52fb41f3aefc.png" alt="$\diamondsuit$"></td>
+<td>\diamondsuit</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/8/c/38c6b4ac9e30aa1bbcdf4529130bc58e4b392e83.png" alt="$\heartsuit$"></td>
+<td>\heartsuit</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/1/0/f10b174b6672f53772ffe28260f4390a3cd405fa.png" alt="$\spadesuit$"></td>
+<td>\spadesuit</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/4/0/2/40268aa589c2ba619a6d521d716bf781a15e4ba8.png" alt="$\Join$"></td>
+<td>\Join</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/b/b/3bbb9e25e5be095e317771a9c5d00877ee9c8012.png" alt="$\blacksquare$"></td>
+<td>\blacksquare</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/6/d/c6dda9b4c504bad80fd4308d62fb52fb41f3aefc.png" alt="$\diamondsuit$"></td>
+<td>\diamondsuit</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/b/d/dbde8771334ba4faa03348ac847c8a22c6a54667.png" alt="$\copyright$"></td>
+<td>\copyright</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/8/3/2/83259bd181bf4d79689381cabcdc71eafbf9baff.png" alt="$\underarc{XYZ}$"></td>
+<td>\underarc{XYZ}</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/8/c/38c6b4ac9e30aa1bbcdf4529130bc58e4b392e83.png" alt="$\heartsuit$"></td>
+<td>\heartsuit</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/f/4/8/f482b34d198de478979b7c60c9bf1c8668dd5aa8.png" alt="$\overarc{ABC}$"></td>
+<td>\overarc{ABC}</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/a/6/c/a6cef8fd2bc2c7f9f1e27327b739f2cd7baa31ac.png" alt="$\cup$"></td>
+<td>\cup</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/4/e/0/4e0058658154f5e64eebcb3d40abab723ee34e30.png" alt="$\S$"></td>
+<td>\S</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/a/4/0/a4029f0a93f99c97102b9f06ee47f4a56847bfbf.png" alt="$\P$"></td>
+<td>\P</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/2/f/32fc4e30bd315982f54d13b5950a592032632df4.png" alt="$\Vdash$"></td>
+<td>\Vdash</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/7/2/f/72f6e08a2df0af40956a32686a1340a14d9fb98e.png" alt="$\pounds$"></td>
+<td>\pounds</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/1/3/4/134004c561e4c0cca193dbf5122e5ca963dd5b7f.png" alt="$\in$"></td>
+<td>\in</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/7/3/8/7387d7454e276c5802d261da5fc7bb08debcd544.png" alt="$\vDash$"></td>
+<td>\vDash</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/4/3/0/4302e3b4e7057984ac3eb2e9018a9b64002550b8.png" alt="$\bigstar$"></td>
+<td>\bigstar</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/f/4/ef48ac956824fcaea163a530a717e6df694aa006.png" alt="$\implies$"></td>
+<td>\implies</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/6/c/b6cf65b1f2fbdf388e3daeff9b96b34d3399d777.png" alt="$\square$"></td>
+<td>\square</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/5/4/1/541e9aef85db57b7dbef677e59a04d09b2e8b58a.png" alt="$\smiley$"></td>
+<td>\smiley</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/0/6/906fddead65545297c74bbc2ca83cd01f3f9ecc9.png" alt="$\mathbb{R}$"></td>
+<td>\mathbb{R} (represents all real numbers)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/6/0/e/60ed020e037834e10ccbcc412e3386653ec9e847.png" alt="$\checkmark$"></td>
+<td>\checkmark</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/9/8/9/98943cb2d464a45e72c3a3376e74814399699cb3.png" alt="$\cancer$"></td>
+<td>\cancer</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="命令符"><a href="#命令符" class="headerlink" title="命令符"></a>命令符</h2><table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/4/7/347d5d8ccef965291225560dfe843b447c59955e.png" alt="$\textdollar$"></td>
+<td>\textdollar or $</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/e/9/d/e9d9da5bde70fea3385da94b7d04efa5b3f963ca.png" alt="$\&amp;$"></td>
+<td>&amp;</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/c/4/3/c4393de50075e05c3363369d39412b341e39cc7d.png" alt="$\%$"></td>
+<td>%</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/0/c/c/0ccb3853aade8501b9dcca60bfbdbb8d9a598aa8.png" alt="$\_$"></td>
+<td>_</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/4/a/1/4a1a0fbdb39b7129d2fc98698c68ff5533405755.png" alt="$\{$"></td>
+<td>{</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/6/5/e/65e2585c1b1cd632b41a41481fd2ad44456aeec4.png" alt="$\}$"></td>
+<td>}</td>
+</tr>
+</tbody></table>
+<h2 id="欧洲符号"><a href="#欧洲符号" class="headerlink" title="欧洲符号"></a>欧洲符号</h2><table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+<th>Symbol</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/8/e/38e06a1df4e81b48091aa311d9c0f5cba9432256.png" alt="${\oe}$"></td>
+<td>{\oe}</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/4/5/0/4509653d8d7b806fe06a94dbde93e872f40892ba.png" alt="${\ae}$"></td>
+<td>{\ae}</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/0/6/9/0693f302e79847db7dc8cbe2baf0ab2c7dea2ee3.png" alt="${\o}$"></td>
+<td>{\o}</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/2/d/9/2d90a26f53f0bffc49df20cca0623b183c9b013f.png" alt="${\OE}$"></td>
+<td>{\OE}</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/a/8/4/a84a715a1e45bd844d83b49e076ee5e306a7413a.png" alt="${\AE}$"></td>
+<td>{\AE}</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/d/8/8/d8804db9d6d9d9c54c9dcbbee11d300073f7e471.png" alt="${\AA}$"></td>
+<td>{\AA}</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/8/e/a/8ea86382077c0260f1743eb0b3555370aaa89be0.png" alt="${\l}$"></td>
+<td>{\l}</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/b/a/4/ba40dd86e8e6766c5417744046f0aed2feeb4c6b.png" alt="${\ss}$"></td>
+<td>{\ss}</td>
+<td>![$\text{!&#96;}$](<a target="_blank" rel="noopener" href="https://latex.artofproblemsolving.com/0/b/3/0b3e889945a6c124ae6b86f0e764a6741643cec2.png">https://latex.artofproblemsolving.com/0/b/3/0b3e889945a6c124ae6b86f0e764a6741643cec2.png</a>)</td>
+<td>!&#96;</td>
+</tr>
+<tr>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/d/9/3d929efdcf5e4cc9ed64c2e7980dccf4d50d5c24.png" alt="${\L}$"></td>
+<td>{\L}</td>
+<td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://latex.artofproblemsolving.com/3/3/3/3337194236d3707955d2524f98d806a931b881e9.png" alt="${\SS}$"></td>
+<td>{\SS}</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://zhangyuanhe.top">Charmes</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zhangyuanhe.top/2023/09/19/Software%20and%20App/Latex_study/">https://zhangyuanhe.top/2023/09/19/Software%20and%20App/Latex_study/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="null" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zhangyuanhe.top" target="_blank">ZYH's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0/">软件学习</a><a class="post-meta__tags" href="/tags/%E7%A8%8B%E5%BA%8F%E5%AE%89%E8%A3%85/">程序安装</a></div><div class="post_share"><div class="social-share" data-image="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/09/14/Software%20and%20App/Windows_docker/" title="Windows下安装Docker"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Windows下安装Docker</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/09/14/Software%20and%20App/Windows_docker/" title="Windows下安装Docker"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-14</div><div class="title">Windows下安装Docker</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="card-info-avatar"> <div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-status-box"><div class="author-status"><g-emoji class="g-emoji" alias="palm_tree" fallback-src="https://lskypro.acozycotage.net/LightPicture/2022/12/fe1dc0402e623096.jpg">🐟</g-emoji><span>认真摸鱼中</span></div></div></div><div class="author-info__name">Charmes</div><div class="author-info__description">敏于思 慎于行</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/shuita2333"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/shuita2333" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:603747072@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://gitee.com/bank-beaver" target="_blank" title="Gitee"><i class="fab fa-git-square" style="color: #d5382a;"></i></a><a class="social-icon" href="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729200147469.png" target="_blank" title="wechat"><i class="fab fa-weixin" style="color: #3CB371;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Latex%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">Latex介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E8%AF%AD%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">相关语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-number">2.1.</span> <span class="toc-text">操作符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E7%AC%A6"><span class="toc-number">2.2.</span> <span class="toc-text">关系符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6"><span class="toc-number">2.3.</span> <span class="toc-text">数学</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A4%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D"><span class="toc-number">2.4.</span> <span class="toc-text">古希腊字母</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%AD%E5%A4%B4"><span class="toc-number">2.5.</span> <span class="toc-text">箭头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%B9"><span class="toc-number">2.6.</span> <span class="toc-text">点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E6%A0%87"><span class="toc-number">2.7.</span> <span class="toc-text">上标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%AC%A6%E5%8F%B7"><span class="toc-number">2.8.</span> <span class="toc-text">其他符号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E7%AC%A6"><span class="toc-number">2.9.</span> <span class="toc-text">命令符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A7%E6%B4%B2%E7%AC%A6%E5%8F%B7"><span class="toc-number">2.10.</span> <span class="toc-text">欧洲符号</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/09/19/Software%20and%20App/Latex_study/" title="Latex语法学习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Latex语法学习"/></a><div class="content"><a class="title" href="/2023/09/19/Software%20and%20App/Latex_study/" title="Latex语法学习">Latex语法学习</a><time datetime="2023-09-19T01:00:00.000Z" title="发表于 2023-09-19 09:00:00">2023-09-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/14/Software%20and%20App/Windows_docker/" title="Windows下安装Docker"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Windows下安装Docker"/></a><div class="content"><a class="title" href="/2023/09/14/Software%20and%20App/Windows_docker/" title="Windows下安装Docker">Windows下安装Docker</a><time datetime="2023-09-14T01:00:00.000Z" title="发表于 2023-09-14 09:00:00">2023-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/21/Information_Security_Experiment/network_attack/NA2/" title="系统快速重装部署网站"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="系统快速重装部署网站"/></a><div class="content"><a class="title" href="/2023/08/21/Information_Security_Experiment/network_attack/NA2/" title="系统快速重装部署网站">系统快速重装部署网站</a><time datetime="2023-08-21T04:00:00.000Z" title="发表于 2023-08-21 12:00:00">2023-08-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/21/Information_Security_Experiment/network_attack/NA1/" title="一次失败的木马攻击防御————系统快速重装部署网站"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一次失败的木马攻击防御————系统快速重装部署网站"/></a><div class="content"><a class="title" href="/2023/08/21/Information_Security_Experiment/network_attack/NA1/" title="一次失败的木马攻击防御————系统快速重装部署网站">一次失败的木马攻击防御————系统快速重装部署网站</a><time datetime="2023-08-21T01:00:00.000Z" title="发表于 2023-08-21 09:00:00">2023-08-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL2/" title="MD5加密程序解flag"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-ne8r98_1280x720.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MD5加密程序解flag"/></a><div class="content"><a class="title" href="/2023/08/04/Information_Security_Experiment/assembler_language/AL2/" title="MD5加密程序解flag">MD5加密程序解flag</a><time datetime="2023-08-04T01:00:00.000Z" title="发表于 2023-08-04 09:00:00">2023-08-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer-wrap"></div><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>再看看那个光点，它就在这里，这是家园，这是我们 —— 你所爱的每一个人，你认识的一个人，你听说过的每一个人，曾经有过的每一个人，都在它上面度过他们的一生✨</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://stellarium.org/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/link/">我的朋友</a></li><li> <a href="/about/">关于作者</a></li><li> <a href="/archives/">文章归档</a></li><li> <a href="/categories/">文章分类</a></li><li> <a href="/tags/">文章标签</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="https://zhangyuanhe.top/" title="Charmes"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon1.png" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://liuruibin.com/" title="LRBlog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lrblog-img-1304667442.file.myqcloud.com/method.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://akilar.top/" title="Akilarの糖果屋"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lskypro.acozycotage.net/LightPicture/2022/12/6bf1ed05796db59c.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="http://www.azuredust.cc" title="de4dst4r blog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://www.azuredust.cc/wp-content/themes/personalblogily/inc/starter_content/img/portrait.png" alt=""/></a></div></div></div></div><div class="copyright"><span><b>&copy;2023 - 2024</b></span><span><b>&nbsp;&nbsp;By Charmes</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a><span class="footer-separator">|</span><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src=/img/icp.png>
+<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2023019220号-1</a></div><div id="workboard"></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button class="share" type="button" title="右键模式" onclick="changeMouseMode()"><i class="fas fa-mouse"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div class="js-pjax" id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());window.location.reload();"><i class="fa fa-search"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-too"><a class="rightMenu-item" href="javascript:window.open(window.getSelection().toString());window.location.reload();"><i class="fa fa-link"></i><span>转到链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-paste"><a class="rightMenu-item" href="javascript:rmf.paste()"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comment"></i><span>空降评论</span></a><a class="rightMenu-item" href="javascript:rmf.copyWordsLink()"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-to"><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:rmf.open()"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-img"><a class="rightMenu-item" href="javascript:rmf.saveAs()"><i class="fa fa-download"></i><span>保存图片</span></a><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制图片链接</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:randomPost()"><i class="fa fa-paper-plane"></i><span>随便逛逛</span></a><a class="rightMenu-item" href="javascript:switchNightMode();"><i class="fa fa-moon"></i><span>昼夜切换</span></a><a class="rightMenu-item" href="/about/"><i class="fa fa-info-circle"></i><span>关于博客</span></a><a class="rightMenu-item" href="javascript:toggleWinbox();"><i class="fas fa-cog"></i><span>美化设置</span></a><a class="rightMenu-item" href="javascript:rmf.fullScreen();"><i class="fas fa-expand"></i><span>切换全屏</span></a><a class="rightMenu-item" href="javascript:window.print();"><i class="fa-solid fa-print"></i><span>打印页面</span></a></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.textContent = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/light.js"></script><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script src="/js/sun_moon.js" async></script><script type="text/javascript" src="https://cdn1.tianli0.top/npm/jquery@latest/dist/jquery.min.js"></script><script type="text/javascript" src="/js/rightmenu.js"></script><script defer src="/js/another.js"></script><script defer src="/js/runtime.js"></script><script async src="/js/fps.js"></script><script async src="/js/title.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/博客搭建/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 Charmesの魔改教程 (13)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/课程笔记/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📒 Charmesの学习笔记 (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/信安课程实验/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👩‍💻 Charmesの编程学习 (20)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item" style="visibility: hidden"></div><a class="magnet_link_more"  href="https://zhangyuanhe.top/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><!-- hexo injector body_end end --></body></html>
