@@ -529,7 +529,7 @@
 
 
 /* 头像呼吸灯 */
-/* [data-theme="light"] .avatar-img {
+[data-theme="light"] .avatar-img {
   animation: huxi_light 4s ease-in-out infinite;
 }
 [data-theme="dark"] .avatar-img {
@@ -556,7 +556,7 @@
   100% {
     box-shadow: 0px 0px 1px 1px #39c5bb;
   }
-} */
+}
 
 
 
