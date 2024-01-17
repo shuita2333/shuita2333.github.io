@@ -6,7 +6,7 @@
   <link href="https://zhangyuanhe.top/atom.xml" rel="self"/>
   
   <link href="https://zhangyuanhe.top/"/>
-  <updated>2024-01-07T07:14:00.914Z</updated>
+  <updated>2024-01-17T12:52:36.357Z</updated>
   <id>https://zhangyuanhe.top/</id>
   
   <author>
@@ -15,27 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="https://zhangyuanhe.top/2024/01/16/BUPT_note/Review%20of%20Compilation%20principle/"/>
-    <id>https://zhangyuanhe.top/2024/01/16/BUPT_note/Review%20of%20Compilation%20principle/</id>
-    <published>2024-01-16T08:09:30.641Z</published>
-    <updated>2024-01-07T07:14:00.914Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>Project 1: 词法分析和语法分析</strong></p><p>在这个项目中，你将为BUPT编程语言（BPL）实现一个编译器的词法分析器和语法分析器。BPL是一种类C的编程语言，它去除了C标准中的大多数高级特性，比如宏和指针。项目的目标是编译BPL程序到MIPS32汇编代码。以下是关于词法分析和语法分析部分的详细说明。</p><p><strong>1. 词法分析 (Lexical Analysis)</strong>:</p><ul><li><strong>Flex工具</strong>: 你将使用GNU Flex生成词法分析器。Flex是一个快速的词法分析器生成器。你需要指定要匹配的令牌模式和对每个令牌应用的操作。Flex会将这些规格转换成一个NFA，然后将它转换成一个等价的DFA，并尽可能地最小化这个自动机，最终生成实现词法分析器的C代码。</li><li><strong>Flex编码</strong>: 在使用Flex时，你将使用正则表达式来定义模式，并使用C代码来定义动作。你将编写.lex文件，并通过Flex生成一个C源文件，该文件包含一个实现所有规则和相应动作的有限自动机。</li><li><strong>Flex特性</strong>: Flex还提供了一些有用的特性，如行号记录（yylineno）、输入和输出函数（input()和unput()），以及更多用于控制词法分析过程的函数。</li></ul><p><strong>2. 语法分析 (Syntax Analysis)</strong>:</p><ul><li><strong>Bison工具</strong>: 你将使用GNU Bison生成语法分析器。Bison是一个解析器生成器，你提供一个文法规范的输入，Bison将生成一个LALR(1)解析器来识别该文法的句子。这个解析器接受来自Flex的输入令牌流，以识别指定的上下文无关文法。</li><li><strong>Bison编码</strong>: 类似于Flex，Bison的源代码也包含可选的声明、定义和用户例程部分。你将为每个产生式关联一个动作，这允许你在使用该产生式进行规约时执行任何处理。你需要定义文法的每个非终结符，为每个规则指定优先级和结合性，并设置用于在词法分析器和解析器之间通信的全局变量。</li><li><strong>Bison特性</strong>: Bison还提供了一些高级特性，如符号位置信息、错误恢复和冲突解决机制等。这些特性可以帮助你更有效地实现语法分析器，并提供更稳健的错误处理和更精确的语法分析。</li></ul><p><strong>项目要求</strong>:</p><ul><li>你需要实现一个解析器，它接受单个命令行参数（BPL文件路径），并输出语法有效的BPL程序的语法树或报告代码中存在的所有词法&#x2F;语法错误。</li><li>你的解析器应该能够识别未定义字符或标记、结构非法等词法和语法错误，并为语法有效的BPL程序打印出其语法树。</li><li>你可以实现其他功能，如单行&#x2F;多行注释、宏预处理器、文件包含、for语句等。</li></ul><p>通过这个项目，你将学会如何使用现代的编译器工具（Flex和Bison）来自动化词法分析和语法分析过程，从而更深入地理解编译器前端的工作原理。同时，这也是构建编译器其他部分（如语义分析、中间代码生成、目标代码生成等）的基础。</p><p><strong>Project 2: 语义分析</strong></p><p>在Project 2中，你将继续构建BUPT编程语言（BPL）编译器的功能，专注于语义分析阶段。在前一个项目中完成词法和语法分析后，你已经能够生成语法有效的BPL程序的语法树。现在，语义分析阶段将确保程序有一个明确的定义，即验证程序的逻辑正确性，例如变量是否已声明、类型是否匹配等。</p><ol><li><p><strong>语义分析</strong>:</p><ul><li><strong>作用</strong>：语义分析主要确保程序中的所有声明和表达式在逻辑上是有意义和合法的，包括类型检查、变量声明、函数调用等。</li><li><strong>实现方式</strong>：不同于前一个项目中的工具辅助（如Flex和Bison），在这一阶段，你需要手动编写代码来实现语义分析，这可能是实现BPL编译器中最费力的部分。你需要设计各种数据结构（如符号表和数据类型表示）并仔细考虑它们最合适的实现方式。</li></ul></li><li><p><strong>符号表</strong>:</p><ul><li><strong>概述</strong>：符号表是映射名字到其关联信息的数据结构。在语义分析过程中，编译器将不断更新表中的信息以反映作用域内的内容。符号表的两个典型操作是插入和查找特定符号。</li><li><strong>实现</strong>：可以使用各种抽象数据类型来实现符号表，包括链表、二叉搜索树和哈希表。每种数据结构在空间&#x2F;时间复杂性和实现难度方面有所不同。你可以选择适合你需求的数据结构。</li></ul></li><li><p><strong>作用域检查</strong>:</p><ul><li><strong>概述</strong>：作用域检查是确定程序中的标识符是否在该位置可访问的过程。你可以使用不同的方法来实现支持作用域的符号表，比如命令式单一表方法或功能式独立表方法。</li><li><strong>实现</strong>：可以采用单一全局表，每个作用域内的符号在退出时移除；或者使用作用域栈，每个新的作用域开启一个新的符号表，并在作用域关闭时将其弹出。</li></ul></li><li><p><strong>类型检查</strong>:</p><ul><li><strong>类型系统</strong>：在编程语言中，类型是一组值和在这些值上操作的集合。BPL有两类数据类型：基本类型（由硬件直接提供，如int、char和float）和派生类型（由基本类型或派生类型聚合而成，如数组、结构体等）。</li><li><strong>类型等价性</strong>：如何确定两个类型是否等价？对于基本类型，问题很简单，例如int只等价于int。对于派生类型，事情就复杂多了。通常有两种类型等价性：命名等价性和结构等价性。命名等价性考虑类型的名称，而结构等价性考虑类型的结构。</li><li><strong>派生类型表示</strong>：实现层面上，代表原始类型使用常量就足够了。对于派生类型，例如数组和结构体，表示它们就比较复杂了。常见的技术是存储定义类型的基本信息为多级链表。</li></ul></li><li><p><strong>项目要求</strong>:</p><ul><li><strong>输入格式</strong>：与上一个项目相同，即执行文件<code>bplc</code>接受表示BPL程序路径的单个命令行参数。对于语义上合法的BPL程序，你的语义分析器不应该产生任何输出信息；否则，应该打印出有意义的错误信息。</li><li><strong>错误检测</strong>：你的分析器应该能够检测到一系列的语义错误，如未定义变量的使用、类型不匹配、函数调用参数不匹配等，并能够报告错误类型和行号。</li></ul></li></ol><p>通过这个项目，你将学习如何实现一个编译器的语义分析阶段，这是编译器理解程序并检测错误的关键环节。这个阶段需要对语言的类型系统、作用域规则和其他语义规则有深入的理解。</p><p><strong>Project 3: 中间代码生成</strong></p><ol><li><p><strong>概述</strong>：这个阶段的目的是让编译器为给定的源程序生成中间表示（IR），可以进一步优化以获得更好的运行时性能。IR是独立于机器和语言的源代码表示，大多数编译器首先将源程序翻译为某种形式的IR，然后将其转换为机器代码。IR的使用增强了抽象性，并实现了前端和后端之间更清晰的分离。大多数优化都是在中间代码上完成的。</p></li><li><p><strong>中间表示</strong>：中间表示有多种形式，包括线性IR、树IR和图IR等。这个阶段的输出是一种线性IR，特别是三地址代码（TAC），其中每条指令最多可以有三个操作数。这种IR有助于现代编译器优化，例如常量传播和死代码消除。TAC通常存储在一组四元组中，每个四元组包括一个操作符和两个源操作数及一个目标结果。</p></li><li><p><strong>运行时环境</strong>：编程语言提供了对硬件细节的抽象，但现代计算机硬件只能理解低级原语。编译器必须与操作系统配合以支持目标架构上的高级抽象，并生成额外的代码来维护高级功能。此外，编译器应该管理目标机制，以便生成的代码可以在相同的运行时环境中运行。</p></li><li><p><strong>数据表示</strong>：描述了如何在编译器中表示各种基本数据类型，包括字符、整数和布尔值等，以及指针的存储方式。此外，还介绍了如何在低级别上表示数组和结构体等复杂数据类型。</p></li><li><p><strong>函数调用</strong>：描述了函数调用的处理，包括活动函数的激活记录存储在堆栈中的细节以及参数传递的方法。详细介绍了按值传递和按引用传递这两种参数传递方式。</p></li><li><p><strong>翻译方案</strong>：要从解析树生成TAC，需要按后序遍历树，然后根据某些特定模式转换树节点。介绍了如何使用语法制导的翻译来完成此任务，并且为每个非终结符X实现一组translate_X函数。对于表达式和函数调用，提供了详细的翻译方案。</p></li><li><p><strong>项目要求</strong>：描述了项目的输入格式和假设条件，例如所有测试用例没有词法&#x2F;语法&#x2F;语义错误，只有整型原始类型变量等。这些假设意味着您可以在实现代码生成器时忽略它们的违规行为。</p></li></ol><p><strong>Project 4: 目标代码生成</strong></p><ol><li><p><strong>概述</strong>: 这个阶段是编译器工作流的最后一步，即目标代码生成。在前一阶段，三地址代码（TAC）作为中间表示（IR）已经被生成，但更底层的细节还未处理。目标代码生成是将这些三地址代码处理并最终生成可以在MIPS32机器上运行的可执行代码。</p></li><li><p><strong>实验环境</strong>: 描述了目标机器代码可以在模拟器中运行的环境设置。特别提到了SPIM模拟器，它是一个运行MIPS32程序的独立模拟器。</p></li><li><p><strong>指令选择</strong>:</p><ul><li><strong>编写MIPS32汇编</strong>: 介绍了MIPS32架构的基础知识，包括寄存器使用、数据移动和程序案例。讨论了如何将中间表示转换为机器代码，这个过程依赖于机器。</li><li><strong>翻译三地址码</strong>: 指出指令选择实际上是一个模式匹配问题。讨论了如何将TAC转换为数据操作和跳转指令，以及如何进行更优化的代码生成。</li></ul></li><li><p><strong>寄存器分配</strong>:</p><ul><li><strong>本地寄存器分配</strong>: 介绍了变量和寄存器数量的限制，以及如何在基本块内分配寄存器。探讨了寄存器分配的启发式算法，并提供了具体的寄存器分配实现例程。</li><li><strong>全局寄存器分配</strong>: 讨论了跨多个基本块分配寄存器的复杂性，并介绍了活性分析和图着色分配作为解决方案。这部分详细讨论了如何通过活性分析和图着色算法来进行有效的全局寄存器分配。</li></ul></li><li><p><strong>过程调用约定</strong>:</p><ul><li><strong>堆栈布局</strong>: 描述了堆栈帧的布局以及如何在过程调用中传递参数和返回值。讨论了寄存器和堆栈的使用约定，以及如何在过程调用中保存和恢复寄存器值。</li><li><strong>调用和返回序列</strong>: 详细说明了调用者和被调用者在过程调用中的责任，包括寄存器的保存和恢复，参数的传递，以及返回值的处理。</li></ul></li><li><p><strong>项目要求</strong>:</p><ul><li><strong>基本要求</strong>: 概述了项目的基础要求和假设条件，如中间代码的逻辑正确性，没有结构体或数组变量，以及所有整数常量都可以由MIPS32立即数表示。</li><li><strong>所需任务</strong>: 指出需要完成的两项主要任务，即寄存器分配和TAC翻译。讨论了如何设计和实现寄存器分配算法，以及如何翻译一些特定的TAC指令。</li></ul></li></ol><p>这份文档为目标代码生成阶段提供了详细的指导，包括理论知识、具体实施策略和项目要求，使学生能够理解并实现编译器的这一关键部分。<br>#</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;strong&gt;Project 1: 词法分析和语法分析&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;在这个项目中，你将为BUPT编程语言（BPL）实现一个编译器的词法分析器和语法分析器。BPL是一种类C的编程语言，它去除了C标准中的大多数高级特性，比如宏和指针。项目的目标是编译BPL</summary>
-      
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title>软件安全课程笔记</title>
@@ -222,6 +201,31 @@
   </entry>
   
   <entry>
+    <title>编译原理实验期末复习</title>
+    <link href="https://zhangyuanhe.top/2024/01/01/BUPT_note/Review%20of%20Compilation%20principle/"/>
+    <id>https://zhangyuanhe.top/2024/01/01/BUPT_note/Review%20of%20Compilation%20principle/</id>
+    <published>2024-01-01T13:00:00.000Z</published>
+    <updated>2024-01-17T14:45:28.807Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>Project 1: 词法分析和语法分析</strong></p><p>在这个项目中，你将为BUPT编程语言（BPL）实现一个编译器的词法分析器和语法分析器。BPL是一种类C的编程语言，它去除了C标准中的大多数高级特性，比如宏和指针。项目的目标是编译BPL程序到MIPS32汇编代码。以下是关于词法分析和语法分析部分的详细说明。</p><p><strong>1. 词法分析 (Lexical Analysis)</strong>:</p><ul><li><strong>Flex工具</strong>: 你将使用GNU Flex生成词法分析器。Flex是一个快速的词法分析器生成器。你需要指定要匹配的令牌模式和对每个令牌应用的操作。Flex会将这些规格转换成一个NFA，然后将它转换成一个等价的DFA，并尽可能地最小化这个自动机，最终生成实现词法分析器的C代码。</li><li><strong>Flex编码</strong>: 在使用Flex时，你将使用正则表达式来定义模式，并使用C代码来定义动作。你将编写.lex文件，并通过Flex生成一个C源文件，该文件包含一个实现所有规则和相应动作的有限自动机。</li><li><strong>Flex特性</strong>: Flex还提供了一些有用的特性，如行号记录（yylineno）、输入和输出函数（input()和unput()），以及更多用于控制词法分析过程的函数。</li></ul><p><strong>2. 语法分析 (Syntax Analysis)</strong>:</p><ul><li><strong>Bison工具</strong>: 你将使用GNU Bison生成语法分析器。Bison是一个解析器生成器，你提供一个文法规范的输入，Bison将生成一个LALR(1)解析器来识别该文法的句子。这个解析器接受来自Flex的输入令牌流，以识别指定的上下文无关文法。</li><li><strong>Bison编码</strong>: 类似于Flex，Bison的源代码也包含可选的声明、定义和用户例程部分。你将为每个产生式关联一个动作，这允许你在使用该产生式进行规约时执行任何处理。你需要定义文法的每个非终结符，为每个规则指定优先级和结合性，并设置用于在词法分析器和解析器之间通信的全局变量。</li><li><strong>Bison特性</strong>: Bison还提供了一些高级特性，如符号位置信息、错误恢复和冲突解决机制等。这些特性可以帮助你更有效地实现语法分析器，并提供更稳健的错误处理和更精确的语法分析。</li></ul><p><strong>项目要求</strong>:</p><ul><li>你需要实现一个解析器，它接受单个命令行参数（BPL文件路径），并输出语法有效的BPL程序的语法树或报告代码中存在的所有词法&#x2F;语法错误。</li><li>你的解析器应该能够识别未定义字符或标记、结构非法等词法和语法错误，并为语法有效的BPL程序打印出其语法树。</li><li>你可以实现其他功能，如单行&#x2F;多行注释、宏预处理器、文件包含、for语句等。</li></ul><p>通过这个项目，你将学会如何使用现代的编译器工具（Flex和Bison）来自动化词法分析和语法分析过程，从而更深入地理解编译器前端的工作原理。同时，这也是构建编译器其他部分（如语义分析、中间代码生成、目标代码生成等）的基础。</p><p><strong>Project 2: 语义分析</strong></p><p>在Project 2中，你将继续构建BUPT编程语言（BPL）编译器的功能，专注于语义分析阶段。在前一个项目中完成词法和语法分析后，你已经能够生成语法有效的BPL程序的语法树。现在，语义分析阶段将确保程序有一个明确的定义，即验证程序的逻辑正确性，例如变量是否已声明、类型是否匹配等。</p><ol><li><p><strong>语义分析</strong>:</p><ul><li><strong>作用</strong>：语义分析主要确保程序中的所有声明和表达式在逻辑上是有意义和合法的，包括类型检查、变量声明、函数调用等。</li><li><strong>实现方式</strong>：不同于前一个项目中的工具辅助（如Flex和Bison），在这一阶段，你需要手动编写代码来实现语义分析，这可能是实现BPL编译器中最费力的部分。你需要设计各种数据结构（如符号表和数据类型表示）并仔细考虑它们最合适的实现方式。</li></ul></li><li><p><strong>符号表</strong>:</p><ul><li><strong>概述</strong>：符号表是映射名字到其关联信息的数据结构。在语义分析过程中，编译器将不断更新表中的信息以反映作用域内的内容。符号表的两个典型操作是插入和查找特定符号。</li><li><strong>实现</strong>：可以使用各种抽象数据类型来实现符号表，包括链表、二叉搜索树和哈希表。每种数据结构在空间&#x2F;时间复杂性和实现难度方面有所不同。你可以选择适合你需求的数据结构。</li></ul></li><li><p><strong>作用域检查</strong>:</p><ul><li><strong>概述</strong>：作用域检查是确定程序中的标识符是否在该位置可访问的过程。你可以使用不同的方法来实现支持作用域的符号表，比如命令式单一表方法或功能式独立表方法。</li><li><strong>实现</strong>：可以采用单一全局表，每个作用域内的符号在退出时移除；或者使用作用域栈，每个新的作用域开启一个新的符号表，并在作用域关闭时将其弹出。</li></ul></li><li><p><strong>类型检查</strong>:</p><ul><li><strong>类型系统</strong>：在编程语言中，类型是一组值和在这些值上操作的集合。BPL有两类数据类型：基本类型（由硬件直接提供，如int、char和float）和派生类型（由基本类型或派生类型聚合而成，如数组、结构体等）。</li><li><strong>类型等价性</strong>：如何确定两个类型是否等价？对于基本类型，问题很简单，例如int只等价于int。对于派生类型，事情就复杂多了。通常有两种类型等价性：命名等价性和结构等价性。命名等价性考虑类型的名称，而结构等价性考虑类型的结构。</li><li><strong>派生类型表示</strong>：实现层面上，代表原始类型使用常量就足够了。对于派生类型，例如数组和结构体，表示它们就比较复杂了。常见的技术是存储定义类型的基本信息为多级链表。</li></ul></li><li><p><strong>项目要求</strong>:</p><ul><li><strong>输入格式</strong>：与上一个项目相同，即执行文件<code>bplc</code>接受表示BPL程序路径的单个命令行参数。对于语义上合法的BPL程序，你的语义分析器不应该产生任何输出信息；否则，应该打印出有意义的错误信息。</li><li><strong>错误检测</strong>：你的分析器应该能够检测到一系列的语义错误，如未定义变量的使用、类型不匹配、函数调用参数不匹配等，并能够报告错误类型和行号。</li></ul></li></ol><p>通过这个项目，你将学习如何实现一个编译器的语义分析阶段，这是编译器理解程序并检测错误的关键环节。这个阶段需要对语言的类型系统、作用域规则和其他语义规则有深入的理解。</p><p><strong>Project 3: 中间代码生成</strong></p><ol><li><p><strong>概述</strong>：这个阶段的目的是让编译器为给定的源程序生成中间表示（IR），可以进一步优化以获得更好的运行时性能。IR是独立于机器和语言的源代码表示，大多数编译器首先将源程序翻译为某种形式的IR，然后将其转换为机器代码。IR的使用增强了抽象性，并实现了前端和后端之间更清晰的分离。大多数优化都是在中间代码上完成的。</p></li><li><p><strong>中间表示</strong>：中间表示有多种形式，包括线性IR、树IR和图IR等。这个阶段的输出是一种线性IR，特别是三地址代码（TAC），其中每条指令最多可以有三个操作数。这种IR有助于现代编译器优化，例如常量传播和死代码消除。TAC通常存储在一组四元组中，每个四元组包括一个操作符和两个源操作数及一个目标结果。</p></li><li><p><strong>运行时环境</strong>：编程语言提供了对硬件细节的抽象，但现代计算机硬件只能理解低级原语。编译器必须与操作系统配合以支持目标架构上的高级抽象，并生成额外的代码来维护高级功能。此外，编译器应该管理目标机制，以便生成的代码可以在相同的运行时环境中运行。</p></li><li><p><strong>数据表示</strong>：描述了如何在编译器中表示各种基本数据类型，包括字符、整数和布尔值等，以及指针的存储方式。此外，还介绍了如何在低级别上表示数组和结构体等复杂数据类型。</p></li><li><p><strong>函数调用</strong>：描述了函数调用的处理，包括活动函数的激活记录存储在堆栈中的细节以及参数传递的方法。详细介绍了按值传递和按引用传递这两种参数传递方式。</p></li><li><p><strong>翻译方案</strong>：要从解析树生成TAC，需要按后序遍历树，然后根据某些特定模式转换树节点。介绍了如何使用语法制导的翻译来完成此任务，并且为每个非终结符X实现一组translate_X函数。对于表达式和函数调用，提供了详细的翻译方案。</p></li><li><p><strong>项目要求</strong>：描述了项目的输入格式和假设条件，例如所有测试用例没有词法&#x2F;语法&#x2F;语义错误，只有整型原始类型变量等。这些假设意味着您可以在实现代码生成器时忽略它们的违规行为。</p></li></ol><p><strong>Project 4: 目标代码生成</strong></p><ol><li><p><strong>概述</strong>: 这个阶段是编译器工作流的最后一步，即目标代码生成。在前一阶段，三地址代码（TAC）作为中间表示（IR）已经被生成，但更底层的细节还未处理。目标代码生成是将这些三地址代码处理并最终生成可以在MIPS32机器上运行的可执行代码。</p></li><li><p><strong>实验环境</strong>: 描述了目标机器代码可以在模拟器中运行的环境设置。特别提到了SPIM模拟器，它是一个运行MIPS32程序的独立模拟器。</p></li><li><p><strong>指令选择</strong>:</p><ul><li><strong>编写MIPS32汇编</strong>: 介绍了MIPS32架构的基础知识，包括寄存器使用、数据移动和程序案例。讨论了如何将中间表示转换为机器代码，这个过程依赖于机器。</li><li><strong>翻译三地址码</strong>: 指出指令选择实际上是一个模式匹配问题。讨论了如何将TAC转换为数据操作和跳转指令，以及如何进行更优化的代码生成。</li></ul></li><li><p><strong>寄存器分配</strong>:</p><ul><li><strong>本地寄存器分配</strong>: 介绍了变量和寄存器数量的限制，以及如何在基本块内分配寄存器。探讨了寄存器分配的启发式算法，并提供了具体的寄存器分配实现例程。</li><li><strong>全局寄存器分配</strong>: 讨论了跨多个基本块分配寄存器的复杂性，并介绍了活性分析和图着色分配作为解决方案。这部分详细讨论了如何通过活性分析和图着色算法来进行有效的全局寄存器分配。</li></ul></li><li><p><strong>过程调用约定</strong>:</p><ul><li><strong>堆栈布局</strong>: 描述了堆栈帧的布局以及如何在过程调用中传递参数和返回值。讨论了寄存器和堆栈的使用约定，以及如何在过程调用中保存和恢复寄存器值。</li><li><strong>调用和返回序列</strong>: 详细说明了调用者和被调用者在过程调用中的责任，包括寄存器的保存和恢复，参数的传递，以及返回值的处理。</li></ul></li><li><p><strong>项目要求</strong>:</p><ul><li><strong>基本要求</strong>: 概述了项目的基础要求和假设条件，如中间代码的逻辑正确性，没有结构体或数组变量，以及所有整数常量都可以由MIPS32立即数表示。</li><li><strong>所需任务</strong>: 指出需要完成的两项主要任务，即寄存器分配和TAC翻译。讨论了如何设计和实现寄存器分配算法，以及如何翻译一些特定的TAC指令。</li></ul></li></ol><p>这份文档为目标代码生成阶段提供了详细的指导，包括理论知识、具体实施策略和项目要求，使学生能够理解并实现编译器的这一关键部分。<br>#</p>]]></content>
+    
+    
+    <summary type="html">编译原理实验部分期末考试的初步总结，供学弟学妹参考</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://zhangyuanhe.top/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="北邮信安" scheme="https://zhangyuanhe.top/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/"/>
+    
+    <category term="复习总结" scheme="https://zhangyuanhe.top/tags/%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BB%93/"/>
+    
+    <category term="编译原理" scheme="https://zhangyuanhe.top/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>信息系统安全期末复习总结</title>
     <link href="https://zhangyuanhe.top/2024/01/01/BUPT_note/Review%20of%20Information%20System%20Security/"/>
     <id>https://zhangyuanhe.top/2024/01/01/BUPT_note/Review%20of%20Information%20System%20Security/</id>
@@ -319,9 +323,9 @@
     
     <category term="北邮信安" scheme="https://zhangyuanhe.top/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/"/>
     
-    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
-    
     <category term="编译原理" scheme="https://zhangyuanhe.top/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
     
   </entry>
   
@@ -346,9 +350,9 @@
     
     <category term="北邮信安" scheme="https://zhangyuanhe.top/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/"/>
     
-    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
-    
     <category term="编译原理" scheme="https://zhangyuanhe.top/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
     
   </entry>
   
@@ -373,9 +377,9 @@
     
     <category term="北邮信安" scheme="https://zhangyuanhe.top/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/"/>
     
-    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
-    
     <category term="编译原理" scheme="https://zhangyuanhe.top/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
     
   </entry>
   
@@ -400,9 +404,9 @@
     
     <category term="北邮信安" scheme="https://zhangyuanhe.top/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/"/>
     
-    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
-    
     <category term="编译原理" scheme="https://zhangyuanhe.top/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
     
   </entry>
   
@@ -427,9 +431,9 @@
     
     <category term="北邮信安" scheme="https://zhangyuanhe.top/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/"/>
     
-    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
-    
     <category term="编译原理" scheme="https://zhangyuanhe.top/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
     
   </entry>
   
@@ -454,9 +458,9 @@
     
     <category term="北邮信安" scheme="https://zhangyuanhe.top/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/"/>
     
-    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
-    
     <category term="编译原理" scheme="https://zhangyuanhe.top/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
     
   </entry>
   
@@ -481,9 +485,9 @@
     
     <category term="北邮信安" scheme="https://zhangyuanhe.top/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/"/>
     
-    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
-    
     <category term="编译原理" scheme="https://zhangyuanhe.top/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="实验报告" scheme="https://zhangyuanhe.top/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
     
   </entry>
   
