@@ -1,0 +1,367 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ZYH's blog | ZYH's blog</title><meta name="author" content="Charmes"><meta name="copyright" content="Charmes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="Project 1: 词法分析和语法分析 在这个项目中，你将为BUPT编程语言（BPL）实现一个编译器的词法分析器和语法分析器。BPL是一种类C的编程语言，它去除了C标准中的大多数高级特性，比如宏和指针。项目的目标是编译BPL程序到MIPS32汇编代码。以下是关于词法分析和语法分析部分的详细说明。 1. 词法分析 (Lexical Analysis):  Flex工具: 你将使用GNU Flex生">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ZYH&#39;s blog">
+<meta property="og:url" content="https://zhangyuanhe.top/2024/01/16/BUPT_note/Review%20of%20Compilation%20principle/index.html">
+<meta property="og:site_name" content="ZYH&#39;s blog">
+<meta property="og:description" content="Project 1: 词法分析和语法分析 在这个项目中，你将为BUPT编程语言（BPL）实现一个编译器的词法分析器和语法分析器。BPL是一种类C的编程语言，它去除了C标准中的大多数高级特性，比如宏和指针。项目的目标是编译BPL程序到MIPS32汇编代码。以下是关于词法分析和语法分析部分的详细说明。 1. 词法分析 (Lexical Analysis):  Flex工具: 你将使用GNU Flex生">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhangyuanhe.top/img/note_cover.png">
+<meta property="article:published_time" content="2024-01-16T08:09:30.641Z">
+<meta property="article:modified_time" content="2024-01-07T07:14:00.914Z">
+<meta property="article:author" content="Charmes">
+<meta property="article:tag" content="信息安全">
+<meta property="article:tag" content="Heox">
+<meta property="article:tag" content="期末试题">
+<meta property="article:tag" content="北邮">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhangyuanhe.top/img/note_cover.png"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://zhangyuanhe.top/2024/01/16/BUPT_note/Review%20of%20Compilation%20principle/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: Charmes","link":"链接: ","source":"来源: ZYH's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ZYH\'s blog',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-01-07 15:14:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 8 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><span id="fps"></span><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="ZYH's blog" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">67</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/note_cover.png')"><nav id="nav"><span id="blog-info"><a href="/" title="ZYH's blog"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/logo.png"/><span class="site-name">ZYH's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-16T08:09:30.641Z" title="发表于 2024-01-16 16:09:30">2024-01-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-07T07:14:00.914Z" title="更新于 2024-01-07 15:14:00">2024-01-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><strong>Project 1: 词法分析和语法分析</strong></p>
+<p>在这个项目中，你将为BUPT编程语言（BPL）实现一个编译器的词法分析器和语法分析器。BPL是一种类C的编程语言，它去除了C标准中的大多数高级特性，比如宏和指针。项目的目标是编译BPL程序到MIPS32汇编代码。以下是关于词法分析和语法分析部分的详细说明。</p>
+<p><strong>1. 词法分析 (Lexical Analysis)</strong>:</p>
+<ul>
+<li><strong>Flex工具</strong>: 你将使用GNU Flex生成词法分析器。Flex是一个快速的词法分析器生成器。你需要指定要匹配的令牌模式和对每个令牌应用的操作。Flex会将这些规格转换成一个NFA，然后将它转换成一个等价的DFA，并尽可能地最小化这个自动机，最终生成实现词法分析器的C代码。</li>
+<li><strong>Flex编码</strong>: 在使用Flex时，你将使用正则表达式来定义模式，并使用C代码来定义动作。你将编写.lex文件，并通过Flex生成一个C源文件，该文件包含一个实现所有规则和相应动作的有限自动机。</li>
+<li><strong>Flex特性</strong>: Flex还提供了一些有用的特性，如行号记录（yylineno）、输入和输出函数（input()和unput()），以及更多用于控制词法分析过程的函数。</li>
+</ul>
+<p><strong>2. 语法分析 (Syntax Analysis)</strong>:</p>
+<ul>
+<li><strong>Bison工具</strong>: 你将使用GNU Bison生成语法分析器。Bison是一个解析器生成器，你提供一个文法规范的输入，Bison将生成一个LALR(1)解析器来识别该文法的句子。这个解析器接受来自Flex的输入令牌流，以识别指定的上下文无关文法。</li>
+<li><strong>Bison编码</strong>: 类似于Flex，Bison的源代码也包含可选的声明、定义和用户例程部分。你将为每个产生式关联一个动作，这允许你在使用该产生式进行规约时执行任何处理。你需要定义文法的每个非终结符，为每个规则指定优先级和结合性，并设置用于在词法分析器和解析器之间通信的全局变量。</li>
+<li><strong>Bison特性</strong>: Bison还提供了一些高级特性，如符号位置信息、错误恢复和冲突解决机制等。这些特性可以帮助你更有效地实现语法分析器，并提供更稳健的错误处理和更精确的语法分析。</li>
+</ul>
+<p><strong>项目要求</strong>:</p>
+<ul>
+<li>你需要实现一个解析器，它接受单个命令行参数（BPL文件路径），并输出语法有效的BPL程序的语法树或报告代码中存在的所有词法&#x2F;语法错误。</li>
+<li>你的解析器应该能够识别未定义字符或标记、结构非法等词法和语法错误，并为语法有效的BPL程序打印出其语法树。</li>
+<li>你可以实现其他功能，如单行&#x2F;多行注释、宏预处理器、文件包含、for语句等。</li>
+</ul>
+<p>通过这个项目，你将学会如何使用现代的编译器工具（Flex和Bison）来自动化词法分析和语法分析过程，从而更深入地理解编译器前端的工作原理。同时，这也是构建编译器其他部分（如语义分析、中间代码生成、目标代码生成等）的基础。</p>
+<p><strong>Project 2: 语义分析</strong></p>
+<p>在Project 2中，你将继续构建BUPT编程语言（BPL）编译器的功能，专注于语义分析阶段。在前一个项目中完成词法和语法分析后，你已经能够生成语法有效的BPL程序的语法树。现在，语义分析阶段将确保程序有一个明确的定义，即验证程序的逻辑正确性，例如变量是否已声明、类型是否匹配等。</p>
+<ol>
+<li><p><strong>语义分析</strong>:</p>
+<ul>
+<li><strong>作用</strong>：语义分析主要确保程序中的所有声明和表达式在逻辑上是有意义和合法的，包括类型检查、变量声明、函数调用等。</li>
+<li><strong>实现方式</strong>：不同于前一个项目中的工具辅助（如Flex和Bison），在这一阶段，你需要手动编写代码来实现语义分析，这可能是实现BPL编译器中最费力的部分。你需要设计各种数据结构（如符号表和数据类型表示）并仔细考虑它们最合适的实现方式。</li>
+</ul>
+</li>
+<li><p><strong>符号表</strong>:</p>
+<ul>
+<li><strong>概述</strong>：符号表是映射名字到其关联信息的数据结构。在语义分析过程中，编译器将不断更新表中的信息以反映作用域内的内容。符号表的两个典型操作是插入和查找特定符号。</li>
+<li><strong>实现</strong>：可以使用各种抽象数据类型来实现符号表，包括链表、二叉搜索树和哈希表。每种数据结构在空间&#x2F;时间复杂性和实现难度方面有所不同。你可以选择适合你需求的数据结构。</li>
+</ul>
+</li>
+<li><p><strong>作用域检查</strong>:</p>
+<ul>
+<li><strong>概述</strong>：作用域检查是确定程序中的标识符是否在该位置可访问的过程。你可以使用不同的方法来实现支持作用域的符号表，比如命令式单一表方法或功能式独立表方法。</li>
+<li><strong>实现</strong>：可以采用单一全局表，每个作用域内的符号在退出时移除；或者使用作用域栈，每个新的作用域开启一个新的符号表，并在作用域关闭时将其弹出。</li>
+</ul>
+</li>
+<li><p><strong>类型检查</strong>:</p>
+<ul>
+<li><strong>类型系统</strong>：在编程语言中，类型是一组值和在这些值上操作的集合。BPL有两类数据类型：基本类型（由硬件直接提供，如int、char和float）和派生类型（由基本类型或派生类型聚合而成，如数组、结构体等）。</li>
+<li><strong>类型等价性</strong>：如何确定两个类型是否等价？对于基本类型，问题很简单，例如int只等价于int。对于派生类型，事情就复杂多了。通常有两种类型等价性：命名等价性和结构等价性。命名等价性考虑类型的名称，而结构等价性考虑类型的结构。</li>
+<li><strong>派生类型表示</strong>：实现层面上，代表原始类型使用常量就足够了。对于派生类型，例如数组和结构体，表示它们就比较复杂了。常见的技术是存储定义类型的基本信息为多级链表。</li>
+</ul>
+</li>
+<li><p><strong>项目要求</strong>:</p>
+<ul>
+<li><strong>输入格式</strong>：与上一个项目相同，即执行文件<code>bplc</code>接受表示BPL程序路径的单个命令行参数。对于语义上合法的BPL程序，你的语义分析器不应该产生任何输出信息；否则，应该打印出有意义的错误信息。</li>
+<li><strong>错误检测</strong>：你的分析器应该能够检测到一系列的语义错误，如未定义变量的使用、类型不匹配、函数调用参数不匹配等，并能够报告错误类型和行号。</li>
+</ul>
+</li>
+</ol>
+<p>通过这个项目，你将学习如何实现一个编译器的语义分析阶段，这是编译器理解程序并检测错误的关键环节。这个阶段需要对语言的类型系统、作用域规则和其他语义规则有深入的理解。</p>
+<p><strong>Project 3: 中间代码生成</strong></p>
+<ol>
+<li><p><strong>概述</strong>：这个阶段的目的是让编译器为给定的源程序生成中间表示（IR），可以进一步优化以获得更好的运行时性能。IR是独立于机器和语言的源代码表示，大多数编译器首先将源程序翻译为某种形式的IR，然后将其转换为机器代码。IR的使用增强了抽象性，并实现了前端和后端之间更清晰的分离。大多数优化都是在中间代码上完成的。</p>
+</li>
+<li><p><strong>中间表示</strong>：中间表示有多种形式，包括线性IR、树IR和图IR等。这个阶段的输出是一种线性IR，特别是三地址代码（TAC），其中每条指令最多可以有三个操作数。这种IR有助于现代编译器优化，例如常量传播和死代码消除。TAC通常存储在一组四元组中，每个四元组包括一个操作符和两个源操作数及一个目标结果。</p>
+</li>
+<li><p><strong>运行时环境</strong>：编程语言提供了对硬件细节的抽象，但现代计算机硬件只能理解低级原语。编译器必须与操作系统配合以支持目标架构上的高级抽象，并生成额外的代码来维护高级功能。此外，编译器应该管理目标机制，以便生成的代码可以在相同的运行时环境中运行。</p>
+</li>
+<li><p><strong>数据表示</strong>：描述了如何在编译器中表示各种基本数据类型，包括字符、整数和布尔值等，以及指针的存储方式。此外，还介绍了如何在低级别上表示数组和结构体等复杂数据类型。</p>
+</li>
+<li><p><strong>函数调用</strong>：描述了函数调用的处理，包括活动函数的激活记录存储在堆栈中的细节以及参数传递的方法。详细介绍了按值传递和按引用传递这两种参数传递方式。</p>
+</li>
+<li><p><strong>翻译方案</strong>：要从解析树生成TAC，需要按后序遍历树，然后根据某些特定模式转换树节点。介绍了如何使用语法制导的翻译来完成此任务，并且为每个非终结符X实现一组translate_X函数。对于表达式和函数调用，提供了详细的翻译方案。</p>
+</li>
+<li><p><strong>项目要求</strong>：描述了项目的输入格式和假设条件，例如所有测试用例没有词法&#x2F;语法&#x2F;语义错误，只有整型原始类型变量等。这些假设意味着您可以在实现代码生成器时忽略它们的违规行为。</p>
+</li>
+</ol>
+<p><strong>Project 4: 目标代码生成</strong></p>
+<ol>
+<li><p><strong>概述</strong>: 这个阶段是编译器工作流的最后一步，即目标代码生成。在前一阶段，三地址代码（TAC）作为中间表示（IR）已经被生成，但更底层的细节还未处理。目标代码生成是将这些三地址代码处理并最终生成可以在MIPS32机器上运行的可执行代码。</p>
+</li>
+<li><p><strong>实验环境</strong>: 描述了目标机器代码可以在模拟器中运行的环境设置。特别提到了SPIM模拟器，它是一个运行MIPS32程序的独立模拟器。</p>
+</li>
+<li><p><strong>指令选择</strong>:</p>
+<ul>
+<li><strong>编写MIPS32汇编</strong>: 介绍了MIPS32架构的基础知识，包括寄存器使用、数据移动和程序案例。讨论了如何将中间表示转换为机器代码，这个过程依赖于机器。</li>
+<li><strong>翻译三地址码</strong>: 指出指令选择实际上是一个模式匹配问题。讨论了如何将TAC转换为数据操作和跳转指令，以及如何进行更优化的代码生成。</li>
+</ul>
+</li>
+<li><p><strong>寄存器分配</strong>:</p>
+<ul>
+<li><strong>本地寄存器分配</strong>: 介绍了变量和寄存器数量的限制，以及如何在基本块内分配寄存器。探讨了寄存器分配的启发式算法，并提供了具体的寄存器分配实现例程。</li>
+<li><strong>全局寄存器分配</strong>: 讨论了跨多个基本块分配寄存器的复杂性，并介绍了活性分析和图着色分配作为解决方案。这部分详细讨论了如何通过活性分析和图着色算法来进行有效的全局寄存器分配。</li>
+</ul>
+</li>
+<li><p><strong>过程调用约定</strong>:</p>
+<ul>
+<li><strong>堆栈布局</strong>: 描述了堆栈帧的布局以及如何在过程调用中传递参数和返回值。讨论了寄存器和堆栈的使用约定，以及如何在过程调用中保存和恢复寄存器值。</li>
+<li><strong>调用和返回序列</strong>: 详细说明了调用者和被调用者在过程调用中的责任，包括寄存器的保存和恢复，参数的传递，以及返回值的处理。</li>
+</ul>
+</li>
+<li><p><strong>项目要求</strong>:</p>
+<ul>
+<li><strong>基本要求</strong>: 概述了项目的基础要求和假设条件，如中间代码的逻辑正确性，没有结构体或数组变量，以及所有整数常量都可以由MIPS32立即数表示。</li>
+<li><strong>所需任务</strong>: 指出需要完成的两项主要任务，即寄存器分配和TAC翻译。讨论了如何设计和实现寄存器分配算法，以及如何翻译一些特定的TAC指令。</li>
+</ul>
+</li>
+</ol>
+<p>这份文档为目标代码生成阶段提供了详细的指导，包括理论知识、具体实施策略和项目要求，使学生能够理解并实现编译器的这一关键部分。<br>#</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://zhangyuanhe.top">Charmes</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zhangyuanhe.top/2024/01/16/BUPT_note/Review%20of%20Compilation%20principle/">https://zhangyuanhe.top/2024/01/16/BUPT_note/Review%20of%20Compilation%20principle/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="null" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zhangyuanhe.top" target="_blank">ZYH's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/note_cover.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/01/15/BUPT_note/Notes%20on%20software%20security/" title="软件安全课程笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">软件安全课程笔记</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="card-info-avatar"> <div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-status-box"><div class="author-status"><g-emoji class="g-emoji" alias="palm_tree" fallback-src="https://lskypro.acozycotage.net/LightPicture/2022/12/fe1dc0402e623096.jpg">🐟</g-emoji><span>认真摸鱼中</span></div></div></div><div class="author-info__name">Charmes</div><div class="author-info__description">敏于思 慎于行</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">67</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/shuita2333"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/shuita2333" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:603747072@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://gitee.com/bank-beaver" target="_blank" title="Gitee"><i class="fab fa-git-square" style="color: #d5382a;"></i></a><a class="social-icon" href="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729200147469.png" target="_blank" title="wechat"><i class="fab fa-weixin" style="color: #3CB371;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/01/16/BUPT_note/Review%20of%20Compilation%20principle/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/note_cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/01/16/BUPT_note/Review%20of%20Compilation%20principle/" title="无题">无题</a><time datetime="2024-01-16T08:09:30.641Z" title="发表于 2024-01-16 16:09:30">2024-01-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/15/BUPT_note/Notes%20on%20software%20security/" title="软件安全课程笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="软件安全课程笔记"/></a><div class="content"><a class="title" href="/2024/01/15/BUPT_note/Notes%20on%20software%20security/" title="软件安全课程笔记">软件安全课程笔记</a><time datetime="2024-01-15T13:00:00.000Z" title="发表于 2024-01-15 21:00:00">2024-01-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/14/BUPT_note/Notes%20on%20Information%20System%20Security/" title="信息系统安全课程笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信息系统安全课程笔记"/></a><div class="content"><a class="title" href="/2024/01/14/BUPT_note/Notes%20on%20Information%20System%20Security/" title="信息系统安全课程笔记">信息系统安全课程笔记</a><time datetime="2024-01-14T13:00:00.000Z" title="发表于 2024-01-14 21:00:00">2024-01-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/11/BUPT_note/Notes%20on%20Compilation%20principle/" title="编译原理与技术课程笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译原理与技术课程笔记"/></a><div class="content"><a class="title" href="/2024/01/11/BUPT_note/Notes%20on%20Compilation%20principle/" title="编译原理与技术课程笔记">编译原理与技术课程笔记</a><time datetime="2024-01-11T13:00:00.000Z" title="发表于 2024-01-11 21:00:00">2024-01-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/10/BUPT_note/Notes%20on%20Complex%20network/" title="复杂网络课程笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="复杂网络课程笔记"/></a><div class="content"><a class="title" href="/2024/01/10/BUPT_note/Notes%20on%20Complex%20network/" title="复杂网络课程笔记">复杂网络课程笔记</a><time datetime="2024-01-10T13:00:00.000Z" title="发表于 2024-01-10 21:00:00">2024-01-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer-wrap"></div><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>再看看那个光点，它就在这里，这是家园，这是我们 —— 你所爱的每一个人，你认识的一个人，你听说过的每一个人，曾经有过的每一个人，都在它上面度过他们的一生✨</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://stellarium.org/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/link/">我的朋友</a></li><li> <a href="/about/">关于作者</a></li><li> <a href="/archives/">文章归档</a></li><li> <a href="/categories/">文章分类</a></li><li> <a href="/tags/">文章标签</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="https://zhangyuanhe.top/" title="Charmes"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon1.png" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://liuruibin.com/" title="LRBlog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lrblog-img-1304667442.file.myqcloud.com/method.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://akilar.top/" title="Akilarの糖果屋"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lskypro.acozycotage.net/LightPicture/2022/12/6bf1ed05796db59c.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="http://www.azuredust.cc" title="de4dst4r blog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://www.azuredust.cc/wp-content/themes/personalblogily/inc/starter_content/img/portrait.png" alt=""/></a></div></div></div></div><div class="copyright"><span><b>&copy;2023 - 2024</b></span><span><b>&nbsp;&nbsp;By Charmes</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a><span class="footer-separator">|</span><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src=/img/icp.png>
+<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2023019220号-1</a></div><div id="workboard"></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button class="share" type="button" title="右键模式" onclick="changeMouseMode()"><i class="fas fa-mouse"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div class="js-pjax" id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());window.location.reload();"><i class="fa fa-search"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-too"><a class="rightMenu-item" href="javascript:window.open(window.getSelection().toString());window.location.reload();"><i class="fa fa-link"></i><span>转到链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-paste"><a class="rightMenu-item" href="javascript:rmf.paste()"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comment"></i><span>空降评论</span></a><a class="rightMenu-item" href="javascript:rmf.copyWordsLink()"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-to"><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:rmf.open()"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-img"><a class="rightMenu-item" href="javascript:rmf.saveAs()"><i class="fa fa-download"></i><span>保存图片</span></a><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制图片链接</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:randomPost()"><i class="fa fa-paper-plane"></i><span>随便逛逛</span></a><a class="rightMenu-item" href="javascript:switchNightMode();"><i class="fa fa-moon"></i><span>昼夜切换</span></a><a class="rightMenu-item" href="/about/"><i class="fa fa-info-circle"></i><span>关于博客</span></a><a class="rightMenu-item" href="javascript:toggleWinbox();"><i class="fas fa-cog"></i><span>美化设置</span></a><a class="rightMenu-item" href="javascript:rmf.fullScreen();"><i class="fas fa-expand"></i><span>切换全屏</span></a><a class="rightMenu-item" href="javascript:window.print();"><i class="fa-solid fa-print"></i><span>打印页面</span></a></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.textContent = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/light.js"></script><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script src="/js/sun_moon.js" async></script><script type="text/javascript" src="https://cdn1.tianli0.top/npm/jquery@latest/dist/jquery.min.js"></script><script type="text/javascript" src="/js/rightmenu.js"></script><script defer src="/js/another.js"></script><script defer src="/js/runtime.js"></script><script async src="/js/fps.js"></script><script async src="/js/title.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/博客搭建/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 Charmesの魔改教程 (13)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/课程笔记/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📒 Charmesの学习笔记 (10)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/信安课程实验/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👩‍💻 Charmesの编程学习 (38)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item" style="visibility: hidden"></div><a class="magnet_link_more"  href="https://zhangyuanhe.top/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>
