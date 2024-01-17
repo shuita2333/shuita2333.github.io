@@ -1,0 +1,1043 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>信息论与编码课程笔记 | ZYH's blog</title><meta name="author" content="Charmes"><meta name="copyright" content="Charmes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="信息论与编码的初步总结，供参考">
+<meta property="og:type" content="article">
+<meta property="og:title" content="信息论与编码课程笔记">
+<meta property="og:url" content="https://zhangyuanhe.top/2024/01/10/BUPT_note/Notes%20on%20Information%20Theory%20and%20Coding/index.html">
+<meta property="og:site_name" content="ZYH&#39;s blog">
+<meta property="og:description" content="信息论与编码的初步总结，供参考">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png">
+<meta property="article:published_time" content="2024-01-10T13:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-17T12:26:46.991Z">
+<meta property="article:author" content="Charmes">
+<meta property="article:tag" content="北邮信安">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://zhangyuanhe.top/2024/01/10/BUPT_note/Notes%20on%20Information%20Theory%20and%20Coding/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: Charmes","link":"链接: ","source":"来源: ZYH's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '信息论与编码课程笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-17 20:26:46'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 8 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><span id="fps"></span><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="ZYH's blog" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png')"><nav id="nav"><span id="blog-info"><a href="/" title="ZYH's blog"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/logo.png"/><span class="site-name">ZYH's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">信息论与编码课程笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-10T13:00:00.000Z" title="发表于 2024-01-10 21:00:00">2024-01-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-17T12:26:46.991Z" title="更新于 2024-01-17 20:26:46">2024-01-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">19.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>75分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="信息论与编码课程笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="信息论与编码-李丽香"><a href="#信息论与编码-李丽香" class="headerlink" title="信息论与编码 李丽香"></a>信息论与编码 李丽香</h1><h1 id="第一章-信息论与编码理论概述"><a href="#第一章-信息论与编码理论概述" class="headerlink" title="第一章 信息论与编码理论概述"></a>第一章 信息论与编码理论概述</h1><h2 id="信息论与编码理论概述"><a href="#信息论与编码理论概述" class="headerlink" title="信息论与编码理论概述"></a>信息论与编码理论概述</h2><p>自从汉明码开始，各种信道编码获得了长足的发展，如</p>
+<ul>
+<li>格雷码，Reed-Muller码，循环码，Reed-Solomon码,BCH码</li>
+<li>卷积码，Turbo码，LDPC码，Polar码</li>
+<li>级联码，网格编码调制，代数几何码</li>
+<li>编织卷积码，纠删码，空时码</li>
+<li>网络编码，量子纠错码，二维码</li>
+<li>基于信息论与编码理论的安全技术</li>
+</ul>
+<h3 id="编码机制"><a href="#编码机制" class="headerlink" title="编码机制"></a>编码机制</h3><ul>
+<li>编码：信息从一种形式或格式转换为另一种形式的过程。</li>
+<li>编码机制：用预先规定的方法将文字、数字或其它对象编成数码，或将信息、数据转换成规定的电脉冲信号。</li>
+</ul>
+<h3 id="信源编码"><a href="#信源编码" class="headerlink" title="信源编码"></a>信源编码</h3><p>目的：提高通信的有效性，即以更少的符号来表示原始消息</p>
+<p>通过减少消息符号序列中的冗余度，提高平均信息量</p>
+<h3 id="随机错误"><a href="#随机错误" class="headerlink" title="随机错误"></a>随机错误</h3><ul>
+<li>随机错误：接收序列中的传输错误是随机出现的。</li>
+<li>随机错误信道：这样的信道称为随机错误信道。</li>
+</ul>
+<h3 id="突发错误"><a href="#突发错误" class="headerlink" title="突发错误"></a>突发错误</h3><p>突发错误：不同状态特性下，错误出现的概率不一样，这种错误为突发错误。</p>
+<h3 id="纠错码"><a href="#纠错码" class="headerlink" title="纠错码"></a>纠错码</h3><p>目的：检测和纠正由于非人为(自然)因素引起的传输错误</p>
+<p>设计机制：通过对消息符号序列加入冗余信息，使得接收方收到信号后，可以通过这些冗余信息进行检错和纠错</p>
+<h2 id="数字通信系统的组成及各种信道"><a href="#数字通信系统的组成及各种信道" class="headerlink" title="数字通信系统的组成及各种信道"></a>数字通信系统的组成及各种信道</h2><h3 id="数字通信系统模型"><a href="#数字通信系统模型" class="headerlink" title="数字通信系统模型"></a>数字通信系统模型</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/Untitled.png" alt="Untitled"></p>
+<h3 id="无记忆信道和有记忆信道"><a href="#无记忆信道和有记忆信道" class="headerlink" title="无记忆信道和有记忆信道"></a>无记忆信道和有记忆信道</h3><p>无记忆信道：如果在给定时间间隔上，检测器的输出只与在该时间间隔上传送的信号有关，而与任何前面时间的传送的信号无关，称此信道为无记忆信道。该信道可以用如下公式表示：</p>
+<p>$$<br>P(Y&#x2F;X)&#x3D; \prod_n p(y_n&#x2F;x_n)<br>$$</p>
+<p>有记忆信道：一种M元输入、Q元输出的信道模型。该信道可以用如下公式表示：</p>
+<p>$$<br>P(y_n&#x2F;x_{n-k+1},…,x_{n-1},x_n)<br>$$</p>
+<h3 id="离散无记忆-DMC-信道"><a href="#离散无记忆-DMC-信道" class="headerlink" title="离散无记忆(DMC)信道"></a>离散无记忆(DMC)信道</h3><p>是一种M元输入、Q元输出的信道模型。</p>
+<p>条件概率P(Y&#x2F;X)是描述该信道的最好方式，也叫做转移概率，其中X表示调制器输入符号，Y表示解调器输出符号，P(Y&#x2F;X)表示发送为X接收为Y的概率。</p>
+<h3 id="二元对称-BSC-信道"><a href="#二元对称-BSC-信道" class="headerlink" title="二元对称(BSC)信道"></a>二元对称(BSC)信道</h3><p>信道矩阵：一个信道也可由它的转移概率组成的矩阵来表示。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/Untitled%201.png" alt="Untitled"></p>
+<h3 id="信道矩阵"><a href="#信道矩阵" class="headerlink" title="信道矩阵"></a>信道矩阵</h3><p>一般离散单符号信道的信道矩阵为：</p>
+<p>$$<br>\begin{bmatrix} P(b_1|a_1) &amp; P(b_2|a_1) &amp; \dots &amp; P(b_s|a_1) \ P(b_1|a_2) &amp; P(b_2|a_2) &amp; \dots &amp; P(b_s|a_2) \ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \P(b_1|a_r) &amp; P(b_2|a_r) &amp; \dots &amp; P(b_s|a_r)  \end{bmatrix}<br>$$</p>
+<h3 id="加性高斯白噪声-AWGN-信道"><a href="#加性高斯白噪声-AWGN-信道" class="headerlink" title="加性高斯白噪声(AWGN)信道"></a>加性高斯白噪声(AWGN)信道</h3><ul>
+<li>加性噪声：叠加在信号上的一种噪声。</li>
+<li>白噪声：噪声的功率谱密度在所有的频率上均为一常数。</li>
+<li>高斯白噪声：白噪声取值的概率分布服从高斯分布，其自相关系数为无延时的冲击函数。</li>
+</ul>
+<h2 id="通信系统涉及的一些基本概念"><a href="#通信系统涉及的一些基本概念" class="headerlink" title="通信系统涉及的一些基本概念"></a>通信系统涉及的一些基本概念</h2><h3 id="信息传输率"><a href="#信息传输率" class="headerlink" title="信息传输率"></a>信息传输率</h3><ul>
+<li>符号传输率：为1&#x2F;T，每T秒传输一个编码符号，即单位时间内传输的符号个数。</li>
+<li>码速率：编码后的数据流中有用部分的比例，对于(n,k)线性分组码，码速率为R&#x3D;k&#x2F;n，即k个信息比特对应于传送n个符号。</li>
+<li>信息传输率(数据率)：在编码系统中，若码速率是R&#x3D;k&#x2F;n，则信息传输率(数据率)为R&#x2F;T(bit&#x2F;s)。</li>
+</ul>
+<h3 id="信道带宽"><a href="#信道带宽" class="headerlink" title="信道带宽"></a>信道带宽</h3><p>除了噪声的作用造成信号改变外，所有的通信系统都会因为带宽有限而造成信号失真。</p>
+<ul>
+<li>最小信道带宽：为基本保证信号不因带宽原因而失真，粗略估计等于W&#x3D;1&#x2F;(2T)(Hz)。</li>
+<li>未编码系统：数据率1&#x2F;T&#x3D;2W，受到带宽影响。</li>
+<li>二元编码系统：数据率R&#x2F;T&#x3D;2RW。同未编码系统相比，若要保持数据率不变，则要求带宽扩展1&#x2F;R倍。</li>
+</ul>
+<h3 id="AWGN信道的分组编码系统"><a href="#AWGN信道的分组编码系统" class="headerlink" title="AWGN信道的分组编码系统"></a>AWGN信道的分组编码系统</h3><p>译码器的条件错误概率：已知接收序列Y时</p>
+<p>$$<br>P_e(H_m&#x2F;Y),P_e(X_m&#x2F;Y)<br>$$</p>
+<p>译码器的错误概率：</p>
+<p>$$<br>P_e(H_m)&#x3D;P_e(X_m)&#x3D;\sum_Y P_e(X_m&#x2F;Y)P(Y)<br>$$</p>
+<h3 id="最佳译码规则和最大后验概率译码"><a href="#最佳译码规则和最大后验概率译码" class="headerlink" title="最佳译码规则和最大后验概率译码"></a>最佳译码规则和最大后验概率译码</h3><ul>
+<li><p><strong>最佳译码规则</strong>：能够使译码错误概率P(E)达到最小的译码规则</p>
+</li>
+<li><p>由于接收序列Y是译码前产生的，所以P(Y)与译码规则无关</p>
+</li>
+<li><p>最佳译码规则必须对所有Y，使得</p>
+<p>  $$<br>  P(E&#x2F;Y)\cong P(Y \neq X&#x2F;Y)<br>  $$</p>
+<p>  &#96;最小，即 P(Y&#x3D;X&#x2F;Y) 最大。</p>
+</li>
+<li><p><strong>最大后验概率译码</strong>：对于每个输入Y，如果译码器能在码字集合中选择一个码字，作为发送码字的估值，并且使P(X&#x2F;Y)最大，则这种译码规则一定能使译码器输出的错误概率最小。</p>
+</li>
+</ul>
+<h3 id="似然函数"><a href="#似然函数" class="headerlink" title="似然函数"></a>似然函数</h3><p>Bayes公式：</p>
+<p>$$<br>\uparrow P(X&#x2F;Y)&#x3D;\frac{P(Y&#x2F;X)P(X)}{P(Y)} \公式(1)<br>$$</p>
+<ul>
+<li>对于给定的Y，可选择能使公式(1)右边最大的向量作为X的估计值。</li>
+<li>如果所有码字都是等可能的，即P(X)是常数，那么公式(1)左边最大，就推导出P(Y&#x2F;X)最大。</li>
+<li>P(Y&#x2F;X)：叫做似然函数、信道转移概率。</li>
+</ul>
+<h3 id="最大似然译码"><a href="#最大似然译码" class="headerlink" title="最大似然译码"></a>最大似然译码</h3><ul>
+<li><p>定义：若能在码字集合选择合适的码字X，使得P(Y&#x2F;X)最大，则这种译码规则被称为最大似然译码。</p>
+</li>
+<li><p>对数似然函数：由于lnx与x是单调关系，故有lnP(Y&#x2F;X)。</p>
+</li>
+<li><p>对于离散无记忆信道，由于</p>
+<p>  $$<br>  P(Y&#x2F;X)&#x3D;\sum_n P(y_i&#x2F;x_i)<br>  $$</p>
+<p>  所以</p>
+<p>  $$<br>  \ln P(Y&#x2F;X)&#x3D;\sum_n \ln P(y_i&#x2F;x_i)<br>  $$</p>
+</li>
+<li><p>MLD：对应的译码器称为最大似然译码器。</p>
+</li>
+<li><p>MLD规则：是最为可行的一种译码规则。</p>
+</li>
+<li><p>对于DMC和BSC信道是一种最佳译码准则。但是在某些情况下并不是最佳的译码规则，如当发送端不是以等概率发送码字的时候。</p>
+</li>
+</ul>
+<h3 id="BSC信道的最大似然译码"><a href="#BSC信道的最大似然译码" class="headerlink" title="BSC信道的最大似然译码"></a>BSC信道的最大似然译码</h3><p>$$<br>P(y_i&#x2F;x_i)&#x3D;\begin{cases} 1-p&amp;  y_i&#x3D;x_i\p&amp; y_i\neq x_i \end{cases}<br>$$</p>
+<p>Y为二元序列，用d(Y, X)表示Y和X之间的距离，即不同位数的个数</p>
+<p>$$<br>\ln P(Y&#x2F;X)&#x3D;d(y,X)\ln p+(n-d(Y,X))\ln (1-p) &#x3D;\ d(Y,X)\ln \frac {p}{1-p} +n\ln(1-p)<br>$$</p>
+<p>即想要P(Y&#x2F;X)最大，则需要d(Y, X)最小</p>
+<p>最小距离译码器：在BSC中，MLD规则变成了选择能使Y和X之间的汉明距离为最小的向量，作为码字X的估计值</p>
+<h1 id="数据安全中的数学问题"><a href="#数据安全中的数学问题" class="headerlink" title="数据安全中的数学问题"></a>数据安全中的数学问题</h1><p>语义</p>
+<p>语法：01比特</p>
+<p>语用</p>
+<h2 id="信道编码"><a href="#信道编码" class="headerlink" title="信道编码"></a>信道编码</h2><p>y&#x3D;Ax+b mod  q</p>
+<p>分组码</p>
+<p>循环码</p>
+<p>卷积码</p>
+<h2 id="LDPC码"><a href="#LDPC码" class="headerlink" title="LDPC码"></a>LDPC码</h2><p>有低密度的稀疏矩阵，就表示是LDPC码</p>
+<h2 id="压缩感知"><a href="#压缩感知" class="headerlink" title="压缩感知"></a>压缩感知</h2><p>y&#x3D;Ax+b</p>
+<p>如果x稀疏，A满足一定的条件，通过y A可以找到x</p>
+<p>由于A不可逆，无法通过求找到x</p>
+<p>现实中的x一般并不稀疏，进过一个变化之后，再一组正交基上可以进行稀疏表示</p>
+<h3 id="矩阵A与x维数不匹配"><a href="#矩阵A与x维数不匹配" class="headerlink" title="矩阵A与x维数不匹配"></a>矩阵A与x维数不匹配</h3><p>格密码，编码，压缩感知都有对测量矩阵尺寸多样性的需求</p>
+<h3 id="半张量积压缩感知"><a href="#半张量积压缩感知" class="headerlink" title="半张量积压缩感知"></a>半张量积压缩感知</h3><p>$$<br>y&#x3D;a\ltimes x+b<br>$$</p>
+<h1 id="第二章-信息论基础与信源编码理论"><a href="#第二章-信息论基础与信源编码理论" class="headerlink" title="第二章 信息论基础与信源编码理论"></a>第二章 信息论基础与信源编码理论</h1><p>信息的定义：信息是事物运动状态或存在方式不确定性的描述</p>
+<h2 id="自信息"><a href="#自信息" class="headerlink" title="自信息"></a>自信息</h2><p>定义：考虑离散随机变量X，其样本空间为{xi, i&#x3D;1, 2,…,n}，则事件X&#x3D;xi的自信息的定义为</p>
+<p>$$<br>I(x_i)&#x3D;log(\frac{1}{P(x_i)})&#x3D;-logP(x_i)<br>$$</p>
+<blockquote>
+<p>自信息的单位由对数的底来决定，以2为底，单位就是比特(bits)，以e为底就是奈特(nats)。自信息非负。</p>
+</blockquote>
+<h2 id="互信息"><a href="#互信息" class="headerlink" title="互信息"></a>互信息</h2><p>定义： xi和yi之间的互信息定义为</p>
+<p>$$<br>I(x_i;y_i)&#x3D;log(\frac{P(x_i|y_i)}{P(x_i)})<br>$$</p>
+<p>互信息的性质：</p>
+<p>性质1：互易性 I(xi;yi)&#x3D; I(yi;xi)。<br>性质2：当xi和yi是统计上独立的，即P(xi|yi)&#x3D; P(xi)，则I(xi;yi)&#x3D;0。<br>性质3：互信息量可以是正的，也可以是负的。</p>
+<blockquote>
+<p>思考题：计算二元对称(BSC)信道的互信息量?</p>
+<p>计算二元对称信道（Binary Symmetric Channel，BSC）的互信息量（Mutual Information）可以使用以下的LaTeX公式表示：</p>
+<p><em>I</em>(<em>X</em>;<em>Y</em>)&#x3D;<em>H</em>(<em>Y</em>)−<em>H</em>(<em>Y</em>∣<em>X</em>)</p>
+<p>其中：</p>
+<ul>
+<li><p><em>I</em>(<em>X</em>;<em>Y</em>) 表示信道输入 <em>X</em> 和输出 <em>Y</em> 之间的互信息量。</p>
+</li>
+<li><p><em>H</em>(<em>Y</em>) 表示接收端输出 <em>Y</em> 的熵（Entropy），可以用以下公式计算：</p>
+<p>  $$<br>  H(Y) &#x3D; -\sum_{i&#x3D;1}^{2} P(Y&#x3D;y_i) \cdot \log_2(P(Y&#x3D;y_i))<br>  $$</p>
+</li>
+</ul>
+<p>这里的 <em>y</em>1 和 <em>y</em>2 分别表示接收到的0和1的可能性，<em>P</em>(<em>Y</em>&#x3D;<em>yi</em>) 是接收到符号 <em>yi</em> 的概率。</p>
+<ul>
+<li><p><em>H</em>(<em>Y</em>∣<em>X</em>) 表示在已知输入 <em>X</em> 的条件下，接收端输出 <em>Y</em> 的条件熵（Conditional Entropy），可以用以下公式计算：</p>
+<p>  $$<br>  H(Y|X) &#x3D; -\sum_{i&#x3D;1}^{2} \sum_{j&#x3D;1}^{2} P(X&#x3D;x_j, Y&#x3D;y_i) \cdot \log_2\left(\frac{P(X&#x3D;x_j, Y&#x3D;y_i)}{P(X&#x3D;x_j)}\right)<br>  $$</p>
+</li>
+</ul>
+<p>对于二元对称信道（BSC），错误概率 p 相等，即 P(Y&#x3D;0∣X&#x3D;1)&#x3D;P(Y&#x3D;1∣X&#x3D;0)&#x3D;p，而 P(Y&#x3D;0∣X&#x3D;0)&#x3D;P(Y&#x3D;1∣X&#x3D;1)&#x3D;1−p。因此，可以使用这些概率值来计算上述公式中的各项。</p>
+</blockquote>
+<h2 id="平均自信息量-信息熵"><a href="#平均自信息量-信息熵" class="headerlink" title="平均自信息量(信息熵)"></a>平均自信息量(信息熵)</h2><p>定义：离散随机变量X的平均自信息定义为，其样本空间为{xi, i&#x3D;1, 2,…,n}，则事件X&#x3D;xi的平均自信息量的定义为</p>
+<p>$$<br>H(X)&#x3D;E{log(\frac{1}{P(x_i)})}&#x3D;\sum^n_{i&#x3D;1}P(x_i)I(x_i)&#x3D;-\sum^n_{i&#x3D;1}P(x-_i)logP(x_i)<br>$$</p>
+<p>其中H(X)表示每个信源符号的平均信息量。</p>
+<h2 id="平均条件自信息量-条件熵"><a href="#平均条件自信息量-条件熵" class="headerlink" title="平均条件自信息量(条件熵)"></a>平均条件自信息量(条件熵)</h2><p>定义：平均条件自信息H(X|Y)定义为</p>
+<p>$$<br>H(X|Y)&#x3D;\sum^n_{i&#x3D;1}\sum^m_{j&#x3D;1}P(x_iy_i)log\frac{1}{P(x_i|y_i)}<br>$$</p>
+<blockquote>
+<p>思考题：计算二元对称(BSC)信道的平均条件自信息量(条件熵)?</p>
+</blockquote>
+<h2 id="无失真信源编码"><a href="#无失真信源编码" class="headerlink" title="无失真信源编码"></a>无失真信源编码</h2><h3 id="等长信源编码定理"><a href="#等长信源编码定理" class="headerlink" title="等长信源编码定理"></a>等长信源编码定理</h3><p>定理: 一个熵为H(X)的离散无记忆信源，若对信源长为N的符号序列进行等长编码，设码字是从r个字母的码符号集合中，选取l个码元组成。对于任意的ε&gt;0，只要满足</p>
+<p>$$<br>\frac{l}{N}\geq \frac{H(X)+\varepsilon}{log\gamma}<br>$$</p>
+<p>则当N足够大时，可实现几乎无失真编码，即译码错误概率可为任意小。</p>
+<h3 id="变长码"><a href="#变长码" class="headerlink" title="变长码"></a>变长码</h3><table>
+<thead>
+<tr>
+<th>字母</th>
+<th>码字</th>
+<th>字母</th>
+<th>码字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>0</td>
+<td>E</td>
+<td>10</td>
+</tr>
+<tr>
+<td>B</td>
+<td>1</td>
+<td>F</td>
+<td>11</td>
+</tr>
+<tr>
+<td>C</td>
+<td>00</td>
+<td>G</td>
+<td>000</td>
+</tr>
+<tr>
+<td>D</td>
+<td>01</td>
+<td>H</td>
+<td>111</td>
+</tr>
+</tbody></table>
+<p>若对字母序列ABADCAB进行编码，则得到0 1 0 01 00 0 1<br>译码不唯一：可能被译为DADAAAB(01 0 01 0 0 0 1)<br>或者AEDGB(0 10 01 000 1)</p>
+<blockquote>
+<p>注：变长码必须是惟一可译码，才能实现无失真编码。</p>
+</blockquote>
+<h3 id="变长信源编码定理"><a href="#变长信源编码定理" class="headerlink" title="变长信源编码定理"></a>变长信源编码定理</h3><p>定理:一个熵为H(X)的离散无记忆信源，并有r个码元的码符号集合，总可以找到一种无失真编码方法，构成惟一可译码，使其平均码长满足</p>
+<p>$$<br>\frac{H(X)}{logr}\leq\bar{L}&lt;\frac{H(X)}{logr}+1<br>$$</p>
+<p>则当N足够大时，可实现几乎无失真编码，即译码错误概率可为任意小。</p>
+<h3 id="信道的信息传输率"><a href="#信道的信息传输率" class="headerlink" title="信道的信息传输率"></a>信道的信息传输率</h3><p>变长信源编码定理中的极限值H(X)&#x2F;logr同等长信源编码定理中的极限值是一致的。</p>
+<p>定义：信道的信息传输率(码率)为</p>
+<p>$$<br>R&#x3D;\frac{H(X)}{logr}<br>$$</p>
+<p>得到编码后信道的信息传输率为</p>
+<p>$$<br>R\le\bar{L}<br>$$</p>
+<h2 id="经典的信源编码方法"><a href="#经典的信源编码方法" class="headerlink" title="经典的信源编码方法"></a>经典的信源编码方法</h2><h3 id="信源编码—霍夫曼-Huffman-编码"><a href="#信源编码—霍夫曼-Huffman-编码" class="headerlink" title="信源编码—霍夫曼(Huffman)编码"></a>信源编码—霍夫曼(Huffman)编码</h3><p>一个离散无记忆信源有7个符号xi, i&#x3D;1,..,7，P(X&#x3D;x1)&#x3D;0.37, P(X&#x3D;x2)&#x3D;0.33, P(X&#x3D;x3)&#x3D;0.16, P(X&#x3D;x4)&#x3D;0.07, P(X&#x3D;x5)&#x3D;0.04, P(X&#x3D;x6)&#x3D;0.02, P(X&#x3D;x7)&#x3D;0.01, 将7个信源符号按照概率递减的顺序进行排序，构造如图8所示的霍夫曼树。<br>按照编码路径从后往前返回，就得到对应的码字x7&#x3D;111111, x6&#x3D;111110, x5&#x3D;11110, x4&#x3D;1110，x3&#x3D;110, x2&#x3D;10，x1&#x3D;0。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/Untitled%202.png" alt="Untitled"></p>
+<blockquote>
+<p>思考题：如何编程序实现霍夫曼编码?</p>
+<ol>
+<li>构建霍夫曼树：<ul>
+<li>统计输入数据中每个字符的频率。</li>
+<li>创建叶子节点，每个叶子节点代表一个字符，并将频率作为节点的权重。</li>
+<li>将叶子节点放入一个优先队列（最小堆）中，以便频率最低的节点位于队列的前面。</li>
+<li>重复以下步骤，直到只剩下一个节点为止：<ul>
+<li>从队列中弹出两个频率最低的节点。</li>
+<li>创建一个新的节点，其权重等于这两个节点的权重之和。</li>
+<li>将新节点插入队列中。</li>
+</ul>
+</li>
+<li>最后队列中剩下的节点就构成了霍夫曼树。</li>
+</ul>
+</li>
+<li>生成霍夫曼编码：<ul>
+<li>遍历霍夫曼树，从根节点开始，分别向左和向右遍历树的边。</li>
+<li>每次向左移动时，将编码中添加一个 0，每次向右移动时，将编码中添加一个 1。</li>
+<li>当到达叶子节点时，您就得到了字符的霍夫曼编码。</li>
+</ul>
+</li>
+<li>构建编码表：<ul>
+<li>将每个字符与其对应的霍夫曼编码存储在一个编码表中，以便在编码和解码过程中使用。</li>
+</ul>
+</li>
+<li>编码和解码：<ul>
+<li>使用编码表将输入数据编码为霍夫曼编码。</li>
+<li>使用霍夫曼树将霍夫曼编码解码为原始数据。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3 id="游程编码"><a href="#游程编码" class="headerlink" title="游程编码"></a>游程编码</h3><p>游程：信源输出的字符序列中，各种字符连续的重复出现的字符串的个数。<br>游程编码：就是将这种字符序列映射成字符串的长度和字符串的位置的标志序列。<br>游程编码常用作图形文件的编码方式，如.bmp和.tiff。</p>
+<blockquote>
+<p>例子：考虑比特序列11111111111111100000000000000000001111，可以被表示成(15,1),(19,0),(4,1)，字符最长的重复的数目为19，因此，把该比特序列编码为(01111,1), (10011,0), (00100,1)，此时压缩率为18:38&#x3D;1:2.11。</p>
+</blockquote>
+<blockquote>
+<p>思考题：如何编程序实现游程编码?</p>
+<ol>
+<li><strong>统计字符频率</strong>：<ul>
+<li>首先，需要扫描输入文本并统计每个字符的频率。这是构建霍夫曼树的基础，因为频率高的字符将具有较短的编码。</li>
+</ul>
+</li>
+<li><strong>构建霍夫曼树</strong>：<ul>
+<li>基于字符频率，构建霍夫曼树。通常，使用一个优先队列（最小堆）来管理节点，每个节点代表一个字符及其频率。在构建过程中，反复合并两个最小频率的节点，创建一个新的节点，并将其插入回队列，直到队列中只剩下一个节点，即根节点，表示整个霍夫曼树已构建完成。</li>
+</ul>
+</li>
+<li><strong>生成霍夫曼编码</strong>：<ul>
+<li>遍历霍夫曼树，从根节点开始，每当沿着左子树移动时添加0，沿着右子树移动时添加1。当到达叶子节点时，记录下当前路径所对应的字符的编码。</li>
+</ul>
+</li>
+<li><strong>构建编码表</strong>：<ul>
+<li>将每个字符和它对应的霍夫曼编码存储在一个编码表中，以便在编码和解码过程中使用。</li>
+</ul>
+</li>
+<li><strong>编码文本</strong>：<ul>
+<li>使用编码表将输入文本中的字符编码为霍夫曼编码。</li>
+</ul>
+</li>
+<li><strong>解码文本</strong>：<ul>
+<li>使用霍夫曼树将霍夫曼编码解码为原始文本。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3 id="LZ-Lemple-Ziv-编码"><a href="#LZ-Lemple-Ziv-编码" class="headerlink" title="LZ(Lemple-Ziv)编码"></a>LZ(Lemple-Ziv)编码</h3><p>分段的方法：1)游程先取第一个符号作为第一段，然后再继续分段；2)若有出现与前面符号一样时，就再添加紧跟后面的一个符号一起组成一段；3)尽可能取最少个连着的符号并保证各段都不相同；4)以此类推，直至信源符号序列结束。<br>编码方法：首先去掉最后一个符号，然后看剩下的字符串在字典中的排序，这个排序值转换成二进制数作为指针X的值，最后一个信源符号作为码字第2项d的值，即得到码字(X, d)。</p>
+<blockquote>
+<p>例子：考虑比特序列101011011010101011，根据上面的编码方法可把该比特序列分段为1, 0, 10, 11, 01, 101, 010, 1011。<br>码字为：(000,1),( 000,0), (001,0), (001,1), (010,1), (011,1), (101,0), (110,1)。</p>
+</blockquote>
+<blockquote>
+<p>思考题：如何编程序实现LZ编码?</p>
+<ol>
+<li><strong>初始化字典</strong>：创建一个空的字典，其中包含所有可能的单个字符作为初始词条。</li>
+<li><strong>扫描输入数据</strong>：从左到右扫描输入数据，逐步构建编码输出。开始时，当前扫描位置指向输入数据的第一个字符。</li>
+<li><strong>查找最长匹配</strong>：在字典中查找与当前扫描位置匹配的最长字符串（前缀），这个字符串必须存在于字典中。如果找到匹配，就将扫描位置移动到匹配字符串的末尾，否则将当前字符作为一个字典词条。</li>
+<li><strong>输出编码</strong>：将匹配字符串的索引（或编码）输出到结果中，并将匹配字符串后的字符作为下一个字典词条的一部分。</li>
+<li><strong>更新字典</strong>：将新的字典词条添加到字典中，以便下次匹配时使用。</li>
+<li><strong>重复步骤3到步骤5</strong>，直到扫描完成整个输入数据。</li>
+</ol>
+</blockquote>
+<h2 id="纠错码的理论基础"><a href="#纠错码的理论基础" class="headerlink" title="纠错码的理论基础"></a>纠错码的理论基础</h2><h3 id="信道容量"><a href="#信道容量" class="headerlink" title="信道容量"></a>信道容量</h3><p>定义：考虑某种概率分布为P(x)的离散无记忆信源，对于一个固定的信道，信道容量被定义为最大的平均互信息，此时传输每个符号平均获得的信息量最大，即对于每个固定的信道可以达到最大的信息传输率，即</p>
+<p>$$<br>C&#x3D;\max_{P(X_j)}I(X;Y)&#x3D;\max_{P(X_J)}\sum^{q-1}<em>{j&#x3D;1}\sum^{r-1}</em>{i&#x3D;o}P(x_j)P(y_i|x_j)\log \frac {P(y_i|x_j)}{P(y_i)}<br>$$</p>
+<p>其约束条件为</p>
+<p>$$<br>P(x_j)\ge0\ ,\sum^{q-1}_{j&#x3D;0}P(x_j)&#x3D;1<br>$$</p>
+<blockquote>
+<p>思考题：如何计算给定某种信道的信道容量?</p>
+<ol>
+<li><p><strong>确定信道模型</strong>：首先，需要明确定义所使用的信道模型。不同的信道（例如二进制对称信道、高斯信道、无线信道等）具有不同的数学表示和特性。你需要了解信道的概率分布和噪声性质。</p>
+</li>
+<li><p><strong>计算信道容量</strong>：使用香农-哈特利定理来计算信道容量。该定理的公式如下：</p>
+<p> $$<br> C+B·\log_2(1+SNR)<br> $$</p>
+<p> 其中，</p>
+<ul>
+<li><em>C</em> 表示信道容量（比特每秒，bps）。</li>
+<li><em>B</em> 表示信道的带宽（赫兹，Hz），它表示信号传输的频率范围。</li>
+<li>SNRSNR 表示信噪比，定义为信号功率与噪声功率之比。通常以对数（以分贝为单位）表示。</li>
+</ul>
+</li>
+<li><p><strong>SNR计算</strong>：计算信噪比（SNR）是信道容量计算的关键。SNR的计算方式取决于信道的特性。例如，在高斯信道中，SNR通常表示为信号功率与噪声功率之比。</p>
+</li>
+<li><p><strong>确定带宽</strong>：带宽（B）是信号传输的频率范围，通常以赫兹（Hz）表示。带宽的选择与具体的通信系统和应用有关。</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="纠错编码的理论基础"><a href="#纠错编码的理论基础" class="headerlink" title="纠错编码的理论基础"></a>纠错编码的理论基础</h3><p>香农编码定理：如果系统的传输率小于信道容量，那么适当选择编码技术就能实现可靠通信，即可以将差错率减小到任意小的程度。</p>
+<h3 id="信道编码定理"><a href="#信道编码定理" class="headerlink" title="信道编码定理"></a>信道编码定理</h3><p>定理：假设DMS有信源字符集X，熵为每信源符号H(X)比特，而且信源每Ts秒产生一个符号，那么信源的平均信息率为每秒H(X)&#x2F;Ts比特，假设信道可以每Tc秒使用一次，而信道容量为每次信道使用C比特，那么每单位时间的信道容量为每秒钟C&#x2F;Tc比特。如果H(X)&#x2F;Ts≤ C&#x2F;Tc，那么就存在编码方案使得在有噪声的信道上传输的信源消息，能够以任意小的错误概率进行恢复。</p>
+<h1 id="第三章-线性分组"><a href="#第三章-线性分组" class="headerlink" title="第三章 线性分组"></a>第三章 线性分组</h1><h2 id="分组码"><a href="#分组码" class="headerlink" title="分组码"></a>分组码</h2><blockquote>
+<p><strong>分组码：将消息序列分组进行编码</strong></p>
+</blockquote>
+<p>每组消息u有k个信息位，共有$2^k$个不同的消息</p>
+<blockquote>
+<p><strong>码字：编码器按照一定规则将每个输入消息u变换成二元n重v，n&gt;k，这个二元n重v称作消息u的码字或码矢。</strong></p>
+</blockquote>
+<p>所有$2^k$个码字组成的集合称作是分组码</p>
+<blockquote>
+<p>为什么在分组码中码字的个数是$2^k$个?<br>当编码字的位数是$2^k$时，这些码字可以更容易地排列成矩阵，例如二维数组，以便进行操作和计算。这种排列方式在编码和解码时通常更加高效。</p>
+</blockquote>
+<h2 id="线性分组码"><a href="#线性分组码" class="headerlink" title="线性分组码"></a>线性分组码</h2><p>线性分组码即具有线性性质的分组码</p>
+<p><strong>定义：长为n，有$2^k$个码字的分组码，当且仅当其$2^k$个码字构成GF(2)上所有n重矢量空间的一个k维子空间时，称作线性(n, k)分组码。</strong></p>
+<h2 id="生成矩阵"><a href="#生成矩阵" class="headerlink" title="生成矩阵"></a>生成矩阵</h2><p>∵ 线性(n,k)分组码C是一个k维子空间<br>∴ 在码C中能找到k个线性独立的码字$g_0, g_1,…, g_{k-1}，$使得C中的每个码字v都是这k个码字的一种线性组合，即 $v&#x3D;u_0g_0+u_1g_1+…+u_{k-1}g_{k-1}$</p>
+<blockquote>
+<p>生成矩阵：将k个线性独立的码字作为行，得到k×n阶矩阵</p>
+<p>$$<br>G&#x3D;<br>\begin{pmatrix}<br>g_0\g_1\ \vdots \g_{k-1}<br>\end{pmatrix}&#x3D;\begin{pmatrix}<br>g_{00}&amp;g_{01}&amp;\dots&amp;g_{0n-1}\g_{10}&amp;g_{11}&amp;\dots&amp;g_{1n-1}\ \vdots \g_{(k-1)0}&amp;g_{(k-1)1}&amp;\dots&amp;g_{(k-1)n-1}<br>\end{pmatrix}<br>$$</p>
+</blockquote>
+<h2 id="一致校验-监督-矩阵"><a href="#一致校验-监督-矩阵" class="headerlink" title="一致校验(监督)矩阵"></a>一致校验(监督)矩阵</h2><p>∵ (n,k)线性码有r(r&#x3D;n-k)个校验码元<br>∴ 必须有r个独立的线性方程</p>
+<p>对于任一码字c, 有cHT&#x3D;0</p>
+<p>$∵c&#x3D;iG\<br>∴ GH^T&#x3D;0$</p>
+<blockquote>
+<p>校验矩阵：该矩阵由r行n列组成，即</p>
+<p>$$<br>H&#x3D;\begin{pmatrix}<br>h_{1,n}&amp;h_{1,n-1}&amp;\dots&amp;h_{1,1}\h_{2,n}&amp;h_{2,n-1}&amp;\dots&amp;h_{2,1}\ \vdots \h_{r,n}&amp;h_{r,n-1}&amp;\dots&amp;h_{r,1}<br>\end{pmatrix}<br>$$</p>
+</blockquote>
+<p>一致校验矩阵的标准形式：经过初等变换，得到$H&#x3D;[Q I_r]$</p>
+<h2 id="线性系统分组码"><a href="#线性系统分组码" class="headerlink" title="线性系统分组码"></a>线性系统分组码</h2><p><strong>定义：若(n,k)线性分组码C的生成矩阵形如$G&#x3D;[P I_k]$或$G&#x3D;[I_k P])$，此时称C为线性系统分组码。</strong></p>
+<p>$$<br>G&#x3D;<br>\begin{pmatrix}<br>g_0\g_1\ \vdots \g_{k-1}<br>\end{pmatrix}&#x3D;[P \ I_k]&#x3D;\begin{pmatrix}<br>p_{0,0}&amp;p_{0,1}&amp;\dots&amp;p_{0,n-k-1}&amp; \vdots&amp;1&amp;0&amp;0&amp;\dots&amp;0 \p_{1,0}&amp;p_{1,1}&amp;\dots&amp;p_{1,n-k-1}&amp; \vdots&amp;0&amp;1&amp;0&amp;\dots&amp;0 \ p_{2,0}&amp;p_{2,1}&amp;\dots&amp;p_{2,n-k-1}&amp; \vdots&amp;0&amp;0&amp;1&amp;\dots&amp;0\ \vdots\ p_{k-1,0}&amp;p_{k-1,1}&amp;\dots&amp;p_{k-1,n-k-1}&amp; \vdots&amp;0&amp;0&amp;0&amp;\dots&amp;1<br>\end{pmatrix}<br>$$</p>
+<p>此时，如果用任意消息u同G做乘法，就会发现每个码字都可以被分成两个部分：消息部分和冗余部分</p>
+<h2 id="一致校验方程"><a href="#一致校验方程" class="headerlink" title="一致校验方程"></a>一致校验方程</h2><p>对于线性系统分组码</p>
+<p>$$<br>v&#x3D;u·G&#x3D;(u_0,u_1,\dots,u_{k-1})·\begin{pmatrix}<br>p_{0,0}&amp;p_{0,1}&amp;\dots&amp;p_{0,n-k-1}&amp; \vdots&amp;1&amp;0&amp;0&amp;\dots&amp;0 \p_{1,0}&amp;p_{1,1}&amp;\dots&amp;p_{1,n-k-1}&amp; \vdots&amp;0&amp;1&amp;0&amp;\dots&amp;0 \ p_{2,0}&amp;p_{2,1}&amp;\dots&amp;p_{2,n-k-1}&amp; \vdots&amp;0&amp;0&amp;1&amp;\dots&amp;0\ \vdots\ p_{k-1,0}&amp;p_{k-1,1}&amp;\dots&amp;p_{k-1,n-k-1}&amp; \vdots&amp;0&amp;0&amp;0&amp;\dots&amp;1<br>\end{pmatrix}<br>$$</p>
+<p>对应于消息$u&#x3D;(u_0,u_1,\dots,u_{k-1})$的码字是$v&#x3D;(v_0,v_1,\dots,v_{n-1})&#x3D;u·G$，即$v_{n-k+i}&#x3D;u_i , 0≤i≤k-1$</p>
+<p>$v_j&#x3D;u_0p_{0j}+u_1p{1j}+…+u_{k-1}p_{k-1j}, 0≤j≤n-k-1$</p>
+<p>上面两个式子正好反映系统的组成特性，最后这n-k个方程称为码C的一致校验方程。</p>
+<h2 id="对偶码"><a href="#对偶码" class="headerlink" title="对偶码"></a>对偶码</h2><p><strong>定义：令S是$V_n$的k维子空间，并令$S_d$是$V_n$中这样矢量的集合，即对S中的任意u和$S_d$中的任意v，有u·v&#x3D;0，则$S_d$也是$V_n$的一个子空间，它称为S的对偶空间或零化空间。</strong></p>
+<p>定理：令S是$V_n$中的一个k维子空间，则S的对偶空间的	维数是n-k。</p>
+<p>对偶码：以H为生成矩阵得到的(n,n-k)码称为码C的对偶码,记为$C_d$。</p>
+<h2 id="系统码的一致校验矩阵"><a href="#系统码的一致校验矩阵" class="headerlink" title="系统码的一致校验矩阵"></a>系统码的一致校验矩阵</h2><p>若码C的生成矩阵具有系统形式$G&#x3D;[P I_k]$或$[I_k P]$，则其一致校验矩阵形如H&#x3D;$[I_{n-k} P^T]$或$H&#x3D;[P^T I_{n-k}]$。</p>
+<h2 id="伴随式"><a href="#伴随式" class="headerlink" title="伴随式"></a>伴随式</h2><p>伴随式：当接收到r后，译码器计算下述n-k重$S&#x3D;r·H……T &#x3D;(s_0, s_1,…, s_{n-k-1})$则称S为r的伴随式。</p>
+<p>当且仅当是一个码字(即无传输错误)时有S&#x3D;0，否则错误矢量本身就是一个码字，此时出现了不可检错误。只要码C设计适当，就几乎不会出现不可检错误。</p>
+<h2 id="伴随式纠错"><a href="#伴随式纠错" class="headerlink" title="伴随式纠错"></a>伴随式纠错</h2><p>根据伴随式定义， 我们有$S&#x3D;r·H^T &#x3D;(v+e)·H^T&#x3D;v·H^T+e·H^T&#x3D;e·H^T$</p>
+<p>可以看出，伴随式是错误图样的组合，即伴随式包含了一定程度的错误图样信息，因而可以用来纠错——伴随式纠错。</p>
+<blockquote>
+<p>考虑某(7,3)码，该码的生成矩阵G和H为</p>
+<p>$$<br>G&#x3D;\begin{pmatrix}   0&amp;1&amp;1&amp;1&amp;1&amp;0&amp;0\     1&amp;0&amp;1&amp;1&amp;0&amp;1&amp;0\      1&amp;1&amp;1&amp;0&amp;0&amp;0&amp;1\end{pmatrix}, H&#x3D;\begin{pmatrix}   1&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1\     0&amp;1&amp;0&amp;0&amp;1&amp;0&amp;1\      0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;0\       0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;0\end{pmatrix}<br>$$</p>
+<p>令u&#x3D;(101),v&#x3D;(1001101)是发送码字，r&#x3D;(0001101)是接收矢量，收到r后首先计算S&#x3D;r·HT &#x3D;(1000)≠0，由伴随式和错误图样的关系方程有：1&#x3D;e0+e5+e6, 0&#x3D;e1+e4+e6, 0&#x3D;e2+e4+e5+e6, 0&#x3D;e3+e4+e5, 则得到23&#x3D;8个错误图样(1000000), (1010111), (1101011), … …, 其中(1000000)是非零分量最少的图样，考虑BSC信道，则(1000000)是最为可能的错误矢量，因而确定v&#x3D;r+e&#x3D;(0001101)+ (1000000)&#x3D;(1001101)</p>
+</blockquote>
+<h2 id="汉明重量"><a href="#汉明重量" class="headerlink" title="汉明重量"></a>汉明重量</h2><p><strong>汉明重量：令v&#x3D;(v0, v1,…, vn-1)是二元n重，v的汉明重量w(v) 定义为v中非零分量的个数。</strong></p>
+<blockquote>
+<p>举例：设有两个码字{0100,1111},则它们的汉明重量为	w(0100)&#x3D;1, w(1111)&#x3D;4</p>
+</blockquote>
+<p>重量分布：对于码长为n的一个分组码, 不同的码字可能具有 相同的汉明重量, 若记Ai为该码中汉明重量为i的码字个数, 称{A0, A1,…, An}是该码的重量分布。</p>
+<h2 id="汉明距离"><a href="#汉明距离" class="headerlink" title="汉明距离"></a>汉明距离</h2><p><strong>定义：令u&#x3D;(u0, u1,…, un-1)和v&#x3D;(v0, v1,…, vn-1)是两个二元n重，	则u和v之间的汉明距离d(u, v)定义为u+v的汉明重量。</strong></p>
+<blockquote>
+<p>举例：设有两个码字{0100,1111},则它们的汉明距离	d(0100, 1111)&#x3D;3</p>
+</blockquote>
+<p>汉明距离的性质：</p>
+<ol>
+<li>非负性，d(u, v)≥0；</li>
+<li>d(u, v)&#x3D;0，当且仅当u&#x3D;v的时候；</li>
+<li>对称性： d(u, v) &#x3D;d(v, u) ；</li>
+<li>三角不等式： d(u, v)+d(v, w)≥d(u, w)</li>
+</ol>
+<h2 id="距离分布"><a href="#距离分布" class="headerlink" title="距离分布"></a>距离分布</h2><p><strong>定义：在(n,k)码中，任意两个码字之间都有一个汉明距离，	两组不同码字之间可能有相同的汉明距离。若记	Di(0≤i≤n)为距离为i的码字组数，那么称{D0, D1,…,Dn}为此分组码的距离分布，并且称能够使Di≠0的那个最小整数i为该码的最小码间距离。</strong></p>
+<p>特别的，对于线性分组码，有如下定理：(n,k)线性码的最小码间距离等于非零码字的最	小汉明重量。</p>
+<blockquote>
+<p><strong>定理：设(n,k)线性码C的最小码间距离为d，则1)若	d≥t+1，则码C能检测t个随机错误；2)若d≥2t+1	，则码C能纠正t个随机错误；3)若d≥t+e+1，则	码C能纠正t (t≤e)个随机错误，同时还能检测e个	随机错误。</strong></p>
+</blockquote>
+<p>定理：(n,k,d*)线性码C的最小码间距离d<strong>满足d</strong>≤n-k+1</p>
+<p><strong>定义：若(n,k)线性码的最小码间距离d满足d&#x3D;n-k+1，那么称	该码为最大距离可分码，简称MDS码。</strong></p>
+<h2 id="标准阵"><a href="#标准阵" class="headerlink" title="标准阵"></a>标准阵</h2><p>令(n,k)线性码C的所有码字是接收矢量r是一个n重，则按如下的方式构造码C的标准阵：</p>
+<p>$$<br>\begin{bmatrix}   v_1&#x3D;0&amp;v_2&amp;\dots&amp;v_i&amp;\dots&amp;v_{2^k}\     e_2&amp;e_2+v_2&amp;\dots&amp;e_2+v_i&amp;\dots&amp;e_2+v_{2^k}\      e_3&amp;e_3+v_2&amp;\dots&amp;e_3+v_i&amp;\dots&amp;e_3+v_{2^k}\   \vdots  \ e_{2^{n+k}}&amp;e_{2^{n+k}}+v_2&amp;\dots&amp;e_{2^{n+k}}+v_i&amp;\dots&amp;e_{2^{n+k}}+v_{2^k}\ \end{bmatrix}<br>$$</p>
+<p>性质1：同一行中任意两个n重之和为一个码字。<br>性质2：在标准阵中，同一行没有两个n重是相同的，每个n重在且仅在一行中出现。</p>
+<blockquote>
+<p>性质2的证明：</p>
+</blockquote>
+<ol>
+<li>假设第l行有2个n重是相同的，如对i≠j有$e_l+v_i&#x3D;e_l+v_j$，即$v_i&#x3D;v_j$，这与标准阵的构造相矛盾，故性质2的第一句话得证。</li>
+<li>首先由定义知每个n重至少出现一次，假设一个n重在第l行和第m行(l&lt;m)都出现，则必存在i，使得该n重等于$e_l+v_i$，且存在j，使得该n重等于$e_m+v_j$，即有$e_m&#x3D;e_l+(v_i+v_j)&#x3D;e_l+v_s$，这意味着$e_m$在第l行，这与标准阵的构造定义相矛盾。<blockquote>
+</blockquote>
+</li>
+</ol>
+<h2 id="陪集"><a href="#陪集" class="headerlink" title="陪集"></a>陪集</h2><p>定义：标准阵中共有$2_{n-k}$行，它们称为码C的陪集。<br>陪集首：每个陪集中的第一个n重$e_i$称为陪集首。陪集中的任 何一个元素都可以作为陪集首，需要做置换操作。</p>
+<p>对于一个码字$v_i$, 如果信道造成的错误图样是陪集首, 则接收矢量r在陪集中, 此时, 可以将接收矢量正确的译码为$v_i$; 否则, 若信道造成的错误图样不是陪集首, 则会造成错误译码。</p>
+<blockquote>
+<p>定理：陪集首是可纠正的错误图样，共有2n-k个可纠正的错误图样。</p>
+</blockquote>
+<h2 id="基于标准阵的译码方法"><a href="#基于标准阵的译码方法" class="headerlink" title="基于标准阵的译码方法"></a>基于标准阵的译码方法</h2><p>方法：如果接收矢量r落在标准阵中的第i行第j列，那么就将r	译码为vj，同时错误图样为ei，即$r&#x3D;e_i+v_j$。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/Untitled%203.png" alt="Untitled"></p>
+<p>缺点：当所考虑的码C的n和k的值都很大的时候，标准阵列的长度就变得非常的巨大，此时，用标准阵来译码就变得不实用了。</p>
+<h2 id="最小距离译码方法"><a href="#最小距离译码方法" class="headerlink" title="最小距离译码方法"></a>最小距离译码方法</h2><p>方法：对BSC信道，为了使译码错误概率最小，可以选择汉	明重量最小的n重做为陪集首，即将接收矢量r译码为	与r的汉明距离最小的那个码字。</p>
+<blockquote>
+<p>举例：考虑码C&#x3D;{00000,01010,10101,11111}，<br>该码的最小距离是2。<br>如果传输的码字是11111，接收的矢量是11110，那么，<br>d(11110, 00000)&#x3D;4, d(11110, 01010)&#x3D;2,<br>d(11110, 10101)&#x3D;3, d(11110, 11111)&#x3D;1。<br>用最小距离译码方法可以得出传输的码字就是11111这	样的结论。</p>
+</blockquote>
+<blockquote>
+<p>思考题：有办法来给标准阵降阶么?<br>结合前面计算伴随式的例子，可以知道伴随式比标准阵的长度短很多。因此，可以用伴随式译码来代替标准阵译码方法。</p>
+</blockquote>
+<h2 id="伴随式译码"><a href="#伴随式译码" class="headerlink" title="伴随式译码"></a>伴随式译码</h2><p>定理：一个陪集的所有$2^k$个n重有同样的伴随式。不同陪集的	伴随式不同。</p>
+<p>证明：如果x,y属于同一个陪集，那么</p>
+<p>$$<br>\Leftrightarrow x+C&#x3D;y+C\ \Leftrightarrow x-y \in C\ \Leftrightarrow(x-y)H^T&#x3D;0\ \Leftrightarrow xH^T&#x3D;yH^T\ \Leftrightarrow S(x)&#x3D;S(y)<br>$$</p>
+<p>伴随式译码举例:</p>
+<p>举例：考虑码C&#x3D;{0000,1011,0101,1110}，对应的标准阵就是</p>
+<p>$$<br>\begin{matrix}   0000&amp;1011&amp;0101&amp;1110&amp;00\ 1000&amp;0011&amp;1101&amp;0110&amp;11\ 0100&amp;1111&amp;0001&amp;1010&amp;01\ 0010&amp;1001&amp;0111&amp;1100&amp;10\ 陪集首&amp;&amp;&amp;&amp;伴随式\end{matrix}<br>$$</p>
+<p>如果接收矢量是v&#x3D;(1101)，先通过公式$S&#x3D;vH^T$求出伴随式(11)，确定对应的陪集首(1000)，这就是错误向量e。然后根据e+v&#x3D;(1000)+(1101)求出传输的码字为(0101)</p>
+<h2 id="完备码"><a href="#完备码" class="headerlink" title="完备码"></a>完备码</h2><p>定义：一个能达到汉明界的码成为完备码，满足</p>
+<p>$$<br>M\begin{Bmatrix}\begin{pmatrix}n\0  \end{pmatrix}+ \begin{pmatrix}n\1  \end{pmatrix}(q-1)+ \begin{pmatrix}n\2  \end{pmatrix}(q-1)^2+ \dots+\begin{pmatrix}n\t  \end{pmatrix}(q-1)^t \end{Bmatrix} &#x3D;q^n<br>$$</p>
+<p>其中, M为码字数目, q是q元, n是码长, t是纠错能力</p>
+<p>特殊的, 对于二元完备码, 满足$2^{n-k}&#x3D;\sum^{t}_{i&#x3D;0}\begin{pmatrix}n\i  \end{pmatrix}$</p>
+<h2 id="汉明码"><a href="#汉明码" class="headerlink" title="汉明码"></a>汉明码</h2><p>定理：q元汉明码Ham(r,q)是参数为(n,k,d)的线性码，其中,	$r&#x3D;n-k, n&#x3D;(q^r-1)&#x2F;(q-1), k&#x3D;(q^r-1)&#x2F;(q-1)-r, d_{min}&#x3D;3$。</p>
+<p>特殊的, 对于二元汉明码, 满足$(n, k)&#x3D;(2^r-1, 2^r-1-r)$。</p>
+<blockquote>
+<p>构造汉明码的两种方法：</p>
+</blockquote>
+<ol>
+<li>构造H阵的标准形式H&#x3D;[Q Ir], Q是构造Ir后剩下的2r-1-r列任意排列。</li>
+<li>H阵的列是按r重表示的二进制数的顺序排列。<blockquote>
+</blockquote>
+</li>
+</ol>
+<h1 id="第四章-循环码"><a href="#第四章-循环码" class="headerlink" title="第四章 循环码"></a>第四章 循环码</h1><p>循环移位：将n重$v&#x3D;(v_{n-1}, v_{n-2}, … , v_1, v_0)$的分量循环左移一位, 得到另一个n重$v(1)&#x3D;(v_{n-2}, … , v_1, v_0, v_{n-1})$, 称为v的循环移位。若v的分量循环左移i位, 得到$v(i)&#x3D;(v_{n-i-1}, … , v_1, v_0, v_{n-1}, … , v_{n-i})$。</p>
+<p>循环码的定义：一个(n, k)线性码C，若它的每个码字的任何循环移位都仍然是一个码字，则称此码为循环码。</p>
+<blockquote>
+<p>循环码的优势：具有许多固有的代数结构，可以找到各种实用的译码方法，使用具有反馈的线性移位寄存器可以容易的实现编码和伴随式计算。</p>
+</blockquote>
+<h2 id="码字多项式"><a href="#码字多项式" class="headerlink" title="码字多项式"></a>码字多项式</h2><p>码字多项式：为研究循环码的代数特性，将码字$v&#x3D;(v_{n-1}, v_{n-2}, … , v_1, v_0)$的各个分量看成是多项式</p>
+<p>$$<br>v(x)&#x3D;\sum^{n-1}<em>{i&#x3D;0}v_ix^i&#x3D;v</em>{n-1}x^{n-1}+\dots+v_1x+v_0<br>$$</p>
+<p>的系数，此多项式称为v的码字多项式。</p>
+<p>对应于码矢v(i)&#x3D;( vn-i-1, … , v1, v0, vn-1, … , vn-i)的码字多项式为$v^{(i)}(x)&#x3D;v_{n-i-1}x^{n-1}+v_{n-i-2}x^{n-2}+…+v_1x^{i+1}+v_0x^i+v_{n-1}x^{i-1}+…+v_{n-i+1}x+v_{n-i}$</p>
+<p>码字多项式$v^{(i)}(x)$就是$x^iv^{(0)}(x)&#x2F;(x^n+1)$的余式。</p>
+<h2 id="循环码的代数性质"><a href="#循环码的代数性质" class="headerlink" title="循环码的代数性质"></a>循环码的代数性质</h2><blockquote>
+<p>定理1：循环码C中次数最低的非零码字多项式是唯一的。</p>
+</blockquote>
+<p>证明：令$g(x)&#x3D;\sum^r_{i&#x3D;0}g_ix_i,g_r&#x3D;1$是C中次数最低的码字多项式，若g(x)不唯一，则存在另一个码字多项式$g*(x)&#x3D;\sum^r_{i&#x3D;0}g^*_ix_i,g^*_r&#x3D;1$ ，由线性性质可知，g(x)+g*(x)也是一个码字多项式，但它的次数小于r，和前提矛盾，因此，循环码C中次数最低的非零码字多项式是唯一的。证毕。</p>
+<blockquote>
+<p>定理2：若$g(x)&#x3D;x^r+g_{r-1}x^{r-1}+…+g_1x+g_0$是(n, k)循环码C中次数最低的非零码字多项式, 则必有$g_0&#x3D;1$。</p>
+</blockquote>
+<p>证明：若$g_0&#x3D;0$，则$g(x)&#x3D;x(x^{r-1}+g_{r-1}x^{r-2}+…+g_2x+g_1)$，将g(x)循环左移n-1位之后，可以得到一个次数更低的码字多项式，其次数为r-1，和前提矛盾，则必有$g_0&#x3D;1$。证毕。<br>结合定理1和定理2，知在(n,k)循环码中，次数最低的非零码字多项式形如$g(x)&#x3D;x^r+g_{r-1}x^{r-1}+…+g_1x+1$。</p>
+<p>考虑多项式$g^{(1)}(x)&#x3D;xg(x), g^{(2)}(x)&#x3D;x^2g(x),…，g^{(n-r-1)}(x)&#x3D;x^{n-r-1}g(x)$都是g(x)的循环移位, 它们都是码字多项式, 次数分别为r+1, r+2, …, n-1。<br>根据码字多项式的线性性质可知，它们的任意线性组合<br>$v(x)&#x3D;u_{n-r-1}x^{n-r-1}g(x)+…+u_1xg(x)+u_0g(x)&#x3D;(u_{n-r-1}x^{n-r-1}+…+u_1x+u_0)g(x)$也是C的码字多项式。<br>(n, k)循环码的码字多项式, 次数分别为r, r+1, r+2, … , n-1，次数小于或等于n-1并且是g(x)的倍式的二元多项式共有$2^{n-r}$个, 它们是(n, k)循环码C的所有码字, 因此, 必有k&#x3D;n-r或r&#x3D;n-k。</p>
+<blockquote>
+<p>定理3：若g(x)是(n, k)循环码C中次数最低的非零码字多项式，一个次数小于或等于n-1的二元多项式f(x)是码字多项式当且仅当f(x)是g(x)的倍式。</p>
+</blockquote>
+<p>证明：反证法。设f(x)是码字多项式且其次数小于或等于n-1,	假设f(x)&#x3D;a(x)g(x)+b(x), deg(b(x))&lt;r，<br>由线性性质知b(x)&#x3D;f(x)+a(x)g(x)也是一个码字多项式,而deg(b(x))&lt;deg(g(x))，这和前提矛盾，则只能当f(x)是g(x)的倍式的时候，f(x)是码字多项式。证毕。</p>
+<h2 id="生成多项式"><a href="#生成多项式" class="headerlink" title="生成多项式"></a>生成多项式</h2><blockquote>
+<p>定理1：在(n,k)循环码C中存在且仅存在一个次数为n-k的码字多项式$g(x)&#x3D;x^{n-k}+g_{n-k-1}x^{n-k-1}+…+g_2x^2+g_1x+1$，称为生成多项式，使得每个次数小于或等于n-1的二元多项式是码字多项式当且仅当此多项式是g(x)的倍式。</p>
+</blockquote>
+<blockquote>
+<p>定理2：(n, k)循环码的生成多项式g(x)是$x^n+1$的因式。</p>
+</blockquote>
+<p>证明：根据：码字多项式$v^{(i)}(x)$就是$x^iv^{(0)}(x)&#x2F;(x^n+1)$的余式。则有$x^kg(x)&#x3D;(x^n+1)+g^{(k)}(x)$，而$g^{(k)}(x)$是g(x)的k次循环移位，也是码字多项式，因此，它是g(x)的倍式。</p>
+<blockquote>
+<p>定理3：若g(x)是一个n-k次多项式，并且是$x^n+1$的因式，则g(x)生成一个(n, k)循环码。</p>
+</blockquote>
+<h2 id="循环码的生成矩阵"><a href="#循环码的生成矩阵" class="headerlink" title="循环码的生成矩阵"></a>循环码的生成矩阵</h2><p>考虑以$g(x)&#x3D;\sum^{n-k}_{i&#x3D;0}g_ix^i$为生成矩阵的(n,k)循环码C，由于$g(x), xg(x), … , x^{k-1}g(x)$张成C，将这k个多项式的k个n重做为k×n阶矩阵的行，一般选择前k-1位为0的向量作为g(x)，则得到C的生成矩阵为</p>
+<p>$$<br>G(x)&#x3D;\begin{bmatrix} x^{K-1}g(x)\ \dots \xg(x)\g(x) \end{bmatrix}&#x3D;\begin{bmatrix} g_{n-k}&amp;\dots&amp;g_2&amp;g_1&amp;g_0&amp;0&amp;0&amp;0&amp;\dots&amp;0\ 0&amp;g_{n-k}&amp;\dots&amp;g_2&amp;g_1&amp;g_0&amp;0&amp;0&amp;\dots&amp;0\ 0&amp;0&amp;g_{n-k}&amp;\dots&amp;g_2&amp;g_1&amp;g_0&amp;0&amp;\dots&amp;0\ \dots&amp;&amp;&amp;\dots&amp;&amp;&amp;&amp;&amp;&amp;\dots \ 0&amp;0&amp;\dots&amp;0&amp;0&amp;g_{n-k}&amp;\dots&amp;g_2&amp;g_1&amp;g_0\end{bmatrix}<br>$$</p>
+<p>其中$g_0&#x3D;g_{n-k}&#x3D;1$</p>
+<h2 id="一致校验矩阵"><a href="#一致校验矩阵" class="headerlink" title="一致校验矩阵"></a>一致校验矩阵</h2><p>因为生成多项式g(x)是$x^{n+1}$的因式, 所以存在另一个多项式$h(x)&#x3D;\sum^k_{i&#x3D;0}h_ix^i,h_k&#x3D;h_0&#x3D;1$ , 使得g(x)h(x)&#x3D;xn+1, 此多项式h(x)称为码C的校验多项式h(x), 故可以得到码C的一致校验矩阵H。<br>设$v&#x3D;(v_{n-1}, … , v_1,v_0 )$是C的一个码矢, 则v(x)&#x3D;a(x)g(x), 有$v(x)h(x)&#x3D;a(x)g(x)h(x)&#x3D;a(x)(x^n+1)&#x3D;a(x)x^n+a(x)$, 由于deg(a(x))≤k-1, 故在$a(x)x^n+a(x)$中不会出现$x^{n-1}, … , x^{k+1}, x^k$等各次幂, 于是v(x)h(x)的展开式中$x^{n-1}, … , x^{k+1}, x^k$的系数等于零。<br>因此, 得到以下n-k个方程$h_0v_{n-j}+h_1v_{n-j-1}+…+h_kv_{n-j-k}&#x3D;0, j&#x3D;1, … , n-k$。则码C的一致校验矩阵为</p>
+<p>$$<br>H&#x3D;\begin{bmatrix}     h_k&amp;h_{k-1}&amp;h_{k-2}&amp;\dots&amp;h_0&amp;0&amp;0&amp;\dots&amp;0\ 0&amp;h_k&amp;h_{k-1}&amp;\dots&amp;h_1&amp;h_0&amp;0&amp;\dots&amp;0\ \dots\ 0&amp;0&amp;0&amp;\dots&amp;h_k&amp;h_{k-1}&amp;h_{k-2}&amp;\dots&amp;h_0\end{bmatrix}<br>$$</p>
+<h2 id="系统循环码的编码方法"><a href="#系统循环码的编码方法" class="headerlink" title="系统循环码的编码方法"></a>系统循环码的编码方法</h2><p>给定循环码的生成多项式g(x), 可以使该码成为系统形式。<br>假定待编码的消息是$u&#x3D;(u_{k-1}, … , u_1, u_0 )$, 则对应的消息多项式为$u(x)&#x3D;u_{k-1}x^{k-1}+…+u_2x^2+u_1x+u_0$, 从而有$x^{n-k}u(x)&#x3D;u_{k-1}x^{n-1}+…+u_1x^{n-k+1}+u_0x^{n-k}$。<br>用生成多项式g(x)除xn-ku(x), 得到xn-ku(x)&#x3D; a(x)g(x)+b(x), deg(b(x))&lt;n-k。</p>
+<blockquote>
+<p>循环码的编码是由多项式的乘法、除法以及加法运算完成的, 这些运算都可以由移位寄存器、加法器以及门电路来实现。</p>
+</blockquote>
+<p>系统循环码的编码步骤如下：<br>步骤1：先用xn-k乘以消息多项式$u(x)&#x3D;u_{k-1}x^{k-1}+…+u_2x^2+u_1x+u_0$；<br>步骤2：用生成多项式g(x)除$x^{n-k}u(x)$，得到余式b(x)；<br>步骤3：联合b(x)和$x^{n-k}u(x)$，得到码字多项式$v(x)&#x3D;x^n-ku(x)+b(x)$</p>
+<h2 id="复习：多项式的除法"><a href="#复习：多项式的除法" class="headerlink" title="复习：多项式的除法"></a>复习：多项式的除法</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/Untitled%204.png" alt="Untitled"></p>
+<h2 id="g-x-除法电路编码器"><a href="#g-x-除法电路编码器" class="headerlink" title="g(x)除法电路编码器"></a>g(x)除法电路编码器</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/Untitled%205.png" alt="Untitled"></p>
+<h2 id="伴随式计算和错误检测"><a href="#伴随式计算和错误检测" class="headerlink" title="伴随式计算和错误检测"></a>伴随式计算和错误检测</h2><p>伴随式定义为$S&#x3D;rH^T$<br>对系统循环码而言, $r(x)&#x3D;\sum^{n-1}<em>{i&#x3D;0}r_ix^i$是接收多项式$g(x)&#x3D;\sum^{n-k-1}</em>{i&#x3D;0}g_ix^i$,<br>是生成多项式, 用g(x)去除r(x)所得的余式, 就是伴随式s(x), 即r(x)&#x3D;a(x)g(x)+s(x)。<br>∵ r(x)&#x3D;v(x)+e(x), v(x)&#x3D;q(x)g(x), r(x)&#x3D;a(x)g(x)+s(x)<br>∴ q(x)g(x)+e(x)&#x3D;a(x)g(x)+s(x)<br>∴ e(x)&#x3D;[q(x)+a(x)]g(x)+s(x)</p>
+<h2 id="伴随式的性质"><a href="#伴随式的性质" class="headerlink" title="伴随式的性质"></a>伴随式的性质</h2><p>性质1：令s(x)是接收多项式r(x)的伴随式, 则用生成多项式g(x)除xs(x)所得的余式$s^{(1)}(x)$就是r(x)循环移位一次$r^{(1)}(x)$的伴随式。<br>性质2：(n, k)循环码能够检测长度小于等于n-k的任何突发错误, 换句话说, 每个长度小于等于n-k的突发错误的伴随式不等于0。<br>性质3：伴随式等于生成多项式除错误图样后所得的余式。</p>
+<blockquote>
+<p>伴随式的这些性质对于译码非常有用。举例来说, 若e(x)是可以纠正的错误图样, 则e(x)的循环移位也是可以纠正的错误图样。</p>
+</blockquote>
+<h2 id="循环码的译码"><a href="#循环码的译码" class="headerlink" title="循环码的译码"></a>循环码的译码</h2><blockquote>
+<p>循环码的译码分为3步：1)计算伴随式; 2)由伴随式得到错误图样; 3)纠正错误。</p>
+</blockquote>
+<h1 id="第五章-BCH码"><a href="#第五章-BCH码" class="headerlink" title="第五章 BCH码"></a>第五章 BCH码</h1><h2 id="BCH码简介"><a href="#BCH码简介" class="headerlink" title="BCH码简介"></a>BCH码简介</h2><p>BCH码的优势：纠错能力强, 能够纠正多个随机错误的循环码; 编译码设备不太复杂; 到目前为止, 对于其他线性码的研究方法, 都是先构造一个码, 然后找出它的最小距离, 以估计该码的纠错能力, 对于BCH码, 反过来, 从先指定这个码能纠正多少个随机错误开始进行研究。</p>
+<h3 id="本原元和本原多项式"><a href="#本原元和本原多项式" class="headerlink" title="本原元和本原多项式"></a>本原元和本原多项式</h3><p>本原元：有限域上存在元素a，使得G中的每个非零元素都是a的某次幂的形式，该元素a称为本原元。</p>
+<p>本原多项式：有限域GF(q)上的本原多项式f(x),是系数取自GF(q)上，以扩域$GF(q^m)$中本原元为根的最小多项式。</p>
+<p>定理1：若$b_1,b_2,..,b_{q-1}$是有限域GF(q)上的所有非零元素，则$x^{q-1}-1&#x3D;(x-b_1)(x-b_2)…(x-b_{q-1})$。</p>
+<h3 id="举例-GF-23-上的乘法运算"><a href="#举例-GF-23-上的乘法运算" class="headerlink" title="举例: GF(23)上的乘法运算"></a>举例: GF(23)上的乘法运算</h3><p>选择本原元a&#x3D;x, 本原多项式$p(x)&#x3D;x^3+x+1$</p>
+<table>
+<thead>
+<tr>
+<th>$a^{-\infty}&#x3D;x^{-\infty}&#x3D;0$</th>
+<th>000</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$a^0&#x3D;x^0&#x3D;1$</td>
+<td>001</td>
+</tr>
+<tr>
+<td>$a^1&#x3D;x$</td>
+<td>010</td>
+</tr>
+<tr>
+<td>$a^2&#x3D;x^2$</td>
+<td>100</td>
+</tr>
+<tr>
+<td>$a^3&#x3D;x+1$</td>
+<td>011</td>
+</tr>
+<tr>
+<td>$a^4&#x3D;x^2+x$</td>
+<td>110</td>
+</tr>
+<tr>
+<td>$a^5&#x3D;x^2+x+1$</td>
+<td>111</td>
+</tr>
+<tr>
+<td>$a^6&#x3D;x^2+1$</td>
+<td>101</td>
+</tr>
+<tr>
+<td>$a^7&#x3D;a^0&#x3D;1$</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>乘法运算：</p>
+<p>$$<br>(010)·(100)<br>\leftrightarrow a^3·a^4&#x3D;1<br>\leftrightarrow001\ (011)·(110)<br>\leftrightarrow a^6·a^5&#x3D;a^4<br>\leftrightarrow110<br>$$</p>
+<p>因为本原元a&#x3D;x, 所以p(a)&#x3D;0</p>
+<p>$$<br>a^3+a+1&#x3D;(x+1)+x+1&#x3D;0\ (011)+(010)+(001)&#x3D;(000)<br>$$</p>
+<h3 id="GF-2-上多项式根的特点"><a href="#GF-2-上多项式根的特点" class="headerlink" title="GF(2)上多项式根的特点"></a>GF(2)上多项式根的特点</h3><p>定理：若f(x)是系数取自GF(2)的多项式, 令b是GF(2)扩域中的元素, 若b是f(x)的根, 则对任意的l≥0, $b^{2l}$也是f(x)的根。</p>
+<blockquote>
+<p>注：元素$b^{2l}$称为b的共轭元，以上定理说明若是b多项式f(x)的根，则b的所有共轭元$b^{2l}$也是f(x)的根。</p>
+</blockquote>
+<p>举例：${a^1, a^2, a^4}$是共轭的元素，因为它们都是极小多项式$f_2(x)&#x3D;x^3+x+1$的根。</p>
+<p>最低公倍式：若f(x)为a(x)与b(x)的所有公倍式中次数最低的，并且首项系数为1，记为LCM(a(x), b(x))。</p>
+<h2 id="BCH码的定义"><a href="#BCH码的定义" class="headerlink" title="BCH码的定义"></a>BCH码的定义</h2><p>BCH码的定义：给定任一有限域GF(q)及其扩域$GF(q^m)$, 其中, q是素数或者素数幂, m为一个正整数。若码元是取自GF(q)上的一个循环码, 它的生成多项式g(x)的根集合R中含有以下2t个连续根${b^p, b^{p+1},.., b^{p+2t-1}}$, 则由g(x)生成的循环码称为q进制的BCH码, 其中$b∈GF(q^m)$是域中的n阶元素, $b^{p+i} ∈GF(q^m) (0≤i≤2t-1)$, p是任意整数。对于常见的情况, p等于0或者1。若p&#x3D;1, 称之为狭义的BCH码。</p>
+<p>本原BCH码的定义：若g(x)的根中有一个是$GF(q^m)$的本原元, 码长$n&#x3D;q^m-1$, 此时就称g(x)生成的BCH码为本原BCH码; 否则就称为非本原BCH码, 其码长是$q^m-1$的因子。</p>
+<h3 id="BCH码的构造"><a href="#BCH码的构造" class="headerlink" title="BCH码的构造"></a>BCH码的构造</h3><p>构造方法：设$f_i(x)$和$q_i$分别是$b^{p+i}(0≤i≤2t-1)$的最小多项式和阶, 则BCH码的生成多项式g(x)和码长n可分别表示为$g(x)&#x3D;LCM(f_0(x), f_1(x),…, f_{2t-1}(x)), n&#x3D;LCM(q_0, q_1,…, q_{2t-1})$。</p>
+<blockquote>
+<p>构造可以纠t个错误的BCH码(其码长$n&#x3D;q^m-1$)的生成多项式的步骤如下：<br>步骤1：选择一个阶数为m的本原多项式, 构造扩域$GF(q^m)$;<br>步骤2：找到对应于$b^i(i&#x3D;1,…,p)$的极小多项式$f_i(x)$;<br>步骤3：能纠t个错误的BCH码的生成多项式为$g(x)&#x3D;LCM(f_1(x), f_2(x),…, f_{2t}(x))$。</p>
+</blockquote>
+<h3 id="BCH码限定理"><a href="#BCH码限定理" class="headerlink" title="BCH码限定理"></a>BCH码限定理</h3><p>定理1：若BCH码的生成多项式g(x)的根含有2t个连续根, 则该码的最小距离d≥2t+1。</p>
+<p>d&#x3D;2t+1称为该码的设计距离。</p>
+<blockquote>
+<p>注：一旦固定n和t, 就可以得到该BCH码的生成多项式, 信息位的长度k可以由生成多项式的阶数得到。</p>
+</blockquote>
+<p>当n不变的情况下，较大的t，就会使得k较小；即冗余度高，可以纠更多的错误。</p>
+<blockquote>
+<p><strong>思考题</strong>：如何在由GF(2)生成的扩域GF(24)上构造BCH码的生成多项式？</p>
+</blockquote>
+<p>考虑本原多项式$p(z)&#x3D;z^4+z+1$, 本原元a&#x3D;z, a的幂次可以生成$GF(2^4)$上的所有非零元素。</p>
+<table>
+<thead>
+<tr>
+<th>a的幂次</th>
+<th>$GF(2^4)$上的非零元素</th>
+<th>极小多项式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$a^1$</td>
+<td>$z$</td>
+<td>$x^4+x+1$</td>
+</tr>
+<tr>
+<td>$a^2$</td>
+<td>$z^2$</td>
+<td>$x^4+x+1$</td>
+</tr>
+<tr>
+<td>$a^3$</td>
+<td>$z^3$</td>
+<td>$x^4+x^3+x^2+x+1$</td>
+</tr>
+<tr>
+<td>$a^4$</td>
+<td>$z+1$</td>
+<td>$x^4+x+1$</td>
+</tr>
+<tr>
+<td>$a^5$</td>
+<td>$z^2+z$</td>
+<td>$x^2+x+1$</td>
+</tr>
+<tr>
+<td>$a^6$</td>
+<td>$z^3+z^2$</td>
+<td>$x^4+x^3+x^2+x+1$</td>
+</tr>
+<tr>
+<td>$a^7$</td>
+<td>$z^3+z+1$</td>
+<td>$x^4+x^3+1$</td>
+</tr>
+<tr>
+<td>$a^8$</td>
+<td>$z^2+1$</td>
+<td>$x^4+x+1$</td>
+</tr>
+<tr>
+<td>$a^9$</td>
+<td>$z^3+z$</td>
+<td>$x^4+x^3+x^2+x+1$</td>
+</tr>
+<tr>
+<td>$a^{10}$</td>
+<td>$z^2+z+1$</td>
+<td>$x^2+x+1$</td>
+</tr>
+<tr>
+<td>$a^{11}$</td>
+<td>$z^3+z^2+z$</td>
+<td>$x^4+x+1$</td>
+</tr>
+<tr>
+<td>$a^{12}$</td>
+<td>$z^3+z^2+z+1$</td>
+<td>$x^4+x^3+x^2+x+1$</td>
+</tr>
+<tr>
+<td>$a^{13}$</td>
+<td>$z^3+z^2+1$</td>
+<td>$x^4+x^3+1$</td>
+</tr>
+<tr>
+<td>$a^{14}$</td>
+<td>$z^3+1$</td>
+<td>$x^4+x^3+1$</td>
+</tr>
+<tr>
+<td>$a^{15}$</td>
+<td>1</td>
+<td>x+1</td>
+</tr>
+</tbody></table>
+<p>如果想要构造可以纠1个错误的BCH码的生成多项式, 即t&#x3D;1, 码长n&#x3D;15<br>BCH码的生成多项式为$g(x)&#x3D;LCM(f_1(x), f_2(x),…, f_{2t}(x))$<br>根据上页的表格来获得极小多项式f1(x)和f2(x)<br>因此, 得到如下的可以纠正一个错误的BCH码的生成多项式$g(x)&#x3D;LCM(f_1(x), f_2(x))&#x3D; LCM(x^4+x+1, x^4+x+1)&#x3D;x^4+x+1$<br>∵deg(g(x))&#x3D;4, ∴n-k&#x3D;4, k&#x3D;11, 这样就得到了一个可以纠一个错误的BCH(15, 11)码, 该码的设计距离d&#x3D;2t+1&#x3D;3<br>可以计算出该码的最小距离也是3，即该码的设计距离等于该码的最小距离</p>
+<p>如果想要构造可以纠2个错误的BCH码的生成多项式, 即t&#x3D;2, 码长n&#x3D;15<br>BCH码的生成多项式为$g(x)&#x3D;LCM(f_1(x), f_2(x),…, f_{2t}(x))&#x3D; LCM(f_1(x), f_2(x), f_3(x), f_4(x))$<br>根据11页的表格来获得极小多项式f1(x)-f4(x)<br>于是得到$g(x)&#x3D;LCM(f_1(x), f_2(x) , f_3(x), f_4(x))&#x3D; LCM(x^4+x+1, x^4+x+1, x^4+x^3+x^2+x+1, x^4+x +1)&#x3D;(x^4+x+1)(x^4+x^3+ x^2+x+1) &#x3D;x^8+x^7+x^6+x^4+1$<br>∵deg(g(x))&#x3D;8，∴n-k&#x3D;8，k&#x3D;7, 这样就得到了一个可以纠一个错误的BCH(15,7)码，该码的设计距离d&#x3D;2t+1&#x3D;5<br>可以计算出该码的最小距离也是5。</p>
+<h1 id="第六章-RM码"><a href="#第六章-RM码" class="headerlink" title="第六章 RM码"></a>第六章 RM码</h1><h3 id="RM码的优点和缺点"><a href="#RM码的优点和缺点" class="headerlink" title="RM码的优点和缺点"></a>RM码的优点和缺点</h3><p><strong>缺点</strong>：与BCH码相比，除了一阶RM码和中等码长的RM码外，RM码的最小距离比同样码长的BCH码的最小距离小。RM码的纠错性能不如Turbo码和LDPC码<br><strong>优点</strong>：RM码能用大逻辑译码算法，比BCH码用的迭代算法简单。译码延时短，无错误平层现象，其误码率会随着信噪比增加无限接近于零。因此，RM码可以适应多种不同的信道，满足有实时性要求的应用环境，既可以单独使用，也可以作为内码与RS码等级联使用，从而大大提升纠错性能</p>
+<h2 id="线性码"><a href="#线性码" class="headerlink" title="线性码"></a>线性码</h2><p><strong>定义</strong>：一个码长为n的p元码C叫做线性码，是指C是向量空间$F_p^n$的向量子空间，即C满足如下的性质：对$F_p^n$中任意元素α和β，如果$c_1$和$c_2$属于C，则$αc_1+βc_2$也属于C。<br><strong>定理</strong>：设C是参数为(n,k)的p元线性码。<br>1)若G是C的一个生成矩阵，而H是Fp上一个(n−k)行n列的矩阵。则H是C的一个校验矩阵当且仅当$rank(H)&#x3D;n−k$，并且$HG^T&#x3D;0_{n−k,k}$；<br>2) 若$G&#x3D;(I_k,P), H&#x3D;(−P^T,I_{n−k})，$则G是C的一个生成矩阵当且仅当H是C的一个校验矩阵。</p>
+<h2 id="向量外积"><a href="#向量外积" class="headerlink" title="向量外积"></a>向量外积</h2><p><strong>定义</strong>：设$a&#x3D;(a_{n−1},a_{n−2},···,a_0),b&#x3D;(b_{n−1},b_{n−2},···,b_0)$是GF(2)上的两个n维向量，则向量$(a_{n−1}b_{n−1},a_{n−2}b_{n−2},···,a_0b_0)$称为a与b的外积，记为a×b。</p>
+<h2 id="布尔函数"><a href="#布尔函数" class="headerlink" title="布尔函数"></a>布尔函数</h2><p><strong>定义</strong>：设m为正整数，一个m元布尔函数$f&#x3D;f(x_1,···,x_m)$是由$F_2^m$到$F_2$的映射，即m个变量$x_1,···,x_m$均取值于$F_2$，并且函数值也属于$F_2$。<br>由于$F_2^m$中向量的个数为$2^m$，而f在每个向量的取值均彼此独立地可取1或0，所以m元布尔函数共有$2^{2^m}$个。</p>
+<blockquote>
+<p>例子：一元布尔函数f(x)共有$2^{2^1}&#x3D;4$个，它们是：<br>1）f(0)&#x3D;f(1)&#x3D;0，即f(x)≡0；<br>2）f(0)&#x3D;f(1)&#x3D;1,即f(x)≡1；<br>3）f(0)&#x3D;0,f(1)&#x3D;1，即f(x)&#x3D;x；<br>4）f(0)&#x3D;1,f(1)&#x3D;0，即f(x)&#x3D;x+1。</p>
+</blockquote>
+<p><strong>定理</strong>：每个m元布尔函数$g(x_1,···,x_m)$均可唯一地表示成$g(x_1,···,x_m)&#x3D;c+c_1x_1 + ··· +c_mx_m+c_{12}x_1x_2+c_{13}x_1x_3+ ··· + c_{m-1,m}x_{m-1}x_m+c_{123}x_1x_2x_3+ ··· + c_{12···m}x_1x_2···x_m$，其中所有系数和常数都属于$F_2$。</p>
+<p>令$v_0&#x3D;(0,0,···,0), v_1&#x3D;(1,0,···,0), v_2&#x3D;(0,1,···,0), v_3&#x3D;(1,1,···,0), ··· ,v_n-1&#x3D;(1,1,···,1), n&#x3D; 2^m，$然后便可把每个m元布尔函数$f(x_1,···, x_m)$表示成$F_2^n$中的向量(也叫 f 的真值表或向量表示)，具体为$c_f&#x3D;(f(v_0), f(v_1),···, f(v_{n-1}))∈F_2^n, n&#x3D; 2^m$<br>这时布尔函数相加和相乘分别对应于向量按分量相加和相乘。</p>
+<h2 id="RM码"><a href="#RM码" class="headerlink" title="RM码"></a>RM码</h2><p><strong>定义</strong>：设$m≥1, n&#x3D;2^m, 0≤r≤m$。向量空间$F_2^n$的子集合<br>$RM(r,m)&#x3D;{c_f&#x3D;(f(v_0), f(v_1),···, f(v_{n-1}))∈F_2^n|f∈B_m,deg(f)≤r}$<br>叫做r阶的Reed-Muller码(简称RM码)，这里$v_i∈F_2^m$。</p>
+<p><strong>定理</strong>：RM码RM(r,m)是线性码，基本参数为$(n,k,d)&#x3D;(2^m,∑_{t&#x3D;0}^r\begin{pmatrix}m\t\end{pmatrix}),2^{m-r})$</p>
+<h3 id="生成矩阵-1"><a href="#生成矩阵-1" class="headerlink" title="生成矩阵"></a>生成矩阵</h3><p>对于每一对正整数r和m(m&gt;r),有一个码长为$2^m$的RM码，称为码长为$2^m$的r阶RM码。它的生成矩阵是由矩阵块$G_0,G_1,···,G_r$组成的，即$G&#x3D;\begin{pmatrix}G_0\G_1\\dots\G_r\end{pmatrix}$</p>
+<p>G0是码长为$n&#x3D;2^m$的全“1”向量<br>G1是$m×2^m$阶矩阵，即$G_1$是由所有长度为m的二进制的列向量组成的。$G_1$的最左边一列是全“0”向量，最后一列为全“1”向量，其他各列则是从左至右依递增顺序排列的二进制m重列向量<br>$G_l$的行是由所有$G_l$的l个行向量作外积所得的向量组成，因而$G_l$是一个$\begin{pmatrix} m\l\end{pmatrix}*2^m$阶矩阵。显然在G的行是线性无关的条件下，r阶RM码的信息位为$k&#x3D;1+\begin{pmatrix} m\l\end{pmatrix}+\begin{pmatrix} m\2\end{pmatrix}+\dots+\begin{pmatrix} m\r\end{pmatrix}$。</p>
+<h3 id="RM码的构造"><a href="#RM码的构造" class="headerlink" title="RM码的构造"></a>RM码的构造</h3><p>从RM码的定义可以看出，一个r阶RM码可以通过增广一个(r-1)阶RM码得到，而一个(r-1)阶RM码可以由删信一个r阶RM码而获得，即通过简单计算，增加一个G矩阵分量或直接删除一个G矩阵分量<br>RM码的构造简单，纠错能力强，很容易根据需要设计出不同码长的RM码</p>
+<h2 id="译码算法"><a href="#译码算法" class="headerlink" title="译码算法"></a>译码算法</h2><p>从RM码的生成矩阵G中可以看出，Gl的每行重量为$2^{m-l}$，这个结论对于一般的r阶RM码都是对的，因此，G的每行都有偶重量<br>在GF(2)上，因为两个偶重量向量之和必为偶重量，所以G的行线性组合有偶重量。即RM码的所有码字重量皆为偶数<br>由于Gr行的重量为$2^{m-l}$，因而r阶RM码的最小重量不大于$2^{m-l}$</p>
+<p>里德算法是专门为RM码设计的译码算法<br>里德算法使用择多逻辑判决的方法从接收矢量直接恢复信息，而不计算错误图样<br>里德算法可以纠正r阶RM码出现的$(1&#x2F;2)×2^{m-r}−1$个随机错误，并恢复k位信息。这说明码的最小重量至少为$2^{m-r}−1$，又RM码的最小重量为偶数，因而r阶RM码最小重量至少为$2^{m-r}$<br>综上所述，r阶RM码最小重量为$2^{m-r}$，即RM码最小距离为$2^{m-r}$<br>将信息向量分成r+1段，即写成$m&#x3D;(I_0,I_1,⋯,I_r)$,其中$I_i$包含$\begin{pmatrix} m\l\end{pmatrix}$个信息位，于是编程可表示为$v&#x3D;I_0G_0+I_1G_1+⋯+I_rG_r$  (1.1)<br>如果接收码字$r&#x3D;v+e&#x3D;I_0G_0+I_1G_1+⋯+I_rG_r+e$  (1.2)， 其中e为错误图样<br>通过对r阶RM码的译码计算，由接收码字r恢复了第r段信息Ir，然后计算<br>$r(1)&#x3D;r-I_rG_r&#x3D;I_0G_0+I_1G_1+⋯+I_{r-1}G_{r-1}+e$  (1.3)<br>这就把由接收码字r恢复m的问题简化成由r(1)恢复信息$m^{(1)}&#x3D;(I_0,I_1,⋯,I_{r-1})$的问题<br>继续采用同样方法就可逐步恢复所有信息，最终完成r阶RM码的译码</p>
+<h1 id="第七章-卷积码"><a href="#第七章-卷积码" class="headerlink" title="第七章 卷积码"></a>第七章 卷积码</h1><blockquote>
+<p><strong>卷积码与分组码的区别</strong><br>卷积码有记忆性，分组码无记忆性<br>卷积码充分利用了各组信息之间的相关性，信息序列不被分段，而是被连续处理<br>通常，卷积码的n和k比分组码的n和k要小的多<br>在同样的编码效率下，卷积码的性能优于分组码<br>在相似的纠错能力下，卷积码的实现比分组码简单<br>卷积码必须用序列逻辑电路来实现，更适用于前向纠错系统；分组码是用组合逻辑电路来实现</p>
+</blockquote>
+<h2 id="离散序列的非循环卷积运算"><a href="#离散序列的非循环卷积运算" class="headerlink" title="离散序列的非循环卷积运算"></a>离散序列的非循环卷积运算</h2><p>定义：设f(n)和g(n)是两个序列，则序列f和g的离散卷积运算为</p>
+<p>$$<br>(f*g)(m)&#x3D;\sum_nf(n)g(m-n)<br>$$</p>
+<h2 id="二元-2-1-2-卷积码的编码器"><a href="#二元-2-1-2-卷积码的编码器" class="headerlink" title="二元(2,1,2)卷积码的编码器"></a>二元(2,1,2)卷积码的编码器</h2><p>编码器主要由m&#x3D;2级移位寄存器，n&#x3D;2个模2加法器组成。所有的卷积码编码器都可以用这种类型的线性前馈移位寄存器来实现。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/Untitled%206.png" alt="Untitled"></p>
+<h3 id="冲激响应"><a href="#冲激响应" class="headerlink" title="冲激响应"></a>冲激响应</h3><blockquote>
+<p>冲激响应：编码器的冲激响应就是通过令u&#x3D;(100…)所得到的两个输出序列。</p>
+</blockquote>
+<p>因为编码器有m个存储单元，所以冲激响应(生成序列)至多持续m+1个时间单元，且可以写成</p>
+<p>$$<br>g^{(1)}&#x3D;(g^{(1)}_0,g^{(1)}_1,…,g^{(1)}_m),g^{(2)}&#x3D;(g^{(2)}_0,g^{(2)}_1,…,g^{(2)}_m)<br>$$</p>
+<p>其中上标表示第几个输出端</p>
+<blockquote>
+<p>图6.1的(2,1,2)卷积码的冲激响应为$g^{(1)}&#x3D;(111), g^{(2)}&#x3D;(101)$<br>另外，冲激响应向量还可以表示输入、移位寄存器和输出之间的连接关系，1表示有连接，0表示没有连接</p>
+</blockquote>
+<h3 id="输出序列"><a href="#输出序列" class="headerlink" title="输出序列"></a>输出序列</h3><p>信息序列$u&#x3D;(u_1,u_2,u_3,…)$每次进入编码器1比特，编码器的两个输出序列</p>
+<p>$$<br>v^{(1)}&#x3D;(v^{(1)}_0,v^{(1)}_1,…), v^{(2)}&#x3D;(v^{(2)}_0,v^{(2)}_1,…)<br>$$</p>
+<p>可以通过输入序列u和编码器的两个冲激响应作卷积运算而得到。</p>
+<blockquote>
+<p>若u&#x3D;(1011), 图6.1的(2,1,2)卷积码的冲激响应为$g……{(1)}&#x3D;(111), g^{(2)}&#x3D;(101)$，则该卷积码的输出序列为$V^{(1)}&#x3D;u^<em>g^{(1)}&#x3D;(110001)$</em>, $V^{(2)}&#x3D;u^<em>g^{(2)}&#x3D;(100111)$</em></p>
+</blockquote>
+<h3 id="码字"><a href="#码字" class="headerlink" title="码字"></a>码字</h3><p>输出序列分别为$v^{(1)}&#x3D;(v^{(1)}_0,v^{(1)}_1,…), v^{(2)}&#x3D;(v^{(2)}_0,v^{(2)}_1,…)$的$(2,1,m)$的卷积码的码字，为$V^{(1)}$和$V^{(2)}$的交错，即</p>
+<p>$$<br>v&#x3D;(v^{(1)}_0,v^{(2)}_0,v^{(1)}_1,v^{(2)}_1,…)<br>$$</p>
+<blockquote>
+<p>图6.1的(2,1,2)卷积码，若u&#x3D;(1011), 冲激响应为$g^{(1)}&#x3D;(111)$, $g^{(2)}&#x3D;(101)$，该卷积码的输出序列为$V^{(1)}&#x3D;u^<em>g^{(1)}&#x3D;(110001)$</em>, $V^{(2)}&#x3D;u^*g^{(2)}&#x3D;(100111)$*，得到的码字为v&#x3D;(11,10,00,01,01,11)</p>
+</blockquote>
+<p>以u&#x3D;(u1,u2,u3,…)为输入, 以$g^{(1)}&#x3D;(g^{(1)}_0,g^{(1)}_1,…,g^{(1)}_m),g^{(2)}&#x3D;(g^{(2)}_0,g^{(2)}_1,…,g^{(2)}_m)$</p>
+<p>为生成序列的(2,1,m)卷积码的输出序列分别由方程$V^{(1)}&#x3D;u^*g^{(1)}$<em>和$V^{(2)}&#x3D;u^</em>g^{(2)}$*得到。</p>
+<blockquote>
+<p>图6.1的(2,1,2)卷积码的编码方程为<br>另外，编码方程中每一项的系数，还可以表示输入、移位寄存器和输出之间的连接关系，1表示有连接，0表示没有连接。</p>
+<p>$$<br>\begin{cases} V_l^{(1)}&#x3D;u_l+u_{l-1}+u_{l-2}\ V_l^{(2)}&#x3D;u_l+u_{l-2} \end{cases},[V_l^{(1)}V_l^{(2)}]&#x3D;[u_lu_{l-1}u_{l-2}]\begin{bmatrix} 1&amp;1\1&amp;0\1&amp;1\end{bmatrix}<br>$$</p>
+</blockquote>
+<h3 id="生成矩阵-2"><a href="#生成矩阵-2" class="headerlink" title="生成矩阵"></a>生成矩阵</h3><p>(2,1, m)卷积码的生成矩阵：将生成序列g(1)和g(2)交织后形成的半无限矩阵</p>
+<p>$$<br>G&#x3D;\begin{bmatrix}g^{(1)}_0&amp;g^{(2)}_0&amp;g^{(1)}_1&amp;g^{(2)}_1&amp;g^{(1)}_2&amp;g^{(2)}_2&amp;\dots&amp;g^{(1)}_m&amp;g^{(2)}_m&amp;0&amp;0&amp;0&amp;0&amp;\dots\ 0&amp;0&amp;g^{(1)}_0&amp;g^{(2)}_0&amp;g^{(1)}<em>1&amp;g^{(2)}<em>1&amp;\dots &amp;g^{(1)}</em>{m-1}&amp;g^{(2)}</em>{m-1}&amp;g^{(1)}<em>m&amp;g^{(2)}<em>m&amp;0&amp;0&amp;\dots \0&amp;0&amp;0&amp;0&amp;g^{(1)}<em>0&amp;g^{(2)}<em>0&amp;\dots&amp;g^{(1)}</em>{m-2}&amp;g^{(2)}</em>{m-2}&amp;g^{(1)}</em>{m-1}&amp;g^{(2)}</em>{m-1}&amp;g^{(1)}_m&amp;g^{(2)}_m&amp;\dots\ &amp;&amp;&amp;&amp;&amp;&amp;\ddots\end{bmatrix}<br>$$</p>
+<p>以u&#x3D;(u1,u2,u3,…)为输入, G为生成矩阵的(2,1,m)的卷积码的码字为V&#x3D;uG。</p>
+<h3 id="二元-3-2-1-卷积码的编码器"><a href="#二元-3-2-1-卷积码的编码器" class="headerlink" title="二元(3,2,1)卷积码的编码器"></a>二元(3,2,1)卷积码的编码器</h3><p>编码器主要有2个输入，3个输出，主要由m&#x3D;1级移位寄存器，n&#x3D;3个模2加法器组成。</p>
+<h3 id="二元-3-2-m-卷积码的输入序列"><a href="#二元-3-2-m-卷积码的输入序列" class="headerlink" title="二元(3,2,m)卷积码的输入序列"></a>二元(3,2,m)卷积码的输入序列</h3><p>对于一般的(3,2,m)卷积码，由于k&#x3D;2，即每次有2比特进入编码器，所以输入序列u可以写成$v&#x3D;(v^{(1)}_0,v^{(2)}_0,v^{(1)}_1,v^{(2)}_1,…)$或分开写成2个序列$v^{(1)}&#x3D;(v^{(1)}_0,v^{(1)}_1,…), v^{(2)}&#x3D;(v^{(2)}_0,v^{(2)}_1,…)$</p>
+<p>二元(3,2,m)卷积码的冲激响应$g^{(j)}<em>i&#x3D;(g^{(j)}</em>{i0},g^{(j)}<em>{i1},…,g^{(j)}</em>{im}),i&#x3D;1,2,j&#x3D;1,2,3$</p>
+<p>输出序列分别为</p>
+<p>$$<br>v^{(1)}&#x3D;(v^{(1)}_0,v^{(1)}_1,…), v^{(2)}&#x3D;(v^{(2)}_0,v^{(2)}_1,…), v^{(3)}&#x3D;(v^{(3)}_0,v^{(3)}_1,…)<br>$$</p>
+<p>的(3,2,m)的卷积码的码字为</p>
+<p>$$<br>v&#x3D;(v^{(1)}_0,v^{(2)}_0,v^{(3)}_0,v^{(1)}_1,v^{(2)}_1,v^{(3)}_1,…)<br>$$</p>
+<h2 id="卷积码编码器的存储级数"><a href="#卷积码编码器的存储级数" class="headerlink" title="卷积码编码器的存储级数"></a>卷积码编码器的存储级数</h2><p>对于(n,k,m)卷积码，当k&gt;1时，编码器及用来描述它的符号都比较复杂，并且该编码器所含的k个移位寄存器的长度未必相同。</p>
+<blockquote>
+<p>存储级数：若ki是第i个移位寄存器的长度，则称所有k个移位寄存器中的最大长度为存储级数，即编码器的存储级数m定义为$m&#x3D;\max_{1&lt;i&lt;k}k_i$</p>
+</blockquote>
+<h2 id="卷积码编码器的约束长度和码速率"><a href="#卷积码编码器的约束长度和码速率" class="headerlink" title="卷积码编码器的约束长度和码速率"></a>卷积码编码器的约束长度和码速率</h2><p>对于(n, k, m)卷积码，编码器中每个信息位要保持m+1时间个单位，每个时间单位都可以影响编码器输出中的任何一个，这由移位寄存器的连接决定。</p>
+<blockquote>
+<p>约束长度：对于(n,k,m)卷积码，编码器的约束长度定义为$n_A&#x3D;n(m+1)$</p>
+</blockquote>
+<p>约束长度可以解释成1比特信息对编码器输出可以造成影响的最大数目。</p>
+<blockquote>
+<p>码速率：对于(n,k,m)卷积码，其码速率r&#x3D;k&#x2F;n</p>
+</blockquote>
+<h2 id="2-1-m-卷积码的多项式描述"><a href="#2-1-m-卷积码的多项式描述" class="headerlink" title="(2, 1, m)卷积码的多项式描述"></a>(2, 1, m)卷积码的多项式描述</h2><p>信息序列：$u$表示成$u(x)$</p>
+<p>生成多项式：$g^{(1)}$表示成$g^{(1)}(x)$, $g^{(2)}$表示成$g^{(2)}(x)$</p>
+<p>输出序列：$V^{(1)}$表示成$V^{(1)}(x)$, $V^{(2)}$表示成$V^{(2)}(x),$<br>码字：$V$表示成$V(x)$。于是$V^{(1)}(x)&#x3D;u(x)g^{(1)}(x), V^{(2)}(x)&#x3D;u(x)g^{(2)}(x),$<br>码字：$V(x)&#x3D;V^{(1)}(x^2)+xV^{(2)}(x^2)$</p>
+<h2 id="n-k-m-卷积码的转移函数矩阵"><a href="#n-k-m-卷积码的转移函数矩阵" class="headerlink" title="(n, k, m)卷积码的转移函数矩阵"></a>(n, k, m)卷积码的转移函数矩阵</h2><p>于编码器是线性系统, 同任何有k个输入n个输出的线性系统一样，总共有k×n个转移函数。k×n阶转移函数矩阵为</p>
+<p>$$<br>G(x)&#x3D;\begin{bmatrix}g_1^{(1)}&amp;g_1^{(1)}&amp;\dots&amp;g_1^{(1)}\ g_2^{(1)}&amp;g_2^{(1)}&amp;\dots&amp;g_2^{(1)}\ \dots \ g_k^{(1)}&amp;g_k^{(1)}&amp;\dots&amp;g_k^{(1)}\   \end{bmatrix}<br>$$</p>
+<p>于是，码字$V(x)&#x3D;u(x)G(x)$, 其中, $u(x)&#x3D;(u^{(1)}(x), u^{(2)}(x),…, u^{(k)}(x)), V(x)&#x3D;(V^{(1)}(x), V^{(2)}(x),…, V^{(n)}(x))$, 并路之后, 码字变成$V(x)&#x3D;V^{(1)}(x^n)+xV^{(2)}(x^n)+…+x^{n-1}V^{(n)}(xn)$</p>
+<h2 id="维特比-Viterbi-译码系统"><a href="#维特比-Viterbi-译码系统" class="headerlink" title="维特比(Viterbi)译码系统"></a>维特比(Viterbi)译码系统</h2><p>(n,k,m)卷积码, 如输入序列为x，输出码字为c，经过有噪声的信号传输后，得到接收序列r，然后经过Viterbi译码器，得到序列y。</p>
+<p>对于码率为r的(n,k,m) 卷积码, 输入的信息长度为L，则输入序列为<br>$x&#x3D;(x_0^{(1)}, x_0^{(2)},…, x_0^{(k)}, x_1^{(1)}, x_1^{(2)},…, x_1^{(k)},…, x_{L+m-1}^{(1)}, x_{L+m-1}^{ (2)},…, x_{L+m-1 }^{(k)})$<br>对应输出的码字序列为<br>$c&#x3D;(c_0^{(1)}, c_0^{(2)},…, c_0^{(n)}, c_1^{(1)}, c_1^{(2)},…, c_1^{(n)},…, c_{L+m-1}^{(1)}, c_{L+m-1 }^{(2)},…, c_{L+m-1}^{ (n)})$<br>其中下标表示时间。<br>消息序列的尾部需要m个0比特使得移位寄存器的状态归0。一般的，默认移位寄存器从全零状态开始，最终还是以全零状态结束。</p>
+<h1 id="第八章-Turbo码"><a href="#第八章-Turbo码" class="headerlink" title="第八章 Turbo码"></a>第八章 Turbo码</h1><h3 id="Turbo码的优点"><a href="#Turbo码的优点" class="headerlink" title="Turbo码的优点"></a>Turbo码的优点</h3><p>在信噪比较低的高噪声环境下性能优越（信道条件差的移动通信系统中有很大的应用潜力），而且具有很强的抗衰落、抗干扰能力。<br>Turbo码具有超乎寻常的优异的译码性能，可以纠正高速率数据传输时发生的误码。在直扩（CDMA）系统中采用Turbo码技术可以进一步提高系统的容量。<br>在短帧情况下的仿真结果表明短交织Turbo码在AWGN信道和Rayleigh衰落信道下仍具有接近信道容量的纠错能力。</p>
+<h3 id="Turbo码的缺点"><a href="#Turbo码的缺点" class="headerlink" title="Turbo码的缺点"></a>Turbo码的缺点</h3><p>为获得较高的性能，Turbo码的编译码方式较为复杂。<br>具有较大的译码时延，这是由于block长度较大、译码需要多次迭代造成的。这样非常不利实时业务或高速数据的传输。<br>BER(比特出错概率)在10−5后会出现误码平层，这是由于Turbo码的重量分布造成的。对于某些对BER要求较高的应用就不适合，当然通过交织器的设计能够提供更大的码间最小距离，从而降低误码平层。</p>
+<h3 id="分量码"><a href="#分量码" class="headerlink" title="分量码"></a>分量码</h3><p>卷积码的类型多样，如非递归卷积码(NRC)、非系统卷积码(NSC)、递归系统卷积码(RSC)。<br>在实际的系统中，由于RSC有突出的优点而被广泛采用。RSC码在具有良好的译码性能，且存在较高的交织增益，译码性能也会随着交织长度增加而提高。</p>
+<h3 id="交织器"><a href="#交织器" class="headerlink" title="交织器"></a>交织器</h3><p>交织器的主要功能是使码重分布合理，降低数据序列的相关性，增大输出码字的最小汉明距，实现随机编码。</p>
+<p><strong>分组交织器</strong>：将数据序列按行的顺序写入m×n的矩阵，然后按列的顺序读出，即完成交织过程。相应的解交织过程就是将交织后的数据序列按列写入m×n矩阵，再按照行的顺序读出。</p>
+<p><strong>伪随机交织器</strong>：指交织映射随机生成的交织器，每个长度为N的伪随机交织器共有N！种可能的交织形式。这种交织器采用给定的随机地址交织映射，由这个已知的交织表对输入信息序列进行映射。</p>
+<h3 id="删余处理"><a href="#删余处理" class="headerlink" title="删余处理"></a>删余处理</h3><p>在编码完成后，将分量码输出的两路校验信息输入删余器，按照一定的规则删除一部分校验信息，减小信息的冗余度，从而提高编码效率。</p>
+<h2 id="Turbo码编码器的结构"><a href="#Turbo码编码器的结构" class="headerlink" title="Turbo码编码器的结构"></a>Turbo码编码器的结构</h2><p>三种：并行级联卷积码(PCCC)、串行级联卷积码(SCCC)和混合级联卷积码(HCCC)</p>
+<h3 id="并行级联卷积码-PCCC"><a href="#并行级联卷积码-PCCC" class="headerlink" title="并行级联卷积码(PCCC)"></a>并行级联卷积码(PCCC)</h3><p>随机交织器：将信息序列U进行比特位置重排列得到U1（内容不变）<br>分量编码器：生成校验序列 $X_{p1}$ 和 $X_{p2}$（一般两个编码器结构相同）<br>删余矩阵：为了提高码率，周期地删除一些校验位，形成校验位序列Xp<br>复接：未编码序列Xs与Xp经过复接后，生成Turbo码序列X</p>
+<h2 id="Turbo码的码率"><a href="#Turbo码的码率" class="headerlink" title="Turbo码的码率"></a>Turbo码的码率</h2><p>若两个分量码的码率分别为R1和R2，则Turbo码的码率为</p>
+<p>$$<br>R&#x3D;\frac{R_1R_2}{R_1+R_2-R_1R_2}<br>$$</p>
+<h2 id="Turbo码的译码"><a href="#Turbo码的译码" class="headerlink" title="Turbo码的译码"></a>Turbo码的译码</h2><p>Turbo码有一重要特点是其译码较为复杂，比常规的卷积码要复杂的多。<br>这种复杂不仅在于其译码要采用迭代的过程，而且采用的算法本身也比较复杂。</p>
+<h3 id="译码算法-1"><a href="#译码算法-1" class="headerlink" title="译码算法"></a>译码算法</h3><p><strong>MAP算法</strong>：MAP算法采用递推、迭代方法，将最大似然对数比函数作为软判决的输出。但由于该算法需要多次迭代，复杂度较高，运算量非常大，而且对数和指数的运算在数字电路中比较难以实现，导致其在工程实现上受到了很大程度的限制。<br><strong>Max-log-MAP算法</strong>：即最大值运算，在MAP算法基础上通过减少格图搜索状态来达到简化的目的。Max-log-MAP对MAP所做的修改是在对数域里对一些函数进行计算，这样省去了很多的指数的运算和对数域的运算，很大程度上降低了运算的复杂度，大大简化了运算量；但是由于在计算过程有一些近似处理，所以Max-log-MAP算法不是最优的。<br><strong>Log-MAP算法</strong>：即对数域算法，Robertson等人在Max-log-MAP算法基础上进行了一些修改，使得Log-MAP算法相比于Max-log-MAP算法只多了一些查表及加法运算，尽管提高了一点复杂度但是性能却得到很大的提高。<br><strong>SOVA算法</strong>：即软输出Viterbi译码，SOVA算法在标准Viterbi译码算法上进行了一些修改：在进行最大似然路径选择时必须参考其先验信息；不但需要给出每个比特译码的准确结果，还需要计算出每个比特译码的可靠性，通过一些计算从中获取一些关于译码比特的先验信息，从而为下次迭代做好准备，大大减小了运算量，但性能受到了损失，大约损失了1dB。</p>
+<h1 id="第九章-二维码"><a href="#第九章-二维码" class="headerlink" title="第九章 二维码"></a>第九章 二维码</h1><h2 id="二维码的概念与原理"><a href="#二维码的概念与原理" class="headerlink" title="二维码的概念与原理"></a>二维码的概念与原理</h2><p>行排式二维码，又称堆积式二维码或层排式二维码，其编码原理是建立在一维条码基础之上，按需要堆积成二行或多行。</p>
+<p>矩阵式二维码，又称棋盘式二维码，它是在一个矩形空间通过黑、白像素在矩阵中的不同分布进行编码。</p>
+<h2 id="二维码的特点"><a href="#二维码的特点" class="headerlink" title="二维码的特点"></a>二维码的特点</h2><p><strong>可靠性强</strong><br>条形码的读取准确率远远超过人工记录，平均每15000个字符才会出现一个错误。<br><strong>效率高</strong><br>条形码的读取速度很快，相当于每秒40个字符。<br><strong>易于制作</strong><br>条形码的编写很简单，制作也仅仅需要印刷，被称为“可印刷的计算机语言”。<br><strong>高密度</strong><br>二维码通过利用垂直方向的堆积来提高条码的信息密度，而且采用高密度图形表示。<br><strong>构造简单</strong><br>条形码识别设备的构造简单，使用方便。<br><strong>灵活实用</strong><br>条形码符号可以手工键盘输入，也可以和有关设备组成识别系统实现自动化识别，还可以和其他控制设备联系起来实现整个系统的自动化管理。<br><strong>成本低</strong><br>与其它自动化识别技术相比较，条形码技术仅仅需要一小张贴纸和相对构造简单的光学扫描仪，成本相当低廉。<br><strong>纠错功能</strong><br>二维码不仅能防止错误，而且能纠正错误，即使条形码部分损坏，也能将正确的信息还原出来。<br><strong>多语言形式，可表示图像</strong><br>二维码具有字节表示模式，即提供了一种表示字节流的机制。不论何种语言文字它们在计算机中存储时以机内码的形式表现，而内部码都是字节码，可识别多种语言文字的条码。<br><strong>具有加密体制</strong><br>可以先用一定的加密算法将信息加密，再用二维码表示在识别二维条码时，再加以一定的解密算法，便可以恢复所表示的信息。</p>
+<h2 id="QR码的生成与识别"><a href="#QR码的生成与识别" class="headerlink" title="QR码的生成与识别"></a>QR码的生成与识别</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/Untitled%207.png" alt="Untitled"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/Untitled%208.png" alt="Untitled"></p>
+<p><strong>寻像图形、位置探测图形：</strong><br>协助扫描软件定位QR码并转换坐标系。<br>寻像图形包括三个相同的位置探测图形，分别位于图形中的左上角、右上角和左下角。每个位置探测图形由7*7个模块组成。如图，寻像图形为黑色区域。</p>
+<p><strong>位置探测图形分隔符：</strong><br>区分功能图形和编码区域。<br>每个位置探测图形和编码区域之间有宽度为1个模块的分隔符。位置探测图形分隔符为灰色区域，此区域应为空白。</p>
+<p><strong>定位图形：</strong><br>确定符号的密度和版本，提供决定模块坐标的基准位置。<br>定位图形为图中的茶色区域，水平和垂直的定位图形分别始于第6行和第6列。</p>
+<p><strong>校正图形：</strong><br>在图像有一定程度损坏的情况下，译码软件可以通过它同步图像模块的坐标映像。<br>矫正图形的数量视符号和版本号而定，版本1没有校正图形，版本2及以上均含有校正图形。</p>
+<p><strong>格式信息：</strong><br>存放纠错等级和掩模信息。<br>格式信息是一个15位数据，由2位纠错指示符+3位掩模图形参考+10位纠错码组成，为图中深蓝色区域。</p>
+<p>同时，左下角格式信息编号8上方的橙色区域，此区域永远为深色模块，不用于存放任何信息。</p>
+<p><strong>版本信息：</strong><br>用于存放QR码的版本号。<br>为图中红色区域，两个3*6模块。</p>
+<p><strong>扩展图形：</strong><br>最初的目的是用于将来对QR码功能的扩展，并不用于对数据的编码。<br>扩展图形由位于符号右下角的一个4个模块组成的方块以及位于符号右边和下边的一些8个模块的块组成。8个模块的块的数目取决于符号的版本，计算公式为：<br>8模块的数目&#x3D;2*(N DIV 2)<br>其中N为版本号，DIV表示除法运算。<br>扩展图形为图中红框区域，即版本7中有6个8模块组成的块和1个4模块组成的块。</p>
+<h3 id="QR码的纠错能力："><a href="#QR码的纠错能力：" class="headerlink" title="QR码的纠错能力："></a><strong>QR码的纠错能力：</strong></h3><table>
+<thead>
+<tr>
+<th>级别</th>
+<th>纠错能力</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>L</td>
+<td>约7%</td>
+</tr>
+<tr>
+<td>M</td>
+<td>约15%</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>约25%</td>
+</tr>
+<tr>
+<td>H</td>
+<td>约30%</td>
+</tr>
+</tbody></table>
+<h2 id="举例说明QR码的编码过程。"><a href="#举例说明QR码的编码过程。" class="headerlink" title="举例说明QR码的编码过程。"></a>举例说明QR码的编码过程。</h2><h2 id="识别步骤"><a href="#识别步骤" class="headerlink" title="识别步骤"></a>识别步骤</h2><p>条码定位<br>条码分割<br>解码</p>
+<h3 id="条码定位"><a href="#条码定位" class="headerlink" title="条码定位"></a>条码定位</h3><p>定位采用以下步骤：<br>1.利用点运算的阈值理论将采集到的图像变为二值图像，即对图像进行二值化处理；<br>2.得到二值化图像后，对其进行膨胀运算；<br>3.对膨胀后的图像进行边缘检测得到条码区域的轮廓。<br>4.确定寻像图形<br>5.探测图形中心坐标<br>6.确定两个举例<br>7.确定版本号<br>8.构造位图<br>9.得到纠错等级和掩模图形</p>
+<h3 id="条码分割"><a href="#条码分割" class="headerlink" title="条码分割"></a>条码分割</h3><p>分割采用以下步骤：<br>1.将原图像按比例缩小进行分割，计算其特征值；<br>2.分块继承父块纹理类别，结合其周围纹理类型进行修正；<br>3.重复步骤二直至图像被划分为2*2大小，分割结束；<br>4.分割结束后，图中可能出现的孤立的小区域可作为噪声删除。</p>
+<h3 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h3><pre><code>得到一幅标准的条码图像后，对该符号进行网络取样，对网格每一个交点上的图像像素取样，并根据阈值确定是深色块还是浅色块。构造一个位图，用二进制的“1”表示深色像素，“0”表示浅色像素，从而得到条码的原始二进制序列值，然后对这些数据进行纠错和译码：
+1.异或处理（XOR）
+2.确定符号码字
+3.重新排列码字序列
+4.执行错误检测和纠错译码程序
+最后根据条码的逻辑编码规则把这些原始的数据位流转换成数据码字。
+</code></pre>
+<h1 id="第十章-极化码"><a href="#第十章-极化码" class="headerlink" title="第十章 极化码"></a>第十章 极化码</h1><h2 id="极化码概述与研究现状"><a href="#极化码概述与研究现状" class="headerlink" title="极化码概述与研究现状"></a>极化码概述与研究现状</h2><p>极化码优点：<br>1、是目前唯一的香农信道容量可达的编码方式<br>2、有坚实的理论基础<br>3、编解码复杂度低<br>4、精细的码率调整机制（信息块长度可以一比特一比特的递减）<br>5、极化码的递归特性易于通过硬件实现（母码长度为N的Polar码可以用两个母码长度为N&#x2F;2的Polar码实现）</p>
+<p>极化码缺点：<br>1、汉明距离较小，在短码情况下影响解码性能，一定程度上可以通过选择合适的冻结比特位置进行规避。适合长码编码。<br>2、SC译码延时较大。</p>
+<h3 id="极化（Polar）码起源"><a href="#极化（Polar）码起源" class="headerlink" title="极化（Polar）码起源"></a>极化（Polar）码起源</h3><blockquote>
+<p>截止频率越高，系统响应越快<br>因此Polar码的最初设计的出发点是为了提升截止频率</p>
+</blockquote>
+<p>在随机编码和最大似然条件下，信道截止速率R0决定了相应的码块的错误概率：</p>
+<p>$$<br>P_e&#x3D;2^{−N∙R_0}<br>$$</p>
+<p>其中，N为码块长度。实际信道的传输速率R小于R_0、使用随机编码和ML编码时，信道平均错误概率：</p>
+<p>$$<br>P _e&#x3D;2^{−N（R_0−R）}<br>$$</p>
+<h3 id="极化码的基本原理"><a href="#极化码的基本原理" class="headerlink" title="极化码的基本原理"></a>极化码的基本原理</h3><p>对于Polar码基本原理可以归结为三点：信道合并、信道分离、信道极化。其中信道合并和信道极化是在编码时完成的；信道分离是在解码时完成。</p>
+<p><strong>信道选择：</strong><br>对于编码方案通常根据某种信道设计，Polar码主要考虑以下信道进行分析：</p>
+<p>二进制离散无记忆信道（B-DMC）:二进制删除信道（BEC）;二进制对称信道（BSC）</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://zhangyuanhe.top">Charmes</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zhangyuanhe.top/2024/01/10/BUPT_note/Notes%20on%20Information%20Theory%20and%20Coding/">https://zhangyuanhe.top/2024/01/10/BUPT_note/Notes%20on%20Information%20Theory%20and%20Coding/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="null" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zhangyuanhe.top" target="_blank">ZYH's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/">北邮信安</a><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></div><div class="post_share"><div class="social-share" data-image="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/01/02/BUPT_note/Review%20of%20Complex%20Networks/" title="复杂网络期末复习总结"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">复杂网络期末复习总结</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/07/31/BUPT_note/BUPT_SCSS_introduce/" title="北邮网安大类课程介绍（21级）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-31</div><div class="title">北邮网安大类课程介绍（21级）</div></div></a></div><div><a href="/2024/01/02/BUPT_note/Review%20of%20Complex%20Networks/" title="复杂网络期末复习总结"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-02</div><div class="title">复杂网络期末复习总结</div></div></a></div><div><a href="/2023/09/14/Software%20and%20App/Windows_docker/" title="Windows下安装Docker"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-14</div><div class="title">Windows下安装Docker</div></div></a></div><div><a href="/2024/01/01/BUPT_note/Review%20of%20Information%20System%20Security/" title="信息系统安全期末复习总结"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-01</div><div class="title">信息系统安全期末复习总结</div></div></a></div><div><a href="/2023/08/04/Information_Security_Experiment/assembler_language/AL1/" title="二进制编辑修改"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-ne8r98_1280x720.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-04</div><div class="title">二进制编辑修改</div></div></a></div><div><a href="/2023/08/04/Information_Security_Experiment/assembler_language/AL2/" title="MD5加密程序解flag"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-ne8r98_1280x720.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-04</div><div class="title">MD5加密程序解flag</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="card-info-avatar"> <div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-status-box"><div class="author-status"><g-emoji class="g-emoji" alias="palm_tree" fallback-src="https://lskypro.acozycotage.net/LightPicture/2022/12/fe1dc0402e623096.jpg">🐟</g-emoji><span>认真摸鱼中</span></div></div></div><div class="author-info__name">Charmes</div><div class="author-info__description">敏于思 慎于行</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/shuita2333"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/shuita2333" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:603747072@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://gitee.com/bank-beaver" target="_blank" title="Gitee"><i class="fab fa-git-square" style="color: #d5382a;"></i></a><a class="social-icon" href="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729200147469.png" target="_blank" title="wechat"><i class="fab fa-weixin" style="color: #3CB371;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E8%AE%BA%E4%B8%8E%E7%BC%96%E7%A0%81-%E6%9D%8E%E4%B8%BD%E9%A6%99"><span class="toc-number">1.</span> <span class="toc-text">信息论与编码 李丽香</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E4%BF%A1%E6%81%AF%E8%AE%BA%E4%B8%8E%E7%BC%96%E7%A0%81%E7%90%86%E8%AE%BA%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">第一章 信息论与编码理论概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E8%AE%BA%E4%B8%8E%E7%BC%96%E7%A0%81%E7%90%86%E8%AE%BA%E6%A6%82%E8%BF%B0"><span class="toc-number">2.1.</span> <span class="toc-text">信息论与编码理论概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E6%9C%BA%E5%88%B6"><span class="toc-number">2.1.1.</span> <span class="toc-text">编码机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%BA%90%E7%BC%96%E7%A0%81"><span class="toc-number">2.1.2.</span> <span class="toc-text">信源编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E9%94%99%E8%AF%AF"><span class="toc-number">2.1.3.</span> <span class="toc-text">随机错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%81%E5%8F%91%E9%94%99%E8%AF%AF"><span class="toc-number">2.1.4.</span> <span class="toc-text">突发错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A0%E9%94%99%E7%A0%81"><span class="toc-number">2.1.5.</span> <span class="toc-text">纠错码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%84%E6%88%90%E5%8F%8A%E5%90%84%E7%A7%8D%E4%BF%A1%E9%81%93"><span class="toc-number">2.2.</span> <span class="toc-text">数字通信系统的组成及各种信道</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.1.</span> <span class="toc-text">数字通信系统模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E8%AE%B0%E5%BF%86%E4%BF%A1%E9%81%93%E5%92%8C%E6%9C%89%E8%AE%B0%E5%BF%86%E4%BF%A1%E9%81%93"><span class="toc-number">2.2.2.</span> <span class="toc-text">无记忆信道和有记忆信道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A6%BB%E6%95%A3%E6%97%A0%E8%AE%B0%E5%BF%86-DMC-%E4%BF%A1%E9%81%93"><span class="toc-number">2.2.3.</span> <span class="toc-text">离散无记忆(DMC)信道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%85%83%E5%AF%B9%E7%A7%B0-BSC-%E4%BF%A1%E9%81%93"><span class="toc-number">2.2.4.</span> <span class="toc-text">二元对称(BSC)信道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E9%81%93%E7%9F%A9%E9%98%B5"><span class="toc-number">2.2.5.</span> <span class="toc-text">信道矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E6%80%A7%E9%AB%98%E6%96%AF%E7%99%BD%E5%99%AA%E5%A3%B0-AWGN-%E4%BF%A1%E9%81%93"><span class="toc-number">2.2.6.</span> <span class="toc-text">加性高斯白噪声(AWGN)信道</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E6%B6%89%E5%8F%8A%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.3.</span> <span class="toc-text">通信系统涉及的一些基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93%E7%8E%87"><span class="toc-number">2.3.1.</span> <span class="toc-text">信息传输率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E9%81%93%E5%B8%A6%E5%AE%BD"><span class="toc-number">2.3.2.</span> <span class="toc-text">信道带宽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AWGN%E4%BF%A1%E9%81%93%E7%9A%84%E5%88%86%E7%BB%84%E7%BC%96%E7%A0%81%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.3.</span> <span class="toc-text">AWGN信道的分组编码系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E4%BD%B3%E8%AF%91%E7%A0%81%E8%A7%84%E5%88%99%E5%92%8C%E6%9C%80%E5%A4%A7%E5%90%8E%E9%AA%8C%E6%A6%82%E7%8E%87%E8%AF%91%E7%A0%81"><span class="toc-number">2.3.4.</span> <span class="toc-text">最佳译码规则和最大后验概率译码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%BC%E7%84%B6%E5%87%BD%E6%95%B0"><span class="toc-number">2.3.5.</span> <span class="toc-text">似然函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E8%AF%91%E7%A0%81"><span class="toc-number">2.3.6.</span> <span class="toc-text">最大似然译码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BSC%E4%BF%A1%E9%81%93%E7%9A%84%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E8%AF%91%E7%A0%81"><span class="toc-number">2.3.7.</span> <span class="toc-text">BSC信道的最大似然译码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">数据安全中的数学问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E9%81%93%E7%BC%96%E7%A0%81"><span class="toc-number">3.1.</span> <span class="toc-text">信道编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LDPC%E7%A0%81"><span class="toc-number">3.2.</span> <span class="toc-text">LDPC码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E6%84%9F%E7%9F%A5"><span class="toc-number">3.3.</span> <span class="toc-text">压缩感知</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5A%E4%B8%8Ex%E7%BB%B4%E6%95%B0%E4%B8%8D%E5%8C%B9%E9%85%8D"><span class="toc-number">3.3.1.</span> <span class="toc-text">矩阵A与x维数不匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8A%E5%BC%A0%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%BC%A9%E6%84%9F%E7%9F%A5"><span class="toc-number">3.3.2.</span> <span class="toc-text">半张量积压缩感知</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%BF%A1%E6%81%AF%E8%AE%BA%E5%9F%BA%E7%A1%80%E4%B8%8E%E4%BF%A1%E6%BA%90%E7%BC%96%E7%A0%81%E7%90%86%E8%AE%BA"><span class="toc-number">4.</span> <span class="toc-text">第二章 信息论基础与信源编码理论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E4%BF%A1%E6%81%AF"><span class="toc-number">4.1.</span> <span class="toc-text">自信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E4%BF%A1%E6%81%AF"><span class="toc-number">4.2.</span> <span class="toc-text">互信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B3%E5%9D%87%E8%87%AA%E4%BF%A1%E6%81%AF%E9%87%8F-%E4%BF%A1%E6%81%AF%E7%86%B5"><span class="toc-number">4.3.</span> <span class="toc-text">平均自信息量(信息熵)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B3%E5%9D%87%E6%9D%A1%E4%BB%B6%E8%87%AA%E4%BF%A1%E6%81%AF%E9%87%8F-%E6%9D%A1%E4%BB%B6%E7%86%B5"><span class="toc-number">4.4.</span> <span class="toc-text">平均条件自信息量(条件熵)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%A4%B1%E7%9C%9F%E4%BF%A1%E6%BA%90%E7%BC%96%E7%A0%81"><span class="toc-number">4.5.</span> <span class="toc-text">无失真信源编码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%89%E9%95%BF%E4%BF%A1%E6%BA%90%E7%BC%96%E7%A0%81%E5%AE%9A%E7%90%86"><span class="toc-number">4.5.1.</span> <span class="toc-text">等长信源编码定理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%95%BF%E7%A0%81"><span class="toc-number">4.5.2.</span> <span class="toc-text">变长码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%95%BF%E4%BF%A1%E6%BA%90%E7%BC%96%E7%A0%81%E5%AE%9A%E7%90%86"><span class="toc-number">4.5.3.</span> <span class="toc-text">变长信源编码定理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E9%81%93%E7%9A%84%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93%E7%8E%87"><span class="toc-number">4.5.4.</span> <span class="toc-text">信道的信息传输率</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E7%9A%84%E4%BF%A1%E6%BA%90%E7%BC%96%E7%A0%81%E6%96%B9%E6%B3%95"><span class="toc-number">4.6.</span> <span class="toc-text">经典的信源编码方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%BA%90%E7%BC%96%E7%A0%81%E2%80%94%E9%9C%8D%E5%A4%AB%E6%9B%BC-Huffman-%E7%BC%96%E7%A0%81"><span class="toc-number">4.6.1.</span> <span class="toc-text">信源编码—霍夫曼(Huffman)编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B8%E7%A8%8B%E7%BC%96%E7%A0%81"><span class="toc-number">4.6.2.</span> <span class="toc-text">游程编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LZ-Lemple-Ziv-%E7%BC%96%E7%A0%81"><span class="toc-number">4.6.3.</span> <span class="toc-text">LZ(Lemple-Ziv)编码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%A0%E9%94%99%E7%A0%81%E7%9A%84%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="toc-number">4.7.</span> <span class="toc-text">纠错码的理论基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E9%81%93%E5%AE%B9%E9%87%8F"><span class="toc-number">4.7.1.</span> <span class="toc-text">信道容量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A0%E9%94%99%E7%BC%96%E7%A0%81%E7%9A%84%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="toc-number">4.7.2.</span> <span class="toc-text">纠错编码的理论基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E9%81%93%E7%BC%96%E7%A0%81%E5%AE%9A%E7%90%86"><span class="toc-number">4.7.3.</span> <span class="toc-text">信道编码定理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E7%BA%BF%E6%80%A7%E5%88%86%E7%BB%84"><span class="toc-number">5.</span> <span class="toc-text">第三章 线性分组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E7%A0%81"><span class="toc-number">5.1.</span> <span class="toc-text">分组码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%88%86%E7%BB%84%E7%A0%81"><span class="toc-number">5.2.</span> <span class="toc-text">线性分组码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E7%9F%A9%E9%98%B5"><span class="toc-number">5.3.</span> <span class="toc-text">生成矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E8%87%B4%E6%A0%A1%E9%AA%8C-%E7%9B%91%E7%9D%A3-%E7%9F%A9%E9%98%B5"><span class="toc-number">5.4.</span> <span class="toc-text">一致校验(监督)矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E7%B3%BB%E7%BB%9F%E5%88%86%E7%BB%84%E7%A0%81"><span class="toc-number">5.5.</span> <span class="toc-text">线性系统分组码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E8%87%B4%E6%A0%A1%E9%AA%8C%E6%96%B9%E7%A8%8B"><span class="toc-number">5.6.</span> <span class="toc-text">一致校验方程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%81%B6%E7%A0%81"><span class="toc-number">5.7.</span> <span class="toc-text">对偶码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%A0%81%E7%9A%84%E4%B8%80%E8%87%B4%E6%A0%A1%E9%AA%8C%E7%9F%A9%E9%98%B5"><span class="toc-number">5.8.</span> <span class="toc-text">系统码的一致校验矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%B4%E9%9A%8F%E5%BC%8F"><span class="toc-number">5.9.</span> <span class="toc-text">伴随式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%B4%E9%9A%8F%E5%BC%8F%E7%BA%A0%E9%94%99"><span class="toc-number">5.10.</span> <span class="toc-text">伴随式纠错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%89%E6%98%8E%E9%87%8D%E9%87%8F"><span class="toc-number">5.11.</span> <span class="toc-text">汉明重量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB"><span class="toc-number">5.12.</span> <span class="toc-text">汉明距离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%9D%E7%A6%BB%E5%88%86%E5%B8%83"><span class="toc-number">5.13.</span> <span class="toc-text">距离分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E9%98%B5"><span class="toc-number">5.14.</span> <span class="toc-text">标准阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%AA%E9%9B%86"><span class="toc-number">5.15.</span> <span class="toc-text">陪集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%A0%87%E5%87%86%E9%98%B5%E7%9A%84%E8%AF%91%E7%A0%81%E6%96%B9%E6%B3%95"><span class="toc-number">5.16.</span> <span class="toc-text">基于标准阵的译码方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E8%B7%9D%E7%A6%BB%E8%AF%91%E7%A0%81%E6%96%B9%E6%B3%95"><span class="toc-number">5.17.</span> <span class="toc-text">最小距离译码方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%B4%E9%9A%8F%E5%BC%8F%E8%AF%91%E7%A0%81"><span class="toc-number">5.18.</span> <span class="toc-text">伴随式译码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E5%A4%87%E7%A0%81"><span class="toc-number">5.19.</span> <span class="toc-text">完备码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%89%E6%98%8E%E7%A0%81"><span class="toc-number">5.20.</span> <span class="toc-text">汉明码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%BE%AA%E7%8E%AF%E7%A0%81"><span class="toc-number">6.</span> <span class="toc-text">第四章 循环码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A0%81%E5%AD%97%E5%A4%9A%E9%A1%B9%E5%BC%8F"><span class="toc-number">6.1.</span> <span class="toc-text">码字多项式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E7%A0%81%E7%9A%84%E4%BB%A3%E6%95%B0%E6%80%A7%E8%B4%A8"><span class="toc-number">6.2.</span> <span class="toc-text">循环码的代数性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%A4%9A%E9%A1%B9%E5%BC%8F"><span class="toc-number">6.3.</span> <span class="toc-text">生成多项式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E7%A0%81%E7%9A%84%E7%94%9F%E6%88%90%E7%9F%A9%E9%98%B5"><span class="toc-number">6.4.</span> <span class="toc-text">循环码的生成矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E8%87%B4%E6%A0%A1%E9%AA%8C%E7%9F%A9%E9%98%B5"><span class="toc-number">6.5.</span> <span class="toc-text">一致校验矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BE%AA%E7%8E%AF%E7%A0%81%E7%9A%84%E7%BC%96%E7%A0%81%E6%96%B9%E6%B3%95"><span class="toc-number">6.6.</span> <span class="toc-text">系统循环码的编码方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E4%B9%A0%EF%BC%9A%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%9A%84%E9%99%A4%E6%B3%95"><span class="toc-number">6.7.</span> <span class="toc-text">复习：多项式的除法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#g-x-%E9%99%A4%E6%B3%95%E7%94%B5%E8%B7%AF%E7%BC%96%E7%A0%81%E5%99%A8"><span class="toc-number">6.8.</span> <span class="toc-text">g(x)除法电路编码器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%B4%E9%9A%8F%E5%BC%8F%E8%AE%A1%E7%AE%97%E5%92%8C%E9%94%99%E8%AF%AF%E6%A3%80%E6%B5%8B"><span class="toc-number">6.9.</span> <span class="toc-text">伴随式计算和错误检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%B4%E9%9A%8F%E5%BC%8F%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-number">6.10.</span> <span class="toc-text">伴随式的性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E7%A0%81%E7%9A%84%E8%AF%91%E7%A0%81"><span class="toc-number">6.11.</span> <span class="toc-text">循环码的译码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-BCH%E7%A0%81"><span class="toc-number">7.</span> <span class="toc-text">第五章 BCH码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BCH%E7%A0%81%E7%AE%80%E4%BB%8B"><span class="toc-number">7.1.</span> <span class="toc-text">BCH码简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%8E%9F%E5%85%83%E5%92%8C%E6%9C%AC%E5%8E%9F%E5%A4%9A%E9%A1%B9%E5%BC%8F"><span class="toc-number">7.1.1.</span> <span class="toc-text">本原元和本原多项式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-GF-23-%E4%B8%8A%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97"><span class="toc-number">7.1.2.</span> <span class="toc-text">举例: GF(23)上的乘法运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GF-2-%E4%B8%8A%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%A0%B9%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">7.1.3.</span> <span class="toc-text">GF(2)上多项式根的特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BCH%E7%A0%81%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">7.2.</span> <span class="toc-text">BCH码的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BCH%E7%A0%81%E7%9A%84%E6%9E%84%E9%80%A0"><span class="toc-number">7.2.1.</span> <span class="toc-text">BCH码的构造</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BCH%E7%A0%81%E9%99%90%E5%AE%9A%E7%90%86"><span class="toc-number">7.2.2.</span> <span class="toc-text">BCH码限定理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-RM%E7%A0%81"><span class="toc-number">8.</span> <span class="toc-text">第六章 RM码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RM%E7%A0%81%E7%9A%84%E4%BC%98%E7%82%B9%E5%92%8C%E7%BC%BA%E7%82%B9"><span class="toc-number">8.0.1.</span> <span class="toc-text">RM码的优点和缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E7%A0%81"><span class="toc-number">8.1.</span> <span class="toc-text">线性码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%91%E9%87%8F%E5%A4%96%E7%A7%AF"><span class="toc-number">8.2.</span> <span class="toc-text">向量外积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E5%87%BD%E6%95%B0"><span class="toc-number">8.3.</span> <span class="toc-text">布尔函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RM%E7%A0%81"><span class="toc-number">8.4.</span> <span class="toc-text">RM码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E7%9F%A9%E9%98%B5-1"><span class="toc-number">8.4.1.</span> <span class="toc-text">生成矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RM%E7%A0%81%E7%9A%84%E6%9E%84%E9%80%A0"><span class="toc-number">8.4.2.</span> <span class="toc-text">RM码的构造</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%91%E7%A0%81%E7%AE%97%E6%B3%95"><span class="toc-number">8.5.</span> <span class="toc-text">译码算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%8D%B7%E7%A7%AF%E7%A0%81"><span class="toc-number">9.</span> <span class="toc-text">第七章 卷积码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%BB%E6%95%A3%E5%BA%8F%E5%88%97%E7%9A%84%E9%9D%9E%E5%BE%AA%E7%8E%AF%E5%8D%B7%E7%A7%AF%E8%BF%90%E7%AE%97"><span class="toc-number">9.1.</span> <span class="toc-text">离散序列的非循环卷积运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%85%83-2-1-2-%E5%8D%B7%E7%A7%AF%E7%A0%81%E7%9A%84%E7%BC%96%E7%A0%81%E5%99%A8"><span class="toc-number">9.2.</span> <span class="toc-text">二元(2,1,2)卷积码的编码器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%B2%E6%BF%80%E5%93%8D%E5%BA%94"><span class="toc-number">9.2.1.</span> <span class="toc-text">冲激响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E5%BA%8F%E5%88%97"><span class="toc-number">9.2.2.</span> <span class="toc-text">输出序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A0%81%E5%AD%97"><span class="toc-number">9.2.3.</span> <span class="toc-text">码字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E7%9F%A9%E9%98%B5-2"><span class="toc-number">9.2.4.</span> <span class="toc-text">生成矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%85%83-3-2-1-%E5%8D%B7%E7%A7%AF%E7%A0%81%E7%9A%84%E7%BC%96%E7%A0%81%E5%99%A8"><span class="toc-number">9.2.5.</span> <span class="toc-text">二元(3,2,1)卷积码的编码器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%85%83-3-2-m-%E5%8D%B7%E7%A7%AF%E7%A0%81%E7%9A%84%E8%BE%93%E5%85%A5%E5%BA%8F%E5%88%97"><span class="toc-number">9.2.6.</span> <span class="toc-text">二元(3,2,m)卷积码的输入序列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF%E7%A0%81%E7%BC%96%E7%A0%81%E5%99%A8%E7%9A%84%E5%AD%98%E5%82%A8%E7%BA%A7%E6%95%B0"><span class="toc-number">9.3.</span> <span class="toc-text">卷积码编码器的存储级数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF%E7%A0%81%E7%BC%96%E7%A0%81%E5%99%A8%E7%9A%84%E7%BA%A6%E6%9D%9F%E9%95%BF%E5%BA%A6%E5%92%8C%E7%A0%81%E9%80%9F%E7%8E%87"><span class="toc-number">9.4.</span> <span class="toc-text">卷积码编码器的约束长度和码速率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-m-%E5%8D%B7%E7%A7%AF%E7%A0%81%E7%9A%84%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8F%8F%E8%BF%B0"><span class="toc-number">9.5.</span> <span class="toc-text">(2, 1, m)卷积码的多项式描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#n-k-m-%E5%8D%B7%E7%A7%AF%E7%A0%81%E7%9A%84%E8%BD%AC%E7%A7%BB%E5%87%BD%E6%95%B0%E7%9F%A9%E9%98%B5"><span class="toc-number">9.6.</span> <span class="toc-text">(n, k, m)卷积码的转移函数矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E7%89%B9%E6%AF%94-Viterbi-%E8%AF%91%E7%A0%81%E7%B3%BB%E7%BB%9F"><span class="toc-number">9.7.</span> <span class="toc-text">维特比(Viterbi)译码系统</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-Turbo%E7%A0%81"><span class="toc-number">10.</span> <span class="toc-text">第八章 Turbo码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Turbo%E7%A0%81%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-number">10.0.1.</span> <span class="toc-text">Turbo码的优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Turbo%E7%A0%81%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">10.0.2.</span> <span class="toc-text">Turbo码的缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%87%8F%E7%A0%81"><span class="toc-number">10.0.3.</span> <span class="toc-text">分量码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E7%BB%87%E5%99%A8"><span class="toc-number">10.0.4.</span> <span class="toc-text">交织器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E4%BD%99%E5%A4%84%E7%90%86"><span class="toc-number">10.0.5.</span> <span class="toc-text">删余处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Turbo%E7%A0%81%E7%BC%96%E7%A0%81%E5%99%A8%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">10.1.</span> <span class="toc-text">Turbo码编码器的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E8%A1%8C%E7%BA%A7%E8%81%94%E5%8D%B7%E7%A7%AF%E7%A0%81-PCCC"><span class="toc-number">10.1.1.</span> <span class="toc-text">并行级联卷积码(PCCC)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Turbo%E7%A0%81%E7%9A%84%E7%A0%81%E7%8E%87"><span class="toc-number">10.2.</span> <span class="toc-text">Turbo码的码率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Turbo%E7%A0%81%E7%9A%84%E8%AF%91%E7%A0%81"><span class="toc-number">10.3.</span> <span class="toc-text">Turbo码的译码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%91%E7%A0%81%E7%AE%97%E6%B3%95-1"><span class="toc-number">10.3.1.</span> <span class="toc-text">译码算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E4%BA%8C%E7%BB%B4%E7%A0%81"><span class="toc-number">11.</span> <span class="toc-text">第九章 二维码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%8E%9F%E7%90%86"><span class="toc-number">11.1.</span> <span class="toc-text">二维码的概念与原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">11.2.</span> <span class="toc-text">二维码的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#QR%E7%A0%81%E7%9A%84%E7%94%9F%E6%88%90%E4%B8%8E%E8%AF%86%E5%88%AB"><span class="toc-number">11.3.</span> <span class="toc-text">QR码的生成与识别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#QR%E7%A0%81%E7%9A%84%E7%BA%A0%E9%94%99%E8%83%BD%E5%8A%9B%EF%BC%9A"><span class="toc-number">11.3.1.</span> <span class="toc-text">QR码的纠错能力：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8EQR%E7%A0%81%E7%9A%84%E7%BC%96%E7%A0%81%E8%BF%87%E7%A8%8B%E3%80%82"><span class="toc-number">11.4.</span> <span class="toc-text">举例说明QR码的编码过程。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%86%E5%88%AB%E6%AD%A5%E9%AA%A4"><span class="toc-number">11.5.</span> <span class="toc-text">识别步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E7%A0%81%E5%AE%9A%E4%BD%8D"><span class="toc-number">11.5.1.</span> <span class="toc-text">条码定位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E7%A0%81%E5%88%86%E5%89%B2"><span class="toc-number">11.5.2.</span> <span class="toc-text">条码分割</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E7%A0%81"><span class="toc-number">11.5.3.</span> <span class="toc-text">解码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%9E%81%E5%8C%96%E7%A0%81"><span class="toc-number">12.</span> <span class="toc-text">第十章 极化码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%81%E5%8C%96%E7%A0%81%E6%A6%82%E8%BF%B0%E4%B8%8E%E7%A0%94%E7%A9%B6%E7%8E%B0%E7%8A%B6"><span class="toc-number">12.1.</span> <span class="toc-text">极化码概述与研究现状</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%8C%96%EF%BC%88Polar%EF%BC%89%E7%A0%81%E8%B5%B7%E6%BA%90"><span class="toc-number">12.1.1.</span> <span class="toc-text">极化（Polar）码起源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%8C%96%E7%A0%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">12.1.2.</span> <span class="toc-text">极化码的基本原理</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/01/10/BUPT_note/Notes%20on%20Information%20Theory%20and%20Coding/" title="信息论与编码课程笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信息论与编码课程笔记"/></a><div class="content"><a class="title" href="/2024/01/10/BUPT_note/Notes%20on%20Information%20Theory%20and%20Coding/" title="信息论与编码课程笔记">信息论与编码课程笔记</a><time datetime="2024-01-10T13:00:00.000Z" title="发表于 2024-01-10 21:00:00">2024-01-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/02/BUPT_note/Review%20of%20Complex%20Networks/" title="复杂网络期末复习总结"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="复杂网络期末复习总结"/></a><div class="content"><a class="title" href="/2024/01/02/BUPT_note/Review%20of%20Complex%20Networks/" title="复杂网络期末复习总结">复杂网络期末复习总结</a><time datetime="2024-01-02T13:00:00.000Z" title="发表于 2024-01-02 21:00:00">2024-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/01/BUPT_note/Review%20of%20Information%20System%20Security/" title="信息系统安全期末复习总结"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信息系统安全期末复习总结"/></a><div class="content"><a class="title" href="/2024/01/01/BUPT_note/Review%20of%20Information%20System%20Security/" title="信息系统安全期末复习总结">信息系统安全期末复习总结</a><time datetime="2024-01-01T13:00:00.000Z" title="发表于 2024-01-01 21:00:00">2024-01-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/19/Software%20and%20App/Latex_study/" title="Latex语法学习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Latex语法学习"/></a><div class="content"><a class="title" href="/2023/09/19/Software%20and%20App/Latex_study/" title="Latex语法学习">Latex语法学习</a><time datetime="2023-09-19T01:00:00.000Z" title="发表于 2023-09-19 09:00:00">2023-09-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/14/Software%20and%20App/Windows_docker/" title="Windows下安装Docker"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Windows下安装Docker"/></a><div class="content"><a class="title" href="/2023/09/14/Software%20and%20App/Windows_docker/" title="Windows下安装Docker">Windows下安装Docker</a><time datetime="2023-09-14T01:00:00.000Z" title="发表于 2023-09-14 09:00:00">2023-09-14</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer-wrap"></div><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>再看看那个光点，它就在这里，这是家园，这是我们 —— 你所爱的每一个人，你认识的一个人，你听说过的每一个人，曾经有过的每一个人，都在它上面度过他们的一生✨</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://stellarium.org/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/link/">我的朋友</a></li><li> <a href="/about/">关于作者</a></li><li> <a href="/archives/">文章归档</a></li><li> <a href="/categories/">文章分类</a></li><li> <a href="/tags/">文章标签</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="https://zhangyuanhe.top/" title="Charmes"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon1.png" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://liuruibin.com/" title="LRBlog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lrblog-img-1304667442.file.myqcloud.com/method.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://akilar.top/" title="Akilarの糖果屋"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lskypro.acozycotage.net/LightPicture/2022/12/6bf1ed05796db59c.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="http://www.azuredust.cc" title="de4dst4r blog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://www.azuredust.cc/wp-content/themes/personalblogily/inc/starter_content/img/portrait.png" alt=""/></a></div></div></div></div><div class="copyright"><span><b>&copy;2023 - 2024</b></span><span><b>&nbsp;&nbsp;By Charmes</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a><span class="footer-separator">|</span><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src=/img/icp.png>
+<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2023019220号-1</a></div><div id="workboard"></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button class="share" type="button" title="右键模式" onclick="changeMouseMode()"><i class="fas fa-mouse"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div class="js-pjax" id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());window.location.reload();"><i class="fa fa-search"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-too"><a class="rightMenu-item" href="javascript:window.open(window.getSelection().toString());window.location.reload();"><i class="fa fa-link"></i><span>转到链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-paste"><a class="rightMenu-item" href="javascript:rmf.paste()"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comment"></i><span>空降评论</span></a><a class="rightMenu-item" href="javascript:rmf.copyWordsLink()"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-to"><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:rmf.open()"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-img"><a class="rightMenu-item" href="javascript:rmf.saveAs()"><i class="fa fa-download"></i><span>保存图片</span></a><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制图片链接</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:randomPost()"><i class="fa fa-paper-plane"></i><span>随便逛逛</span></a><a class="rightMenu-item" href="javascript:switchNightMode();"><i class="fa fa-moon"></i><span>昼夜切换</span></a><a class="rightMenu-item" href="/about/"><i class="fa fa-info-circle"></i><span>关于博客</span></a><a class="rightMenu-item" href="javascript:toggleWinbox();"><i class="fas fa-cog"></i><span>美化设置</span></a><a class="rightMenu-item" href="javascript:rmf.fullScreen();"><i class="fas fa-expand"></i><span>切换全屏</span></a><a class="rightMenu-item" href="javascript:window.print();"><i class="fa-solid fa-print"></i><span>打印页面</span></a></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.textContent = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/light.js"></script><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script src="/js/sun_moon.js" async></script><script type="text/javascript" src="https://cdn1.tianli0.top/npm/jquery@latest/dist/jquery.min.js"></script><script type="text/javascript" src="/js/rightmenu.js"></script><script defer src="/js/another.js"></script><script defer src="/js/runtime.js"></script><script async src="/js/fps.js"></script><script async src="/js/title.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/博客搭建/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 Charmesの魔改教程 (13)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/课程笔记/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📒 Charmesの学习笔记 (4)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/信安课程实验/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👩‍💻 Charmesの编程学习 (20)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item" style="visibility: hidden"></div><a class="magnet_link_more"  href="https://zhangyuanhe.top/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>

@@ -1,4 +1,6 @@
-https://zhangyuanhe.top/2024/01/01/BUPT_note/Review_of_Information_System_Security/
+https://zhangyuanhe.top/2024/01/10/BUPT_note/Notes%20on%20Information%20Theory%20and%20Coding/
+https://zhangyuanhe.top/2024/01/02/BUPT_note/Review%20of%20Complex%20Networks/
+https://zhangyuanhe.top/2024/01/01/BUPT_note/Review%20of%20Information%20System%20Security/
 https://zhangyuanhe.top/2023/09/19/Software%20and%20App/Latex_study/
 https://zhangyuanhe.top/2023/09/14/Software%20and%20App/Windows_docker/
 https://zhangyuanhe.top/2023/08/21/Information_Security_Experiment/network_attack/NA2/
@@ -17,14 +19,14 @@ https://zhangyuanhe.top/2023/08/02/Information_Security_Experiment/digital_conte
 https://zhangyuanhe.top/2023/08/02/Information_Security_Experiment/mathematics_modeling/MM2/
 https://zhangyuanhe.top/2023/08/02/Information_Security_Experiment/mathematics_modeling/MM1/
 https://zhangyuanhe.top/2023/07/31/BUPT_note/BUPT_SCSS_introduce/
-https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/computer_network/CN2/
 https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/computer_network/CN1/
+https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/computer_network/CN2/
 https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/digital_logic/DL1/
 https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/digital_logic/DL2/
 https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/network_security/NS1/
 https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/network_security/NS2/
-https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build12/
 https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build13/
+https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build12/
 https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build11/
 https://zhangyuanhe.top/2023/07/25/hexo/Hexo_build10/
 https://zhangyuanhe.top/2023/07/23/hexo/Hexo_build09/
