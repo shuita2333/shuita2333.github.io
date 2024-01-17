@@ -1,0 +1,742 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>信息系统安全课程笔记 | ZYH's blog</title><meta name="author" content="Charmes"><meta name="copyright" content="Charmes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="信息系统安全的初步总结，供参考">
+<meta property="og:type" content="article">
+<meta property="og:title" content="信息系统安全课程笔记">
+<meta property="og:url" content="https://zhangyuanhe.top/2024/01/10/BUPT_note/Notes%20on%20Information%20System%20Security/index.html">
+<meta property="og:site_name" content="ZYH&#39;s blog">
+<meta property="og:description" content="信息系统安全的初步总结，供参考">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png">
+<meta property="article:published_time" content="2024-01-10T13:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-17T12:37:31.572Z">
+<meta property="article:author" content="Charmes">
+<meta property="article:tag" content="北邮信安">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://zhangyuanhe.top/2024/01/10/BUPT_note/Notes%20on%20Information%20System%20Security/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: Charmes","link":"链接: ","source":"来源: ZYH's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '信息系统安全课程笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-17 20:37:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 8 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><span id="fps"></span><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="ZYH's blog" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png')"><nav id="nav"><span id="blog-info"><a href="/" title="ZYH's blog"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/logo.png"/><span class="site-name">ZYH's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">信息系统安全课程笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-10T13:00:00.000Z" title="发表于 2024-01-10 21:00:00">2024-01-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-17T12:37:31.572Z" title="更新于 2024-01-17 20:37:31">2024-01-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">11.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>34分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="信息系统安全课程笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="信息系统安全"><a href="#信息系统安全" class="headerlink" title="信息系统安全"></a>信息系统安全</h1><h1 id="信息系统发展趋势（自学）"><a href="#信息系统发展趋势（自学）" class="headerlink" title="信息系统发展趋势（自学）"></a>信息系统发展趋势（自学）</h1><h1 id="第一讲-信息系统概述"><a href="#第一讲-信息系统概述" class="headerlink" title="第一讲  信息系统概述"></a>第一讲  信息系统概述</h1><h2 id="信息系统架构"><a href="#信息系统架构" class="headerlink" title="信息系统架构"></a>信息系统架构</h2><h3 id="单机架构"><a href="#单机架构" class="headerlink" title="单机架构"></a><strong><strong>单机架构</strong></strong></h3><p>在网站开设初期，应用数量与用户数都较少，可以把Tomcat和数据库部署在同一台服务器上。</p>
+<h3 id="第一次演进：Tomcat与数据库分开部署"><a href="#第一次演进：Tomcat与数据库分开部署" class="headerlink" title="第一次演进：Tomcat与数据库分开部署"></a><strong><strong>第一次演进：Tomcat与数据库分开部署</strong></strong></h3><p>Tomcat和数据库分别独占服务器资源，显著提高两者各自性能</p>
+<h3 id="第二次演进：引入本地缓存和分布式缓存"><a href="#第二次演进：引入本地缓存和分布式缓存" class="headerlink" title="第二次演进：引入本地缓存和分布式缓存"></a><strong><strong>第二次演进：引入本地缓存和分布式缓存</strong></strong></h3><p>在Tomcat服务器增加本地缓存，并在外部增加分布式缓存，缓存热门商品信息或热门商品的HTML页面等。通过缓存能把绝大多数请求在读写数据库前拦截掉，大大降低数据库压力</p>
+<h3 id="第三次演进：引入反向代理实现负载均衡"><a href="#第三次演进：引入反向代理实现负载均衡" class="headerlink" title="第三次演进：引入反向代理实现负载均衡"></a><strong><strong>第三次演进：引入反向代理实现负载均衡</strong></strong></h3><p>在多台服务器上分别部署Tomcat，使用反向代理软件（Nginx）把请求均匀分发到每个Tomcat中。假设Tomcat最多支持100个并发，Nginx最多支持50000个并发，那么理论上Nginx把请求分发到500个Tomcat上，就能抗住50000个并发</p>
+<h3 id="第四次演进：数据库读、写分离"><a href="#第四次演进：数据库读、写分离" class="headerlink" title="第四次演进：数据库读、写分离"></a><strong><strong>第四次演进：数据库读、写分离</strong></strong></h3><p>把数据库划分为读库和写库，读库可以有多个，通过同步机制把写库的数据同步到读库，对于需要查询最新写入数据场景，可通过在缓存中多写一份，通过缓存获得最新数据</p>
+<h3 id="第五次演进：数据库按业务分库"><a href="#第五次演进：数据库按业务分库" class="headerlink" title="第五次演进：数据库按业务分库"></a><strong><strong>第五次演进：数据库按业务分库</strong></strong></h3><p>把不同业务的数据保存到不同的数据库中，降低业务之间的资源竞争，对于访问量大的业务，可以部署更多的服务器来支撑。这样同时导致跨业务的表无法直接做关联分析，需要通过其他途径来解决</p>
+<h3 id="第六次演进：把大表拆分为小表"><a href="#第六次演进：把大表拆分为小表" class="headerlink" title="第六次演进：把大表拆分为小表"></a><strong><strong>第六次演进：把大表拆分为小表</strong></strong></h3><p>这种做法显著增加了数据库运维的难度，对DBA的要求较高!!!</p>
+<p>比如针对评论数据，可按照商品ID进行hash，路由到对应的表中存储；针对支付记录，可按照小时创建表，每个小时表继续拆分为小表，使用用户ID或记录编号来路由数据。只要实时操作的表数据量足够小，请求能够足够均匀地分发到多台服务器上的小表，那数据库就能通过水平扩展的方式来提高性能</p>
+<h3 id="第七次演进：使用LVS或F5使多个Nginx负载均衡"><a href="#第七次演进：使用LVS或F5使多个Nginx负载均衡" class="headerlink" title="第七次演进：使用LVS或F5使多个Nginx负载均衡"></a><strong><strong>第七次演进：使用LVS或F5使多个Nginx负载均衡</strong></strong></h3><p>LVS是软件，运行在操作系统内核态，可对TCP请求或更高层级的网络协议进行转发，因此支持的协议更丰富，并且性能也远高于Nginx，可假设单机的LVS可支持几十万个并发的请求转发；F5是一种负载均衡硬件，与LVS提供的能力类似，性能比LVS更高，但价格昂贵。</p>
+<h3 id="第八次演进：通过DNS轮询实现机房间的负载均衡"><a href="#第八次演进：通过DNS轮询实现机房间的负载均衡" class="headerlink" title="第八次演进：通过DNS轮询实现机房间的负载均衡"></a><strong><strong>第八次演进：通过DNS轮询实现机房间的负载均衡</strong></strong></h3><p>在DNS服务器中可配置一个域名对应多个IP地址，每个IP地址对应到不同的机房里的虚拟IP。当用户访问<a target="_blank" rel="noopener" href="http://www.taobao.com时,dns服务器会使用轮询策略或其他策略,来选择某个ip供用户访问/">www.taobao.com时，DNS服务器会使用轮询策略或其他策略，来选择某个IP供用户访问</a></p>
+<h3 id="第九次演进：引入NoSQL数据库和搜索引擎等技术"><a href="#第九次演进：引入NoSQL数据库和搜索引擎等技术" class="headerlink" title="第九次演进：引入NoSQL数据库和搜索引擎等技术"></a><strong><strong>第九次演进：引入NoSQL数据库和搜索引擎等技术</strong></strong></h3><p>针对特定的场景，引入合适的解决方案。如对于海量文件存储，可通过分布式文件系统HDFS解决，对于key&#x2F;value类型的数据，可通过HBase和Redis等方案解决，对于全文检索场景，可通过搜索引擎如ElasticSearch解决，对于多维分析场景，可通过Kylin或Druid等方案解决</p>
+<h3 id="第十次演进：大应用拆分为小应用"><a href="#第十次演进：大应用拆分为小应用" class="headerlink" title="第十次演进：大应用拆分为小应用"></a><strong><strong>第十次演进：大应用拆分为小应用</strong></strong></h3><p>按照业务板块来划分应用代码，使单个应用的职责更清晰，相互之间可以做到独立升级迭代。这时候应用之间可能会涉及到一些公共配置，可以通过分布式配置中心Zookeeper来解决</p>
+<h3 id="第十一次演进：复用的功能抽离成微服务"><a href="#第十一次演进：复用的功能抽离成微服务" class="headerlink" title="第十一次演进：复用的功能抽离成微服务"></a><strong><strong>第十一次演进：复用的功能抽离成微服务</strong></strong></h3><p>如用户管理、订单、支付、鉴权等功能在多个应用中都存在，那么可以把这些功能的代码单独抽取出来形成一个单独的服务来管理，这样的服务就是所谓的微服务，应用和服务之间通过HTTP、TCP或RPC请求等多种方式来访问公共服务，每个单独的服务都可以由单独的团队来管理</p>
+<h3 id="第十二次演进：引入企业服务总线ESB屏蔽服务接口的访问差异"><a href="#第十二次演进：引入企业服务总线ESB屏蔽服务接口的访问差异" class="headerlink" title="第十二次演进：引入企业服务总线ESB屏蔽服务接口的访问差异"></a><strong><strong>第十二次演进：引入企业服务总线ESB屏蔽服务接口的访问差异</strong></strong></h3><p>通过ESB统一进行访问协议转换，应用统一通过ESB来访问后端服务，服务与服务之间也通过ESB来相互调用，以此降低系统的耦合程度。这种单个应用拆分为多个应用，公共服务单独抽取出来来管理，并使用企业消息总线来解除服务之间耦合问题的架构，就是所谓的SOA（面向服务）架构</p>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a><strong><strong>架构</strong></strong></h2><p>架构（architecture）是针对某种特定目标系统的普遍性</p>
+<p>问题而提供的具有体系性质的、通用的解决方案，是对复</p>
+<p>杂系统的一种共性的体系抽象，目的是帮助人们能够正确、</p>
+<p>合理地理解、设计和最终构建复杂的系统。</p>
+<h3 id="信息系统体系架构分析的必要性：系统的复杂度"><a href="#信息系统体系架构分析的必要性：系统的复杂度" class="headerlink" title="信息系统体系架构分析的必要性：系统的复杂度"></a><strong><strong>信息系统体系架构分析的必要性：系统的复杂度</strong></strong></h3><p>从系统分析方法论的角度看，如果一个系统过于复杂，则对其进行分析的最好方法就是按照某种角度对整个系统进行<strong>解构</strong>。</p>
+<h1 id="第二讲-信息系统安全概述"><a href="#第二讲-信息系统安全概述" class="headerlink" title="第二讲 信息系统安全概述"></a>第二讲 信息系统安全概述</h1><p>攻击致命度：攻击所具有的固话危害程度</p>
+<p>描述网络威胁信息的结构化语言：STIX（结构化威胁信息表达式）</p>
+<h2 id="信息系统的脆弱性"><a href="#信息系统的脆弱性" class="headerlink" title="信息系统的脆弱性"></a>信息系统的脆弱性</h2><h3 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h3><p>硬件电路也可以设计后门（在电容器累计电荷，触发操作）</p>
+<p><strong>Intel AMT存在高危漏洞</strong></p>
+<h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><p>软件问题漏洞来自于软件的复杂性</p>
+<h3 id="攻防不对称性"><a href="#攻防不对称性" class="headerlink" title="攻防不对称性"></a><strong><strong>攻防不对称性</strong></strong></h3><table>
+<thead>
+<tr>
+<th>攻击可以在任意时刻发起</th>
+<th>防御必须随时警惕</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>攻击可以选择一个薄弱点进行</td>
+<td>防御必须全线设防</td>
+</tr>
+<tr>
+<td>攻击包含了对未知缺陷的探测</td>
+<td>防御只能对已知的攻击防御</td>
+</tr>
+<tr>
+<td>攻击常在暗处，具隐蔽性</td>
+<td>防御常在明处，表面看起来完美，使人容易疏忽，丧失警惕</td>
+</tr>
+<tr>
+<td>攻击可以肆意进行</td>
+<td>防御必须遵循一定的规则</td>
+</tr>
+</tbody></table>
+<ul>
+<li>网络是个整体，攻击可以从任何一个薄弱点发起</li>
+<li>网络攻击已自动化和智能化</li>
+<li>安全响应速度要求越来越快，但面对海量安全事件，人力无法及时有效地分析处理</li>
+</ul>
+<h2 id="网络切片带来的安全挑战"><a href="#网络切片带来的安全挑战" class="headerlink" title="网络切片带来的安全挑战"></a><strong><strong>网络切片带来的安全挑战</strong></strong></h2><p>网络切片对网络构建带来了一定的挑战，需要考虑以下安全需求：</p>
+<ul>
+<li>切片授权与接入控制</li>
+<li>切片间的资源冲突</li>
+<li>切片间的安全隔离</li>
+<li>切片用户的隐私保护</li>
+<li>以切片方式隔离故障网元</li>
+</ul>
+<h2 id="信息系统安全实现"><a href="#信息系统安全实现" class="headerlink" title="信息系统安全实现"></a><strong><strong>信息系统安全实现</strong></strong></h2><p>信息系统安全保障是在信息系统的整个生命周期中，通过对信息系统的风险分析，制定并执行相应的安全保障策略，从技术、管理、工程和人员等方面提出安全保障要求，确保信息系统的保密性、完整性和可用性，降低安全风险到可接受的程度，从而保障系统实现组织机构的使命</p>
+<h2 id="信息系统安全保障模型⎯⎯CMM框架"><a href="#信息系统安全保障模型⎯⎯CMM框架" class="headerlink" title="信息系统安全保障模型⎯⎯CMM框架"></a><strong><strong>信息系统安全保障模型⎯⎯CMM框架</strong></strong></h2><p>第一能力级别0：未实施<br>第二能力级别1：基本执行<br>第三能力级别2：计划跟踪<br>第四能力级别3：充分定义<br>第五能力级别4：量化控制<br>第六能力级别5：持续改进</p>
+<h2 id="信息系统安全的理解"><a href="#信息系统安全的理解" class="headerlink" title="信息系统安全的理解"></a><strong><strong>信息系统安全的理解</strong></strong></h2><p>信息网络的硬件、软件及其系统中的数据受到保护，不受偶然的或者恶意的原因而遭到破坏、更改、泄露，系统连续可靠正常地运行，信息服务不中断。</p>
+<h3 id="信息系统安全的实质"><a href="#信息系统安全的实质" class="headerlink" title="信息系统安全的实质"></a><strong><strong>信息系统安全的实质</strong></strong></h3><p><strong><strong>安全＝及时的检测和处理</strong></strong></p>
+<p>$$<br>P_t&gt;Dt+R_t<br>$$</p>
+<p>防护时间<em>Pt</em>：黑客在到达攻击目标之前需要攻破很多的设备（路由器，交换机）、系统（NT，UNIX）和防火墙等障碍，在黑客达到目标之前的时间</p>
+<p>在黑客攻击过程中，我们检测到他的活动的所用时间称之为<em>Dt</em>，检测到黑客的行为后，我们需要作出响应，这段时间称之为<em>Rt</em>.</p>
+<h2 id="应对威胁的方式——拟态主动防御"><a href="#应对威胁的方式——拟态主动防御" class="headerlink" title="应对威胁的方式——拟态主动防御"></a><strong><strong>应对威胁的方式——拟态主动防御</strong></strong></h2><h3 id="拟态路由器"><a href="#拟态路由器" class="headerlink" title="拟态路由器"></a><strong><strong>拟态路由器</strong></strong></h3><p>拟态路由器在其架构中引入多个异构冗余的路由执行体，通过对各个执行体维护的路由表项进行共识裁决，生成拟态路由器的路由表；通过对执行体的策略调度，可以实现拟态路由器对外呈现特征的不确定变化。在满足一定差异化设计的前提下，不同的执行体存在完全相同漏洞或后门的概率极低，攻击者即使控制了部分执行体，其恶意行为也很容易被拟态裁决机制所阻断，从而极大地提高路由器应对网络攻击的能力。</p>
+<h3 id="拟态域名服务器"><a href="#拟态域名服务器" class="headerlink" title="拟态域名服务器"></a><strong>拟态域名服务器</strong></h3><p>拟态域名服务器以遏制域名解析服务漏洞后门的可利用性、建立内生安全防御机制、大幅提高攻击者的攻击难度和代价为出发点，可以在不改变现有域名协议和地址解析设施的基础上，通过拟态防御设备的增量部署，能够有效防御针对域名系统的域名投毒、域名劫持攻击等各种已知和未知域名攻击，能够提供安全可靠的域名解析服务。</p>
+<h3 id="拟态Web虚拟机"><a href="#拟态Web虚拟机" class="headerlink" title="拟态Web虚拟机"></a><strong>拟态Web虚拟机</strong></h3><p>拟态Web虚拟机利用云平台部署空间上的优势，构建功能等价、多样化、动态化的异构虚拟web服务器池，采用动态执行体调度、数据库指令异构化、多余度（共识）表决等技术，建立多维动态变换的运行空间，阻断攻击链，大幅增加传统web服务和虚拟环境中的漏洞及后门利用难度，在不影响web服务性能的前提下，保证服务功能的安全可信</p>
+<h3 id="拟态云服务器"><a href="#拟态云服务器" class="headerlink" title="拟态云服务器"></a><strong>拟态云服务器</strong></h3><p>拟态化的云服务器通过构建功能等价的异构云服务器池的方法，采用动态执行体调度、多余度（共识）表决、异常发现、线上（下）清洗等技术，及时阻断基于执行体软硬件漏洞后门等的“差模”攻击，使得蓄意攻击难以奏效。</p>
+<h3 id="拟态防火墙"><a href="#拟态防火墙" class="headerlink" title="拟态防火墙"></a><strong>拟态防火墙</strong></h3><p>拟态化的云服务器通过构建功能等价的异构云服务器池的方法，采用动态执行体调度、多余度（共识）表决、异常发现、线上（下）清洗等技术，及时阻断基于执行体软硬件漏洞后门等的“差模”攻击，使得蓄意攻击难以奏效</p>
+<h1 id="第三讲-安全需求及安全策略"><a href="#第三讲-安全需求及安全策略" class="headerlink" title="第三讲 安全需求及安全策略"></a><strong>第三讲 安全需求及安全策略</strong></h1><h2 id="安全需求的定义"><a href="#安全需求的定义" class="headerlink" title="安全需求的定义"></a><strong><strong>安全需求的定义</strong></strong></h2><p><strong>安全需求</strong>就是在设计一个安全系统时<strong>期望得到的安全保障</strong></p>
+<h3 id="一般性的安全需求"><a href="#一般性的安全需求" class="headerlink" title="一般性的安全需求"></a><strong><strong>一般性的安全需求</strong></strong></h3><ul>
+<li><strong>机密性需求</strong>，防止信息被泄漏给未授权的用户</li>
+<li><strong>完整性需求，</strong>防止未授权用户对信息的修改</li>
+<li><strong>可用性需求，</strong>保证授权用户对系统信息的可访问性</li>
+<li><strong>可记账性需求，</strong>防止用户对访问过某信息或执行过某一操作以否认</li>
+</ul>
+<h2 id="安全策略"><a href="#安全策略" class="headerlink" title="安全策略"></a><strong><strong>安全策略</strong></strong></h2><p>针对面临的威胁决定采用何种对策的方法</p>
+<ul>
+<li>安全策略为针对威胁而选择和实行对策提供了框架</li>
+</ul>
+<h2 id="最常用的安全策略"><a href="#最常用的安全策略" class="headerlink" title="最常用的安全策略"></a><strong><strong>最常用的安全策略</strong></strong></h2><p><strong><strong>访问控制策略</strong></strong></p>
+<p>系统必须选择下列三类相关属性制定访问控制策略</p>
+<p>➢<strong>主体属性</strong></p>
+<p>主体是系统内行为的发起者，通常是用户发起的进程</p>
+<ul>
+<li>信息的访问者（用户）</li>
+<li>信息的拥有者</li>
+<li>系统管理员</li>
+</ul>
+<p>➢<strong>客体属性</strong></p>
+<p>➢<strong>系统环境（上下文）</strong></p>
+<h2 id="自主访问控制策略"><a href="#自主访问控制策略" class="headerlink" title="自主访问控制策略"></a><strong><strong>自主访问控制策略</strong></strong></h2><p>❖ 自主访问控制的优点</p>
+<p>➢ 访问模式设定灵活。</p>
+<ul>
+<li>读；写；执行；“每隔一周的周五可以读”；“读完文件x后才能</li>
+</ul>
+<p>读此文件”等等</p>
+<p>➢ 具有较好的适应性，常用与商用OS和应用中</p>
+<p>❖ 自主访问控制的缺点</p>
+<p>➢ 不能防范木马和某些形式的恶意代码。</p>
+<h2 id="强制访问控制策略"><a href="#强制访问控制策略" class="headerlink" title="强制访问控制策略"></a><strong><strong>强制访问控制策略</strong></strong></h2><h3 id="Bell-LaPadula模型"><a href="#Bell-LaPadula模型" class="headerlink" title="Bell-LaPadula模型"></a><strong><strong>Bell-LaPadula模型</strong></strong></h3><p><strong>公开 受限 秘密 机密 高密</strong></p>
+<p>BLP 保密模型基于两种规则来保障数据的机密度与敏感度：</p>
+<p>➢ 不上读（NRU）⎯⎯主体不可读安全级别高于它的数据</p>
+<p>➢ 不下写（NWD）⎯⎯主体不可写安全级别低于它的数据</p>
+<p><strong>BLP</strong>模型允许用户读取安全级别比他低的资源；相反地，写入对象的安全级别只能高于用户级别。</p>
+<h3 id="防火墙所实现的单向访问机制"><a href="#防火墙所实现的单向访问机制" class="headerlink" title="防火墙所实现的单向访问机制"></a><strong>防火墙所实现的单向访问机制</strong></h3><p>防火墙所实现的单向访问机制不允许敏感数据从内部网络（例：其安全级别为“机密”）流向Internet（安全级别为“公开”）。</p>
+<p>➢ 防火墙提供“不上读”功能来阻止Internet对内部网络的访问；</p>
+<p>➢ 提供“不下写”功能来限制进入内部的数据流只能经由由内向外发起的连接流入（例如，允许HTTP的“GET”操作而拒绝“POST”操作，或阻止任何外发的邮件）。</p>
+<h3 id="BIBA完整性模型"><a href="#BIBA完整性模型" class="headerlink" title="BIBA完整性模型"></a><strong>BIBA完整性模型</strong></h3><p>BIBA模型基于两种规则来保障数据的完整性的保密性：</p>
+<p>➢ <strong>不下读（NRU）属性主体不能读取安全级别低于它的数据</strong></p>
+<p>➢ <strong>不上写（NWD）属性主体不能写入安全级别高于它的数据</strong></p>
+<h2 id="强制访问控制策略-1"><a href="#强制访问控制策略-1" class="headerlink" title="强制访问控制策略"></a><strong>强制访问控制策略</strong></h2><p>❖ <strong>最显著的特征</strong>：全局性和永久性</p>
+<p>➢ 无论何时何地，主体和客体的标签是不会改变的。</p>
+<p>➢ <strong>全局性</strong>：对特定的信息，从任何地方访问，它的敏感级别相同</p>
+<p>➢ <strong>永久性</strong>：对特定的信息，在任何时间访问，它的敏感级别相同</p>
+<p>➢ 上述特征在多级安全体系中称为“<strong>宁静性原则</strong>”（tranquility）</p>
+<p>❖ 一旦不满足该原则，无法从根本上防备木马和恶意代码</p>
+<h2 id="SSR安全模型"><a href="#SSR安全模型" class="headerlink" title="SSR安全模型"></a><strong><strong>SSR安全模型</strong></strong></h2><ol>
+<li>当标签级别为“中级别”的主体访问标签级别为“高级别”的客体时，主体对客体无任何访问权限(no read up, no write up）。</li>
+<li>当标签级别为“中级别”的主体访问标签级别为“中级别”的客体时，主体对客体持所有权限。</li>
+<li>当标签级别为“中级别”的主体访问标签级别为“低级别”的客体时，主体对客体拥有只读权限（nowrite down）。</li>
+</ol>
+<p><strong>SSR安全模型的主要特点</strong></p>
+<ol>
+<li><p>信息流只能从低级别流向高级，确保的信息的保密性。</p>
+</li>
+<li><p>高级别主体对低级别客体的访问只能进行读取，确保了低级别资源的完整性</p>
+</li>
+</ol>
+<h3 id="主体颗粒度扩充"><a href="#主体颗粒度扩充" class="headerlink" title="主体颗粒度扩充"></a><strong>主体颗粒度扩充</strong></h3><p>主体颗粒度扩充主要是把主体的颗粒度从用户级别扩充到进程级别，扩充的目的是为了实现更加细化的安全策略以保证信息系统的安全。</p>
+<h3 id="SSR安全模型的应用"><a href="#SSR安全模型的应用" class="headerlink" title="SSR安全模型的应用"></a><strong><strong>SSR安全模型的应用</strong></strong></h3><p><strong>涉密系统方案</strong></p>
+<p>通过应用SSR安全模型，信息流只能从低级别流向高级别，而不能往下，即使某一级别的用户受到病毒感染或者黑客渗透，其也只能感染和阅读自己的信息与读取下级的信息，确保了保密性。高权限用户无法篡改低权限用户的文件，保证了文件的完整性，避免了官大压人的现象，可以保证递交文件的真实可靠。</p>
+<p><strong>病毒防治方案</strong></p>
+<p>信息的访问需要程序，因此程序往往是被攻击对象，攻击了程序就可以访问其对应的文件甚至其他程序的文件。应用SSR安全模型以后，把主体颗粒度扩充到进程，让程序与程序需要文件进行绑定，然后再将程序本身进行只读保护，既能保证程序不被感染，又能防止对象被非法程序访问，从而保证了应用系统的安全性</p>
+<h2 id="访问控制列表"><a href="#访问控制列表" class="headerlink" title="访问控制列表"></a><strong><strong>访问控制列表</strong></strong></h2><p><strong>访问控制列表（ACL）</strong></p>
+<p>访问控制列表是一系列允许或拒绝数据的指令的集合。</p>
+<p><strong>读取第三层、第四层包头信息</strong></p>
+<p><strong>根据预先定义好的规则对包进行过滤</strong></p>
+<ul>
+<li><p>**标准ACL:**只使用数据包的源地址作为测试条件。所有决定是基于源IP地址的。</p>
+<p>  标准访问列表的创建根据 “动作”＋“源地址”，即允许谁、拒绝谁的方法来创建</p>
+</li>
+<li><p>**扩展ACL:**可以测试IP包的第3层和第4层报头中的字段。包括源IP地址、目的IP地址、网络层报头中的协议字段（如，TCP、UDP、ICMP等）以及位于传输层报头中的端口号。<br>扩展列表的放置——靠近源地址</p>
+</li>
+<li><p>**命名ACL:**命名ACL以列表名代替列表编号来定义IP访问控制列表，同样包括标准和扩展两种列表，定义过滤的语句与编号方式中相似。</p>
+</li>
+</ul>
+<h3 id="通配掩码"><a href="#通配掩码" class="headerlink" title="通配掩码"></a><strong>通配掩码</strong></h3><p>路由器使用<strong>IP地址和通配掩码</strong>（wildcard-mask）一起来分辨匹配的地址范围，它跟子网掩码刚好相反。</p>
+<p>它不像子网掩码告诉路由器IP地址的哪一位属于网络号一样，通配符掩码告诉路由器为了判断出匹配，它需要检查IP地址中的多少位。</p>
+<p>有了通配掩码，可以只使用两个32位的号码来确定IP地址的范围，<strong>这是十分方便的</strong></p>
+<ul>
+<li>通配掩码（wildcard mask）是分成4字节的32bit数</li>
+<li>通配掩码与IP地址位位配对，相应位为0&#x2F;1，用于表示如何对待IP地址中的相应位</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/Untitled.png" alt="Untitled"></p>
+<p>IP地址的第三个字节为16（00010000）。通配掩码中的前四位为0，告诉路由器要匹配IP地址的前四位（0000）。由于最后的四位被忽略，则所有的在范围16（00010000）到31（00011111）的都将被允许，相应的通配掩码位是1。</p>
+<h1 id="第四讲安全风险评估"><a href="#第四讲安全风险评估" class="headerlink" title="第四讲安全风险评估"></a><strong>第四讲安全风险评估</strong></h1><h2 id="风险评估涉及标准"><a href="#风险评估涉及标准" class="headerlink" title="风险评估涉及标准"></a><strong><strong>风险评估涉及标准</strong></strong></h2><p>ISO&#x2F;IEA</p>
+<h2 id="风险（Risk）的概念"><a href="#风险（Risk）的概念" class="headerlink" title="风险（Risk）的概念"></a><strong><strong>风险（Risk）的概念</strong></strong></h2><p>风险指在某一特定环境下，在某一特定时间段内，特定的威胁利用资产的一种或一组薄弱点，导致资产的丢失或损害的潜在可能性，即特定威胁事件发生的可能性与后果的结合</p>
+<p><strong>安全风险组成的四要素：</strong>信息系统资产（Asset）、信息系统脆弱性（Vulnerability）、信息安全威胁（Threat）、信息系统安全保护措施（Safeguard）。</p>
+<h2 id="风险处置策略"><a href="#风险处置策略" class="headerlink" title="风险处置策略"></a><strong><strong>风险处置策略</strong></strong></h2><p><strong>降低风险（Reduce Risk）</strong>采取适当的控制措施来降低风险，包括技术手段和管理手段，如安装防火墙，</p>
+<p>杀毒软件，或是改善不规范的工作流程、制定业务连续性计划，等等。</p>
+<p><strong>避免风险（Avoid Risk）</strong>通过消除可能导致风险发生的条件来避免风险的发生，如将公司内外网隔离</p>
+<p>以避免来自互联网的攻击，或是将机房安置在不可能造成水患的位置，等等。</p>
+<p>**转移风险（Transfer Risk)**将风险全部或者部分地转移到其他责任方，例如购买商业保险。</p>
+<p><strong>接受风险（Accept Risk）</strong>在实施了其他风险应对措施之后，对于残留的风险，可以有意识地选择接受。</p>
+<h2 id="风险评估的要素"><a href="#风险评估的要素" class="headerlink" title="风险评估的要素"></a><strong><strong>风险评估的要素</strong></strong></h2><p><strong>风险评估围绕着资产、威胁、脆弱性和安全措施这些基本要素展开。</strong></p>
+<p>需要充分考虑业务战略、资产价值、安全需求、安全事件、残余风险等与这些基本要素相关的各类属性。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/Untitled%201.png" alt="Untitled"></p>
+<h3 id="信息系统安全风险计算模型（GB-T20984-2007）"><a href="#信息系统安全风险计算模型（GB-T20984-2007）" class="headerlink" title="信息系统安全风险计算模型（GB&#x2F;T20984-2007）"></a><strong><strong>信息系统安全风险计算模型（GB&#x2F;T20984-2007）</strong></strong></h3><p>风险计算模型是对通过风险分析计算风险值过程的抽象，它主要包括资产评估、威胁评估、脆弱性评估。</p>
+<h3 id="安全风险评估的框架及流程（GB-T20984-2007）"><a href="#安全风险评估的框架及流程（GB-T20984-2007）" class="headerlink" title="安全风险评估的框架及流程（GB&#x2F;T20984-2007）"></a><strong><strong>安全风险评估的框架及流程（GB&#x2F;T20984-2007）</strong></strong></h3><p>① 对资产进行识别，并对资产的重要性进行赋值；<br>② 对威胁进行识别，描述威胁的属性，并对威胁出现的频率赋值；<br>③ 对资产的脆弱性进行识别，并对具体资产的脆弱性的严重程度赋值；<br>④ 根据威胁和脆弱性的识别结果判断安全事件发生的可能性；<br>⑤ 根据脆弱性的严重程度及安全事件所作用资产的重要性计算安全事件的损失；<br>⑥ 根据安全事件发生的可能性以及安全事件的损失，计算安全事件一旦发生对组织的影响，即风险值。</p>
+<h2 id="资产分类方法"><a href="#资产分类方法" class="headerlink" title="资产分类方法"></a><strong><strong>资产分类方法</strong></strong></h2><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据</td>
+<td>保存在信息媒介上的各种数据资料，包括源代码、数据库数据、系统文档、运行管理规程、计划、报告、用户手册、各类纸质的文档等</td>
+</tr>
+<tr>
+<td>软件</td>
+<td>系统软件：操作系统、数据库管理系统、语句包、开发系统等</td>
+</tr>
+<tr>
+<td>应用软件：办公软件、数据库软件、各类工具软件等</td>
+<td></td>
+</tr>
+<tr>
+<td>源程序：各种共享源代码、自行或合作开发的各种代码等</td>
+<td></td>
+</tr>
+<tr>
+<td>硬件</td>
+<td>网络设备：路由器、网关、交换机等</td>
+</tr>
+<tr>
+<td>计算机设备：大型机、小型机、服务器、工作站、台式计算机、便携计算机等</td>
+<td></td>
+</tr>
+<tr>
+<td>存储设备：磁带机、磁盘阵列、磁带、光盘、软盘、移动硬盘等</td>
+<td></td>
+</tr>
+<tr>
+<td>传输线路：光纤、双绞线等</td>
+<td></td>
+</tr>
+<tr>
+<td>保障设备：UPS、变电设备等、空调、保险柜、文件柜、门禁、消防设施等</td>
+<td></td>
+</tr>
+<tr>
+<td>安全保障：防火墙、入侵检测系统、身份鉴别等</td>
+<td></td>
+</tr>
+<tr>
+<td>其他：打印机、复印机、扫描仪、传真机等</td>
+<td></td>
+</tr>
+<tr>
+<td>服务</td>
+<td>信息服务：对外依赖该系统开展的各类服务</td>
+</tr>
+<tr>
+<td>网络服务：各种网络设备、设施提供的网络连接服务</td>
+<td></td>
+</tr>
+<tr>
+<td>办公服务：为提高效率而开发的管理信息系统，包括各种内部配置管理、文件流转管理等服务</td>
+<td></td>
+</tr>
+<tr>
+<td>人员</td>
+<td>掌握重要信息和核心业务的人员，如主机维护主管、网络维护主管及应用项目经理等</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>企业形象、客户关系等</td>
+</tr>
+</tbody></table>
+<h3 id="资产等级计算公式"><a href="#资产等级计算公式" class="headerlink" title="资产等级计算公式"></a><strong><strong>资产等级计算公式</strong></strong></h3><p>AV&#x3D;F(AC, AI, AA)</p>
+<p>Asset Value 资产价值</p>
+<p>Asset Confidentiality 资产保密性赋值</p>
+<p>Asset Integrity 资产完整性赋值</p>
+<p>Asset Availability 资产可用性赋值</p>
+<p>例1：AV&#x3D;MAX(AC, AI, AA)</p>
+<p>例2：AV&#x3D;AC+AI+AA</p>
+<p>例3：AV&#x3D;AC×AI×AA</p>
+<h2 id="威胁来源列表"><a href="#威胁来源列表" class="headerlink" title="威胁来源列表"></a><strong><strong>威胁来源列表</strong></strong></h2><table>
+<thead>
+<tr>
+<th>来源</th>
+<th></th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>环境因素</td>
+<td></td>
+<td>断电、静电、灰尘、潮湿、温度、鼠蚁虫害、电磁干扰、洪灾、火灾、地震、意外 事故等环境危害或自然灾害，以及软件、硬件、数据、通信线路等方面的故障</td>
+</tr>
+<tr>
+<td>人为因素</td>
+<td>恶意人员</td>
+<td>不满的或有预谋的内部人员对信息系统进行恶意破坏；</td>
+</tr>
+<tr>
+<td>采用自主或内外勾结的方式盗窃机密信息或进行篡改，获取利益外部人员利用信息系统的脆弱性,对网络或系统的机密性、完整性和可用性进行破坏，以获取利益或炫耀能力</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>人为因素</td>
+<td>非恶意人员</td>
+<td>内部人员由于缺乏责任心，或者由于不关心和不专注，或者没有遵循规章制度和操作流程而导致故障或信息损坏；</td>
+</tr>
+<tr>
+<td>内部人员由于缺乏培训、专业技能不足、不具备岗 位技能要求而导致信息系统故障或被攻击</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="风险计算方法"><a href="#风险计算方法" class="headerlink" title="风险计算方法"></a><strong>风险计算方法</strong></h2><p><strong>风险值&#x3D;<em>R</em>(A, T, V) &#x3D; <em>R</em>(<em>L</em>(T, V), <em>F</em>(Ia,Va))</strong></p>
+<p><strong>R</strong>安全风险计算函数</p>
+<p><strong>A</strong>资产</p>
+<p><strong>T</strong>威胁</p>
+<p><strong>V</strong>脆弱性</p>
+<p><strong>Ia</strong>安全事件所作用的资产价值</p>
+<p><strong>Va</strong> 脆弱性严重程度</p>
+<p><strong>L</strong>威胁利用资产的脆弱性导致安全事件发生的可能性</p>
+<p><strong>F</strong>安全事件发生后产生的损失</p>
+<h2 id="残留风险评价"><a href="#残留风险评价" class="headerlink" title="残留风险评价"></a><strong>残留风险评价</strong></h2><ul>
+<li>绝对安全（即零风险）是不可能的</li>
+<li>实施安全控制后会有残留风险或残存风险（Residual Risk）</li>
+<li>为了确保信息安全，应该确保残留风险在可接受的范围内：</li>
+</ul>
+<p>➢ 残留风险Rr ＝ 原有的风险R0 － 控制ΔR</p>
+<p>➢ 残留风险Rr ≤ 可接受的风险Rt</p>
+<p><strong><strong>风险评估应贯穿于信息系统生命周期的各阶段</strong></strong></p>
+<p><strong><strong>规划阶段的风险评估</strong></strong></p>
+<p>规划阶段的评估结果应体现在信息系统整体规划或项目建议书中。</p>
+<p><strong><strong>设计阶段的风险评估</strong></strong></p>
+<p>设计阶段的评估可以以安全建设方案评审的方式进行，判定方案所提供的安全功能与信息技术安全技术标准的符合性。评估结果应体现在信息系统需求分析报告或建设实施方案中。</p>
+<p><strong><strong>实施阶段的风险评估</strong></strong></p>
+<p>本阶段风险评估可以采取对照实施方案和标准要求的方式，对实际建设结果进行测试、分析。</p>
+<p><strong><strong>运行维护阶段的风险评估</strong></strong></p>
+<p>运行维护阶段的风险评估应定期执行；当组织的业务流程、系统状况发生重大变更时，也应进行风险评估。</p>
+<p><strong><strong>废弃阶段的风险评估</strong></strong></p>
+<p>信息系统的维护技术人员和管理人员均应该参与此阶段的评估</p>
+<p><strong><strong>一种新的风险评估⎯⎯数据风险评估</strong></strong></p>
+<h2 id="风险评估项目实施过程"><a href="#风险评估项目实施过程" class="headerlink" title="风险评估项目实施过程"></a><strong><strong>风险评估项目实施过程</strong></strong></h2><p><strong>策划 准备 实施 报告 跟踪</strong></p>
+<h1 id="第五讲-信息系统等级保护"><a href="#第五讲-信息系统等级保护" class="headerlink" title="第五讲  信息系统等级保护"></a><strong>第五讲  信息系统等级保护</strong></h1><h3 id="什么是等级保护"><a href="#什么是等级保护" class="headerlink" title="什么是等级保护"></a><strong>什么是等级保护</strong></h3><p>网络安全等级保护是指对国家重要信息、法人和其他组织及公民的专有信息以及公开信息和存储、传输、处理这些信息的信息系统分等级实行安全保护，对信息系统中使用的信息安全产品实行按等级管理，对信息系统中发生的信息安全事件分等级响应、处置</p>
+<p><strong><strong>定级对象</strong></strong></p>
+<p>也称等级保护对象、网络安全等级保护工作的作用对象</p>
+<p>包括网络基础设施（广电网、电信网、专用通信网络等）、云计算平台系统、大数据平台系统、物联网、工业控制系统、采用移动互联技术的系统等</p>
+<h2 id="等级保护有“五个规定动作”"><a href="#等级保护有“五个规定动作”" class="headerlink" title="等级保护有“五个规定动作”"></a><strong><strong>等级保护有“五个规定动作”</strong></strong></h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/Untitled%202.png" alt="Untitled"></p>
+<h2 id="等级保护主要工作流程"><a href="#等级保护主要工作流程" class="headerlink" title="等级保护主要工作流程"></a><strong><strong>等级保护主要工作流程</strong></strong></h2><p>1 <strong>定级  定级是等级保护的首要环节</strong></p>
+<p>2 <strong>备案 备案是等级保护的核心</strong></p>
+<p>3 <strong>建设整改 建设整改是等级保护工作落实的关键</strong></p>
+<p>4 <strong>等级测评 等级测评是评价安全保护状况的方法</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/Untitled%203.png" alt="Untitled"></p>
+<h1 id="第六讲-物理安全"><a href="#第六讲-物理安全" class="headerlink" title="第六讲 物理安全"></a><strong>第六讲 物理安全</strong></h1><h2 id="环境安全"><a href="#环境安全" class="headerlink" title="环境安全"></a><strong><strong>环境安全</strong></strong></h2><ul>
+<li>安防技术</li>
+<li>计算机机房的温度、湿度、洁净度</li>
+<li>计算机机房的用电安全技术</li>
+<li>计算机机房安全管理制度</li>
+</ul>
+<h3 id="机房三度要求"><a href="#机房三度要求" class="headerlink" title="机房三度要求"></a><strong><strong>机房三度要求</strong></strong></h3><blockquote>
+<p>温度：机房温度一般应控制在18～22℃</p>
+<p>湿度：相对湿度一般控制在40％～60％为宜</p>
+<p>洁净度：尘埃颗粒直径&lt;0.5<em>m</em>，含尘量&lt;1万颗&#x2F;升</p>
+</blockquote>
+<p>GB50174-2008 电子信息系统机房设计规范</p>
+<h3 id="防火与防水要求"><a href="#防火与防水要求" class="headerlink" title="防火与防水要求"></a><strong><strong>防火与防水要求</strong></strong></h3><p>为避免火灾、水灾，应采取如下具体措施:<br>（1）隔离<br>（2）火灾报警系统<br>（3）灭火设施<br>（4）管理措施</p>
+<h3 id="机房防盗要求"><a href="#机房防盗要求" class="headerlink" title="机房防盗要求"></a><strong><strong>机房防盗要求</strong></strong></h3><h3 id="机房防鼠"><a href="#机房防鼠" class="headerlink" title="机房防鼠"></a><strong><strong>机房防鼠</strong></strong></h3><h3 id="防静电措施"><a href="#防静电措施" class="headerlink" title="防静电措施"></a><strong>防静电措施</strong></h3><blockquote>
+<p> 机房的内装修材料一般应避免使用挂毯、地毯等吸尘、容易产生静电的材料，而应采用乙烯材料。</p>
+<p>为了防静电，机房一般要安装防静电地板。</p>
+<p> 机房内应保持一定湿度，特别是在干燥季节应适当增加空气湿度，以免因干燥而产生静电。</p>
+</blockquote>
+<h3 id="接地要求"><a href="#接地要求" class="headerlink" title="接地要求"></a><strong>接地要求</strong></h3><p>接地可以为计算机系统的数字电路提供一个稳定的0V参考电位</p>
+<h1 id="第七讲-可靠性的基本概念"><a href="#第七讲-可靠性的基本概念" class="headerlink" title="第七讲 可靠性的基本概念"></a><strong>第七讲 可靠性的基本概念</strong></h1><h3 id="可靠性的定义"><a href="#可靠性的定义" class="headerlink" title="可靠性的定义"></a><strong><strong>可靠性的定义</strong></strong></h3><p>在规定的条件下、在给定的时间内，系统能实施应有功能的能力。</p>
+<h3 id="可靠性参数"><a href="#可靠性参数" class="headerlink" title="可靠性参数"></a><strong><strong>可靠性参数</strong></strong></h3><p>$T_{MTTF}：$平均失效前时间</p>
+<p>$T_{MTBF}：$平均故障间隔时间</p>
+<p>$R：$<strong><strong>可靠度</strong></strong></p>
+<p>$λ：$<strong><strong>失效率</strong></strong></p>
+<h3 id="寿命"><a href="#寿命" class="headerlink" title="寿命"></a><strong><strong>寿命</strong></strong></h3><p>通常用一个非负随机变量$<em><strong>X</strong></em>$来描述产品的寿命。</p>
+<p>$<em><strong>X</strong></em>$的分布函数为</p>
+<p>$<em>F(t) &#x3D; P{X \le t}，t\ge0</em>$</p>
+<p>有了寿命分布<em>F</em>(<em>t</em>) ，就知道产品的平均寿命</p>
+<p>$EX&#x3D;\int_0^\infty tdF(t)$</p>
+<h3 id="可靠度R"><a href="#可靠度R" class="headerlink" title="可靠度R"></a><em><strong><em>可靠度</em>R</strong></em></h3><p>产品在时刻 <em>t</em> 之前都正常工作（不失效）的概率，即产品在时刻 <em>t</em>的生存概率，称为无故障工作概率（可靠度函数）</p>
+<p>$$<br>R(t)&#x3D;P{X&gt;t}&#x3D;\int_0^\infty dF(t)&#x3D;\int_0^\infty f(t)dt \<br>𝑹(t) +F(t)&#x3D;1<br>$$</p>
+<blockquote>
+<p>假设 C 是一个具有 <em>N</em> 个元器件的数字系统，在一定的条件和环境（如温度、湿度、电压等）下运行，并且随着时间 <em>t</em> 的推移质量逐步下降</p>
+</blockquote>
+<p>系统<strong>C</strong>在时刻 <em>t</em> 能正常工作的概率 $<em><strong>R(t)&#x3D;S(t)&#x2F;N</strong></em>$</p>
+<p>**<em>R</em>(<em>t</em>)**称为系统 <strong>C</strong> 在时刻 <em>t</em> 的可靠度。</p>
+<h3 id="失效率λ"><a href="#失效率λ" class="headerlink" title="失效率λ"></a><strong><strong>失效率λ</strong></strong></h3><p>假设<em>F</em>(<em>t</em>)是绝对连续的，即存在分布密度函数$<em>f(t)&#x3D;F’(t)</em>$且$F(t)&#x3D;\int_0^tf(x)dx$</p>
+<blockquote>
+<p>将发生故障的条件概率密度叫做失效率。<br>$λ(t)&#x3D;f(t)&#x2F;R(t)&#x3D;-R’(t)&#x2F;R(t)$<br>失效率**λ(<em>t</em>)**表示系统中元器件失效的速率。</p>
+</blockquote>
+<h3 id="λ-t-的浴缸形曲线（Bathtub-curve）"><a href="#λ-t-的浴缸形曲线（Bathtub-curve）" class="headerlink" title="**λ(t)的浴缸形曲线（Bathtub-curve）"></a>**<strong>λ(<em>t</em>)的浴缸形曲线（Bathtub-curve）</strong></h3><p><strong>第一阶段 早期失效期（Infant Mortality）</strong></p>
+<p>器件在开始使用时失效率很高，但随着产品工作时间的增加，失效率迅速降低。这一阶段失效的原因大多是由于设计、原材料和制造过程中的缺陷造成的。为了缩短这一阶段的时间，产品应在投入运行前进行试运转，以便及早发现、修正和排除故障；或通过试验进行筛选，剔除不合格品。</p>
+<p><strong>第二阶段 偶然失效期，也称随机失效期（Random Failures）</strong></p>
+<p>这一阶段的特点是失效率较低，且较稳定，往往可近似看作常数。这一时期是产品的良好使用阶段。由于在这一阶段中，产品失效率近似为一常数，故设<em></em>(<em>t</em>)&#x3D;<em>λ</em>（常数）由可靠度计算公式得$R(t)&#x3D;e^{-λt}$ 这一式表明<strong>设备的可靠性与失效率成指数关系</strong>。</p>
+<p><strong>第三阶段 耗损失效期（Wearout）</strong></p>
+<p>该阶段的失效率随时间的延长而急速增加，主要原因是器件的损失己非常的严重，寿命快到尽头了，可适当的维修或直接更换。</p>
+<p>**<strong><em>R</em>(<em>t</em>)和λ的关系</strong></p>
+<p>可靠性不仅是时间<em>t</em>的函数，而且与失效率<strong><strong>λ</strong></strong>有着密切的关联。</p>
+<p>$$<br>R(t)&#x3D;e^{\int^t_0\lambda(t)dt }<br>$$</p>
+<h3 id="可维修产品的平均维修时间"><a href="#可维修产品的平均维修时间" class="headerlink" title="可维修产品的平均维修时间"></a><strong><strong>可维修产品的平均维修时间</strong></strong></h3><p>可维修产品的可维护性平均维修时间（MTTR，Mean Time To Repair）来度量，即系统发生故障后维修和重新恢复正常运行平均花费的时间（即设备处于故障状态时间的平均值，或设备修复时间的平均值）。系统的可维护性越好，平均维修时间越短</p>
+<p>$$<br>MTTR&#x3D;\int^\infty _0t\mu(t)dt<br>$$</p>
+<blockquote>
+<p>$<em>\mu(t)</em>$是维修时间的概率密度函数</p>
+</blockquote>
+<h3 id="可维修产品的维修性指标：可用性"><a href="#可维修产品的维修性指标：可用性" class="headerlink" title="可维修产品的维修性指标：可用性"></a><strong><strong>可维修产品的维修性指标：可用性</strong></strong></h3><p>可维修产品的可用性定义为：</p>
+<p>$$<br>\frac{MTBF}{MTBF+MTTR}*100%<br>$$</p>
+<p><strong>计算机系统可靠性举例</strong></p>
+<p>已知世界上第一代电子管计算机ENIAC有20000个电子管，假<br>设每个电子管的失效率为&#x3D;0.5%&#x2F;kh（千小时），试求：<br>（1）该计算机的MTTF；<br>（2）若要求计算机的可靠性在95%以上，则至多可以工作多久？</p>
+<p>$$<br>MTTF&#x3D;\frac{1}{\sum^n_{i&#x3D;1}\lambda_i}&#x3D;\frac{1}{\frac{0.05}{100}*\frac{1}{1000}*20000}&#x3D;\frac{1}{0.01}&#x3D;100H\ R(t)&#x3D;e^{-\frac{t}{MTTF}}\ t&#x3D;5H<br>$$</p>
+<h2 id="系统可靠性模型"><a href="#系统可靠性模型" class="headerlink" title="系统可靠性模型"></a><strong><strong>系统可靠性模型</strong></strong></h2><p><strong>可靠性模型：描述了系统及其组成单元之间的故障逻辑关系</strong></p>
+<h3 id="串联系统"><a href="#串联系统" class="headerlink" title="串联系统"></a><strong><strong>串联系统</strong></strong></h3><p>假设第<em>i</em>个部件的寿命为$<em><strong>X_i</strong></em>$，可靠度为$<em>R_i(t)&#x3D;P{X_i &gt;t}，i&#x3D;1, 2, …,n,</em>$第$<em>i</em>$个部件的失效率为$<em>\lambda_i(t)</em>$$，X_1，X_2 ，…，X_n$相互独立。若</p>
+<p>初始时刻$<em>t&#x3D;0</em>$，所有部件都是新的，且同时开始工作。</p>
+<p>(1) 系统的寿命是： $X&#x3D;min{X_1 ，X_2，…，X_n}$</p>
+<p>(2) 系统的可靠度是：</p>
+<p>$$<br>R(t)&#x3D;P{min(X_1 ，X_2，…，X_n)&gt;t}&#x3D;\Pi^n_{i&#x3D;1}R_i(t)\ &#x3D;\Pi^n_{i&#x3D;1}exp{-\int^t_0\lambda_i(u)du}<br>$$</p>
+<p>(3) 系统的失效率为：</p>
+<p>$$<br>\lambda(t)&#x3D;-\frac{R’(t)}{R(t)}&#x3D;\sum^n_{i&#x3D;1}\lambda_i(t)<br>$$</p>
+<p>(4) 系统的平均寿命为:</p>
+<p>$$<br>MTTF&#x3D;\int^\infty_0R(t)dt&#x3D;\int^\infty_0exp{-\int^t_0\lambda(u)du}dt<br>$$</p>
+<p>当$R_i(t)&#x3D;exp{-\lambda_t}，i&#x3D;1, 2, …, n$时（及当第<em>i</em>个部件的命遵从参数为$<em>\lambda_i</em>$的</p>
+<p>指数分布时），系统的可靠度和平均寿命为</p>
+<p>$$<br>R(t)&#x3D;exp{-\sum^n_{i&#x3D;1}\lambda_it}\ MTTF&#x3D;\frac{1}{\sum^n_{i&#x3D;1}\lambda_i}<br>$$</p>
+<h3 id="并联系统"><a href="#并联系统" class="headerlink" title="并联系统"></a><strong><strong>并联系统</strong></strong></h3><p>(1) 系统的寿命是： $X&#x3D;max{X_1，X_2，…，X_n<br>}$</p>
+<p>(2) 系统的可靠度是：</p>
+<p>$$<br>R(t)&#x3D;P{max(X_1 ，X_2，…，X_n)&gt;t}\ &#x3D;1-P{max(X_1 ，X_2，…，X_n)\le t } \ &#x3D;1-\Pi^n_{i&#x3D;1}[1-R_i(t)]<br>$$</p>
+<p>(3) 系统的平均寿命为：</p>
+<p>$$<br>MTTF&#x3D;\int^\infty_0R(t)dt&#x3D;\sum^n_{i&#x3D;1}\frac{1}{\lambda_i}\ &#x3D;sum_{1\le&lt;i&lt;j\le n}\frac{1}{\lambda_1+\lambda_j}+…+(-1)^{n-1}\frac{1}{\lambda_1+…+\lambda_n}<br>$$</p>
+<h1 id="第八讲-信息系统的可靠性"><a href="#第八讲-信息系统的可靠性" class="headerlink" title="第八讲 信息系统的可靠性"></a><strong>第八讲 信息系统的可靠性</strong></h1><h3 id="计算机系统可靠性"><a href="#计算机系统可靠性" class="headerlink" title="计算机系统可靠性"></a><strong>计算机系统可靠性</strong></h3><p><strong>硬件可靠性</strong></p>
+<p>硬件在使用过程中有磨损、材料的老化、变质和使用环境等多种因素</p>
+<p><strong>软件可靠性</strong></p>
+<p>软件使用期间无磨损;存在物质老化和变质</p>
+<h2 id="提高信息系统可靠性的途径"><a href="#提高信息系统可靠性的途径" class="headerlink" title="提高信息系统可靠性的途径"></a><strong><strong>提高信息系统可靠性的途径</strong></strong></h2><p><strong>提高可靠性有两个方面：一是尽量使系统在规定时间内少发生故障和错误；二是发生了故障能迅速排除。</strong></p>
+<h3 id="提高硬件可靠性"><a href="#提高硬件可靠性" class="headerlink" title="提高硬件可靠性"></a><strong><strong>提高硬件可靠性</strong></strong></h3><p><strong>设计</strong></p>
+<p>结构优化<br>功能合理</p>
+<p><strong>环境</strong></p>
+<p>符合相关的标准和要求</p>
+<p><strong>使用</strong></p>
+<p>符合操作规程<br>减少人为失误</p>
+<blockquote>
+<p><strong>冗余设计</strong></p>
+<p>故障容错是利用冗余的元部件来屏蔽已发生的故障对系统的影响。</p>
+<p>三模冗余（TMR，Triple Modular Redundancy）的基本原理是：系统输入通过3个功能相同的模块，产生的3个结果送到多数表决器进行表决，即三中取二的原则，如果模块中有一个出错，而另外两个模块正常，则表决器的输出正确，从而可以屏蔽一个故障。</p>
+<p><strong>TMR的缺点是：如果3个模块的输出各不相同，则无法进行多数表决；若有两个模块出现一致的故障，则表决的结果会出现错误。</strong></p>
+</blockquote>
+<h2 id="软件可靠性"><a href="#软件可靠性" class="headerlink" title="软件可靠性"></a>软件可靠性</h2><p><strong><strong>程序运行监视系统</strong></strong></p>
+<p>程序运行监视系统WTD（“看门狗”），是一种软硬件结合的抗程序“跑飞”的措施。其硬件是一个用于产生定时 <em>T</em> 的计数器或单稳触发器。其定时输出端接至CPU 的复位线，而其定时清零则由CPU 控制。</p>
+<p>在正常情况下，程序启动WTD 后，即以小于<em>T</em> 的间隔 <em>t</em> 将其清零一次，这样WTD 的定时溢出就不会发生。在受到干扰的异常情况下，程序的正常执行顺序被破坏，不可能周期性地将WTD清零，导致WTD定时溢出，使系统复位，CPU 摆脱因程序“跑飞”造成的瘫痪状态</p>
+<h3 id="软件可靠性模型"><a href="#软件可靠性模型" class="headerlink" title="软件可靠性模型"></a><strong><strong>软件可靠性模型</strong></strong></h3><p><strong><strong>失效时间间隔模型</strong></strong></p>
+<p>这类模型最常用的方法是假定第<em>i</em>个失效到第<em>i</em>+1个失效间隔时间服从某一分布，而分布的参数依赖于各间隔时间内程序中的残留错误数。通过测试所得到的失效间隔时间数据来估计模型的参数，由获得的模型可以估算软件的可靠度以及各失效间的平均工作时间等</p>
+<p><strong><strong>Jelinski-Moranda模型</strong></strong></p>
+<p>系统基本假设如下：<br>（1）软件中的固有错误数<em>N</em>是一个未知的常数；<br>（2）软件中的各个错误是相互独立的，每个错误导致系统发生失效的可能性大致相同,各次失效间隔时间也相互独立；<br>（3）软件错误被发现后立即排除，每次排除一个错误且不引入新的错误，排除错误的时间忽略不计；<br>（4）软件的失效率在每个失效间隔时间内是常数，其数值正比于程序中残留的错误数，在第$<em>i</em>$个测试区间$<em>t_i</em>$，其失效率函数为:$\lambda(t_i)&#x3D;\phi(N-i+1)$,$\phi$为比例常数 。</p>
+<p><strong><strong>缺陷计数模型</strong></strong></p>
+<p>这类模型关心的是在<strong>特定的时间间隔内软件的错误数或失效数</strong>，并假定故障累计数服从某个己知的随机过程，过程强度是时间的离散或连续函数，根据在给定的测试时间间隔发现的错误数或失效数来估计故障强度、均值等参数。</p>
+<p><strong><strong>错误植入模型</strong></strong></p>
+<p>这类模型的基本思路是通过将一组已知的错误人为地植入到一个固有错误总数尚不清楚的程序中，然后在程序的测试中观察并统计发现的植入错误数和程序总的错误数，通过计数的比值估计程序的固有错误总数，从而得到软件可靠度及其有关指标。这类模型的代表是Mills的超几何分布模型。</p>
+<p><strong><strong>基于输入域的模型</strong></strong></p>
+<p>这类模型的基本研究方法是根据程序的使用情况，找出程序可能输入的概率分布，根据这种分布产生一个测试用例的集合。由于得到输入的分布难度较大，一般将输入域划分成等价类，每个等价类与程序的一条执行路径相联。在输入域上随机抽取测试用例，执行相应的程序测试，观测故障，从而推断出各项指标。这类模型以Nelson模型为代表，还有Brown-Lipow的基于输入域模型和Ramamoorthy-Bastani的基于输入域模型</p>
+<h2 id="网络可靠性"><a href="#网络可靠性" class="headerlink" title="网络可靠性"></a><strong><strong>网络可靠性</strong></strong></h2><p><strong>故障定义</strong>– <strong>网络不能在用户期望的时间范围内将物质、信息、能量按用户需求完整、正确地在网络中传输的状态或事件</strong></p>
+<p><strong><strong>计算机网络可靠性定义</strong></strong></p>
+<p>在人为或自然的破坏作用下，网络在特定环境和规定时间内，充分完成规定的通信功能的能力。<strong>环境、时间和充分完成功能是这一定义的三要素。</strong></p>
+<p>当传输设备和交换设备发生故障时网络可以维持正常业务的程度</p>
+<h1 id="第九讲-信息系统的容错技术"><a href="#第九讲-信息系统的容错技术" class="headerlink" title="第九讲 信息系统的容错技术"></a><strong>第九讲 信息系统的容错技术</strong></h1><h2 id="容错的概念"><a href="#容错的概念" class="headerlink" title="容错的概念"></a><strong><strong>容错的概念</strong></strong></h2><p>容忍故障，即故障一旦发生时能够<strong>自动检测</strong>出来并使系统能够<strong>自动恢复正常运行</strong></p>
+<p><strong>容错设计的软件可以有某些规定数目的故障但不导致失效，但对无容错的软件而言，故障即失效。</strong></p>
+<h2 id="容错的主要内容"><a href="#容错的主要内容" class="headerlink" title="容错的主要内容"></a><strong><strong>容错的主要内容</strong></strong></h2><p><strong>故障检测和诊断</strong></p>
+<p>故障检测（Fault Detection）：判断系统是否存在故障的过程<br><strong>故障检测的作用是确认系统是否发生了故障，指示故障的状态，即查找故障源和故障性质。一般来说，故障检测只能找到错误点（错误单元），不能准确找到故障点。</strong></p>
+<p>故障诊断（Fault Diagnosis）：检测出系统存在故障后要进行故障的定位，找出故障所在的位置</p>
+<p><strong>故障屏蔽技术</strong></p>
+<p>故障屏蔽技术是防止系统中的故障在该系统的信息结构中产生差错的各种措施的总称，其实质是在故障效应达到模块的输出以前，利用冗余资源将故障影响掩盖起来，达到容错目的</p>
+<p><strong>冗余技术</strong></p>
+<p>三模冗余可以由用户手动完成，也可以依靠工具完成。Xilinx推出了XIlInXtMrtool ，可以方便地实现三模冗余设计，并且可以方便地配置被冗余项，大大方便了用户</p>
+<p><strong>时间冗余技术</strong></p>
+<p><strong>基本思想：</strong>重复执行指令或者一段程序来消除故障的影响，以达到容错的效果，它是用消耗时间来换取容错的目的。</p>
+<p><strong>信息冗余技术</strong></p>
+<p>信息容错技术是通过在数据中附加冗余的信息位来达到故障检测和容错的目的</p>
+<p><strong>软件冗余技术</strong></p>
+<p>软件容错是指在出现有限数目的软件故障的情况下，系统仍可提供连续正确执行的内在能力。其目的是屏蔽软件故障，恢复因出故障而影响的运行进程。</p>
+<p>实现软件容错的基本方法，是将若干个根据同一需求说明编写的不同程序（即多版本程序），在不同空间同时运行，然后在每一个设置点通过表决或接收测试进行表决。</p>
+<h2 id="典型的容错应用"><a href="#典型的容错应用" class="headerlink" title="典型的容错应用"></a><strong><strong>典型的容错应用</strong></strong></h2><p><strong><strong>热备份（Hot-Standby）</strong></strong></p>
+<p>M运行，S后备；</p>
+<p>M故障，S接管作M；</p>
+<p>原M修复，S归还M。</p>
+<h3 id="RAID"><a href="#RAID" class="headerlink" title="RAID"></a><strong><strong>RAID</strong></strong></h3><p>廉价磁盘冗余阵列（Redundant Arrays of Inexpensive Disks），以多个低成本磁盘构成磁盘子系统，提供比单一硬盘更完备的可靠性和高性能</p>
+<p><strong>数据基带条阵列（RAID0）</strong></p>
+<p>分块无校验型，无冗余存储。简单将数据分配到各个磁盘上，不提供真正容错性。带区化至少需要2个硬盘，可支持8&#x2F;16&#x2F;32个磁盘</p>
+<p> <strong>优点</strong></p>
+<p>➢允许多个小区组合成一个大分</p>
+<p>➢更好地利用磁盘空间，延长磁盘寿命</p>
+<p>➢多个硬盘并行工作，提高了读写性能</p>
+<p> <strong>缺点</strong></p>
+<p>➢不提供数据保护，任一磁盘失效，数据可能丢失，且不能自动恢复。</p>
+<p><strong>磁盘镜象（RAID1）</strong></p>
+<p>每一组盘至少两台，数据同时以同样的方式写到两个盘上，两个盘互为镜象。磁盘镜象可以是分区镜象、全盘镜象。容错方式以空间换取，实施可以采用镜象或者双工技术。</p>
+<p> <strong>优点</strong></p>
+<p>➢ 可靠性高，策略简单，恢复数据时不必停机。</p>
+<p> <strong>缺点</strong></p>
+<p>➢ 有效容量只有总容量的1&#x2F;2，利用率50%。由于磁盘冗余，硬件</p>
+<p>开销较大，成本较高</p>
+<p><strong>循环奇偶校验阵列（RAID5）</strong></p>
+<p>与RAID4类似，但校验数据不固定在一个磁盘上，而是循环地依次分布在不同的磁盘上，也称块间插入分布校验。它是目前采用最多、最流行的方式，至少需要3个硬盘。</p>
+<p> 优点</p>
+<p>➢ 校验分布在多个磁盘中，写操作可以同时处理；</p>
+<p>➢ 为读操作提供了最优的性能；</p>
+<p>➢ 一个磁盘失效，分布在其他盘上的信息足够完成数据重建 。</p>
+<p> 缺点</p>
+<p>➢ 数据重建会降低读性能；</p>
+<p>➢ 每次计算校验信息，写操作开销会增大，是一般存储操作时间的3倍</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://zhangyuanhe.top">Charmes</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zhangyuanhe.top/2024/01/10/BUPT_note/Notes%20on%20Information%20System%20Security/">https://zhangyuanhe.top/2024/01/10/BUPT_note/Notes%20on%20Information%20System%20Security/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="null" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zhangyuanhe.top" target="_blank">ZYH's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/">北邮信安</a><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></div><div class="post_share"><div class="social-share" data-image="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/01/17/BUPT_note/Notes%20on%20Complex%20network/" title=""><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/note_cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2024/01/10/BUPT_note/Notes%20on%20Information%20Theory%20and%20Coding/" title="信息论与编码课程笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">信息论与编码课程笔记</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/07/31/BUPT_note/BUPT_SCSS_introduce/" title="北邮网安大类课程介绍（21级）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-31</div><div class="title">北邮网安大类课程介绍（21级）</div></div></a></div><div><a href="/2024/01/10/BUPT_note/Notes%20on%20Information%20Theory%20and%20Coding/" title="信息论与编码课程笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-10</div><div class="title">信息论与编码课程笔记</div></div></a></div><div><a href="/2024/01/02/BUPT_note/Review%20of%20Complex%20network/" title="复杂网络期末复习总结"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-02</div><div class="title">复杂网络期末复习总结</div></div></a></div><div><a href="/2023/09/14/Software%20and%20App/Windows_docker/" title="Windows下安装Docker"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-14</div><div class="title">Windows下安装Docker</div></div></a></div><div><a href="/2024/01/01/BUPT_note/Review%20of%20Information%20System%20Security/" title="信息系统安全期末复习总结"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-01</div><div class="title">信息系统安全期末复习总结</div></div></a></div><div><a href="/2023/08/04/Information_Security_Experiment/assembler_language/AL1/" title="二进制编辑修改"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/wallhaven-ne8r98_1280x720.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-04</div><div class="title">二进制编辑修改</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="card-info-avatar"> <div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-status-box"><div class="author-status"><g-emoji class="g-emoji" alias="palm_tree" fallback-src="https://lskypro.acozycotage.net/LightPicture/2022/12/fe1dc0402e623096.jpg">🐟</g-emoji><span>认真摸鱼中</span></div></div></div><div class="author-info__name">Charmes</div><div class="author-info__description">敏于思 慎于行</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/shuita2333"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/shuita2333" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:603747072@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://gitee.com/bank-beaver" target="_blank" title="Gitee"><i class="fab fa-git-square" style="color: #d5382a;"></i></a><a class="social-icon" href="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729200147469.png" target="_blank" title="wechat"><i class="fab fa-weixin" style="color: #3CB371;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8"><span class="toc-number">1.</span> <span class="toc-text">信息系统安全</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF%EF%BC%88%E8%87%AA%E5%AD%A6%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">信息系统发展趋势（自学）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%AE%B2-%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="toc-number">3.</span> <span class="toc-text">第一讲  信息系统概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="toc-number">3.1.</span> <span class="toc-text">信息系统架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%9C%BA%E6%9E%B6%E6%9E%84"><span class="toc-number">3.1.1.</span> <span class="toc-text">单机架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%BC%94%E8%BF%9B%EF%BC%9ATomcat%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BC%80%E9%83%A8%E7%BD%B2"><span class="toc-number">3.1.2.</span> <span class="toc-text">第一次演进：Tomcat与数据库分开部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E6%BC%94%E8%BF%9B%EF%BC%9A%E5%BC%95%E5%85%A5%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98"><span class="toc-number">3.1.3.</span> <span class="toc-text">第二次演进：引入本地缓存和分布式缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%BC%94%E8%BF%9B%EF%BC%9A%E5%BC%95%E5%85%A5%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">3.1.4.</span> <span class="toc-text">第三次演进：引入反向代理实现负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AC%A1%E6%BC%94%E8%BF%9B%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%BB%E3%80%81%E5%86%99%E5%88%86%E7%A6%BB"><span class="toc-number">3.1.5.</span> <span class="toc-text">第四次演进：数据库读、写分离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E6%AC%A1%E6%BC%94%E8%BF%9B%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8C%89%E4%B8%9A%E5%8A%A1%E5%88%86%E5%BA%93"><span class="toc-number">3.1.6.</span> <span class="toc-text">第五次演进：数据库按业务分库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E6%AC%A1%E6%BC%94%E8%BF%9B%EF%BC%9A%E6%8A%8A%E5%A4%A7%E8%A1%A8%E6%8B%86%E5%88%86%E4%B8%BA%E5%B0%8F%E8%A1%A8"><span class="toc-number">3.1.7.</span> <span class="toc-text">第六次演进：把大表拆分为小表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E6%AC%A1%E6%BC%94%E8%BF%9B%EF%BC%9A%E4%BD%BF%E7%94%A8LVS%E6%88%96F5%E4%BD%BF%E5%A4%9A%E4%B8%AANginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">3.1.8.</span> <span class="toc-text">第七次演进：使用LVS或F5使多个Nginx负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E6%AC%A1%E6%BC%94%E8%BF%9B%EF%BC%9A%E9%80%9A%E8%BF%87DNS%E8%BD%AE%E8%AF%A2%E5%AE%9E%E7%8E%B0%E6%9C%BA%E6%88%BF%E9%97%B4%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">3.1.9.</span> <span class="toc-text">第八次演进：通过DNS轮询实现机房间的负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E6%AC%A1%E6%BC%94%E8%BF%9B%EF%BC%9A%E5%BC%95%E5%85%A5NoSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%AD%89%E6%8A%80%E6%9C%AF"><span class="toc-number">3.1.10.</span> <span class="toc-text">第九次演进：引入NoSQL数据库和搜索引擎等技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E6%AC%A1%E6%BC%94%E8%BF%9B%EF%BC%9A%E5%A4%A7%E5%BA%94%E7%94%A8%E6%8B%86%E5%88%86%E4%B8%BA%E5%B0%8F%E5%BA%94%E7%94%A8"><span class="toc-number">3.1.11.</span> <span class="toc-text">第十次演进：大应用拆分为小应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E6%AC%A1%E6%BC%94%E8%BF%9B%EF%BC%9A%E5%A4%8D%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD%E6%8A%BD%E7%A6%BB%E6%88%90%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="toc-number">3.1.12.</span> <span class="toc-text">第十一次演进：复用的功能抽离成微服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%8C%E6%AC%A1%E6%BC%94%E8%BF%9B%EF%BC%9A%E5%BC%95%E5%85%A5%E4%BC%81%E4%B8%9A%E6%9C%8D%E5%8A%A1%E6%80%BB%E7%BA%BFESB%E5%B1%8F%E8%94%BD%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3%E7%9A%84%E8%AE%BF%E9%97%AE%E5%B7%AE%E5%BC%82"><span class="toc-number">3.1.13.</span> <span class="toc-text">第十二次演进：引入企业服务总线ESB屏蔽服务接口的访问差异</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84"><span class="toc-number">3.2.</span> <span class="toc-text">架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7%EF%BC%9A%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">3.2.1.</span> <span class="toc-text">信息系统体系架构分析的必要性：系统的复杂度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%AE%B2-%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E6%A6%82%E8%BF%B0"><span class="toc-number">4.</span> <span class="toc-text">第二讲 信息系统安全概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%84%86%E5%BC%B1%E6%80%A7"><span class="toc-number">4.1.</span> <span class="toc-text">信息系统的脆弱性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6"><span class="toc-number">4.1.1.</span> <span class="toc-text">硬件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6"><span class="toc-number">4.1.2.</span> <span class="toc-text">软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%BB%E9%98%B2%E4%B8%8D%E5%AF%B9%E7%A7%B0%E6%80%A7"><span class="toc-number">4.1.3.</span> <span class="toc-text">攻防不对称性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%88%87%E7%89%87%E5%B8%A6%E6%9D%A5%E7%9A%84%E5%AE%89%E5%85%A8%E6%8C%91%E6%88%98"><span class="toc-number">4.2.</span> <span class="toc-text">网络切片带来的安全挑战</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.3.</span> <span class="toc-text">信息系统安全实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E4%BF%9D%E9%9A%9C%E6%A8%A1%E5%9E%8B%E2%8E%AF%E2%8E%AFCMM%E6%A1%86%E6%9E%B6"><span class="toc-number">4.4.</span> <span class="toc-text">信息系统安全保障模型⎯⎯CMM框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">4.5.</span> <span class="toc-text">信息系统安全的理解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E7%9A%84%E5%AE%9E%E8%B4%A8"><span class="toc-number">4.5.1.</span> <span class="toc-text">信息系统安全的实质</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E5%AF%B9%E5%A8%81%E8%83%81%E7%9A%84%E6%96%B9%E5%BC%8F%E2%80%94%E2%80%94%E6%8B%9F%E6%80%81%E4%B8%BB%E5%8A%A8%E9%98%B2%E5%BE%A1"><span class="toc-number">4.6.</span> <span class="toc-text">应对威胁的方式——拟态主动防御</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%9F%E6%80%81%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="toc-number">4.6.1.</span> <span class="toc-text">拟态路由器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%9F%E6%80%81%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">4.6.2.</span> <span class="toc-text">拟态域名服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%9F%E6%80%81Web%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-number">4.6.3.</span> <span class="toc-text">拟态Web虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%9F%E6%80%81%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">4.6.4.</span> <span class="toc-text">拟态云服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%9F%E6%80%81%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">4.6.5.</span> <span class="toc-text">拟态防火墙</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E8%AE%B2-%E5%AE%89%E5%85%A8%E9%9C%80%E6%B1%82%E5%8F%8A%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5"><span class="toc-number">5.</span> <span class="toc-text">第三讲 安全需求及安全策略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E9%9C%80%E6%B1%82%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">5.1.</span> <span class="toc-text">安全需求的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E6%80%A7%E7%9A%84%E5%AE%89%E5%85%A8%E9%9C%80%E6%B1%82"><span class="toc-number">5.1.1.</span> <span class="toc-text">一般性的安全需求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5"><span class="toc-number">5.2.</span> <span class="toc-text">安全策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B8%B8%E7%94%A8%E7%9A%84%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5"><span class="toc-number">5.3.</span> <span class="toc-text">最常用的安全策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E4%B8%BB%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E7%AD%96%E7%95%A5"><span class="toc-number">5.4.</span> <span class="toc-text">自主访问控制策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E7%AD%96%E7%95%A5"><span class="toc-number">5.5.</span> <span class="toc-text">强制访问控制策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Bell-LaPadula%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.5.1.</span> <span class="toc-text">Bell-LaPadula模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E6%89%80%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%8D%95%E5%90%91%E8%AE%BF%E9%97%AE%E6%9C%BA%E5%88%B6"><span class="toc-number">5.5.2.</span> <span class="toc-text">防火墙所实现的单向访问机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BIBA%E5%AE%8C%E6%95%B4%E6%80%A7%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.5.3.</span> <span class="toc-text">BIBA完整性模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E7%AD%96%E7%95%A5-1"><span class="toc-number">5.6.</span> <span class="toc-text">强制访问控制策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSR%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.7.</span> <span class="toc-text">SSR安全模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E4%BD%93%E9%A2%97%E7%B2%92%E5%BA%A6%E6%89%A9%E5%85%85"><span class="toc-number">5.7.1.</span> <span class="toc-text">主体颗粒度扩充</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSR%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">5.7.2.</span> <span class="toc-text">SSR安全模型的应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8"><span class="toc-number">5.8.</span> <span class="toc-text">访问控制列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E9%85%8D%E6%8E%A9%E7%A0%81"><span class="toc-number">5.8.1.</span> <span class="toc-text">通配掩码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E8%AE%B2%E5%AE%89%E5%85%A8%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0"><span class="toc-number">6.</span> <span class="toc-text">第四讲安全风险评估</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0%E6%B6%89%E5%8F%8A%E6%A0%87%E5%87%86"><span class="toc-number">6.1.</span> <span class="toc-text">风险评估涉及标准</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A3%8E%E9%99%A9%EF%BC%88Risk%EF%BC%89%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">6.2.</span> <span class="toc-text">风险（Risk）的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A3%8E%E9%99%A9%E5%A4%84%E7%BD%AE%E7%AD%96%E7%95%A5"><span class="toc-number">6.3.</span> <span class="toc-text">风险处置策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0%E7%9A%84%E8%A6%81%E7%B4%A0"><span class="toc-number">6.4.</span> <span class="toc-text">风险评估的要素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E9%A3%8E%E9%99%A9%E8%AE%A1%E7%AE%97%E6%A8%A1%E5%9E%8B%EF%BC%88GB-T20984-2007%EF%BC%89"><span class="toc-number">6.4.1.</span> <span class="toc-text">信息系统安全风险计算模型（GB&#x2F;T20984-2007）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0%E7%9A%84%E6%A1%86%E6%9E%B6%E5%8F%8A%E6%B5%81%E7%A8%8B%EF%BC%88GB-T20984-2007%EF%BC%89"><span class="toc-number">6.4.2.</span> <span class="toc-text">安全风险评估的框架及流程（GB&#x2F;T20984-2007）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%84%E4%BA%A7%E5%88%86%E7%B1%BB%E6%96%B9%E6%B3%95"><span class="toc-number">6.5.</span> <span class="toc-text">资产分类方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E4%BA%A7%E7%AD%89%E7%BA%A7%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F"><span class="toc-number">6.5.1.</span> <span class="toc-text">资产等级计算公式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A8%81%E8%83%81%E6%9D%A5%E6%BA%90%E5%88%97%E8%A1%A8"><span class="toc-number">6.6.</span> <span class="toc-text">威胁来源列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A3%8E%E9%99%A9%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95"><span class="toc-number">6.7.</span> <span class="toc-text">风险计算方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AE%8B%E7%95%99%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BB%B7"><span class="toc-number">6.8.</span> <span class="toc-text">残留风险评价</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%96%BD%E8%BF%87%E7%A8%8B"><span class="toc-number">6.9.</span> <span class="toc-text">风险评估项目实施过程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E8%AE%B2-%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%AD%89%E7%BA%A7%E4%BF%9D%E6%8A%A4"><span class="toc-number">7.</span> <span class="toc-text">第五讲  信息系统等级保护</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%AD%89%E7%BA%A7%E4%BF%9D%E6%8A%A4"><span class="toc-number">7.0.1.</span> <span class="toc-text">什么是等级保护</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%89%E7%BA%A7%E4%BF%9D%E6%8A%A4%E6%9C%89%E2%80%9C%E4%BA%94%E4%B8%AA%E8%A7%84%E5%AE%9A%E5%8A%A8%E4%BD%9C%E2%80%9D"><span class="toc-number">7.1.</span> <span class="toc-text">等级保护有“五个规定动作”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%89%E7%BA%A7%E4%BF%9D%E6%8A%A4%E4%B8%BB%E8%A6%81%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">7.2.</span> <span class="toc-text">等级保护主要工作流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E8%AE%B2-%E7%89%A9%E7%90%86%E5%AE%89%E5%85%A8"><span class="toc-number">8.</span> <span class="toc-text">第六讲 物理安全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%89%E5%85%A8"><span class="toc-number">8.1.</span> <span class="toc-text">环境安全</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%BA%E6%88%BF%E4%B8%89%E5%BA%A6%E8%A6%81%E6%B1%82"><span class="toc-number">8.1.1.</span> <span class="toc-text">机房三度要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E4%B8%8E%E9%98%B2%E6%B0%B4%E8%A6%81%E6%B1%82"><span class="toc-number">8.1.2.</span> <span class="toc-text">防火与防水要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%BA%E6%88%BF%E9%98%B2%E7%9B%97%E8%A6%81%E6%B1%82"><span class="toc-number">8.1.3.</span> <span class="toc-text">机房防盗要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%BA%E6%88%BF%E9%98%B2%E9%BC%A0"><span class="toc-number">8.1.4.</span> <span class="toc-text">机房防鼠</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B2%E9%9D%99%E7%94%B5%E6%8E%AA%E6%96%BD"><span class="toc-number">8.1.5.</span> <span class="toc-text">防静电措施</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%9C%B0%E8%A6%81%E6%B1%82"><span class="toc-number">8.1.6.</span> <span class="toc-text">接地要求</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E8%AE%B2-%E5%8F%AF%E9%9D%A0%E6%80%A7%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">9.</span> <span class="toc-text">第七讲 可靠性的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%9D%A0%E6%80%A7%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">9.0.1.</span> <span class="toc-text">可靠性的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%9D%A0%E6%80%A7%E5%8F%82%E6%95%B0"><span class="toc-number">9.0.2.</span> <span class="toc-text">可靠性参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BF%E5%91%BD"><span class="toc-number">9.0.3.</span> <span class="toc-text">寿命</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%9D%A0%E5%BA%A6R"><span class="toc-number">9.0.4.</span> <span class="toc-text">可靠度R</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B1%E6%95%88%E7%8E%87%CE%BB"><span class="toc-number">9.0.5.</span> <span class="toc-text">失效率λ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%CE%BB-t-%E7%9A%84%E6%B5%B4%E7%BC%B8%E5%BD%A2%E6%9B%B2%E7%BA%BF%EF%BC%88Bathtub-curve%EF%BC%89"><span class="toc-number">9.0.6.</span> <span class="toc-text">**λ(t)的浴缸形曲线（Bathtub-curve）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E7%BB%B4%E4%BF%AE%E4%BA%A7%E5%93%81%E7%9A%84%E5%B9%B3%E5%9D%87%E7%BB%B4%E4%BF%AE%E6%97%B6%E9%97%B4"><span class="toc-number">9.0.7.</span> <span class="toc-text">可维修产品的平均维修时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E7%BB%B4%E4%BF%AE%E4%BA%A7%E5%93%81%E7%9A%84%E7%BB%B4%E4%BF%AE%E6%80%A7%E6%8C%87%E6%A0%87%EF%BC%9A%E5%8F%AF%E7%94%A8%E6%80%A7"><span class="toc-number">9.0.8.</span> <span class="toc-text">可维修产品的维修性指标：可用性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%8F%AF%E9%9D%A0%E6%80%A7%E6%A8%A1%E5%9E%8B"><span class="toc-number">9.1.</span> <span class="toc-text">系统可靠性模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B2%E8%81%94%E7%B3%BB%E7%BB%9F"><span class="toc-number">9.1.1.</span> <span class="toc-text">串联系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E8%81%94%E7%B3%BB%E7%BB%9F"><span class="toc-number">9.1.2.</span> <span class="toc-text">并联系统</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E8%AE%B2-%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="toc-number">10.</span> <span class="toc-text">第八讲 信息系统的可靠性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="toc-number">10.0.1.</span> <span class="toc-text">计算机系统可靠性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E9%AB%98%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E5%8F%AF%E9%9D%A0%E6%80%A7%E7%9A%84%E9%80%94%E5%BE%84"><span class="toc-number">10.1.</span> <span class="toc-text">提高信息系统可靠性的途径</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E9%AB%98%E7%A1%AC%E4%BB%B6%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="toc-number">10.1.1.</span> <span class="toc-text">提高硬件可靠性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="toc-number">10.2.</span> <span class="toc-text">软件可靠性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%8F%AF%E9%9D%A0%E6%80%A7%E6%A8%A1%E5%9E%8B"><span class="toc-number">10.2.1.</span> <span class="toc-text">软件可靠性模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="toc-number">10.3.</span> <span class="toc-text">网络可靠性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%B9%E9%94%99%E6%8A%80%E6%9C%AF"><span class="toc-number">11.</span> <span class="toc-text">第九讲 信息系统的容错技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E9%94%99%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">11.1.</span> <span class="toc-text">容错的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E9%94%99%E7%9A%84%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9"><span class="toc-number">11.2.</span> <span class="toc-text">容错的主要内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E7%9A%84%E5%AE%B9%E9%94%99%E5%BA%94%E7%94%A8"><span class="toc-number">11.3.</span> <span class="toc-text">典型的容错应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RAID"><span class="toc-number">11.3.1.</span> <span class="toc-text">RAID</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/01/17/BUPT_note/Notes%20on%20Complex%20network/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/note_cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/01/17/BUPT_note/Notes%20on%20Complex%20network/" title="无题">无题</a><time datetime="2024-01-17T12:45:01.320Z" title="发表于 2024-01-17 20:45:01">2024-01-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/10/BUPT_note/Notes%20on%20Information%20System%20Security/" title="信息系统安全课程笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信息系统安全课程笔记"/></a><div class="content"><a class="title" href="/2024/01/10/BUPT_note/Notes%20on%20Information%20System%20Security/" title="信息系统安全课程笔记">信息系统安全课程笔记</a><time datetime="2024-01-10T13:00:00.000Z" title="发表于 2024-01-10 21:00:00">2024-01-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/10/BUPT_note/Notes%20on%20Information%20Theory%20and%20Coding/" title="信息论与编码课程笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信息论与编码课程笔记"/></a><div class="content"><a class="title" href="/2024/01/10/BUPT_note/Notes%20on%20Information%20Theory%20and%20Coding/" title="信息论与编码课程笔记">信息论与编码课程笔记</a><time datetime="2024-01-10T13:00:00.000Z" title="发表于 2024-01-10 21:00:00">2024-01-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/02/BUPT_note/Review%20of%20Complex%20network/" title="复杂网络期末复习总结"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="复杂网络期末复习总结"/></a><div class="content"><a class="title" href="/2024/01/02/BUPT_note/Review%20of%20Complex%20network/" title="复杂网络期末复习总结">复杂网络期末复习总结</a><time datetime="2024-01-02T13:00:00.000Z" title="发表于 2024-01-02 21:00:00">2024-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/01/BUPT_note/Review%20of%20Information%20System%20Security/" title="信息系统安全期末复习总结"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信息系统安全期末复习总结"/></a><div class="content"><a class="title" href="/2024/01/01/BUPT_note/Review%20of%20Information%20System%20Security/" title="信息系统安全期末复习总结">信息系统安全期末复习总结</a><time datetime="2024-01-01T13:00:00.000Z" title="发表于 2024-01-01 21:00:00">2024-01-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer-wrap"></div><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>再看看那个光点，它就在这里，这是家园，这是我们 —— 你所爱的每一个人，你认识的一个人，你听说过的每一个人，曾经有过的每一个人，都在它上面度过他们的一生✨</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://stellarium.org/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/link/">我的朋友</a></li><li> <a href="/about/">关于作者</a></li><li> <a href="/archives/">文章归档</a></li><li> <a href="/categories/">文章分类</a></li><li> <a href="/tags/">文章标签</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="https://zhangyuanhe.top/" title="Charmes"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon1.png" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://liuruibin.com/" title="LRBlog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lrblog-img-1304667442.file.myqcloud.com/method.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://akilar.top/" title="Akilarの糖果屋"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lskypro.acozycotage.net/LightPicture/2022/12/6bf1ed05796db59c.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="http://www.azuredust.cc" title="de4dst4r blog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://www.azuredust.cc/wp-content/themes/personalblogily/inc/starter_content/img/portrait.png" alt=""/></a></div></div></div></div><div class="copyright"><span><b>&copy;2023 - 2024</b></span><span><b>&nbsp;&nbsp;By Charmes</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a><span class="footer-separator">|</span><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src=/img/icp.png>
+<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2023019220号-1</a></div><div id="workboard"></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button class="share" type="button" title="右键模式" onclick="changeMouseMode()"><i class="fas fa-mouse"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div class="js-pjax" id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());window.location.reload();"><i class="fa fa-search"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-too"><a class="rightMenu-item" href="javascript:window.open(window.getSelection().toString());window.location.reload();"><i class="fa fa-link"></i><span>转到链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-paste"><a class="rightMenu-item" href="javascript:rmf.paste()"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comment"></i><span>空降评论</span></a><a class="rightMenu-item" href="javascript:rmf.copyWordsLink()"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-to"><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:rmf.open()"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-img"><a class="rightMenu-item" href="javascript:rmf.saveAs()"><i class="fa fa-download"></i><span>保存图片</span></a><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制图片链接</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:randomPost()"><i class="fa fa-paper-plane"></i><span>随便逛逛</span></a><a class="rightMenu-item" href="javascript:switchNightMode();"><i class="fa fa-moon"></i><span>昼夜切换</span></a><a class="rightMenu-item" href="/about/"><i class="fa fa-info-circle"></i><span>关于博客</span></a><a class="rightMenu-item" href="javascript:toggleWinbox();"><i class="fas fa-cog"></i><span>美化设置</span></a><a class="rightMenu-item" href="javascript:rmf.fullScreen();"><i class="fas fa-expand"></i><span>切换全屏</span></a><a class="rightMenu-item" href="javascript:window.print();"><i class="fa-solid fa-print"></i><span>打印页面</span></a></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.textContent = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/light.js"></script><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script src="/js/sun_moon.js" async></script><script type="text/javascript" src="https://cdn1.tianli0.top/npm/jquery@latest/dist/jquery.min.js"></script><script type="text/javascript" src="/js/rightmenu.js"></script><script defer src="/js/another.js"></script><script defer src="/js/runtime.js"></script><script async src="/js/fps.js"></script><script async src="/js/title.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/博客搭建/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 Charmesの魔改教程 (13)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/课程笔记/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📒 Charmesの学习笔记 (5)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/信安课程实验/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👩‍💻 Charmesの编程学习 (20)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item" style="visibility: hidden"></div><a class="magnet_link_more"  href="https://zhangyuanhe.top/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>

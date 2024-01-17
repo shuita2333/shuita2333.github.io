@@ -2,7 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://zhangyuanhe.top/2024/01/02/BUPT_note/Review%20of%20Complex%20Networks/</loc>
+    <loc>https://zhangyuanhe.top/2024/01/17/BUPT_note/Notes%20on%20Complex%20network/</loc>
+    
+    <lastmod>2024-01-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhangyuanhe.top/2024/01/02/BUPT_note/Review%20of%20Complex%20network/</loc>
     
     <lastmod>2024-01-17</lastmod>
     
@@ -12,6 +21,15 @@
   
   <url>
     <loc>https://zhangyuanhe.top/2024/01/10/BUPT_note/Notes%20on%20Information%20Theory%20and%20Coding/</loc>
+    
+    <lastmod>2024-01-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhangyuanhe.top/2024/01/10/BUPT_note/Notes%20on%20Information%20System%20Security/</loc>
     
     <lastmod>2024-01-17</lastmod>
     
@@ -614,14 +632,14 @@
   </url>
   
   <url>
-    <loc>https://zhangyuanhe.top/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
+    <loc>https://zhangyuanhe.top/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C/</loc>
     <lastmod>2024-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://zhangyuanhe.top/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C/</loc>
+    <loc>https://zhangyuanhe.top/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>2024-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
