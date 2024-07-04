@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://zhangyuanhe.top/2023/07/02/hello/hello-world-test/</loc>
+    <lastmod>2024-07-04</lastmod>
+  </url>
+  <url>
     <loc>https://zhangyuanhe.top/2024/01/01/BUPT_note/Review%20of%20Compilation%20principle/</loc>
     <lastmod>2024-01-17</lastmod>
   </url>
@@ -267,10 +271,6 @@
   <url>
     <loc>https://zhangyuanhe.top/2023/07/17/hexo/Hexo_build03/</loc>
     <lastmod>2023-07-31</lastmod>
-  </url>
-  <url>
-    <loc>https://zhangyuanhe.top/2023/07/02/hello/hello-world-test/</loc>
-    <lastmod>2023-07-30</lastmod>
   </url>
   <url>
     <loc>https://zhangyuanhe.top/2023/07/01/hello/hello-world/</loc>

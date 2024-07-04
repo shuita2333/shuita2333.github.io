@@ -48,10 +48,10 @@ https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/software_secu
 https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/software_security/SSE4/
 https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/digital_logic/DL1/
 https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/software_security/SSE3/
-https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/network_security/NS2/
 https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/software_security/SSE2/
-https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/network_security/NS1/
+https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/network_security/NS2/
 https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/software_security/SSE1/
+https://zhangyuanhe.top/2023/07/30/Information_Security_Experiment/network_security/NS1/
 https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build12/
 https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build13/
 https://zhangyuanhe.top/2023/07/26/hexo/Hexo_build11/
