@@ -1,0 +1,443 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>复杂网络期末复习总结 | ZYH's blog</title><meta name="author" content="Charmes"><meta name="copyright" content="Charmes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="复杂网络期末考试的初步总结，供学弟学妹参考">
+<meta property="og:type" content="article">
+<meta property="og:title" content="复杂网络期末复习总结">
+<meta property="og:url" content="https://zhangyuanhe.top/2024/01/02/BUPT_note/Review_of_Complex_network/index.html">
+<meta property="og:site_name" content="ZYH&#39;s blog">
+<meta property="og:description" content="复杂网络期末考试的初步总结，供学弟学妹参考">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhangyuanhe.top/images/basic_configuration/tags1-1690700892780-1.png">
+<meta property="article:published_time" content="2024-01-02T13:00:00.000Z">
+<meta property="article:modified_time" content="2024-07-07T08:08:27.115Z">
+<meta property="article:author" content="Charmes">
+<meta property="article:tag" content="北邮信安">
+<meta property="article:tag" content="复习总结">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhangyuanhe.top/images/basic_configuration/tags1-1690700892780-1.png"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://zhangyuanhe.top/2024/01/02/BUPT_note/Review_of_Complex_network/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: Charmes","link":"链接: ","source":"来源: ZYH's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '复杂网络期末复习总结',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-07 16:08:27'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 8 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><span id="fps"></span><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="ZYH's blog" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">70</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/../../images/basic_configuration/tags1-1690700892780-1.png')"><nav id="nav"><span id="blog-info"><a href="/" title="ZYH's blog"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/logo.png"/><span class="site-name">ZYH's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">复杂网络期末复习总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-02T13:00:00.000Z" title="发表于 2024-01-02 21:00:00">2024-01-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-07T08:08:27.115Z" title="更新于 2024-07-07 16:08:27">2024-07-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="复杂网络期末复习总结"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ol>
+<li><h4 id="度、度分布的概念"><a href="#度、度分布的概念" class="headerlink" title="度、度分布的概念"></a><strong>度、度分布的概念</strong></h4><p>度：在网络中，度是一个用来描述节点（即网络中的个体）的重要性的概念。节点的度是指与该节点直接相连的边的数量。</p>
+<p>度分布：度分布是描述网络中每个节点度数的概率分布。它是一个统计量，可以反映整个网络的结构特征。</p>
+<p>节点 <code>n</code> 的度 <code>k(n) = 该节点的连接数</code></p>
+<p>平均度  <code>&lt;k&gt;</code></p>
+<p>度函数: 		<code>P(k) ： 一个随机选取的节点有 k 个连接的概率</code></p>
+</li>
+<li><h4 id="介数（中心性）概念"><a href="#介数（中心性）概念" class="headerlink" title="介数（中心性）概念"></a><strong>介数（中心性）概念</strong></h4><p>任意一对节点间最短路径所经过的次数<br>一个节点的介数就是一个节点在网络中所有最短路径中出现的频率<br>介数反映了相应的节点或边在整个网络中的作用和影响力，是一个全局几何量。<br>介数用于描述节点之间的连接强度和在网络中的重要性。介数可以通过计算节点之间的最短路径长度来衡量节点之间的连通性，从而反映节点在网络中的地位和作用。</p>
+<p>介数在现实生活中的意义非常广泛，以下是列举的一些可能的现实意义：</p>
+<ol>
+<li>社交网络分析：介数可以帮助我们分析社交网络中节点之间的连接强度和信息传播效率。例如，高介数的节点可能在网络中扮演着信息传播的关键角色，对于社交网络中的群体动态和信息传播具有重要的影响。</li>
+<li>网络安全：介数可以用于分析网络攻击路径和防御策略。例如，攻击者可以通过寻找高介数的节点来攻击网络，因此了解节点的介数分布可以帮助我们更好地防御网络攻击。</li>
+<li>交通网络分析：介数可以用于分析交通网络中节点之间的连通性和运输效率。高介数的节点可能在网络中扮演着重要的交通枢纽角色，对于交通网络的运行和优化具有重要的意义。</li>
+</ol>
+<p><strong>介数中心性：</strong><br>从每块中的任一节点到其他某块中的任一节点的最短路径必然要经过节点H。<br>这种以经过某个节点的最短路径的数目来刻画节点重要性的指标就称为介数中心性(Betweeness centrality)，简称介数(BC)。</p>
+<p><strong>计算介数中心性：</strong></p>
+<p>计算介数中心性（Betweenness Centrality）通常涉及以下几个步骤：</p>
+<ol>
+<li><p>确定网络的最短路径:</p>
+<ul>
+<li>对于网络中的每一对节点 ( (s, t) )，找出所有最短路径。最短路径可以使用如Dijkstra算法或Floyd-Warshall算法来计算。</li>
+</ul>
+</li>
+<li><p>计算每个节点的介数中心性:</p>
+<ul>
+<li>对于每个节点 ( v )（不包括起点和终点），计算在所有最短路径中 ( v ) 出现的次数。</li>
+<li>对于每一对节点 ( (s, t) )，如果存在多条最短路径，那么每条路径对节点 ( v ) 的贡献应考虑为 ( \frac{1}{\text{路径数}} )。</li>
+<li>对于每个节点 ( v )，其介数中心性 ( C_B(v) ) 定义为它出现在所有最短路径中的次数的总和，通常标准化为 ( \frac{C_B(v)}{(\text{节点数} - 1)(\text{节点数} - 2)&#x2F;2} )。</li>
+</ul>
+</li>
+<li><p>标准化:</p>
+<ul>
+<li>为了使介数中心性的值与网络大小无关，通常对介数中心性进行标准化。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h4 id="聚集系数"><a href="#聚集系数" class="headerlink" title="聚集系数"></a><strong>聚集系数</strong></h4><p>聚类系数是一个度量网络中节点聚集成群体的倾向。具体来说，它衡量一个节点的邻居节点之间相互连接的程度。在一个给定的节点上，聚类系数计算的是该节点的邻居之间实际存在的边数与可能存在的最大边数之间的比例。</p>
+<p>例如，在社交网络中，一个人的聚类系数高意味着他们的朋友彼此之间也很可能是朋友。高聚类系数通常表明网络中存在紧密连接的社区或群体。相反，低聚类系数可能表明网络的联系更为分散。</p>
+<p>在复杂网络分析中，聚类系数是理解网络结构特征的重要工具，它有助于揭示网络中的社区结构、小世界特性等。不同类型的网络（如社交网络、生物网络、技术网络）的聚类系数特性可能有显著差异。</p>
+<p>集聚系数（群系数）（Clustering coefficient）： 朋友的朋友还是不是朋友的情况</p>
+<p>集聚系数及其分布<br>$$<br>M&#x3D;\sum_{l\in E;x,y\in N_v}\varphi^x_l\varphi^y_l\C_v&#x3D;\frac{M}{C^2_n}<br>$$<br>正则网络的集聚系数</p>
+<p>(a) 全连接网络 	  <code>C = 1</code></p>
+<p>(b) 最近邻居网络 	<code>C=3/4</code></p>
+<p>(c) 星形网络    	$$C_{star}&#x3D;0\ or\ c_{star}&#x3D;1$$</p>
+<p>随机网络的集聚系数	<code>C=p=&lt;k&gt;/N&lt;&lt;1</code></p>
+</li>
+<li><h4 id="粒子群算法"><a href="#粒子群算法" class="headerlink" title="粒子群算法"></a><strong>粒子群算法</strong></h4><p><strong>粒子群算法是一种基于鸟群捕食行为的优化算法，它利用群体中的个体对信息的共享和运动的演化来求解问题。</strong></p>
+<p>粒子群优化（Particle Swarm Optimization，PSO）是一种基于种群的随机优化技术，其基本思想是受到鸟群觅食行为的启示。PSO 是一种群体智能（群体智能是一组集体智能，涵盖了多代理环境下的群体交互）。在一个 PSO 算法中，有一个种群在问题空间内飞行，每个个体（在这里被称为“粒子”）都有一个由速度和位置构成的向量。粒子通过追踪最佳粒子（个人的最佳）和整个群体中的最佳粒子（全局最佳）来更新其位置和速度。</p>
+<p>PSO 算法的基本步骤包括初始化、速度和位置的设定、个体最佳和全局最佳的设定、更新速度和位置、以及更新个体最佳和全局最佳。</p>
+<p>PSO 算法的主要优点包括：易于实现、收敛速度快、适用于解决不同类型的问题。这些优点使得 PSO 成为机器学习、神经网络和其他优化领域的重要候选者。</p>
+<p>但是，虽然 PSO 有其优点，但它在算法的具体实现中仍有一些挑战需要克服，如学习率的设计、维数的影响以及全局搜索的难题等。因此，在使用 PSO 时，需要根据具体问题进行调整和优化。</p>
+</li>
+<li><h4 id="什么是小世界网络"><a href="#什么是小世界网络" class="headerlink" title="什么是小世界网络"></a><strong>什么是小世界网络</strong></h4><p><strong>这种网络属性意味着一些彼此并不相识的人，可以通过一条很短的熟人链条被联系在一起</strong></p>
+<p>小世界网络是一种复杂网络模型，它具有两个主要的特点：</p>
+<ol>
+<li>节点度分布遵循幂律分布，即节点的度k（与该节点直接相连的节点数目）服从一个非常窄的小世界网络分布。这使得网络中的很多节点具有相对较高的度，从而保证了网络的聚集程度和连通性。</li>
+<li>网络的平均路径长度非常短，即小世界效应显著。这意味着信息在网络中的传播速度非常快，信息传播的效率非常高。</li>
+</ol>
+<p>这种网络结构可以解释为，在网络中，一个人的朋友的朋友可能也是他的熟人，而网络中的节点数量却远少于实际的网络连接数量。这种特性使得小世界网络模型在社交网络、社交媒体、信息传播等领域得到了广泛的应用和关注。</p>
+</li>
+<li><h4 id="无标度网络特点"><a href="#无标度网络特点" class="headerlink" title="无标度网络特点"></a><strong>无标度网络特点</strong></h4><p>无标度网络是一种特殊的网络模型，其特点是节点的度分布遵循幂律分布，即大多数节点的度数相对较低，但也有少数节点具有非常高的度数，呈现出一种无标度的特性。</p>
+<p>无标度网络的特点主要体现在以下几个方面：</p>
+<ol>
+<li><p>节点度分布的随机性：无标度网络中的节点度数分布是随机的，而且是非均衡的。这意味着节点的度数不是均匀分布的，而是集中分布在少数几个高度的节点上。</p>
+</li>
+<li><p>节点度的随机涨落：无标度网络中的节点度分布存在一个标度因子，而大多数节点的度数接近这个标度因子，但少数节点可能存在较大的偏差，从而导致节点的度数存在随机涨落。</p>
+</li>
+<li><p>网络的自相似性：无标度网络具有自相似性，即网络中的不同尺度具有相似的结构。这意味着在网络中，不同的节点之间存在着相似的关系，而这种关系并不是完全随机的。</p>
+</li>
+</ol>
+<p>总之，无标度网络是一种特殊的网络模型，具有高度聚集性和自相似性等特点。这些特点使得无标度网络在许多领域中得到了广泛的应用和关注，如社交网络、信息传播、互联网等。</p>
+</li>
+<li><h4 id="六度分离概念"><a href="#六度分离概念" class="headerlink" title="六度分离概念"></a><strong>六度分离概念</strong></h4><p>六度分离概念是一个社交概念，指认为世界上任何两个人之间都只有六个人连接。这个概念是由哈佛大学的心理学教授Stanley Milgram在1967年提出的，他通过“小世界理论”认为，通过六度分离，任何两个不相识的人都可以通过熟人朋友等建立联系，形成一个社会网络。这个概念也说明了社交网络中人与人之间的联系的普遍性和重要性。</p>
+</li>
+<li><h4 id="混沌可预测性，混沌可预测吗？可长期预测还是可短期预测"><a href="#混沌可预测性，混沌可预测吗？可长期预测还是可短期预测" class="headerlink" title="混沌可预测性，混沌可预测吗？可长期预测还是可短期预测"></a><strong>混沌可预测性，混沌可预测吗？可长期预测还是可短期预测</strong></h4><p>混沌系统是否可预测取决于预测的时间尺度。一般来说，混沌系统在短期内的行为可能具有一定的可预测性，这是因为混沌系统通常具有敏感依赖于初值的特点，这意味着小的初始扰动在系统的演化过程中可能会放大，从而导致短期内的行为表现出一定的规律性。</p>
+<p>然而，对于长期预测，混沌系统的可预测性变得更为复杂。一方面，混沌系统的动力学性质决定了它在长期内的行为可能呈现出随机性或复杂性，表现出“蝴蝶效应”的特点，即一个小扰动可能会在大范围内产生影响。这使得混沌系统的长期预测变得非常困难，甚至是不可能的。另一方面，对于某些混沌系统，如洛伦茨吸引子和 Rossler 吸引子等，在一定的条件下，长期行为也可能具有一定的可预测性。</p>
+<p>总的来说，混沌系统是否可预测取决于预测的时间尺度。在短期内，混沌系统可能具有一定的可预测性，而在长期内，其行为可能呈现出随机性和复杂性，不可预测。不过，通过数学模型、计算机模拟和经验数据等手段，我们可以尝试对混沌系统进行短期或长期预测，从而为实际应用提供参考。</p>
+</li>
+<li><h4 id="列举复杂网络相关期刊"><a href="#列举复杂网络相关期刊" class="headerlink" title="列举复杂网络相关期刊"></a><strong>列举复杂网络相关期刊</strong></h4><p>复杂网络是一个多学科交叉的研究领域，覆盖物理学、计算机科学、数学和社会科学等多个领域。以下是一些主要的与复杂网络相关的期刊及其特点：</p>
+<ol>
+<li>Physical Review E</li>
+</ol>
+<ul>
+<li><strong>特点</strong>：专注于统计、非线性和软物质物理学的研究。它包括了复杂网络的物理和数学特性的研究。</li>
+</ul>
+<ol start="2">
+<li>Social Networks</li>
+</ol>
+<ul>
+<li><strong>特点</strong>：专注于社交网络的理论和实证研究。涵盖社交网络分析的方法和应用，包括社交网络中的结构和功能。</li>
+</ul>
+<ol start="3">
+<li>Network Science</li>
+</ol>
+<ul>
+<li><strong>特点</strong>：涵盖网络科学的广泛主题，包括网络结构、动态和建模。适合跨学科研究，涉及社会学、经济学、计算机科学等领域。</li>
+</ul>
+<ol start="4">
+<li>Journal of Complex Networks</li>
+</ol>
+<ul>
+<li><strong>特点</strong>：集中在复杂网络的数学、物理和计算机科学方面。包括网络理论的发展和网络模型的应用。</li>
+</ul>
+<ol start="5">
+<li>Advances in Complex Systems</li>
+</ol>
+<ul>
+<li><strong>特点</strong>：研究复杂系统的多学科期刊，包括复杂网络的理论和应用研究。关注系统之间的相互作用和网络行为。</li>
+</ul>
+<ol start="6">
+<li>IEEE Transactions on Network Science and Engineering</li>
+</ol>
+<ul>
+<li><strong>特点</strong>：由IEEE出版，集中在网络科学和工程领域的应用研究。包括网络动力学、优化和网络中的数据分析。</li>
+</ul>
+<ol start="7">
+<li>Chaos: An Interdisciplinary Journal of Nonlinear Science</li>
+</ol>
+<ul>
+<li><strong>特点</strong>：专注于混沌理论及其在各种系统中的应用，包括复杂网络。涉及物理、工程、生物学和其他自然科学领域。</li>
+</ul>
+<ol start="8">
+<li>European Physical Journal B</li>
+</ol>
+<ul>
+<li><strong>特点</strong>：涵盖凝聚态物理、统计物理、原子分子和光物理等领域，包括复杂网络的物理特性研究。</li>
+</ul>
+<ol start="9">
+<li>Computational Social Networks</li>
+</ol>
+<ul>
+<li><strong>特点</strong>：专注于计算方法在社交网络分析中的应用。包括网络模型、社交媒体分析和社交网络挖掘等。</li>
+</ul>
+<ol start="10">
+<li>Discrete Dynamics in Nature and Society</li>
+</ol>
+<ul>
+<li><strong>特点</strong>：涉及自然和社会科学中的离散动态系统，包括网络理论、图论和应用数学在复杂系统中的应用。</li>
+</ul>
+</li>
+<li><h4 id="用遗传算法求解函数最大值，课上专门说过。给一个函数，给一个范围，求最大值"><a href="#用遗传算法求解函数最大值，课上专门说过。给一个函数，给一个范围，求最大值" class="headerlink" title="用遗传算法求解函数最大值，课上专门说过。给一个函数，给一个范围，求最大值"></a><strong>用遗传算法求解函数最大值，课上专门说过。给一个函数，给一个范围，求最大值</strong></h4><p><em>下面解释用遗传算法求函数$$ f(x)&#x3D;x2, x^2[0,31]$$的最大值的一些重要步骤。这里只介绍第一代群体的生成过程与结果</em></p>
+<p>(1) 编码<br>由于在该例中$$x\in [0,31]$$，因此，将变量x编码为5位长的二进制形式。如x&#x3D;13可表示为01101</p>
+<p>(2) 初始群体的生成</p>
+<p> 随机产生初始群体的每个个体，群体的大小为4(如表1).</p>
+<p>(3)适应度计算</p>
+<p> 将每个个体x的函数值 f(x)作为该个体的适应度。如个体01101的适应度为 $$f(13)&#x3D;13^2&#x3D;169$$<br>(4) 选择<br>计算每个个体的适应度所占的比例 $$\frac{f_i}{\sum^n_{j&#x3D;1}f_i}$$</p>
+<p>(5) 交叉与变异</p>
+<p>这里采用简单交叉操作：首先对配对库中的个体进行随机配对；其次，在配对个体中随机设定交叉处，配对个体彼此交换部分信息(如表1)。于是得到4个新个体，这4个新个体就形成了新一代群体。        比较新旧群体，不难发现新群体中个体适应度的平均值和最大值都有明显的提高。由此可见，新群体中的个体的确是朝着期望的方向进化了。</p>
+</li>
+<li><h4 id="利用混沌神经网络求解函数最小值"><a href="#利用混沌神经网络求解函数最小值" class="headerlink" title="利用混沌神经网络求解函数最小值"></a><strong>利用混沌神经网络求解函数最小值</strong></h4><p>例如，求$\min\left( x_{1}^{2} + 2x_{2}^{2} \right) &#x3D; E$</p>
+<ol>
+<li>求偏导</li>
+</ol>
+<blockquote>
+<p>$$\frac{\partial E}{\partial x_{1}} &#x3D; 2x_{1}\frac{\partial E}{\partial x_{2}} &#x3D; 4x_{2}$$</p>
+</blockquote>
+<ol start="2">
+<li>带入混沌神经网络</li>
+</ol>
+<p>$$\begin{aligned}<br> &amp; x_{1}(t) &#x3D; \frac{1}{1 + e^{- y_{1}(t)\left( 1 + \varepsilon_{1}(t)) \right.\ }} \<br> &amp; y_{1}(t + 1) &#x3D; ky_{1}(t) + \alpha\left( - 2x_{1} \right) - z_{1}(t)\left( x_{1}(t) - I_{0} \right) \<br> &amp; z_{1}(t + 1) &#x3D; (1 - \beta)z_{1}(t) \<br> &amp; \varepsilon_{1}(t + 1) &#x3D; (1 - \gamma)\varepsilon_{1}(t)<br>\end{aligned}$$</p>
+<p>$$\begin{aligned}<br> &amp; x_{2}(t) &#x3D; \frac{1}{1 + e^{- y_{2}(t)\left( 1 + \varepsilon_{2}(t)) \right.\ }} \<br> &amp; y_{2}(t + 1) &#x3D; ky_{2}(t) + \alpha\left( - 4x_{2} \right) - z_{2}(t)\left( x_{2}(t) - I_{0} \right) \<br> &amp; z_{2}(t + 1) &#x3D; (1 - \beta)z_{2}(t) \<br> &amp; \varepsilon_{2}(t + 1) &#x3D; (1 - \gamma)\varepsilon_{2}(t)<br>\end{aligned}$$</p>
+<p>（tips！注意到，偏导的地方要写成偏导的相反数！并且有n个偏导就要写n*4个式子）</p>
+<ol start="3">
+<li>使用混沌神经网络迭代计算求解，得到最小值时，$x_{1} &#x3D; 0,x_{2} &#x3D; 0$，函数值$E &#x3D; 0$。</li>
+</ol>
+</li>
+<li><h4 id="交叉耦合构造散列函数"><a href="#交叉耦合构造散列函数" class="headerlink" title="交叉耦合构造散列函数"></a><strong>交叉耦合构造散列函数</strong></h4><p>该方法以交叉耦合映象格子为核心,<br>充分利用其不同于普通时空混沌系统的优良的混乱扩散特性 .首先<br>,将明文分组并行注入交叉耦合映象格子的各格点<br>.然后通过多轮混沌迭代使其具有良好的混沌特性 ,并同时利用<br>Logistic映射作为密钥生成器,对结果进行混沌调制。</p>
+<p><strong>主模块：</strong></p>
+<p>①将消息 M分割成 t个消息块 $M_{1}\ldots,M_{t}$ 每个消息块包含 n个字节<br>,且最后一个块填充 Mt &#x3D;＊…＊10… 0l(M).其中,<br>l(M)表示M的长度的二进制形式, 长度为 64 bit,不足 64 bit时高位添 1个介符<br>1再补 0。n可根据实际需要取值。</p>
+<p>②将每个消息块中各字节元素按对应的ASCII码线性变换，线性变换公式为</p>
+<p>$$C_{i,j} &#x3D; \left{ \begin{aligned}<br> &amp; - \frac{M_{i,j}}{128}\ \ \ \  &amp; &amp; 0 \leqslant A\left( M_{i,j} \right) \leqslant 127 \<br> &amp; \frac{M_{i,j} - 128}{128}\ \ \ \  &amp; &amp; 128 \leqslant A\left( M_{i,j} \right) \leqslant 225<br>\end{aligned}\ (1) \right.\ $$</p>
+<p>③令第 i个消息块对应 $C_{i,1}\ldots,C_{i,n}$分别为交叉耦合映象格子中<br>n个格子初值,<br>且$x_{0}(1) &#x3D; C_{i,1},x_{0}(2) &#x3D; C_{i,2},\ldots,x_{0}(n) &#x3D; C_{i,n}.$其中,<br>$x_{0}(0)$和$x_{0}(n + 1)$由密钥生成模块产生.</p>
+<p>④应用交叉耦合映象格子模型进行 R轮初值迭代, 得到<br>$x_{R}(1)\ldots,x_{R}(n).$</p>
+<p>⑤根据式 (1), 对 $x_{R}(1)\ldots,x_{R}(n)$进行逆变换,<br>得到$X_{R}(1)\ldots,X_{R}(n).$</p>
+<p>⑥将$X_{R}(1)\ldots,X_{R}(n).$循环左移$L_{i}$字节，得到<br>$Y_{R}(1)\ldots,Y_{R}(n).$</p>
+<p>⑦每个消息块依次执行 ③ ～ ⑥, t个消息块即可变为 t组<br>$Y_{R}(1)\ldots,Y_{R}(n).$</p>
+<p>⑧将得到的 t组 n字节 $Y_{R}(1)\ldots,Y_{R}(n).$按比特位异或,得到 8n bit的<br>Hash值.</p>
+<p><strong>密钥生成模块：</strong></p>
+<p>①将 128 bit初始密钥线性映射到 0 ～ 1之间, 作为 Logistic映射的初值。</p>
+<p>②第 i组消息在主模块中的子密钥以第 i-1 组中第 2个子密钥的值作为初值,<br>分别迭代 100 + A(i)和 100 +A(i)+n+1轮得到.</p>
+<p>③将最后一组消息所对应的第 2个子密钥作为初值,迭代 t轮, 得到<br>t个实数$s_{1}\ldots,s_{t}$.主模块中移动字节数 $L_{i} &#x3D; s_{i}(n - 1)$</p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://zhangyuanhe.top">Charmes</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zhangyuanhe.top/2024/01/02/BUPT_note/Review_of_Complex_network/">https://zhangyuanhe.top/2024/01/02/BUPT_note/Review_of_Complex_network/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="null" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zhangyuanhe.top" target="_blank">ZYH's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/">北邮信安</a><a class="post-meta__tags" href="/tags/%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BB%93/">复习总结</a></div><div class="post_share"><div class="social-share" data-image="/../../images/basic_configuration/tags1-1690700892780-1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/01/09/BUPT_note/Notes%20on%20network%20security/" title="网络安全课程笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/tags1-1690700892780-1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">网络安全课程笔记</div></div></a></div><div class="next-post pull-right"><a href="/2024/01/01/BUPT_note/Review%20of%20Compilation%20principle/" title="编译原理实验期末复习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/tags1-1690700892780-1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">编译原理实验期末复习</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/01/01/BUPT_note/Review%20of%20Compilation%20principle/" title="编译原理实验期末复习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-01</div><div class="title">编译原理实验期末复习</div></div></a></div><div><a href="/2024/01/01/BUPT_note/Review_of_Information_System_Security/" title="信息系统安全期末复习总结"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-01</div><div class="title">信息系统安全期末复习总结</div></div></a></div><div><a href="/2023/07/31/BUPT_note/BUPT_SCSS_introduce/" title="北邮网安大类课程介绍（21级）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-31</div><div class="title">北邮网安大类课程介绍（21级）</div></div></a></div><div><a href="/2024/01/09/BUPT_note/Notes%20on%20Algorithm%20Design%20and%20Analysis/" title="算法设计与分析课程笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-09</div><div class="title">算法设计与分析课程笔记</div></div></a></div><div><a href="/2024/01/09/BUPT_note/Notes%20on%20network%20security/" title="网络安全课程笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-09</div><div class="title">网络安全课程笔记</div></div></a></div><div><a href="/2024/01/10/BUPT_note/Notes_on_Complex_network/" title="复杂网络课程笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/tags1-1690700892780-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-10</div><div class="title">复杂网络课程笔记</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="card-info-avatar"> <div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-status-box"><div class="author-status"><g-emoji class="g-emoji" alias="palm_tree" fallback-src="https://lskypro.acozycotage.net/LightPicture/2022/12/fe1dc0402e623096.jpg">🐟</g-emoji><span>认真摸鱼中</span></div></div></div><div class="author-info__name">Charmes</div><div class="author-info__description">敏于思 慎于行</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">70</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/shuita2333"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/shuita2333" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:603747072@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://gitee.com/bank-beaver" target="_blank" title="Gitee"><i class="fab fa-git-square" style="color: #d5382a;"></i></a><a class="social-icon" href="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/image-20230729200147469.png" target="_blank" title="wechat"><i class="fab fa-weixin" style="color: #3CB371;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客━(*｀∀´*)ノ      有任何事宜可以在文末留言，链接过期可以私信我，我会尽快更新</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%A6%E3%80%81%E5%BA%A6%E5%88%86%E5%B8%83%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">度、度分布的概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8B%E6%95%B0%EF%BC%88%E4%B8%AD%E5%BF%83%E6%80%A7%EF%BC%89%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">介数（中心性）概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%81%9A%E9%9B%86%E7%B3%BB%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">聚集系数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B2%92%E5%AD%90%E7%BE%A4%E7%AE%97%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">粒子群算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%B0%8F%E4%B8%96%E7%95%8C%E7%BD%91%E7%BB%9C"><span class="toc-number">5.</span> <span class="toc-text">什么是小世界网络</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E6%A0%87%E5%BA%A6%E7%BD%91%E7%BB%9C%E7%89%B9%E7%82%B9"><span class="toc-number">6.</span> <span class="toc-text">无标度网络特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AD%E5%BA%A6%E5%88%86%E7%A6%BB%E6%A6%82%E5%BF%B5"><span class="toc-number">7.</span> <span class="toc-text">六度分离概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B7%E6%B2%8C%E5%8F%AF%E9%A2%84%E6%B5%8B%E6%80%A7%EF%BC%8C%E6%B7%B7%E6%B2%8C%E5%8F%AF%E9%A2%84%E6%B5%8B%E5%90%97%EF%BC%9F%E5%8F%AF%E9%95%BF%E6%9C%9F%E9%A2%84%E6%B5%8B%E8%BF%98%E6%98%AF%E5%8F%AF%E7%9F%AD%E6%9C%9F%E9%A2%84%E6%B5%8B"><span class="toc-number">8.</span> <span class="toc-text">混沌可预测性，混沌可预测吗？可长期预测还是可短期预测</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%97%E4%B8%BE%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3%E6%9C%9F%E5%88%8A"><span class="toc-number">9.</span> <span class="toc-text">列举复杂网络相关期刊</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E5%87%BD%E6%95%B0%E6%9C%80%E5%A4%A7%E5%80%BC%EF%BC%8C%E8%AF%BE%E4%B8%8A%E4%B8%93%E9%97%A8%E8%AF%B4%E8%BF%87%E3%80%82%E7%BB%99%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%EF%BC%8C%E7%BB%99%E4%B8%80%E4%B8%AA%E8%8C%83%E5%9B%B4%EF%BC%8C%E6%B1%82%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="toc-number">10.</span> <span class="toc-text">用遗传算法求解函数最大值，课上专门说过。给一个函数，给一个范围，求最大值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E6%B7%B7%E6%B2%8C%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%B1%82%E8%A7%A3%E5%87%BD%E6%95%B0%E6%9C%80%E5%B0%8F%E5%80%BC"><span class="toc-number">11.</span> <span class="toc-text">利用混沌神经网络求解函数最小值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E8%80%A6%E5%90%88%E6%9E%84%E9%80%A0%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0"><span class="toc-number">12.</span> <span class="toc-text">交叉耦合构造散列函数</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/07/hexo/SSL%E8%AF%81%E4%B9%A6%E7%BB%AD%E6%9C%9F%E6%B5%81%E7%A8%8B/" title="Hexo博客搭建（14）——SSl证书续期"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/image-20230729155123532.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo博客搭建（14）——SSl证书续期"/></a><div class="content"><a class="title" href="/2024/07/07/hexo/SSL%E8%AF%81%E4%B9%A6%E7%BB%AD%E6%9C%9F%E6%B5%81%E7%A8%8B/" title="Hexo博客搭建（14）——SSl证书续期">Hexo博客搭建（14）——SSl证书续期</a><time datetime="2024-07-06T16:58:36.000Z" title="发表于 2024-07-07 00:58:36">2024-07-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/15/BUPT_note/Notes_on_software_security/" title="软件安全课程笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="软件安全课程笔记"/></a><div class="content"><a class="title" href="/2024/01/15/BUPT_note/Notes_on_software_security/" title="软件安全课程笔记">软件安全课程笔记</a><time datetime="2024-01-15T13:00:00.000Z" title="发表于 2024-01-15 21:00:00">2024-01-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/14/BUPT_note/Notes_on_Information_System_Security/" title="信息系统安全课程笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信息系统安全课程笔记"/></a><div class="content"><a class="title" href="/2024/01/14/BUPT_note/Notes_on_Information_System_Security/" title="信息系统安全课程笔记">信息系统安全课程笔记</a><time datetime="2024-01-14T13:00:00.000Z" title="发表于 2024-01-14 21:00:00">2024-01-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/11/BUPT_note/Notes_on_Compilation_principle/" title="编译原理与技术课程笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译原理与技术课程笔记"/></a><div class="content"><a class="title" href="/2024/01/11/BUPT_note/Notes_on_Compilation_principle/" title="编译原理与技术课程笔记">编译原理与技术课程笔记</a><time datetime="2024-01-11T13:00:00.000Z" title="发表于 2024-01-11 21:00:00">2024-01-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/10/BUPT_note/Notes_on_Complex_network/" title="复杂网络课程笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/tags1-1690700892780-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="复杂网络课程笔记"/></a><div class="content"><a class="title" href="/2024/01/10/BUPT_note/Notes_on_Complex_network/" title="复杂网络课程笔记">复杂网络课程笔记</a><time datetime="2024-01-10T13:00:00.000Z" title="发表于 2024-01-10 21:00:00">2024-01-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer-wrap"></div><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>再看看那个光点，它就在这里，这是家园，这是我们 —— 你所爱的每一个人，你认识的一个人，你听说过的每一个人，曾经有过的每一个人，都在它上面度过他们的一生✨</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://stellarium.org/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/link/">我的朋友</a></li><li> <a href="/about/">关于作者</a></li><li> <a href="/archives/">文章归档</a></li><li> <a href="/categories/">文章分类</a></li><li> <a href="/tags/">文章标签</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="https://zhangyuanhe.top/" title="Charmes"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon1.png" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://liuruibin.com/" title="LRBlog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lrblog-img-1304667442.file.myqcloud.com/method.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://akilar.top/" title="Akilarの糖果屋"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lskypro.acozycotage.net/LightPicture/2022/12/6bf1ed05796db59c.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="http://www.azuredust.cc" title="de4dst4r blog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://www.azuredust.cc/wp-content/themes/personalblogily/inc/starter_content/img/portrait.png" alt=""/></a></div></div></div></div><div class="copyright"><span><b>&copy;2023 - 2024</b></span><span><b>&nbsp;&nbsp;By Charmes</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a><span class="footer-separator">|</span><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src=/img/icp.png>
+<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2023019220号-1</a></div><div id="workboard"></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button class="share" type="button" title="右键模式" onclick="changeMouseMode()"><i class="fas fa-mouse"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div class="js-pjax" id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());window.location.reload();"><i class="fa fa-search"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-too"><a class="rightMenu-item" href="javascript:window.open(window.getSelection().toString());window.location.reload();"><i class="fa fa-link"></i><span>转到链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-paste"><a class="rightMenu-item" href="javascript:rmf.paste()"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comment"></i><span>空降评论</span></a><a class="rightMenu-item" href="javascript:rmf.copyWordsLink()"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-to"><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:rmf.open()"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-img"><a class="rightMenu-item" href="javascript:rmf.saveAs()"><i class="fa fa-download"></i><span>保存图片</span></a><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制图片链接</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:randomPost()"><i class="fa fa-paper-plane"></i><span>随便逛逛</span></a><a class="rightMenu-item" href="javascript:switchNightMode();"><i class="fa fa-moon"></i><span>昼夜切换</span></a><a class="rightMenu-item" href="/about/"><i class="fa fa-info-circle"></i><span>关于博客</span></a><a class="rightMenu-item" href="javascript:toggleWinbox();"><i class="fas fa-cog"></i><span>美化设置</span></a><a class="rightMenu-item" href="javascript:rmf.fullScreen();"><i class="fas fa-expand"></i><span>切换全屏</span></a><a class="rightMenu-item" href="javascript:window.print();"><i class="fa-solid fa-print"></i><span>打印页面</span></a></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.textContent = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/light.js"></script><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script src="/js/sun_moon.js" async></script><script type="text/javascript" src="https://cdn1.tianli0.top/npm/jquery@latest/dist/jquery.min.js"></script><script type="text/javascript" src="/js/rightmenu.js"></script><script defer src="/js/another.js"></script><script defer src="/js/runtime.js"></script><script async src="/js/fps.js"></script><script async src="/js/title.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/博客搭建/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 Charmesの魔改教程 (14)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/课程笔记/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📒 Charmesの学习笔记 (11)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhangyuanhe.top/categories/信安课程实验/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👩‍💻 Charmesの实验记录 (40)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item" style="visibility: hidden"></div><a class="magnet_link_more"  href="https://zhangyuanhe.top/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>
