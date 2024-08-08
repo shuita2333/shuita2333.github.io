@@ -1,0 +1,387 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>现有灾备技术调研报告 | ZYH's blog</title><meta name="author" content="Charmes"><meta name="copyright" content="Charmes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="现有灾备技术调研报告">
+<meta property="og:type" content="article">
+<meta property="og:title" content="现有灾备技术调研报告">
+<meta property="og:url" content="https://zyh.github.io.git/2024/04/06/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/%E7%8E%B0%E6%9C%89%E7%81%BE%E5%A4%87%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/index.html">
+<meta property="og:site_name" content="ZYH&#39;s blog">
+<meta property="og:description" content="现有灾备技术调研报告">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zyh.github.io.git/images/basic_configuration/wallhaven-0jp71w_1920x1080.png">
+<meta property="article:published_time" content="2024-04-05T18:00:00.000Z">
+<meta property="article:modified_time" content="2024-07-10T15:36:17.754Z">
+<meta property="article:author" content="Charmes">
+<meta property="article:tag" content="北邮信安">
+<meta property="article:tag" content="实验报告">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zyh.github.io.git/images/basic_configuration/wallhaven-0jp71w_1920x1080.png"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://zyh.github.io.git/2024/04/06/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/%E7%8E%B0%E6%9C%89%E7%81%BE%E5%A4%87%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: Charmes","link":"链接: ","source":"来源: ZYH's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '现有灾备技术调研报告',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-07-10 23:36:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 8 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><span id="fps"></span><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="ZYH's blog" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">76</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/../../images/basic_configuration/wallhaven-0jp71w_1920x1080.png')"><nav id="nav"><span id="blog-info"><a href="/" title="ZYH's blog"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/logo.png"/><span class="site-name">ZYH's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 有链</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-address-card"></i><span> 关于作者</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随便看看</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">现有灾备技术调研报告</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-05T18:00:00.000Z" title="发表于 2024-04-06 02:00:00">2024-04-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-10T15:36:17.754Z" title="更新于 2024-07-10 23:36:17">2024-07-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/">信安课程实验</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BF%A1%E5%AE%89%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/">信息系统灾备</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="现有灾备技术调研报告"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>一、现有灾备技术调研</p>
+<p>灾备是指为了防止业务系统和业务数据因各种灾难事件（自然灾害、软硬件故障、网络攻击、病毒入侵、操作失误等）的影响，导致数据丢失、业务系统服务终止，而利用技术、管理手段以及相关软硬件资源，在本地或异地进行备份，以确保机构关键数据、关键系统和关键业务能够在灾难发生后，快速利用备份，恢复正常运行，实现业务服务的可持续性。灾备不等于数据备份，灾备不仅考虑数据安全，而且考虑业务应用安全。一般包括：容灾、备份、恢复、归档、高可用等。</p>
+<p><strong>1.</strong> 数据备份</p>
+<p>1.1. 传统备份</p>
+<p>备份主要是对数据提供多副本冗余，当数据发生误操作、病毒感染和丢失等逻辑错误后，可以用备份副本进行恢复，保证数据少丢失的数据备份技术。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../images/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/%E7%8E%B0%E6%9C%89%E7%81%BE%E5%A4%87%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/wps1.png" alt="img"></p>
+<p>1.2. CDP</p>
+<p>CDP(Continuous Data Protection连续数据保护)是一套方法，它可以捕获或跟踪数据的变化，并将其在生产数据之外独立存放，以确保数据可以恢复到过去的任意时间点。持续数据保护系统可以基于块、文件或应用实现，可以为恢复对象提供足够细的恢复粒度，实现几乎无限多的恢复时间点。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../images/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/%E7%8E%B0%E6%9C%89%E7%81%BE%E5%A4%87%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/wps2.png" alt="img"></p>
+<p>1.3. CDM</p>
+<p>组织依赖于具有存储分层的穷举拷贝、缺陷快照和专用拷贝管理工具来对拷贝创建和维护过程进行管理。IDC 和 Gartner 将这一产品类别称之为“拷贝数据管理”（Copy Data Management, CDM）。但当前的 CDM 方法基本上都面临着存储激增、性能&#x2F;可扩展性和 SLA 问题，并且其拷贝频率地限制。CDM 技（Copy Data Management ）可以说是应云和数据副本管理而生的，业务对 CDM 技术的基本诉求主要体现在：不论是什么类型的数据，数据库、文件系统、虚拟机等等，都实现永远增量备份。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../images/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/%E7%8E%B0%E6%9C%89%E7%81%BE%E5%A4%87%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/wps3.png" alt="img"></p>
+<p><strong>2.</strong> 复制技术</p>
+<p>2.1. 同步复制</p>
+<p>同步复制可以做到主&#x2F;备中心磁盘阵列同步地进行数据更新，应用系统的I&#x2F;O写入主磁盘阵列后(写入Cache中)，主磁盘阵列将利用自身的机制（如EMC的SRDF&#x2F;S）同时将写I&#x2F;O写入后备磁盘阵列，后备磁盘阵列确认后，主中心磁盘阵列才返回应用的写操作完成信息。</p>
+<p>采用同步方式，使得后备磁盘阵列中的数据总是与生产系统数据同步，因此当生产数据中心发生灾难事件时，不会造成数据丢失。为避免对生产系统性能的影响，同步方式通常在近距离范围内。</p>
+<p>2.2. 异步复制</p>
+<p>异步复制是在应用系统的I&#x2F;O写入主磁盘阵列后(写入Cache中)，主磁盘阵列立即返回给主机应用系统“写完成”信息，主机应用可以继续进行读、写I&#x2F;O操作。同时，主中心磁盘阵列将利用自身的机制（如EMC的SRDF&#x2F;A）将写I&#x2F;O写入后备磁盘阵列，实现数据保护。</p>
+<p>采用异步方式应用程序不必等待远程更新的完成，因此远程数据备份的性能的影响通常较小，并且备份磁盘的距离和生产磁盘间的距离理论上没有限制（可以通过IP连接来实现数据的异步复制）。</p>
+<p><strong>3.</strong> 高可用性系统</p>
+<p>3.1. 冗余硬件</p>
+<p>硬件容错方法之一是硬件冗余，在物理级可通过元件的重复而获得（如相同元件的串、并联，四倍元件等）。</p>
+<p>另一硬件容错的方法叫待命储备冗余。该系统中共有M＋1个模块，其中只有一块处于工作状态，其余M块都处于待命接替状态。一旦工作模块出了故障，立刻切换到一个待命模块，当换上的储备模块发生故障时，又切换到另一储备模块，直到资源枯竭，显然，这种系统必须具有检错和切换的装置。</p>
+<p>混合冗余系统是堆积冗余和待命储备冗余的结合应用。当堆积冗余中有一个模块发生故障时，立刻将其切除，并代之以无故障待命模块。这种方法可达到较高的可靠性。</p>
+<p>上述三种容错基本结构统称K出自N结构。该结构中共有N个相同的模块，其中至少有K个是正常的，系统才能正常运行。这种结构能容忍分别出现在N－K个模块中的N－K个独立的故障，或称其容忍能力是t&#x3D;N－K。</p>
+<p>对有人维修的系统，一有故障就能排除，两模块就能起到多模块的作用，因此可以构成双模冗余系统。在部件级和整机级可实现双模结构。在整机级可采用双机交替工作、双机协同工作和修理不停机等工作方式。如重要业务处室的备用机，一些服务器的双网卡并行工作，双CPU，双电源等。</p>
+<p>3.2. 虚拟化</p>
+<p>虚拟化技术是通过虚拟化技术将一台计算机虚拟为多台逻辑计算机，在一台计算机上同时运行多个逻辑计算机，同时每个逻辑计算机可运行不同的操作系统，应用程序都可以在相互独立的空间内运行而互相不影响，从而提高计算机的工作效率。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../images/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/%E7%8E%B0%E6%9C%89%E7%81%BE%E5%A4%87%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/wps4.jpg" alt="img"></p>
+<p>3.2.1. 虚拟化类型</p>
+<p>l 全虚拟化：将物理硬件资源全部通过软件的方式抽象化，最后进行调用</p>
+<p>l 使用的方法: 使用hypervisor（VMM）软件，其原理是在底层硬件和服务器之间建立一个抽象层，而基于核心的虚拟机是面向Linux系统的开源产品hypervisor(VMM)可以捕捉CPU的指令，为指令访问硬件控制器和外设充当中介。</p>
+<p>l 半虚拟化：需要修改操作系统</p>
+<p>l 直通：直接使用物理硬件资源（需要支持，还不完善)</p>
+<p>3.2.2. 虚拟化优势</p>
+<p>① 集中化管理（远程管理、维护）</p>
+<p>② 提高硬件利用率（物理资源利用率低-例如峰值，虚拟化解决了“空闲”容量）</p>
+<p>③ 动态调整机器&#x2F;资源配置（虚拟化把系统的应用程序和服务硬件分离、提高了灵活性）</p>
+<p>④ 高可靠（可部署额外的功能和方案，可提高透明负载均衡、迁移、恢复复制等应用环境）</p>
+<p>3.2.3. 虚拟化缺点</p>
+<p>① 前期高额费用（初期的硬件支持）</p>
+<p>② 降低硬件利用率（特定场景-例如极度吃资源的应用不一定适合虚拟化）</p>
+<p>③ 更大的错误影响面（本地物理机down机会导致虚拟机均不可用，同时可能虚拟机中文件全部损坏）</p>
+<p>④ 实施配置复杂、管理复杂（管理人员运维、排障困难）</p>
+<p>⑤ 一定的限制性（虚拟化技术涉及各种限制，必须与支持&#x2F;兼容虚拟化的服务器、应用程序及供应商结合使用）</p>
+<p>⑥ 安全性（虚拟化技术自身的安全隐患）</p>
+<p><strong>4.</strong> 容灾技术</p>
+<p>4.1. 容灾站点</p>
+<p>4.1.1. 热站点</p>
+<p>灾难发生后，故障转移会在几分钟或几小时内发生。日常数据同步通常发生在主站点和热站点之间，导致数据丢失最少或没有丢失。可以获取异地数据备份磁带并将其传送到热站点以帮助恢复操作。应定期测试备份磁带，以检测数据损坏、恶意代码和环境破坏。热备份站点是最昂贵的灾难恢复方法。</p>
+<p>4.1.2. 温站点</p>
+<p>包含部分冗余的硬件和软件，具有电信、电话和公用设施连接以继续一些但不是所有的主站点操作。故障转移会在灾难发生后的数小时或数天内发生。每天或每周的数据同步通常发生在主站点和温站点之间，从而将数据丢失降至最低。必须获取异地数据备份磁带并将其交付到温站以恢复操作。温站是成本介于“冷”和“热”之间的选择。</p>
+<p>4.1.3. 冷站点</p>
+<p>订购、运送和安装硬件，并加载软件。基本的电信、电话和公用事业连接可能需要时间才能继续一些但不是所有的主要站点操作。灾难发生后，搬迁会在几周或更长时间内发生，具体取决于硬件到达时间。主站点和冷站点之间不会发生数据同步，可能会导致大量数据丢失。必须获取异地数据备份磁带并将其交付到冷站点以恢复操作。冷站点是最便宜的选择。</p>
+<p>4.2. 容灾和灾备的区别</p>
+<p>当系统发生故障时，容灾仍然能够正常地向网络系统提供数据和服务，以使系统不致停顿。而备份技术的目的与此并不相同，备份是“将在线数据转移成离线数据的过程”，其目的在于应付系统数据中的逻辑错误和历史数据保存，当系统数据崩溃时能够恢复数据。</p>
+<p>备份数据是为了防止系统出现操作失误或系统故障导致数据丢失，而将全系统或部分数据集合从应用主机的硬盘或阵列复制到其它的存储介质的过程。</p>
+<p>系统备份不可以替换容灾。上述描述了备份的目的只能满足数据丢失、数据破坏时的数据恢复，而不能提供实时的业务接管功能。容灾具备实时的业务接管功能，同时远程容灾系统具备应付各种灾难，特别是区域性与毁灭性灾难的能力，具备较为完善的数据保护与灾难恢复功能，保证灾难降临时数据的完整性及业务的连续性，并在最短时间内恢复业务系统的正常运行，将损失降到最小。</p>
+<p>系统容灾不可以替换备份。容灾系统会完整地把生产系统的任何变化复制到容灾中心去，包括不想让它复制的工作，比如不小心把系统的业务数据删除了，同时容灾中心的业务数据也会被完整删除，如果是同步容灾，那容灾中心同时就删除了，反之是异步容灾，那容灾中心在数据异步复制的间隔内就会被删除，此时就需要从备份中心中取出最新备份数据，来恢复被错误删除的信息。因此容灾中心的建设不能替代备份中心的建设。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../images/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/%E7%8E%B0%E6%9C%89%E7%81%BE%E5%A4%87%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/wps5.jpg" alt="img"></p>
+<p>4.3. 容灾难点</p>
+<p>4.3.1. 脑裂</p>
+<p>数据中心脑裂简单说就是两个数据中心间的网络和存储链路同时发生中断，导致两个数据中心内的应用、数据库或者操作系统同时抢占和利用共享的资源，造成资源的数据不一致，产生重大影响。此类问题是在存储跨中心双活方案设计、实施阶段不可避免要遇到的问题。</p>
+<p>4.3.2. 性能</p>
+<p>双活系统在写入数据时，会写两次数据，尤其是通过复制功能写到远端存储的过程，传输链路的性能也会影响整体性能。通常存储还是跨两个不同数据中心，随着距离的增加，单个存储I&#x2F;O处理处于比较高性能的模式。如果加上其他因素，如：并发、数据处理等，数据延迟会成倍增加。而存储双活的初衷是只是为了高可用性和提高总体并发、吞吐量，并不是为了降低读写响应时间。</p>
+<p>4.3.3. 数据一致性</p>
+<p>当跨中心的写入数据时，在复制过程中，数据传递是在缓存中进行的，这样做的好处是提升了性能，问题是当出现控制器节点异常宕机事件时，就会导致缓存内的数据不能写入存储中，从而造成数据的不一致。通常可以采用物理存储加存储虚拟化网关。</p>
+<p>4.3.4. 数据同步</p>
+<p>存储层面的复制技术基本以存储块进行的数据复制，如数据块发生了逻辑错误，那么存储是无法检测到的，它会继续将坏的数据块儿同步到灾备端，如果因此数据库发生宕机，那么灾备端的数据库也同样无法正常启动。所以需要有多层次的防范机制, 来保障数据的可靠性和安全性，需要以备份技术、数据库复制技术，连续性数据保护，建立了完善的数据保障体系。</p>
+<p><strong>5.</strong> 快照和克隆技术</p>
+<p>5.1. 快照</p>
+<p>根据SNIA的定义，快照是指对指定数据集合（卷）的一个完全可用复制，该复制是源数据在某一个时间点的静态映像。快照一般是源数据的一个“虚拟”副本，相比于镜像，快照仅保存了数据集合某一段时间内的状态，因此，快照占用的空间较小。快照最初诞生的目的是数据保护，但随着数据重要性的增加，快照也逐渐被应用于数据分析和应用测试等场景。一般情况下，快照在数据保护场景下的主要用途可分为3类。</p>
+<p>l 数据恢复：当数据面临恶意攻击或人为误操作时，快照可将数据快速恢复到指定的版本。</p>
+<p>l 数据备份：存储系统自身或备份归档软件周期性对业务数据生成快照，同时定期删除较早生成的快照。</p>
+<p>l 数据分析：在不对业务产生影响的情况下，通过对快照的读写，实现数据测试、分析和挖掘的目的。</p>
+<p>5.2. 克隆</p>
+<p>克隆和快照是都是数据的复制。区别之处在于，快照仅为存储系统在某一个时间点的系统状态或数据映像，而克隆则是对存储系统的完全复制。因此，克隆可独立于原始系统，具有更高效的数据恢复能力。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../images/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/%E7%8E%B0%E6%9C%89%E7%81%BE%E5%A4%87%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/wps6.jpg" alt="img"></p>
+<p>5.3. 镜像</p>
+<p>镜像技术是指对存储数据实现副本复制，原数据和副本数据具有一致性，并支持存储系统对源数据和副本数据的独立访问。镜像是针对系统内部数据保护的一个有效技术手段，一般镜像技术主要应用于解决单个LUN请求失效引起的整个业务中断与数据丢失的情况。目前，镜像技术主要包括两种方案，分别是存储自带镜像特性和借助存储网关实现镜像特性。</p>
+<p><strong>6.</strong> 归档</p>
+<p>6.1. 归档介绍</p>
+<p>在信息系统出现之前，归档的概念就已出现，主要指把公文、资料等分类保存起来，便于查询，例如档案馆对个人档案的归档保存。到了信息时代，数据的管理发展到以存放电子信息为主，数据归档将不经常访问的数据转移到低成本的存储库。</p>
+<p>数据归档是企业为了满足企业业务需要、遵从法律法规长期存放有价值的数据，当需要的时候能快速查询和检索的行为。根据需求的不同，数据归档的架构和功能多样，其最基本的功能要求是索引和搜索，以确保文件仍然易于访问。</p>
+<p>6.2. 考虑因素</p>
+<p>l 数据安全存放，保证数据完整性。</p>
+<p>l 数据易于查询，易于读取。</p>
+<p>l 遵从法律法规，保证数据不泄露、不被篡改。</p>
+<p>l 低成本存放。由于数据归档是为了保证企业审计和法规遵从，平时归档数据是不被使用的，而数据本身量非常大，低成本存放是必须要考虑的因素。因此，分级存储技术、离线存储、低成本存储（如磁带、蓝光、云存储归档技术）不断涌现。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../images/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/%E7%8E%B0%E6%9C%89%E7%81%BE%E5%A4%87%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/wps7.jpg" alt="img"></p>
+<p><strong>7.</strong> 业界灾备系统建设</p>
+<p>7.1. 灾备系统分析</p>
+<p>业界在灾备系统的建设上一般按照以下方式：建设机房内的本地备份系统、建设异地的备份系统。该方式可以备份系统的价格满足备份和异地容灾功能，能够避免主生产中心由于地震、火灾或其他灾害造成的数据丢失。备份系统＋异地容灾系统，这是一个较为理想化的容灾系统一体化解决方案，能够在很大程度上避免各种可能的错误。</p>
+<p>腾讯云的备端在线两地三中心灾备方案网络设计如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../images/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/%E7%8E%B0%E6%9C%89%E7%81%BE%E5%A4%87%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/wps8.jpg" alt="img"></p>
+<p>7.2. 容灾系统设计</p>
+<p>备端在线容灾系统设计。当生产服务器处于正常工作状态时，把生产服务器的监控代理软件连接至服务器。当监控代理检测到主存储数据变化后，将捕获变化的数据实时的复制到备用存储上，实现了实时的复制。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../images/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/%E7%8E%B0%E6%9C%89%E7%81%BE%E5%A4%87%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/wps9.jpg" alt="img"></p>
+<p>当生产服务器故障，或者存储故障导致生产系统无法正常提供业务支持时，本地容灾服务器可直接接替生产服务器工作保障业务系统的持续运行；当本地机房发生灾难时，异地机房的容灾服务器可直接接替生产服务器工作保障业务系统的持续运行。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../images/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/%E7%8E%B0%E6%9C%89%E7%81%BE%E5%A4%87%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/wps10.jpg" alt="img"></p>
+<p>当生产系统恢复工作后，代理软件会继续其生产服务器的复制工作，并且在这之前会通过回切工具保障主备系统数据一致。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../images/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/%E7%8E%B0%E6%9C%89%E7%81%BE%E5%A4%87%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/wps11.jpg" alt="img"></p>
+<p>异地容错的容灾系统设计。如果本地机房发生故障，将异地容灾服务器中备份的数据进行手动恢复，可以直接恢复到原生产服务器（也可恢复到新服务器）。备份存储系统保存了应用系统任意时刻的数据，恢复时可恢复到任意时间点，实现容错。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../../images/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/%E7%8E%B0%E6%9C%89%E7%81%BE%E5%A4%87%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/wps12.jpg" alt="img"></p>
+<p>7.3. 具体实施面临的问题</p>
+<p>7.3.1. 分类</p>
+<p>异地多活方案可以根据数据同步的需求分为以下三类：</p>
+<p>l 必须同步型，比如数据库，需要实时数据同步以保证数据的一致性和完整性。</p>
+<p>l 无须同步型，比如缓存，作为临时存储，可以容忍一定程度的数据不一致性。</p>
+<p>l 单活型，比如对于对全局原子性要求较高的业务，如金融交易，无法接受数据同步时延带来的“不一致”窗口。</p>
+<p>核心问题主要是：</p>
+<p>l 数据同步：确保数据在不同机房的一致性。</p>
+<p>l 网络时延：影响数据同步的效率和实时性。</p>
+<p>异地多活方案的切换方式主要有两种：</p>
+<p>l 自动切换，在灾难发生时，系统能够自动识别问题并自动切换至可用机房。</p>
+<p>l 手动切换，通过配置，可以在几分钟或几小时内手动切换至另一机房。</p>
+<p>7.3.2. 异地多活面临的挑战</p>
+<p>l 切换问题，当自动切换至备用机房后，需要确保灾难机房恢复时的回切操作不会对业务造成干扰，并且要保证数据同步的完整性。这需要一个高效的数据同步机制和智能的切换策略，以确保数据不会因为回切操作而出现丢失或不一致的情况。</p>
+<p>l 跨机房流量问题，数据在机房间同步时会产生流量，尤其在跨地域同步时，这会带来额外的成本。流量成本需要控制，跨机房流量有限且成本较高。</p>
+<p>l 用户分区问题，为了减少跨机房流量和提高性能，需要用户分区策略将用户数据分布在不同的机房。这样做的同时，需要确保在任何一个机房发生故障时，用户仍能访问到他们的数据，并且数据的完整性得到保障。</p>
+<p>l 业务适用性问题，随着业务数量的增加，异地多活的开发和维护成本也会随之增加。而并不是所有的业务系统都需要或适合实施异地多活方案，特别是那些对数据一致性要求极高的业务，如处理“余额”和“库存”等。</p>
+<p>l 冷备与热备问题，热备系统能够提供即时切换和较高的数据一致性，但成本较高。冷备机房存在切换风险，长期未使用可能导致切换时出现问题，但可以降低成本。</p>
+<p>l 数据一致性问题，在数据同步过程中，可能会出现由于网络问题、软件缺陷或操作错误导致的异常写入，这可能会引起数据不一致的问题。解决方案包括守护进程同步、客户端双写以及用户分区。</p>
+<p>l 读取问题，为了提供更好的用户体验，需要减少读取操作的延迟解决方案包括就近读取，即将用户的读请求重定向到距离用户最近的数据中心，来减少延迟。</p>
+<p>7.3.3. 解决方案</p>
+<p>l 守护进程同步，通过部署守护进程来监控数据变化，并实时同步到远程机房。</p>
+<p>l 客户端双写，在客户端层面实现数据的双写操作，即每次写入操作同时向两个机房的数据库发送，以此来保证数据的同步。</p>
+<p>l 用户分区，通过用户分区避免数据一致性问题，但牺牲了部分双活特性。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://zyh.github.io.git">Charmes</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zyh.github.io.git/2024/04/06/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/%E7%8E%B0%E6%9C%89%E7%81%BE%E5%A4%87%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/">https://zyh.github.io.git/2024/04/06/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/%E7%8E%B0%E6%9C%89%E7%81%BE%E5%A4%87%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="null" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zyh.github.io.git" target="_blank">ZYH's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8C%97%E9%82%AE%E4%BF%A1%E5%AE%89/">北邮信安</a><a class="post-meta__tags" href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a></div><div class="post_share"><div class="social-share" data-image="/../../images/basic_configuration/wallhaven-0jp71w_1920x1080.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/04/08/Information_Security_Experiment/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%AE%89%E5%85%A8/CNN%E8%B0%83%E7%A0%94%E6%8A%A5%E5%91%8A/" title="CNN简述与应用"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/wallhaven-0jp71w_1920x1080.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">CNN简述与应用</div></div></a></div><div class="next-post pull-right"><a href="/2024/04/06/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%81%BE%E5%A4%87/%E7%A3%81%E7%9B%98%E9%98%B5%E5%88%97%E5%AE%9E%E9%AA%8C/" title="磁盘阵列实验"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/wallhaven-0jp71w_1920x1080.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">磁盘阵列实验</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/11/20/Information_Security_Experiment/Compilation_principle/CP_Lab1/" title="编译原理Lab1——编写链表功能代码"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-20</div><div class="title">编译原理Lab1——编写链表功能代码</div></div></a></div><div><a href="/2023/11/20/Information_Security_Experiment/Compilation_principle/CP_Lab2/" title="编译原理Lab2——了解词法分析器生成器Lex并进行使用"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-20</div><div class="title">编译原理Lab2——了解词法分析器生成器Lex并进行使用</div></div></a></div><div><a href="/2023/11/20/Information_Security_Experiment/Compilation_principle/CP_Lab3/" title="编译原理Lab3——实现Bison与Flex的交互"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-20</div><div class="title">编译原理Lab3——实现Bison与Flex的交互</div></div></a></div><div><a href="/2023/11/20/Information_Security_Experiment/Compilation_principle/CP_Lab4/" title="编译原理Lab4——实现错误检测"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-20</div><div class="title">编译原理Lab4——实现错误检测</div></div></a></div><div><a href="/2023/11/20/Information_Security_Experiment/Compilation_principle/CP_Lab5/" title="编译原理Lab5——编写symtab_ll.c"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-20</div><div class="title">编译原理Lab5——编写symtab_ll.c</div></div></a></div><div><a href="/2023/11/20/Information_Security_Experiment/Compilation_principle/CP_Project1/" title="编译原理Project1——编写词法分析和语法分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/wallhaven-0jp71w_1920x1080.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-20</div><div class="title">编译原理Project1——编写词法分析和语法分析</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="card-info-avatar"> <div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/favicon1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-status-box"><div class="author-status"><g-emoji class="g-emoji" alias="palm_tree" fallback-src="https://lskypro.acozycotage.net/LightPicture/2022/12/fe1dc0402e623096.jpg">🐟</g-emoji><span>认真摸鱼中</span></div></div></div><div class="author-info__name">Charmes</div><div class="author-info__description">敏于思 慎于行</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">76</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/shuita2333"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/shuita2333" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:603747072@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://gitee.com/bank-beaver" target="_blank" title="Gitee"><i class="fab fa-git-square" style="color: #d5382a;"></i></a><a class="social-icon" href="/img/image-20230729200147469.png" target="_blank" title="wechat"><i class="fab fa-weixin" style="color: #3CB371;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客━(*｀∀´*)ノ      有任何事宜可以在文末留言，链接过期可以私信我，我会尽快更新</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/08/Software_and_App/pytorch%E5%AE%89%E8%A3%85%E5%85%A8%E6%B5%81%E7%A8%8B/" title="pytorch安装全流程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/Software_and_App/Windows_docker/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="pytorch安装全流程"/></a><div class="content"><a class="title" href="/2024/07/08/Software_and_App/pytorch%E5%AE%89%E8%A3%85%E5%85%A8%E6%B5%81%E7%A8%8B/" title="pytorch安装全流程">pytorch安装全流程</a><time datetime="2024-07-08T01:00:00.000Z" title="发表于 2024-07-08 09:00:00">2024-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/07/hexo/SSL%E8%AF%81%E4%B9%A6%E7%BB%AD%E6%9C%9F%E6%B5%81%E7%A8%8B/" title="Hexo博客搭建（14）——SSl证书续期"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/image-20230729155123532.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo博客搭建（14）——SSl证书续期"/></a><div class="content"><a class="title" href="/2024/07/07/hexo/SSL%E8%AF%81%E4%B9%A6%E7%BB%AD%E6%9C%9F%E6%B5%81%E7%A8%8B/" title="Hexo博客搭建（14）——SSl证书续期">Hexo博客搭建（14）——SSl证书续期</a><time datetime="2024-07-06T16:58:36.000Z" title="发表于 2024-07-07 00:58:36">2024-07-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/05/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%BC%80%E5%8F%91/Windows%E6%96%87%E4%BB%B6%E5%8A%A0%E5%AF%86%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="Windows文件加密驱动的设计与实现"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Windows文件加密驱动的设计与实现"/></a><div class="content"><a class="title" href="/2024/06/05/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%BC%80%E5%8F%91/Windows%E6%96%87%E4%BB%B6%E5%8A%A0%E5%AF%86%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="Windows文件加密驱动的设计与实现">Windows文件加密驱动的设计与实现</a><time datetime="2024-06-04T18:00:00.000Z" title="发表于 2024-06-05 02:00:00">2024-06-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/08/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%BC%80%E5%8F%91/%E5%90%8C%E6%80%81%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8F%8A%E6%8E%A8%E5%AF%BC/" title="同态加密算法实现及推导"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="同态加密算法实现及推导"/></a><div class="content"><a class="title" href="/2024/04/08/Information_Security_Experiment/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%BC%80%E5%8F%91/%E5%90%8C%E6%80%81%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8F%8A%E6%8E%A8%E5%AF%BC/" title="同态加密算法实现及推导">同态加密算法实现及推导</a><time datetime="2024-04-07T18:00:00.000Z" title="发表于 2024-04-08 02:00:00">2024-04-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/08/Information_Security_Experiment/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%AE%89%E5%85%A8/CNN%E8%B0%83%E7%A0%94%E6%8A%A5%E5%91%8A/" title="CNN简述与应用"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../../images/basic_configuration/wallhaven-0jp71w_1920x1080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CNN简述与应用"/></a><div class="content"><a class="title" href="/2024/04/08/Information_Security_Experiment/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%AE%89%E5%85%A8/CNN%E8%B0%83%E7%A0%94%E6%8A%A5%E5%91%8A/" title="CNN简述与应用">CNN简述与应用</a><time datetime="2024-04-07T18:00:00.000Z" title="发表于 2024-04-08 02:00:00">2024-04-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer-wrap"></div><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>再看看那个光点，它就在这里，这是家园，这是我们 —— 你所爱的每一个人，你认识的一个人，你听说过的每一个人，曾经有过的每一个人，都在它上面度过他们的一生✨</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://stellarium.org/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/link/">我的朋友</a></li><li> <a href="/about/">关于作者</a></li><li> <a href="/archives/">文章归档</a></li><li> <a href="/categories/">文章分类</a></li><li> <a href="/tags/">文章标签</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a target="_blank" rel="noopener" href="https://zhangyuanhe.top/" title="Charmes"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://zyhblog-1318929733.cos.ap-beijing.myqcloud.com/favicon1.png" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://liuruibin.com/" title="LRBlog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lrblog-img-1304667442.file.myqcloud.com/method.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://akilar.top/" title="Akilarの糖果屋"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lskypro.acozycotage.net/LightPicture/2022/12/6bf1ed05796db59c.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="http://www.azuredust.cc" title="de4dst4r blog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://www.azuredust.cc/wp-content/themes/personalblogily/inc/starter_content/img/portrait.png" alt=""/></a></div></div></div></div><div class="copyright"><span><b>&copy;2023 - 2024</b></span><span><b>&nbsp;&nbsp;By Charmes</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a><span class="footer-separator">|</span><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src=/img/icp.png>
+<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2023019220号-1</a></div><div id="workboard"></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button class="share" type="button" title="右键模式" onclick="changeMouseMode()"><i class="fas fa-mouse"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div class="js-pjax" id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());window.location.reload();"><i class="fa fa-search"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-too"><a class="rightMenu-item" href="javascript:window.open(window.getSelection().toString());window.location.reload();"><i class="fa fa-link"></i><span>转到链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-paste"><a class="rightMenu-item" href="javascript:rmf.paste()"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comment"></i><span>空降评论</span></a><a class="rightMenu-item" href="javascript:rmf.copyWordsLink()"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-to"><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:rmf.open()"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-img"><a class="rightMenu-item" href="javascript:rmf.saveAs()"><i class="fa fa-download"></i><span>保存图片</span></a><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制图片链接</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:randomPost()"><i class="fa fa-paper-plane"></i><span>随便逛逛</span></a><a class="rightMenu-item" href="javascript:switchNightMode();"><i class="fa fa-moon"></i><span>昼夜切换</span></a><a class="rightMenu-item" href="/about/"><i class="fa fa-info-circle"></i><span>关于博客</span></a><a class="rightMenu-item" href="javascript:toggleWinbox();"><i class="fas fa-cog"></i><span>美化设置</span></a><a class="rightMenu-item" href="javascript:rmf.fullScreen();"><i class="fas fa-expand"></i><span>切换全屏</span></a><a class="rightMenu-item" href="javascript:window.print();"><i class="fa-solid fa-print"></i><span>打印页面</span></a></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.zhangyuanhe.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.textContent = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/light.js"></script><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script src="/js/sun_moon.js" async></script><script type="text/javascript" src="https://cdn1.tianli0.top/npm/jquery@latest/dist/jquery.min.js"></script><script type="text/javascript" src="/js/rightmenu.js"></script><script defer src="/js/another.js"></script><script defer src="/js/runtime.js"></script><script async src="/js/fps.js"></script><script async src="/js/title.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://zyh.github.io.git/categories/博客搭建/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 Charmesの魔改教程 (14)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zyh.github.io.git/categories/课程笔记/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📒 Charmesの学习笔记 (11)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zyh.github.io.git/categories/信安课程实验/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👩‍💻 Charmesの实验记录 (44)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item" style="visibility: hidden"></div><a class="magnet_link_more"  href="https://zyh.github.io.git/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>
